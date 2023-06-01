@@ -1,0 +1,33 @@
+- Azure Powershell:
+    - Cmdlet: A script that performs a specific task
+    - Azure Resource Manager: It uses the resource manager like the portal to manipulate Azure
+    Resources
+
+- Cloud Shell:
+    - It is an interactive, browser accessible shell for managing Azure Resources
+    - Access from anywhere using web or mobile app. Authenticated and Secure
+    - Chose either between bash (Azure CLI) or a Power Shell environment  
+    - Common tools like Python, Nodejs.net, .NET are all included
+    - Contains Dedicated storage to persist data between sessions
+    - Contains a Complete file editor
+
+- Azure Mobile App:
+    - Available in IOS and Android
+    - Run version of the cloud shell to run power shell or Azure CLI commands from Phone
+
+- Azure Resource Manager (ARM) Templates:
+    - Describe Resource Usage
+        - Updating, Deleting and Creating
+    - Common Syntax:
+        - Defined Languages for all ARM templates, making it easier to formalize and learn
+    - Idempotent:
+        - Every ARM template can be applied multiple times and the result is always the same
+    - Reuse Combination of multiple ARM templates to achieve tasks
+    - Declarative
+
+- Azure Advisor:
+    - The Advisor provides recommendations of availability of resources, save costs on services, 
+    increase reliability, etc
+    - Advises on security 
+    - Focusses majorly on: Cost, Security, Reliability, Operational Excellence & Performance
+

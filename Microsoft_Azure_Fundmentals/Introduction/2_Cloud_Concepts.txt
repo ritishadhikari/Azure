@@ -1,0 +1,80 @@
+The Language of Cloud Computing:
+    - High availability
+        - Systems are always available  - even automatically
+    - Scalability
+        - Scaling up or Scaling out automatically providing resources as needed     
+    - Predictability
+        - Predictable performance (idempotent)
+        - Predictable Cost
+    - Reliability
+        - Descibes how Azure can tolerate failures or even disasters
+    - Security
+        - Having full control of your cloud security posture
+    - Governance
+        - Standardizing cloud deployments to meet requirements/ company standards
+    - Manageability
+        - Management of cloud resources and how we interact with them 
+
+The Economy of Cloud Computing
+    - Capital Expenditure:
+        - Money spent by a business or organization on acquiring or maintaining fixed assets, such
+        as land, buildings and equipment
+    - Operational Expenditure: 
+        - Ongoing cost for running a product, business or system on a day-to-day basis, including
+        annual costs
+    - Hourly Pricing: 
+        - VMs, App services etc
+    - Consumption based Pricing:
+        - Pay for resources used
+    
+
+Cloud Service Models:
+    - Infrastructure as a Service: 
+        - Infrastructure are actual servers that are provided by Azure
+        - Scaling is fast
+        - No ownership of hardware
+        - Consists of VMs & Servers, Networks and Physical Buildings
+    - Platform as a Service:
+        - Also includes Middlewares, Darabase Systems and More
+        - It supports the web application lifecycle
+        - Avoids software licence problems
+    - Software as a Service:
+        - Provides a managed Service
+        - Pay an access fee to used
+        - No maintenance and latest features
+    - Serverless:
+        - Azure Functions
+        - A single function of code can be hosted, deployed, run and managed without
+        having to manage a full application
+    - Shared Repsonsibility Model:
+        -       
+Azure Marketplace
+    - Solutions and Services:
+        - Large selection from Microsoft and partners. Apps, VMs, templates, services, etc
+    - Azure App Store
+        - Buy cloud services with a single click. Many categories of items to acquire. 
+    - Easy to Integrate
+        - Use from Portal, CLI or Powershell. Some are free, some are paid
+    - Publish your own:
+        - If you are Microsoft Partner, publish your own services in the marketplace
+    - Support:
+        - Technical Design and Architectural design support available when you list a 
+        service on the marketplace 
+    
+Cloud Architecture Models:
+    - Private Cloud:
+        - Complete control of infrastructure
+        - Better security and privacy
+        - High Maintenance
+    - Public Cloud
+        - No purchase of hardware
+        - Low Monthly fees
+        - No control over features and versions
+        - No physical access
+    - Hybrid Cloud
+        - Avoid Disruptions and outages
+        - Adhere to regulations, governance, etc
+        - Span both public and private cloud
+        - Alleviate Capex Investments
+        - Complex Infrastructure
+        - 
