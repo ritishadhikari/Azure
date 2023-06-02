@@ -1,0 +1,56 @@
+Virtual Machines:
+    - Infrastructure as a Service:
+        - Manage everything except the hardware
+        - This includes the networking components
+    - Tools:
+        - Use the Azure Portal to manage large number of VMs and even hybrid clouds
+    - Compliance:
+        - Use Azure Blueprints to make your VMs comply with company guidelines
+    - Recommendations:
+        - Azure will recommend improvements to ensure better security, higher availability and 
+        greater performance
+    - Choice:
+        - Chose amount of RAM, number of CPUs, Windows or Linux
+    - Pricing:
+        - Goes up as RAM and CPU goes up. Calculated Hourly. 
+    -    
+
+Scale Sets:
+    - Helps to create a group of identical, load balanced VMs
+    - Multiple VMS:
+        - Simple to manage multiple identical VMs using a load balancer
+    - High availability:
+        - If one VM fails or stops, the others in the scale set will keep working
+    - Auto Scaling:
+        - Automatically match demand by adding or removing VMs from the scale set
+    - Large Scale:
+        - Run up to 1000 VMs in a single set
+    - No Extra Cost:
+        - No added cost using scale sets
+
+App Services:
+    - Part of Platform as a Service
+    - Servers, Network and Storage are all managed by Azure
+    - Focus just on business value and logic
+    - Categories:
+        - Web Apps:
+            - Website and online applications hosted on Azure's managed Platform
+            - Runs on both Windows and Linux
+            - Supports Python, .NET, PHP, Java and Ruby
+            - Azure Integration for easier deployment
+            - Supports Autoscaling and Load Balancing
+        -   Web Apps for Containers:
+            - Deploy and Run containerized applications in Azure
+            - A container is completely self-contained
+            - All dependencies are shipped inside the container
+            - Deploy anywhere with a consistent experience
+        - API Apps:
+            - Expose and connect your data backend
+
+Azure Container Instances:
+
+Azure Kubernetes Service:
+
+Windows Virtual Desktop:
+
+Functions:
