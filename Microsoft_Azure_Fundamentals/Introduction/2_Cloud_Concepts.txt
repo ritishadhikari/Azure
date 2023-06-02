@@ -77,3 +77,4 @@ Cloud Architecture Models:
         - Span both public and private cloud
         - Alleviate Capex Investments
         - Complex Infrastructure
+    
