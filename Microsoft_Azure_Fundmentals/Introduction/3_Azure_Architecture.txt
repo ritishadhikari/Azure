@@ -1,0 +1,42 @@
+Regions:
+    - A region is a set of data centers deployed within a latency-defined perimeter and connected
+    through a dedicated regional low-latency network
+    - Chose a region closest to your users to minimize latency
+    - Each region is paired within same geographic area except Brazil South
+    - If the primary region has an outage, you can failover to the secondary region
+    - Only one region in a pair is updated at any one time
+
+Availability Zones:
+    - Each availability zone is a physical location within a region
+    - Each AZ is independent, has its own power, cooling and networking
+    - Each region has three availability zones
+    - 
+
+Resource Groups:
+    - Resource Group is not a resource but a container that holds related resources for Azure
+    Solution and includes those resources that you want to manage as a Group
+    - Each resource can only exist in a single resource Group
+    - You can add or remove resources to any resource group at any time
+    - You can move a resource from one resource group to another
+    - Resources from multiple regions can be in one resource group
+    - You can give users access to a resource group and everything in it
+    - Resources can interact with other resources in different resource groups
+    - A resource group has a location, or region as it stores meta data about the resources
+    in it
+
+Azure Resource Manager: 
+    - All interaction with Azure resources go throgh the ARM
+    - It is the main Azure Architecture component for creating, updating and manipulating
+    resources
+    - Group Resource Handling:
+        - Deploy, manage and monitor resources as a group rather than handling individually
+    - Consistency:
+        - Deploying resources from various tools will always result in the same consistent state
+    - Dependencies:
+        - Define dependencies between resources to make sure they don't get into fight
+    - Access Control:
+        - Built-in-Features in the ARM make it easy to assign rights to users
+    - Tagging:
+        - Tag (label) resources to easily identify them for future scenarios 
+    - Billing:
+        - Check billing for a group of resources sharing the same tag
