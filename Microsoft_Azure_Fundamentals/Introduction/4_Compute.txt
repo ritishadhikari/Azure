@@ -47,10 +47,54 @@ App Services:
         - API Apps:
             - Expose and connect your data backend
 
-Azure Container Instances:
+Azure Container Instances (ACI):
+    - A container provides all of the necessary dependencies such as frameworks, other pieces
+    of software, operating system interfaces and much more
+    - All the dependencies for an application are included in the container image. You can manage
+    the application and its dependencies with confidence
+    - Unlike Virtual Machines which requires a lot more maintenance and updates, containers don't
+    have any components relating to the operating system that require maintenance
+    - Applications running in containers can be deployed easily to multiple different operating 
+    systems and hardware platforms
+    - Development, Deployment and maintenance are all more efficient when using containers. Scaling
+    and patching is much simpler
+    - First create software development cycle, then place the application in a container and 
+    finally put it in Azure Container Instances
+    - ACI is a primary Azure Service for running container process or application (workload) 
+    - Use containerized applications to process data on demand by only creating the container image
+    when you need it. Thereby save cash
+    - We can use either of the Azure Portal, Azure CLI or PowerShell
 
-Azure Kubernetes Service:
+Azure Kubernetes Service (AKS):
+    - Kubernetes is an open-source container orchestration system for automating application 
+    deployment, scaling and management
+    - Kubernetes will deploy more images of containers as needed
+    - Automating scaling happens in Kubernetes by automatically monitoring of application load
+    to determine when to scale the number of containers used
+    - AKS helps to reuse your container architecture by managing it in Kubernetes. This makes the 
+    setup quicker and confidence in the system increases
+    - You can use Kubernetes with supported Azure regions and on premise installations using Azure
+    Stack
 
-Windows Virtual Desktop:
+Azure Container Registry(ACR):
+    - This service keeps track of current valid container images
+    - It manages files and artifacts for containers
+    - Feeds container images to ACI and AKS
+    - Use Azure Identity and Security Features so that as to ensure the container images are 
+    safe and sound
+
+Azure Virtual Desktop:
+    - Use any VM size and configuration you want in Azure to host the windows 10/11 Instances
+    - This is a completely virtualized version of windows, meaning it runs 100% in the cloud
+    - We can use Windows 10/11 licenses thereby saving costs and license usage
+    - Multiple users can use the same VM instance
+    - Use Windows from anywhere on any device with an internet browser
+    - Secure data using Azure Storage
 
 Functions:
+    - It is the smallest compute service on Azure
+    - A single function of compute
+    - It is called or invoked via a standard web adsress (URL)  
+    - Runs once and stops. No Traffic, no usage
+    - No Maintenance, No Processes, Nothing VM related, just focus on functionality
+    - 
