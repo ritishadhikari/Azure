@@ -1,0 +1,54 @@
+Virtual Network (VNet):
+    - Enables Azure Virtual Machines to securely connect with each other, the internet and 
+    on premises network
+    - No access to the hardware of the network
+    - Address Space: 
+        - Range of IP Addresses that you can use for your resources
+    - Subnets:
+        - Enables you to segment the virtual network into one or more subnetworks and allocate
+        portions of the virtual network's address space to each subnet. 
+        - Doing this, we can have multiple networks in the same VNet
+        - Subnet helps in grouping resources to make it easier to keep an overview
+        - Each individual subnets can be secured using network security groups
+    - A Vnet belongs to a single region. Every resource on the VNet must be in the same region too
+    - Each Vnet belongs to a single subscription, and each subscription can have more than one VNet
+    though
+    - Adding more VNets or more addresses to one is simple - Scale
+    - VNet ensures high availability for resources. Peering Vnets using a load balancer or using a VPN
+    gateway all increase availability
+    - Isolate, manage and organize resources with subnets and network security groups 
+    - VNet Peering:
+        - Lets you to connect two or more virtual networks in Azure 
+        - Traffic between Virtual Machines in a peered network uses the Private Microsoft Backbone
+        and never passes through the public internet 
+        - Provides low latency and high bandwidth connection between resources
+        - Resources in separate VNets can communicate 
+        - Transfer data easily between subscriptions and deployment models in separate regions
+
+Load Balancer
+    - It distributes new inbound flows that arrive on the load balancer's frontend to backend pool
+    instances, according to rules and health probes
+    - With Health Probes, ensures that the Load Balancer always sends traffic to a healthy VM
+
+VPN Gateway
+    - Securely communicate with Azure Resources and your on-premises network 
+    - Virtual Network Gateway consists of two or more virtual machines that are deployed to a specific
+    subnet called the Gateway Subnet
+    - The VMs are created in the Gateway Subnet when you create a Virtual Network Gateway 
+    - VPN Gateway is a specific type of Virtual Network Gateway that is used to send encrypted traffic 
+    between a Azure Virtual Network and an on-premises location over the public internet
+    - A VPN Gateway is a key part of having a secure and available hybrid cloud architecture 
+    - Main Components of a VPN Gateway setup:
+        - VPN gateway in a Azure VNet with its own public IP address
+        - A secure connection called Tunnel which has one of a number of encryption mechanisms
+        - On Premises Network with a complimentary gateway that can accept the encrypted data 
+        - The above is called Site-to-Site connection 
+    - There can be one VPN gateway with more than one on-prem network connecting to it. This is
+    known as multisite connection
+    - 
+Application Gateway
+
+ExpressRoute
+
+Content Delivery Network
+
