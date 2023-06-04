@@ -47,8 +47,31 @@ VPN Gateway
     known as multisite connection
     - 
 Application Gateway
-
+    - A load balancer receives Internet Traffic and based on an IP address and port, it will send
+    one of the data in the backend pool
+    - With Application Gateway, you can make routing decisions based on additional attributes like
+    HTTPs requests such as URI path and host headers. 
+    - Data format:
+        URI: Web Address
+        Host Header: Request Data
+    - Scale the Application Gateway up or down based on the amount of traffic received
+    - Comply with any security policies. Disable or enable traffic encryption to the backend
+    - Span multiple availability zones and improve fault resiliency
+    - Multi Site Hosting: 
+        - Use the same Application Gateway for up to 100 websites
+   
 ExpressRoute
+    - Private, Secure, High Bandwidth, low latency, connection directly from data center 
+    infrastructure to Azure  
+    - Applicable when lots of data interchange takes place between on-prem and Azure
+    - Express Route don't go over the public internet which means security of the data is better
 
 Content Delivery Network
+    - It is a distributed network of servers that can deliver web content close to users
+    - CDN improves the user's experience and the performance of your Application
+    - Scale to suit any spikes in traffic and also protect your main backend server instance from
+    high loads
+    - Edge server will serve requests closest to the user, less traffic is then sent to the server 
+    hosting your Application
+    - 
 
