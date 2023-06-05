@@ -1,0 +1,42 @@
+Storage Accout is a Globally Unique Azure Namespace and every object in Azure has its own web address
+
+Blob:
+    - Binary Large Object
+    - Blobs of Data are stored in containers inside the storage account
+    - Blob Types:
+        - Block:
+            - Store text and binary data upto 4.7 TB. Made up of individually managed blocks of data
+        - Append:
+            - Block blobs that are optimized for append operations. Works well for logging where data
+            is constantly appended
+        - Page:
+            - Store files upto 8 TB. Any part of the file could be accessed at any time, for example 
+            a virtual hard drive
+    - Pricing Tiers:
+        - Hot:
+            - Frequently Accessed files. Lower access times and higher consists
+        - Cool:
+            - Lower storage costs and higher access times. Data remains here for at least 30 days
+        - Archive:
+            - Lowest costs and highest access times
+
+Disk:
+    - 
+
+File:
+    - 
+
+Archive:
+    - 
+
+Storage Redundancies:
+    - 
+
+Moving Data:
+    - 
+
+Additional Migrations Options:
+    - 
+
+Premium Performance Options:
+    - 
