@@ -62,13 +62,98 @@ Archive:
     - Fully secure to allow for any personal data such as financial records, medical data and more 
 
 Storage Redundancies:
-    - 
-
+    - Data redundancies protects against unplanned failures
+    - Azure storage always creates multiple copies of your data which happens automatically with
+    minimum three copies of your data and is invisible to the end user
+    - Higher redundancies comes with higher costs
+    - Multiple Redundancies Options:
+        - Different location scope
+            - Single Zone   
+                - Locally redundant storage (LRS)
+                    - Creates three copies of data in a single location
+                    - Lowest cost options
+                    - Protects against single disk failure
+                    - Does not protect against zone or regional outages   
+            - Multiple Zone
+                - Zone Redundant Storage (ZRS)
+                    - Creates three copies of data in a three availability zones
+                    - Protects against zone outage but not regional outage
+            - Multiple Regions
+                - Geo Redundant Storage (GRS)
+                    - Three copies in two different regions
+                        - Three copies in primary regional physical location (LRS)
+                        - Three copies in secondary (paired) region physical location (LRS) 
+                    - Protects against primary region failure but no primary region zone redundancy
+                    - Can configure read access from secondary region for high availability 
+                - Geo Zone Redundant Storage (GZRS)
+                    - Copy across three availability zones in primary region (ZRS)
+                    - Three copies in secondary region physical location/ zone (LRS)
+                    - Protect against primary region failure and primary region zone failure
+                    - Can configure read access from secondary region for high availability
+    
 Moving Data:
-    - 
+    - Moving data into and out of Azure Storage
+    - Different Solutions based on 
+        - Transfer frequency 
+            - Occassional
+            - Continous
+        - Data Size
+        - Network Bandwidth
+    - For smaller occassional transfers
+        - AZCopy
+            - Command Line Utility for occassional data transfer
+            - Transfer blobs and Azure files
+            - Useful for scripting data transfers
+            - azcopy cp "gft.txt" "https://mystorageaccount.blob.care.core.windows.net/my-container"
+        - Azure Storage Explorer
+            - Graphical User Interface (GUI) Interaction
+            - Downloaded application
+            - Drag and Drop interaction 
+            - Move all storage account formats and not just blobs and azure file formats 
+        - Azure File Sync
+            - Synchronize Azure files with on premises file servers
+            - Local File server performance + cloud availability
+            - Back up local file server 
+            - Synchronize files between multiple on-premise locations
+            - Remote users access Azure Files
 
 Additional Migrations Options:
-    - 
+    - Azure Data Box
+        - Transfer lots of data and/or limited bandwidth 
+        - lots refers to too much to transfer over the internet
+        - relative to available network bandwidth
+        - Provides offline data transfer to/from Azure  
+        - Copy data to physical data storage device (Data Box) which is encrypted and rugged
+        - Ship Data Box to Azure
+            - Data Box transferred to Storage Accounts
+        - Ship Data Box from Azure
+            - Data Box delivered to on-premises location for on-site transfer
+        - Applicable for 
+            - Initial Bulk Data Migration
+            - Restore Azure Backup to on-premise location
+            - Sensitive data that cannot be sent over the internet
+        
+    - Azure Migrate
+        - Migrate Non Azure Resources into Azure
+        - Ex:
+            - Servers to VMS
+            - Databases to Managed Databases
+            - Applications
 
 Premium Performance Options:
-    - 
+    - Required for Low Latency requirements
+    - Stored on SSDs which are separate considerations from managed disk Types
+    - Trade more performance for less redundancy
+    - Premium Block Blobs
+        - Supports Blob Storage type
+        - AI applications and IOT Analytics
+        - Only supports LRS and ZRS redundancies
+    - Premium File Shares
+        - Support Azure Files
+        - Ideal for high performance enterprise (file server) applications
+        - Support Server Message Block (SMB) for Windows file share and 
+        Network File Share (NFS) for Linux file share
+        - Only supports LRS and ZRS redundancies
+    - Premium Page Blobs
+        - Supports Page Blob storage types
+        - Only supports LRS
