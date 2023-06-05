@@ -2,6 +2,7 @@ Storage Accout is a Globally Unique Azure Namespace and every object in Azure ha
 
 Blob:
     - Binary Large Object
+    - Storage Accounts are Buckets while Containers are Objects
     - Blobs of Data are stored in containers inside the storage account
     - Blob Types:
         - Block:
@@ -21,13 +22,44 @@ Blob:
             - Lowest costs and highest access times
 
 Disk:
-    - 
+    - Azure manages the disks, you don't have to worry about backup and uptime
+    - Microsoft and Azure guarantees size and performance as per your agreement with them
+    - Easy to upgrade your disk size and type
+    - Disk Types:
+        - HDD:
+            - Spinning hard drive.
+            - Low cost and suitable backups
+        - Standard SSD:
+            - Standard for production. Higher reliability, scalability and lower latency over HDD
+        - Premium SSD:
+            - Super fast and high performance. 
+            - Very low latency. 
+            - Use for critical workloads
+        - Ultra Disk:
+            - For the most demanding, data intensive workloads. 
+            - Disks upto 64TB. 
+            - Disks upto 64 TB.
 
 File:
-    - 
+    - Share access to the Azure file storage across machines and provide access to your on-premise
+    infrastructure
+    - Managed; You don't have to worry about hardware or operating system
+    - Resilient as network and power outages won't affect your storage
+    - Scenarios:
+        - Supplement or replace your existing on-premise file storage solution
+        - Move your existing file storages and related services to Azure - Lift and Shift
 
 Archive:
-    - 
+    - Azure Archive Storage
+    - Policies, legislation and recovery can be requirements for archiving data. These can be very 
+    large amounts of data
+    - Archive storage is blob storage, so the same tools will work for both
+    - The archive tier is the lowest price for storage on Azure. A few dollars a month can get you
+    terabytes of space
+    - Features includes durability, encryted and stable. It is perfectly suited for data that is accessed 
+    infrequently
+    - With cheap archive storage, you can free up your more premium on-premises Storage
+    - Fully secure to allow for any personal data such as financial records, medical data and more 
 
 Storage Redundancies:
     - 
