@@ -1,0 +1,61 @@
+Cosmos DB:
+    - Traditional Databases that weren't cloud enabled could be very difficult to set up across
+    multiple regions. Azure takes care of all of it with Cosmos
+    - It is very easy to expand to more regions with Cosmos DB and have the data stay in Sync
+    - Cosmos DB stays on top of all reads and writes to your data and makes sure data is moved 
+    between regions to stay in sync
+    - Cosmos DB automatically scales to meet resource demand
+    - Any number of users of your application can be supported
+    - Only pay for the resources you use
+    - As a developer, chose from various software development kits (SDKs) and application programming
+    interfaces (APIs)
+    - Chose from lots of data platforms to integrate with, including SQL, MongoDB and Cassandra
+    - Costs can run up very quickly
+
+Azure SQL:
+    - Managed Service
+    - Hardware including servers, storage and network will be taken care of by Microsoft
+    - Migrate on premise SQL server to Azure SQL which includes cost saving, lower total cost of 
+    ownership
+    - Built in Machine Learning which suggests on how to optimize and improve performance of Azure 
+    SQL instances and also get warnings of degrading instances and if anything out of 
+    the ordinary is happening
+    - High Scalability and Availability
+    - Manages upto 100 TBs
+    - Benefit from Built in Security features of the Azure Cloud platforms
+    - Azure SQL database
+        - Recovery from automated backups only
+        - Geo Replication
+        - Autoscale supported in serverless model
+        - Automatic Tuning
+        - No SQL server profiler
+        - No SQL server Agent
+    - Azure SQL Managed Instance
+        - Recovery from Automated backups and full SQL backups
+        - No Geo Replication 
+        - No Autoscale
+        - No Automatic Tuning
+        - SQL server profiler
+        - SQL server agent  
+
+
+MYSQL:
+    - PAAS where service infrastructure is managed by Microsoft
+    - Focus on developing your business strengths instead of managing servers and networks
+    - Cloud Glitter can provide high availability and scalability with ease. This means 
+    MYSQL can handle an increasing number of users
+    - Benefit from Built in Security features of the Azure Cloud platforms
+    - All cloud PAAS features like database patching, automatic backups and monitoring are included
+    in the price 
+
+PostgreSQL:
+    - Use a large number of extensions, such as JSONB, geospatial functions, indexing, integration
+    with tools and much much more
+    - Use very high performant access to distributed data sets which can scale data faster across
+    hundreds of servers
+    - Get recommendations based on usage on how to make your database perform better. Get 
+    notifications of disruptive events
+    - Automatic database patching, automatic backups and built-in monitoring. All are included 
+
+Database Migration Services:
+    - 
