@@ -58,4 +58,5 @@ PostgreSQL:
     - Automatic database patching, automatic backups and built-in monitoring. All are included 
 
 Database Migration Services:
+    - Single Tool, one step migration for Microsoft SQL to Azure SQL
     - 
