@@ -20,18 +20,98 @@ Azure Active Directory
     - If a subscription isn't paid, all the resources and services associated with the subscription
     stop
     - AAD bridges the On-Premise and Azure 
-    - 
 
-Zero Trust Concepts
+Zero Trust Concepts:
+    - Trusted Perimeter refers to trust boundary for secure access. 
+        - Example: Corporate Network where private access to secure networks can be restricted
+        - With Trusted Perimiter Model, remote work is a challenge. VPN is an extension of trust perimiter
+        - Mobile Network connectivity will be a challenge even with VPN
+        - Rogue user/malware inside trusted network can cause havoc
+    - Zero Trust security Model
+        - All users assumed untrustworthy unless proven otherwise
+        - Trusted by identity regardless of location (trusted/untrusted networks) 
+        - Least privilege access - just enough permissions to perform job
+        - Centrally control access with conditional access Policies
+        - Additional options with allowing access only from approved managed devices which may be 
+        independent from network location
 
-Multi-Factor Authentication
+Multi-Factor Authentication 
+    - Need atleast two ways to identify yourself to log in through
+        - Something you know - password
+        - Something you have - App on Mobile
+        - Something you are - fingerprint/retina scan
+    - Enabled through Azure Active Directory and is treated as a First Class Citizen in Azure
 
-Conditional Access
 
-Passwordless Authentication
+Conditional Access:
+    - Premium feature built into Azure Active directory 
+    - Authentication beyond Username/ Password 
+    - If/then policy to grant access
+    - If user meets these conditions (signals), then grant/block access to defined applications
+    - Often paired with multi-factor authentication (MFA) 
+    - Does not rely on end user enabling MFA
+    - Assign signals (conditions)
+        - Users/ groups
+        - Application to grant/ deny access
+        - Location (IP)
+        - Approved Devices 
+    - Access Decisions (grant/block access)
+        - Grant Access
+        - Block Access
+        - Require MFA
 
-External Guest Access
+Passwordless Authentication:
+    - Multifactor Authentication is more secure but less convenient as more steps are Required
+    to log in
+    - Objective is to Increase Convenience while staying secure
+    - Remove Password from System Login with Something you have (phone) and something you 
+    know/are (on device)
+    - Three Methods to Passwordless authentication
+        - Microsoft Authenticator App
+            - Configure in Azure Active Directory
+            - Authenticate in app with biometrics/PIN
+        - Windows Hello 
+            - Face Recognition in Windows
+        - FIDO2 Security Key:
+            - Hardware Key  
+
+External Guest Access:
+    - Scenario: 
+        - Working with outside consultant to streamline Azure or Azure AD configuration
+    - Create separate organization account for external user
+        - Problem is it would require external user to juggle two Accounts
+    - Invite Guest user to Azure tenant
+        - Guest user uses existing account as an external collaborator
+        - B2B Collaboration
+        - Invite a variety of account types (identity providers, Microsoft, Google, Facebook)
+        - Other external identity providers can also be invited as well
+        - Assign permissions for guest account with the principle of least privilege
+        - Different permissions between Azure AD and Azure Subscriptions=
 
 Azure Active Directory Domain Services
+    - Limitations of Azure AD and Cloud Migrations
+        - Legacy Applications are unable to use modern authentication protocols (OAuth 2.0)
+        - Requires traditional Active Directory (AD DS) management/protocols
+            - Group Policy
+            - LDAP
+            - NTLM
+            - Kerberos
+    - One solution can be to continue using on-premise Active Directory
+        - Sync to Azure AD with Azure AD connect
+    - Another solution is to configure AD server on Azure VM
+        - Also known as self-managed AD DS
+        - Maintain/ Configure the operating system (OS) that the active directory runs on
+    - Azure Active Directory Domain Services (Azure AS DS):
+        - Managed Active Directory Domain Services
+        - Provides classic AD features in a managed service
+            - Group Policy, LDAP, Kerberos, domain join  
+    - AADDS is a fully managed service
+    - No need for OS configuration/management
+    - Behind the scenes: two windows domain controllers for high availability
+    - Need to create Unique Namespace/domain name 
+    - One way sync from Azure AD to Azure AD DS by syncronizing of users, groups and credentials
 
 Single Sign-On
+    - One username and pasword to log onto multiple applications 
+    - Official Name: Azure Active Directory Seamless Single Sign-On
+    - Enable Single Sign On in AAD
