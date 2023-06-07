@@ -1,0 +1,37 @@
+Identity services
+    - Authorization comes after Authentication
+    - Authorization is much more granular signifying if we have access
+
+Azure Active Directory
+    - Main Tool to manage users and permissions on Azure
+    - Active Directory was designed for traditional office use with computers and printers
+    - The web as a concept or service was not part of the design for Active Directory in 2000
+    - Active Directory authentication uses services that aren't available on Azure
+    - Active Directory is not Azure Active Directory
+    - You cannot have an Azure account without an AAD service
+    - Every Azure account needs a first user and this user is in the initial AAD instance
+    - A tenant represents the organization, which is a dedicated instance of AAD that an organization
+    receives when signing up for Azure
+    - Each tenant is distict and completely separate from other AAD tenants
+    - Each user in Azure can be a member or guest of up to 500 Azure AD tenants
+    - Subscriptions are billing entities and all resources within a subscription are billed togather
+    - All resources within a subscription are billed togather and you can have a multiple Subscriptions
+    within a tenant to separate costs
+    - If a subscription isn't paid, all the resources and services associated with the subscription
+    stop
+    - AAD bridges the On-Premise and Azure 
+    - 
+
+Zero Trust Concepts
+
+Multi-Factor Authentication
+
+Conditional Access
+
+Passwordless Authentication
+
+External Guest Access
+
+Azure Active Directory Domain Services
+
+Single Sign-On
