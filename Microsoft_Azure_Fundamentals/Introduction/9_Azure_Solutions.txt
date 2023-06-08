@@ -1,0 +1,111 @@
+Internet of Things:
+    - IOT Hub:
+        - System that recieves the data and manages it
+        - Managed and Secure
+        - Ease of Deployment
+        - Platform as a Service
+    - IOT Central:
+        - Simplify and speed up the implementation of your IOT solution
+        - Software as a Service
+        - Don't have to write code to deploy IOT project
+        - Use any of the hundreds of connectors that are ready to use in IOT Central
+    - Azure Sphere:
+        - An All in one solution for IOT devices on Azure
+        - You can only use hardware and chipsets certified by Microsoft for use on Azure
+        - Specialized security service that manages maintenance, updates and general control
+        - Operating System is custom made for Azure Sphere devices. Connects to the sphere
+        security service.
+
+Big Data:
+    - Data Lake Analytics
+        - Parallel Processing:
+            - Two or more processes or computers processing the same data at the same time. Data Lake
+            Analytics includes parallel processing
+    - Azure HD Insights:
+        - Similar to Azure Data Lake Analytics but uses all open source frameworks
+        - Includes Apache Hadoop, Spark and Kafka
+    - Azure DataBricks:
+        - Based on Apache Spark, a distributed cluster-computing framework
+        - Run and process a dataset on many computers simultaneously
+        - Data bricks provides all the comouting power
+        - Integrates with other Azure Storage Service
+    - Azure Synapse Analytics:
+        - Azure's data warehouse offering
+        - Used to be Azure SQL Data SQL Data warehouse
+        - Used for reporting and data analysis
+        - Only limited by your scope
+        - Use Synapse SQL language to manipulate the data
+       
+Machine Learning:
+    - Models
+        - Finds patterns based on data
+    - Knowledge Mining:
+        - Use Azure Search to finding existing insights in your data. File relationships, geography
+        connections and more
+    - Built in Apps:
+        - Azure Cognitive Services
+            - Vision Service:
+                - Use the vision service to recognize, identify and caption your videos and images
+                automatically
+            - Decision Service:
+                - Apps can make decisions based on content. Detect potential offensive language, 
+                detect IOT anomalies and leverage data analytics
+            - Automatic Speech-to-text transcription. Speaker identification and verification
+            - Azure Machine Learning Studio:
+                - Supports all Azure Machine Learning Tools
+                - Pre-made modules for your project
+            - Azure Machine Learning Service:
+                - The service to use AI and ML almost anywhere in Azure
+                - It is a collection of tools to help build AI Applications
+                - Azure can automatically recognize trends in your applications and create models 
+                for you
+        - Bot Services
+            - PAAS service to build your own bot for Q&A services, virtual assistants and more
+            - Create a bot using the visual editor or programming
+        - Let users talk to your bot with natural language and speech integration
+        - Integrate the bot with other services like Facebook Messenger, Teams, Twilio, etc
+        - Use your own branding and own the data the bot uses and produces
+
+Serverless:
+    - It is extreme PAAS
+    - Azure Functions:
+        - Only a single task is performed every time
+        - The function only runs once for each invocation
+        - It is a fundamental compute action and can be run millions of times per second if needed
+    - Logic Apps:
+        - Connect systems both inside and outside of the Azure Platform. Integrates not only apps, but 
+    also data flows, services and entire systems
+        - A lot of ways to schedule, automate and orchetrate tasks and processes
+        - No coding skills required to get started straight away. You just need access to your 
+        apps to Integrate
+    - Event Grid:
+        - It is a routing service for sending and receiving events between applications
+        - It is serverless, just create an azure event grid and start connecting services
+        - Event Grid Makes complex cloud architecture simpler
+
+Devops:
+    - Azure Devops:
+        - Consists of Five Different Tools:
+            - Azure Boards:
+                - Keep track of work tasks, timelines, issues, planning and much more.
+                - Suitable for Project Managers
+            - Azure Pipelines:
+                - Produce and test your software automatically and continously
+            - Azuere Repos
+                - Store Source Code for your application securely in a managed way.
+                - Suitable for Developers
+            - Azure Test Plans:
+                - Design test of applications to implement automatically
+                - Suitable for Quality assurance engineers 
+            - Azure Artifacts:
+                - Share applications and code libraries with other teams inside and 
+                outside of your organization
+    - Azure DevTest Labs:
+        - Allows developers and engineers to create environments for test and development
+        - You won't incur unexpected costs and will even minimize waste of resources on your 
+        account
+        - Tailor your development and test environments and reuse them with templated deployments
+    - Github Actions:
+        - Very similar to Azure Pipelines
+        - Build Code, test code and publish code
+        - Works with almost any platform, such as AWS, GCP and many more
