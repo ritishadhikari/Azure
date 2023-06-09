@@ -1,0 +1,123 @@
+Defence in Depth:
+    - You are responsible for the security of the physical hardware, buildings and
+    stuffs
+    - You will have several layers of Defence, as with a castle, such as swipe cards, 
+    security guards, firewalls and more
+    - You own the infrastructure, so you are responsible for adequate defense of hardware 
+    and data
+    - Layers:
+        - Physical:
+            - Actual Data Center where only the authorized personnel has access
+        - Identity and Access:
+            - Azure Active Directory which contains all access to Azure
+        - Perimeter: 
+            - Protection Against DDOS attacks, Volumetric Attacks, Protocol Attacks, etc
+        - Network:
+            - Filter of traffic to and from Azure using Virtual Networks applying Security
+            standards
+        - Compute:
+            - Protects against intruders trying to get into your virtual machines or databases
+        - Gateways and Firewalls:
+            - Provides security to Azure Applications
+        - Data 
+            - Encrypted against anyone authorized reading it or making sense of it
+
+Securing Network Connectivity:
+    - DDOS Protection Service:
+        - Detects DDOS attacks and deflects it. Various levels of protection depending
+        on scenario
+        - No interruption to your service at all. Azure mitigates the attack globally.
+    - Network Security Group:
+        - Personal Resource Firewall. Attach to virtual network, subnet or network 
+        interface
+        - A NSG determines who can access the resources attached to it, using rules for
+        inbound and outbound traffic
+    - Application Security Groups:
+        - Focueses on securing the application rather than the IP Endpoint
+        - Group VMs and Virtual networks into logical application groups and apply 
+        an application security Group
+
+
+Public and Private Endpoints:
+    - Public Endpoints refers to Publicly reachable Paas Services
+    - Managed PaaS services are reachable over the public Internet
+    - Service Endpoints (Good Solution):
+        - Privately connect VNet subnet to Azure PaaS services directly
+        - Connect over Microsoft's private backbone (not over public internet)
+        - Configure service to only allow traffic from service endpoint-enabled subnet
+        - Provides secured access to only Azure Virtual Networks
+        - No Private on premise access, hence must allow on-premise access over public IP
+        - PaaS public endpoint still exists, not truly private
+        - Service endpoints provide access to an entire service
+    - Private Endpoints (Better Solution):
+        - Managed Network Interface
+        - Can Provide pricate connection to specific instance of a service, ex., single storage 
+        account, SQL instance, etc
+        - Available over connected networks, i.e., Hybrid/On-premise networks and peered 
+        virtual networks
+        - Can completely disable public access to a connected service, hence truly private
+
+Microsoft Defender for cloud (formerly Azure Security Center):
+    - Provides Threat Alerts
+    - Ready for Hybrid Architectures
+    - Each VM has an agent installed that sends data
+    - Azure analyzes the data and alerts you if necessary
+    - Policy and compliance metrics
+    - A secure score to encourage great security hygiene
+    - Integrates with other cloud providers (requires Azure Arc)
+    - Alerts for resources that aren't secure
+    - Setup Policies for Azure to monitor resource resources from. 
+    - A policy is a set of rules used to evaluate a resource
+    - Use Predefined policies or create your own
+    - Actively protect your resources through monitoring your policies and their outcomes
+    - Respond to any security alerts, investigate all of them and then define new policies
+    to account for the alerts
+
+Key Vault:
+    - Attackers eventually gets to know where you keep your keys
+    - Secure place to store passwords and other secrets
+    - Share those secrets with others without revealing the actual secret
+    - The key vault is secure too. Not even Microsoft can access the keys in it
+    - An application can't pass on secrets, nor access another applications secret
+    - Scale Globally like any other managed Azure Service
+
+Azure Information Protection:
+    - Secure Documents, emails and data outside of the company network
+    - Classify data according to how sensitive it is either using policies or manually
+    - Track what is happening with shared data and revoke access if needed
+    - Safely share data as you can control who edits, views, prints and forwards it
+    - Controls for document access is integrated with common applications and tools, 
+    such as Microsoft Office
+
+Microsoft Defender for Identity (formerly Advanced Threat Protection):
+    - Monitor Users by analyzing user activity and information. This includes any permissions
+    and memberships or groups
+    - Records what a user's normal behavior and routine is. Any activity outside this routine
+    will be logged as suspicious
+    - This service will suggest changes to confirm with security best practices in order to
+    reduce risks
+    - If a user is searching for information about other users, device IP addresses and more, 
+    Microsoft Defender for Identity will raise alerts (Reconnaissance)
+    - Any attempts to guess user credentials will be identified and flagged (Brute Force)
+    - Any attempt by a user to gain more privileges will be flagged. This can be through
+    another user's login (Increasing Privileges)
+
+Azure Sentinel:
+    - It is a security Information and Event Management (SIEM) tool
+    - Steps Involved are:
+        - Data Collection
+        - Aggregation and Normalization
+        - Analysis and Threat Detection
+        - Take Action
+    - Focusses on Behavior Analytics through Artificial Intelligence
+
+Azure Dedicated Hosts:
+    - You get control of an entire physical server on Azure
+    - Physical Layer isolation means you won't get any foreign VMs on your dedicated Hosts
+    - Reduce impact of your system by choosing when to install updates to your dedicated host
+    - Take Advantage of the stringent Azure Compliance in combination with managing your own hardware
+    - Availability zones, fault isolation, high availability and scale sets comes as standard. No
+    optional extras here
+    - Chose Windows, Linux or SQL Server on a range of VM sizes.
+
+Azure Key Vault:
