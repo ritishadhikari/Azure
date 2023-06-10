@@ -1,0 +1,93 @@
+Pay for what you use 
+
+Subscriptions:
+    - Every resources in Azure lives within a Subscription
+    - Any Azure Account can have multiple subscriptions. Useful for organizing who 
+    pays for what
+    - One or more users can be a billing admin, which manages anything to do with 
+    billing and invoicing on Azure. Ensures separation of responsibility
+    - A billing cycle on Azure is either 30 or 60 days
+    - Offer type is the type of subscription. There are many different ones at any 
+    one time:
+        - Free trial
+        - Pay-as-you-go
+        - Pay-as-you-go Dev/Test
+        - Enterprise Dev/Test
+        - Visual Studio Enterprise Subscribers
+        - Others
+    - Management Groups:
+        - Group Subscriptions and take action across subscriptions in bulk.
+        - Very Useful in large organizations with many subscriptions
+        - Helps to organize by managing access, policies and compliance in bulk, ex.
+        have a management group per country or department
+        - Maintain the billing associated with the right budgets.
+        - Nest Management Groups to indicated heirarchy and relationship
+
+Azure Cost Management:
+    - Free Accounts comes with many free services such as Virtual machines, Databases,
+    storage and some services are always free upto a certain threshold like 
+    Azure Functions, Load Balancers etc
+    - Access the Azure Cost Management tool within Azure Portal. Get a detailed view
+    of current and Projected Costs.
+    - Get detailed spending reports and recommendations on how to save on costs and
+    analyze them
+    - Optimize your current resources to save money and monitor any Amazon Web Services 
+    charges too
+    - Spot VMS:
+        - Spot VMs are unused capacity in Azure   
+        - Save upto 90% of the price by chosing spot VMs
+        - Not guaranteed they will run forever
+        - Don't put any critical production process on a spot VM
+        - Set a max price for the spot VMs
+
+Pricing Factors:
+    - Calculating Azure costs on mature infrastructure is almost impossible
+    - Resource Sizes where a powerful virtual machine will cost more
+    - Resource Type where resources which is used for performing a more complex
+    job will cost more
+    - Location where rates and labor costs have an influence on Pricing
+    - Bandwidth your services are incurring 
+    - Three Billing Zones
+        - Each zones includes many regions
+        - Data Transfer Services within the same zone is free (Ingress) while data transfers
+        between any two billing zone is charged (Egress)
+    - Azure Pricing Calculator helps to calculate the pricing based on the consumption of 
+    resources and export estimate for further analysis and use
+    - Total Cost of Ownership Calculator estimates total savings over a period of time by using
+    Azure say 5 years over using on prem
+
+Best Practices:
+    - Some Azure accounts with monthly credits to use will have default spending limits. When the 
+    credits are used, the limit kicks in and stops use of resource that would incur a cost
+    - When the credits are gone, either remove the limit entirely or leave it in effect.
+    - Caveat: Pay-as-you-go accounts have no spending limit functionality
+    - Quota:
+        - Quota is a limit on a certain property of an Azure Service
+        - The quotas are necessary to ensure Azure can maintain their high service level
+        - If you need to increase the quota, you can ask Microsoft to increase them 
+    - Tags:
+        - Non Functional
+        - Attach to resource or resource group
+        - Use as many tags as you want
+        - Protect sensitive data by defining which roles can access a resource
+        - To make bulk processing and updating easier, define which resources are related
+        - Filter resources per project, customer or for reporting purposes
+    - Pay-as-you-go:
+        - It is an expensive proposition over a long term
+    - Reserved Instances:
+        - Can save a lot of cash over a long term, ex. reserve a VM
+        - 1 year or 3 Years allocation with upto 70% off 
+        - Not all Azure Services can be reserved
+    - Reserved Capacity: 
+        - Comes with a 1 and 3 years commitment
+        - You can change regions, scale up or down, apply it to multiple subscriptions
+        and cancel at any time
+        - Azure SQL (save upto 80%)
+        - Cosmos DB (save upto 65%)
+        - Synapse Analytics (save upto 65%)
+        - Redis Cache (save upto 55%)
+
+    - Azure Hybrid Benefits
+        - Azure would let you use existing licenses instead of forcing you to purchase new ones
+        with every new VM or server 
+    
