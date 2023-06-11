@@ -119,5 +119,3 @@ Azure Dedicated Hosts:
     - Availability zones, fault isolation, high availability and scale sets comes as standard. No
     optional extras here
     - Chose Windows, Linux or SQL Server on a range of VM sizes.
-
-Azure Key Vault:

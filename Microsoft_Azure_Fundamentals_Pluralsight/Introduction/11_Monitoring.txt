@@ -1,0 +1,158 @@
+Governance
+    - It is a set of rules, policies and roles to define acceptable use of Azure Resources
+    - Azure Policy:
+        - A policy is a set of rules to ensure resources are compliant
+    - Role Based Access Control (RBAC):
+        - You can define specific user access to individual resources
+        - RBAC can enable minimum access necessary to resources. This ensures only users with
+        valid access can manage resources
+        - You can be very explicit about users and access. For example, allow an application
+        access to certain resources or allow a user to manage resources in a resource group
+        - Role definition is a collection of permissions such as read, write and delete
+    - Locks:
+        - Assigns a lock to a subscription, resource group or resource
+        - A lock can be of two types. 
+            - Read only, where you can't make any changes to the object
+            - Delete, where you can't delete the locked object
+        - A lock needs to be removed before the locked actions can be performed again
+    - Azure BluePrints:
+        - Blueprints are templates for creating Azure Resources
+        - It contains
+            - Resource templates
+            - Role based Access Control (RBAC)
+            - Policies
+            - Samples for common regulations
+    - Cloud Adoption Framework:
+        - Lots of resources to guide you through the cloud adoption process
+        - Help to define strategies for adoption, planning the move, "being ready" for the cloud,
+        adoption reasons, governing practices and managing a living, breathing cloud
+        architecture
+
+
+Azure Monitor:
+    - Azure Monitor helps you find resources that aren't performing 100%
+    - Constantly feeds telemetry data into Azure Monitor from most Azure Services. Even On-premise
+    services can send telemetry data to Azure Monitor
+    - It is a decentralized and fully managed service and all the data can be managed from one place
+    - Full access to interactive query language to learn about telemetry data
+    - Predict and recognize problems faster with built-in machine learning
+    - Outcomes:
+        - Maximize problems
+        - Maximize Availability
+        - Identify issues 
+
+Monitoring Tools
+    - Azure Includes Multiple Monitoring tools to gain full visibility into your Azure Environment:
+        - Log Analytics
+            - Azure Monitor generates a lot of logs and telemetry data
+            - Log Analytics stores, queries and analyzes that data to gain valuable insights
+                - VM disk sizes
+                - VPN connection logs
+                - Long term analysis
+            - Chose between pre-built and custom queries in Kusto Query Language (KQL) Format
+        - Application Insights
+            - Provides performance insights for web based applications
+                - How are users using our app
+                - Where are our performance bottlenecks
+                - Why are we getting website errors, etc 
+            - Available for App Service, Azure VMs and non-Azure resources
+                - VMS requires installed agent
+        - Azure Monitor Alerts 
+            - When something is not working as expected, Azure Monitor alerts inform the right
+            group to do something about it.
+            - Notifications in response to unexpected events
+                - VM Unresponsive
+                - VM using excessive CPU
+                - Application latency over 500 ms
+            - Alert Components:
+                - Alert Rule:
+                    - Trigger rule before an alert is sent for notification. 
+                    - Monitored Resource (Ex VM)
+                    - Monitored Telemetry (Ex CPU Utilization)
+                    - Conditions to trigger alert (Ex >90% CPU utilization for 5 minutes)
+                    - Assigned Severity (Ex 2- Warning)
+                -  Action Group:
+                    - Action(s) taken when rule is triggered
+                    - Email/SMS to support personnel
+                    - Send to automation workflows (Logic Apps, Azure Functions, and more)
+                    - 
+
+Azure Service Health:
+    - Azure platform needs to be updated and maintained just like any other computing infrastructure
+    - Notifies about any planned or unplanned incidents on the platform 
+    - A personalized dashboard to highlight service issues affecting your resources
+    - Get notified of planned and non-planned outages. 
+    - Custom Alerts are simple to set up and customize
+    - Track any alerts and issues in real-time and get full reports once resolved
+    - Completely free service
+
+Compliance:
+    - If companies within the EU don't take compliance seriously, they can face massive fines
+    - Compliance is non-negotiable
+    - Industry Regulations:
+        - GDPR:
+            - Protect individuals and processing of their data
+        - ISO Standard:
+            - Compliance with quality and customer satisfaction
+        - NIST:
+            - Focusses purely on the tech industry. Developed primarily for US Federal agencies 
+    - Azure Compliance Manager:'
+        - Azure knows about compliance and resources and can give you recommendations through 
+        the compliance Manager
+        - Assign tasks to team members and track progress
+        - Has compliance scores to chase a perfect score to be 100% compliant
+        - Upload documents to prove compliance and store them securely
+        - Get reports of compliance data to provide to managers and auditors
+    - Azure Government Cloud:
+        - Dedicated regions which consists of dedicated separate datacenters
+        - Exclusivisity for select few designated personnel
+        - Get standard Azure Cloud Benefits: high availability, scalability and managed
+        resources
+    - China Region:
+        - Azure datacenter has to be physically located in China and has no connection outside 
+        of China, including other Azure regions
+        - All customer data is kept in China. Certain global Azure services won't work fully
+        - You are ensured compliance with Chinese regulations at all times
+
+Privacy:
+    - Azure Information Protection service is used to classify, label and protect data based on data
+    sensitivity
+    - Azure Policy Defines and enforces rules to ensure privacy and external regulations
+    - Use guides to respond and comply with GDPR privacy requests
+    - Use Compliance Manager to make sure you are following privacy guidelines
+    - Microsoft Privacy statament on how Azure is going to use data
+
+Trust:
+    - Trust Center:
+        - Learn about Microsoft's effort on security, privacy,GDPR, data location, compliance and more
+        - A hub for more information about trust in each product and service
+
+    - Service Trust Portal:
+        - Review all the independent reports and audits performed on Microsoft's products and services
+
+Azure Arc:
+    - Simplifies the process of managing complex computing environments whether they are in Azure
+    or they are in a single Unified Interface
+    - Computing resources might be confined to multiple locations like:
+        - Microsoft Azure
+        - On-Premises
+        - Other Clouds
+    - Challenge is each computing sources uses its own management tools
+        - Cannot apply Azure Government policies to Non Azure resources 
+    - Azure Arc lets you manage both Azure and Non Azure resources in the same interface where 
+    Azure Governance policies can be applied to Non-Azure resources 
+    - Azure Arc extends the Azure Control Management to non Azure Locations
+    - Installed agents brings on-prem and outside resources into Azure's control pane
+    - Lets you manage non-Azure Kubernetes Cluster along with Azure Kubernetes Clusters
+    - Lets you deploy Azure-Managed database service to Non-Azure locations, ex. Azure SQL managed 
+    instance
+    - Manage and protect non-Azure servers alongside non-Azure servers which can be protected with
+    Microsoft defenders for cloud
+    - Apply Azure Governance to non Azure Resource with
+        - RBAC
+        - Azure Policies
+        - Azure Blueprints 
+    - Deploy Azure Serverless services to Non-Azure hardware
+        - Azure App Service
+        - Azure Functions
+        - Azure Logic Apps
