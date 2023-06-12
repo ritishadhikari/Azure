@@ -1,0 +1,82 @@
+Plans
+    - Basic
+        - 24X7 accessible
+            - For Billing and Subscription
+        - Online self-help
+            - Azure Documentations and White Paper
+        - Forums
+            - Connect with other Azure users to ask questions
+        - Azure Advisor
+            - Recommeding best practices
+        - Service Health
+            - Current Issues and Future maintenance on Azure
+    - Developer
+        - Technical Support through Business Hours/ Email
+        - Azure Configuration: Guidance on Troubleshooting
+        - Response Time: <8 Hours for severity C, None for B and A severity
+        - Guidance: General Guidance is Provided
+        - Operation Support: Is not provided
+        - Trainings: Not provided explicitly
+    - Standard
+        - Technical Support through 24/7 Email, Phone
+        - Azure Configuration: Guidance on Troubleshooting
+        - Response Time: <8 Hours for severity C, <4 hours for B and <1 hour for A severity
+        - Guidance: General Guidance is Provided
+        - Operation Support: Is not provided
+        - Trainings: Not provided explicitly
+    - Professional Direct
+        - Technical Support through 24/7 Email, Phone
+        - Azure Configuration: Guidance on Troubleshooting
+        - Response Time: <4 Hours for severity C, <2 hours for B and <1 hour for A severity
+        - Guidance: Architectural Guidance is Provided
+        - Operation Support: Onboarding reviPews are provided
+        - Trainings: Provided through Webinars
+    - Premier
+        - Technical Support through 24/7 Email, Phone
+        - Azure Configuration: Guidance on Troubleshooting
+        - Response Time: <4 Hours for severity C, <2 hours for B and <1 hour for A severity
+        - Guidance: Customer Specific Guidance is Provided
+        - Operation Support: Tech reviews, Reporting and Tech Account Manager is provided
+        - Trainings: On demand
+
+
+Tickets:
+    - Submit a ticket through the Azure portal
+    - Chose one of four ticket types:
+        - Billing
+        - Service and Subscription limits
+        - Subscription Management
+        - Technical
+    - Fill in details about Issue
+    - Request is processed as per the support plan
+
+Channels:
+    - Azure Documentations
+    - Forums
+    - Social Media
+
+Knowledge Center
+    - At the beginning many questions are common
+    - You can't add new questions, but search existing questions    
+
+Service Level Agreements:
+    - Ensures the least possible downtime of a service
+    - If a service is not working for more than an agreed period of time in a month, you can claim
+    compensation from Microsoft
+    - Generally there are SLA per product and you automatically use the SLA for the service you use 
+    - SLAs can be complex and can be of various levels depending on the number and variety of
+    services, which region you use and much more
+    - Having a backup of a service or resource, such as a VM in an availability set can provide a 
+    better SLA
+    - No SLAs for free product
+
+Service Lifecycle:
+    - Preview:
+        - Exploration, before becoming full grown Azure services
+        - Only available to specific customers invited by the product team behind the service 
+    -Public:
+        - Azure Feature is available to all Azure Customers
+        - Enable preview features in the Azure portal
+    - General availability:
+        - Available to all Azure customers as a normal service, including SLA
+        - Can be a gradual rollout to some regions first 
