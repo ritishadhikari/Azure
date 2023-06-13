@@ -10,7 +10,6 @@ Availability Zones:
     - Each availability zone is a physical location within a region
     - Each AZ is independent, has its own power, cooling and networking
     - Each region has three availability zones
-    - 
 
 Resource Groups:
     - Resource Group is not a resource but a container that holds related resources for Azure
