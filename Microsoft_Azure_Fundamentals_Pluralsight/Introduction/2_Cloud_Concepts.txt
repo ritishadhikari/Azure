@@ -35,7 +35,7 @@ Cloud Service Models:
         - No ownership of hardware
         - Consists of VMs & Servers, Networks and Physical Buildings
     - Platform as a Service:
-        - Also includes Middlewares, Darabase Systems and More
+        - Also includes Middlewares, Database Systems and More
         - It supports the web application lifecycle
         - Avoids software licence problems
     - Software as a Service:
@@ -46,7 +46,7 @@ Cloud Service Models:
         - Azure Functions
         - A single function of code can be hosted, deployed, run and managed without
         having to manage a full application
-    - Shared Repsonsibility Model:
+    - Shared Resonsibility Model:
         -       
 Azure Marketplace
     - Solutions and Services:
