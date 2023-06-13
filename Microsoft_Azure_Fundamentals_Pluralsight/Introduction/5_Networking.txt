@@ -45,7 +45,7 @@ VPN Gateway
         - The above is called Site-to-Site connection 
     - There can be one VPN gateway with more than one on-prem network connecting to it. This is
     known as multisite connection
-    - 
+
 Application Gateway
     - A load balancer receives Internet Traffic and based on an IP address and port, it will send
     one of the data in the backend pool
@@ -73,5 +73,4 @@ Content Delivery Network
     high loads
     - Edge server will serve requests closest to the user, less traffic is then sent to the server 
     hosting your Application
-    - 
 
