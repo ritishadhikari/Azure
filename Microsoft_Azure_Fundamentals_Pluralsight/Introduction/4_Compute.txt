@@ -13,7 +13,6 @@ Virtual Machines:
         - Chose amount of RAM, number of CPUs, Windows or Linux
     - Pricing:
         - Goes up as RAM and CPU goes up. Calculated Hourly. 
-    -    
 
 Scale Sets:
     - Helps to create a group of identical, load balanced VMs
@@ -94,7 +93,6 @@ Azure Virtual Desktop:
 Functions:
     - It is the smallest compute service on Azure
     - A single function of compute
-    - It is called or invoked via a standard web adsress (URL)  
+    - It is called or invoked via a standard web address (URL)  
     - Runs once and stops. No Traffic, no usage
     - No Maintenance, No Processes, Nothing VM related, just focus on functionality
-    - 
