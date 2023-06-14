@@ -1,4 +1,4 @@
-Storage Accout is a Globally Unique Azure Namespace and every object in Azure has its own web address
+Storage Account is a Globally Unique Azure Namespace and every object in Azure has its own web address
 
 Blob:
     - Binary Large Object
@@ -38,7 +38,6 @@ Disk:
         - Ultra Disk:
             - For the most demanding, data intensive workloads. 
             - Disks upto 64TB. 
-            - Disks upto 64 TB.
 
 File:
     - Share access to the Azure file storage across machines and provide access to your on-premise
@@ -131,12 +130,11 @@ Additional Migrations Options:
         - Applicable for 
             - Initial Bulk Data Migration
             - Restore Azure Backup to on-premise location
-            - Sensitive data that cannot be sent over the internet
-        
+            - Sensitive data that cannot be sent over the internet  
     - Azure Migrate
         - Migrate Non Azure Resources into Azure
         - Ex:
-            - Servers to VMS
+            - Servers to VMs
             - Databases to Managed Databases
             - Applications
 
