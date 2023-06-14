@@ -1,7 +1,8 @@
 Defence in Depth:
     - You are responsible for the security of the physical hardware, buildings and
     stuffs
-    - You will have several layers of Defence, as with a castle, such as swipe cards, 
+    - You w
+    l layers of Defence, as with a castle, such as swipe cards, 
     security guards, firewalls and more
     - You own the infrastructure, so you are responsible for adequate defense of hardware 
     and data
@@ -33,10 +34,9 @@ Securing Network Connectivity:
         - A NSG determines who can access the resources attached to it, using rules for
         inbound and outbound traffic
     - Application Security Groups:
-        - Focueses on securing the application rather than the IP Endpoint
+        - Focuses on securing the application rather than the IP Endpoint
         - Group VMs and Virtual networks into logical application groups and apply 
         an application security Group
-
 
 Public and Private Endpoints:
     - Public Endpoints refers to Publicly reachable Paas Services
@@ -51,7 +51,7 @@ Public and Private Endpoints:
         - Service endpoints provide access to an entire service
     - Private Endpoints (Better Solution):
         - Managed Network Interface
-        - Can Provide pricate connection to specific instance of a service, ex., single storage 
+        - Can Provide private connection to specific instance of a service, ex., single storage 
         account, SQL instance, etc
         - Available over connected networks, i.e., Hybrid/On-premise networks and peered 
         virtual networks
@@ -66,7 +66,7 @@ Microsoft Defender for cloud (formerly Azure Security Center):
     - A secure score to encourage great security hygiene
     - Integrates with other cloud providers (requires Azure Arc)
     - Alerts for resources that aren't secure
-    - Setup Policies for Azure to monitor resource resources from. 
+    - Setup Policies for Azure to monitor resources from. 
     - A policy is a set of rules used to evaluate a resource
     - Use Predefined policies or create your own
     - Actively protect your resources through monitoring your policies and their outcomes
