@@ -42,7 +42,6 @@ Multi-Factor Authentication
         - Something you are - fingerprint/retina scan
     - Enabled through Azure Active Directory and is treated as a First Class Citizen in Azure
 
-
 Conditional Access:
     - Premium feature built into Azure Active directory 
     - Authentication beyond Username/ Password 
@@ -86,7 +85,7 @@ External Guest Access:
         - Invite a variety of account types (identity providers, Microsoft, Google, Facebook)
         - Other external identity providers can also be invited as well
         - Assign permissions for guest account with the principle of least privilege
-        - Different permissions between Azure AD and Azure Subscriptions=
+        - Different permissions between Azure AD and Azure Subscriptions
 
 Azure Active Directory Domain Services
     - Limitations of Azure AD and Cloud Migrations
@@ -109,7 +108,7 @@ Azure Active Directory Domain Services
     - No need for OS configuration/management
     - Behind the scenes: two windows domain controllers for high availability
     - Need to create Unique Namespace/domain name 
-    - One way sync from Azure AD to Azure AD DS by syncronizing of users, groups and credentials
+    - One way sync from Azure AD to Azure AD DS by synchronization of users, groups and credentials
 
 Single Sign-On
     - One username and pasword to log onto multiple applications 
