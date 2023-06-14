@@ -27,7 +27,7 @@ Big Data:
     - Azure DataBricks:
         - Based on Apache Spark, a distributed cluster-computing framework
         - Run and process a dataset on many computers simultaneously
-        - Data bricks provides all the comouting power
+        - Data bricks provides all the computing power
         - Integrates with other Azure Storage Service
     - Azure Synapse Analytics:
         - Azure's data warehouse offering
