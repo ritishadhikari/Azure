@@ -28,7 +28,6 @@ Governance
         adoption reasons, governing practices and managing a living, breathing cloud
         architecture
 
-
 Azure Monitor:
     - Azure Monitor helps you find resources that aren't performing 100%
     - Constantly feeds telemetry data into Azure Monitor from most Azure Services. Even On-premise
@@ -37,7 +36,7 @@ Azure Monitor:
     - Full access to interactive query language to learn about telemetry data
     - Predict and recognize problems faster with built-in machine learning
     - Outcomes:
-        - Maximize problems
+        - Minimize problems
         - Maximize Availability
         - Identify issues 
 
@@ -75,7 +74,6 @@ Monitoring Tools
                     - Action(s) taken when rule is triggered
                     - Email/SMS to support personnel
                     - Send to automation workflows (Logic Apps, Azure Functions, and more)
-                    - 
 
 Azure Service Health:
     - Azure platform needs to be updated and maintained just like any other computing infrastructure
@@ -124,9 +122,8 @@ Privacy:
 
 Trust:
     - Trust Center:
-        - Learn about Microsoft's effort on security, privacy,GDPR, data location, compliance and more
+        - Learn about Microsoft's effort on security, privacy ,GDPR, data location, compliance and more
         - A hub for more information about trust in each product and service
-
     - Service Trust Portal:
         - Review all the independent reports and audits performed on Microsoft's products and services
 
