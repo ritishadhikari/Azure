@@ -59,4 +59,3 @@ PostgreSQL:
 
 Database Migration Services:
     - Single Tool, one step migration for Microsoft SQL to Azure SQL
-    - 
