@@ -7,7 +7,7 @@ Plans
         - Forums
             - Connect with other Azure users to ask questions
         - Azure Advisor
-            - Recommeding best practices
+            - Recommending best practices
         - Service Health
             - Current Issues and Future maintenance on Azure
     - Developer
@@ -29,7 +29,7 @@ Plans
         - Azure Configuration: Guidance on Troubleshooting
         - Response Time: <4 Hours for severity C, <2 hours for B and <1 hour for A severity
         - Guidance: Architectural Guidance is Provided
-        - Operation Support: Onboarding reviPews are provided
+        - Operation Support: Onboarding reviews are provided
         - Trainings: Provided through Webinars
     - Premier
         - Technical Support through 24/7 Email, Phone
