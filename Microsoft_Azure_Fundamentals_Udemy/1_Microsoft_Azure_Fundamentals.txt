@@ -1,0 +1,5 @@
+Elasticity:
+    - Provisioning resources when you want them and releasing them back when you do not need them
+    - On demand resource Provisioning
+    - Trade capital expense for variable expense 
+    - Stop guessing capacity

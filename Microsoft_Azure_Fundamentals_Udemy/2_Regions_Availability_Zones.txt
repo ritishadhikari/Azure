@@ -1,0 +1,12 @@
+Azure provides 60+ regions all around the world
+
+Advantages of Regions:
+    - High Availability
+    - Low Latency
+    - Global Footprint
+    - Adhere to Government regulations
+
+West Central US have 0 availability zones. Most of the regions have 3 AZs
+
+Advantages of AZs:
+    - Increased Availability and Fault Tolerance within same region
