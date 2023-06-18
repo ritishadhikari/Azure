@@ -1,0 +1,3 @@
+Image decides which OS to be used in the Virtual Machine
+
+Disks can be attached to a VM for both OS and Data purposes separately
