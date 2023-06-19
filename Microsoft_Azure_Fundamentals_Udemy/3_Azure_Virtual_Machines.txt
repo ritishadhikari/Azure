@@ -22,4 +22,6 @@ Resilience corresponds to the ability of system to provide acceptable behavior e
 or more parts of the system fails. Can be achieved through Scale sets and load balancers
 
 Disaster recovery is the ability of your systems running in face of disaster. Can be achieved
-through site recovery.
+through Azure Site Recovery.
+
+We can know who performed a specific action on a VM through activity logs, 
