@@ -11,8 +11,15 @@ Standard HDD Managed Disks: 95%
 Two or More Instances in Same Availability Sets: 99.95%
 Two or more instances in two or more Availability Zones in the same Azure Region: 99.99%
 
-
 Fault Domains: Group of VMs sharing a common power source and network switch
 Update Domains: Group of VMs that are rebooted (updated) at the same time
 
 Distribute VMS across Fault Domains and Update Domains
+
+Creating a static IP address makes sure that the IP address does not change
+
+Resilience corresponds to the ability of system to provide acceptable behavior even when one 
+or more parts of the system fails. Can be achieved through Scale sets and load balancers
+
+Disaster recovery is the ability of your systems running in face of disaster. Can be achieved
+through site recovery.
