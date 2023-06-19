@@ -2,3 +2,17 @@ Image decides which OS to be used in the Virtual Machine
 
 Disks can be attached to a VM for both OS and Data purposes separately
 
+Availability refers to the percentage of time an application provides the operations expected
+of it. Ex. 99.99%
+
+Premium SSD or Ultra Disk: 99.9%
+Standard SSD or Managed Disks: 99.5%
+Standard HDD Managed Disks: 95%
+Two or More Instances in Same Availability Sets: 99.95%
+Two or more instances in two or more Availability Zones in the same Azure Region: 99.99%
+
+
+Fault Domains: Group of VMs sharing a common power source and network switch
+Update Domains: Group of VMs that are rebooted (updated) at the same time
+
+Distribute VMS across Fault Domains and Update Domains
