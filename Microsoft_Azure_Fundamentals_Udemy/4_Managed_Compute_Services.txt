@@ -49,4 +49,4 @@ Shared Responsibility Model:
     responsibilities of the customer 
     - Network Control and Applications are shared between customer and cloud
     providers in PAAS, for SAAS it is only the cloud providers
-    - 
+
