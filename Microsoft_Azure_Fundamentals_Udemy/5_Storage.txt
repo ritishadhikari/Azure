@@ -1,0 +1,41 @@
+In Block Storage, a single disk can be associated with a single VM, while a single VM can have multiple
+VMS. In File Storage, a single disk can be associated with multiple VMs
+
+Azure Queue: Decouple applications using messaging
+
+Region pair ensures high availability and high durability. Access data from Primary region with 
+an option to failover to secondary region if primary region is not available. Region Pairs have very
+fast connection
+
+Premium and Ultra Disks provide very high Availability and high fault tolerance
+
+By default managed disk is chosen while creating a VM, we can chose to use an Unmanaged disk 
+by unclicking the managed disk selection from the advanced subtab of disk tab. Unmanaged disk are
+stored in Containers inside the storage account unlike in the disk in case of managed disk.
+
+Containers, File Shares, Queues and Storage Accounts needs Storage Accounts
+
+Azure File Sync: 
+    - Azure File Sync allows to synchronize Windows File Server in on-prem and Azure File Sync in the cloud.
+    - It maintains the same connectivity to file shares for on-premises apps and resources while storing
+    them in Azure files
+    - It gives options to keep cache of frequently accessed files or have a full local copy
+    - Supports: SMB, FTP, NFS
+    - Can be used as cloud side backup
+
+Azure Data Lake Storage Gen2: 
+    - Azure Blob Storage Enhanced
+    - Designed for enterprise big data analytics
+    - It allows to store Exabytes of data
+    - Provides Heirarchy unlike flat structure in normal Blob Storage
+    - Low cost, tiered storage with high availability and recovery
+
+To access an archive blob storage we need to "rehydrate", which means either change it to access
+tier hot or cool or copy the data to another blob with access tier hot or cool 
+
+Shared Access Signature allows an user to access (read/write) content of a blob for a specific time
+period
+
+Azure Storage Explorer (Storage Browser) 
+    - Is used to manage AZURE storage resources from desktop.
+    - Free tool supported on Windows, MacOS and Linux
