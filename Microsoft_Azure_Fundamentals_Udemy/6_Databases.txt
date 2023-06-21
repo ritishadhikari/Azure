@@ -1,0 +1,21 @@
+Snapshot:
+    - Automate taking copy of the databases every hour to another data center in London
+    - You can setup latest snapshot, but depending on when failure occurs you can lose upto an 
+    hour of data
+    - Database will slow while taking snapshot
+
+Transaction Logs:
+    - You can setup database from latest snapshot and apply transaction logs
+
+Standby:
+    - Standby Database in the second data center with replication synchronously
+    - Snapshot is taken from the standby database
+    - Hence Main Database will not be slow
+
+Increase Availability:
+    - Multiple Standbys
+    - Distribute Database across multiple Zones and Regions
+
+Increasing Durability:
+    - Multiple Copies of data (standbys, snapshots, transaction logs and replicas)
+    - Replicating data comes with its own challenges    
