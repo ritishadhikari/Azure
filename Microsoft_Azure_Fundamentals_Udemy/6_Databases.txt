@@ -19,3 +19,68 @@ Increase Availability:
 Increasing Durability:
     - Multiple Copies of data (standbys, snapshots, transaction logs and replicas)
     - Replicating data comes with its own challenges    
+
+RTO & RPO:
+    - Recovery Point Objective:
+        - Maximum acceptable period of data loss
+    - Recovery Time Objective:
+        - Maximum acceptable downtime 
+
+Consistency:
+    - Ensure that data in multiple database instances (standbys and replicas) is updated simultaneously
+    - Strong Consistency through Synchronous Replication to all replicas, it will be slow if there are
+    multiple replicas or standbys
+    - Eventual Consistency through Asynchronous Replication. A little lag few seconds - before the change
+    is available in all replicas. In the intermediate perios, different replicas might return different 
+    values. Used when scalability is more important than data integrity
+    - Read After write consistency where inserts are immediately available while updates would have 
+    eventual consistency
+
+OLTP:
+    - Large number of users make large number of small transactions
+    - Small data reads, updates and deletes
+    - ERP, CRMs, ECommerce, Banking
+    - Ex: 
+        - Azure SQL Database: 
+            - Managed Microsoft SQL Server
+            - Flexible and responsive serverless compute    
+            - Hyperscale upto 100 TB of storage
+        - Azure Database for MySQL: 
+            - Managed MySQL
+        - Azure Database for PostgreSQL: 
+            - Managed PostgreSQL
+            - Supports Single Server or Hyperscale options  
+    - All Azure Relational db service provides 99.99% Availability
+    - Uses Row Storage
+
+OLAP:
+    - Allows users to analyze petabytes of data
+    - Data is consolidated from multiple (transactional) databases
+    - Azure Synapse Analytics (Azure SQL Data Warehouse):
+        - Petabyte scale distributed data warehouse
+        - Provide a unified experience for developing end to end analytics solutions - Data
+        Integration + Enterprise Data Warehousing + Big Data Analytics 
+        - Enables massive parallel processing
+        - Run complex queries across petabytes of data
+        - Use columnar storage with high compression which helps to distribute data in multiple cluster
+        nodes
+
+NoSQL Database:
+    - Provides Flexible Schema
+    - Allows to horizontally scale to petabytes of data with millions Transactions Per Second 
+    - Azure Cosmos DB:
+        - Fully Managed NoSQL database service
+        - Global Database which automatically replicates data across multiple Azure Regions 
+        - Single digit millisecond response times
+        - 99.999 percent availability 
+        - Provides Automatic Scaling (Serverless)
+        - Supports APIs for MongoDB (document), Cassandra (key/value) and Gremlin (graph)
+
+InMemory Databases:
+    - Not Persistent in Disk
+    - Persistent in Memory with micro second latency and high throughput
+    - Azure Cache for Redis:
+        - Cache
+        - Session Management
+        - Gaming Leaderboard
+        - Geospatial application    
