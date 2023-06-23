@@ -1,0 +1,35 @@
+Virtual Network:
+    - Each Virtual Network is created in a region
+    - Control all the traffic coming in and going outside a Virtual Network
+    - Best Practice is to create all your Azure resources (compute, storage, database, etc) within
+    a Virtual Network
+    - Each VM in a VNET is assigned a private IP address, but we can assign a public IP address and 
+    make it static
+
+Subnets:
+    - Each type of resources has its own access needs
+    - Helps to separate public resources from private resources inside a Virtual Network
+    - Create different subnets for public and private resources
+    - All the resources in a Virtual Network spread across subnets can talk to each other
+    - VNET in the same VNet can communicate using private IP addresses
+
+Network Peering:
+    - Connect resources in different Virtual Network
+    - Peered Networks can be in different regions
+
+Network Security:
+    - DDoS Attacks:
+        - Basic: Enabled by Default. no extra cost
+        - DDOS Protection Standard: 
+            - Mitigates 60 different DDOS attack
+            - Get a cost guarantee (Receive Service credit if DDOS attack results in scale-out)
+    - Azure Firewall:
+        - Managed Network Security Service to control in and out of an Azure Network
+        - Stateful: Once traffic in is allowed, traffic out is automatically allowed
+        - Control traffic to multiple networks across multiple subscriptions through a single 
+        firewall
+        - Integrates with Azure Monitor for logs and analytics
+    - Web Application Firewall:
+        - Restricts traffic to a web application
+        - Prevents against Web Application Security attacks (OWASP), EX. SQL injection
+        - 
