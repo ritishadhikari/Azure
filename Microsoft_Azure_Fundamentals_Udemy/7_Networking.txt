@@ -32,4 +32,48 @@ Network Security:
     - Web Application Firewall:
         - Restricts traffic to a web application
         - Prevents against Web Application Security attacks (OWASP), EX. SQL injection
-        - 
+
+    - Network Security Group:
+        - It is like an internal firewall inside your Virtual Network right before your resources
+        - It has multiple inbound and outbound security rules
+        - Allows/Restricts traffic between resources such as Virtual Machines and Subnets
+        - Typically attached with subnets and network interfaces
+        - Allow access to webservers only on port 80 and 443 or allow database access only to web
+        servers and not to the outside world
+
+Private Link:
+    - Setup Private Link (PAAS) and connect using private endpoint(VM) between a VM inside a subnet 
+    inside a Vnet hosting a web app and an Azure SQL managed DB.
+    - Azure Private Link enables access to Azure PaaS services (Azure Storage, Azure Cosmos DB,
+    Azure SQL Database, etc) from resources in your VNet using private endpoints
+    - All data that flows from a VM to SQL Database is isolated from the internet and stays on the 
+    Microsoft back end 
+
+Defense in Depth:
+    - Physical Security: Physical Infrastructure
+    - Perimeter: Azure DDOS Protection + Azure Firewall
+    - Network: Through Network Security Groups
+    - Compute: Through SSH Private and Public key and Patching
+    - Application: Azure Key Vault
+    - Data (Rest and Transit): Encryption & Private Link
+
+Zero Trust:
+    - Zero trust Policy: Identity, Location, Device, Resource, Data Classification, Time
+    - Use least privilege access
+    - Assume Breach  
+    - End to end Encryption, 
+    - Continous Monitoring
+    - Authentication and Authorization
+    - Continous Updates and Automated Threat Detection
+
+Private Cloud ensures higher level of security and privacy than Public Cloud 
+
+Expressroute provides 
+    - private connectivity (Traffic does not go over the internet)
+    - very high bandwidth
+    - High Security
+    - Traffic is not encrypted (unlike in VPN)
+
+
+
+
