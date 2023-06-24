@@ -1,0 +1,48 @@
+Multiple Resources tagged to Resource Groups
+
+Multiple Resource Groups are tagged to specific subscription
+
+Multiple Subscription are tagged to a Specific Subscription
+
+No heirarchy in resource groups but management groups can have a heirarchy where-in inside a 
+managament group we can have another management group
+
+A specific resource can be associate with only one Resource Group
+
+Tags applied to a resource group are not automatically applied to resources 
+
+Permissions/Roles assigned to user at the resource group level are inherited by all resources
+in the group 
+
+You need a subscription to create resources in Azure as the Resources will be tagged to the 
+Resource Group and the Resource Group will be tagged to the Subscription 
+
+An Azure Subscription can have multiple subscriptions and multiple account administrators
+
+Create Subscriptions based on:
+    - Managing different access-management policies for different environments
+    - Manage costs across different departments of an organization 
+    - If limits are exceeding for the present subscription
+        - Max of 25000 VMs per region per subscription
+
+Two different subscriptions cannot be merged into one, however resources can be moved from one 
+subscription to another
+
+You can transfer ownership of a subscription (needs owner role)
+
+If subscription expires, you will not be able to create new resources in the subscription, but you can 
+continue to access the data stored
+
+Each subscription is associated with quotas and you can create support request for increasing the quota 
+for a specific subscription
+
+You cannot change the spending limit for a subscription, but you can remove it
+
+Azure Subscriptions can have more than one account admin
+
+Resource Group is just a container, you will not be billed for Resource Group (but you will be billed
+for resources created in Resource Group)
+
+All subscriptions and resources under a management group inherit all constraints applied to it
+
+All subscriptions in a management group should be associated with the same Azure AD Tenant
