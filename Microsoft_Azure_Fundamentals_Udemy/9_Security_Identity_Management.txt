@@ -1,0 +1,61 @@
+Microsoft Defender for Cloud (Formerly Azure Security Center):
+    - Cloud Security Posture Management (CSPM):
+        - Automate Identification & remediation of security risks of your cloud configuration
+    - Cloud Workload Protection (CWP):
+        - Continously monitor and fix threats to workloads deployed in the cloud
+    - CSPM and CWP comes inbuilt with Microsoft Defender for cloud
+    - Protects multicloud and Hybrid Cloud environments
+    - Continous Assessment and provides Security Score (higher the better)
+    - Provides recommendations to improve security posture and automatically fixes those recommendations
+    - Detects threats to your resources and workloads
+    - Get immediately alerted by email and IT service Management solutions
+    - All advanced features of Azure Defender for Cloud is not free
+
+Identity Management (AD):
+    - Identities (human and non human) need to access resources and perform actions (ex. stop, start, or 
+    terminate a virtual machine)
+    - Azure Active Directory helps in identifying users in the cloud, configure resources they can
+    access and configure what actions to allow
+    - Centralized Identity Provider and SSO can store the user details (including credentials) in a 
+    Centralized way and use it across multiple apps and services
+    - Active Directory helps to define Users, Credentials and their access rights. It also supports 
+    creation of groups
+    - Active Directory Federation Service (ADFS) is a single sign on service
+    - AZ AD is the AD service in Azure, it helps to control enterprise users and their access to 
+    applications and Azure resources
+    - AZ AD supports Azure and Microsoft 365
+    - Azure AD connect synchronize on-premise Active Directory with Azure AD
+    - Azure AD Multifactor Authentication is recommended incase you have an administrator account. It
+    needs Azure Active Directory Identity Protection
+    - Azure AD self-service password reset can be enabled by Global Admins to allow users to reset
+    passwords by themselves
+    - Subscriptions are connected to an active Azure AD Directory
+    - You can transfer a subscription to a different Azure Active Directory
+    - When an Azure Subscription expires, the associated Azure AD tenant is not deleted, you can link
+    it with a different subscription
+
+Conditional Access:
+    - Allows granular MFA experience
+    - It checks on who is the user, where is the user and what device is the user using
+    - It is only available with Azure AD premium P1 or P2 licences
+
+Azure Active Directory Domain Service (Azure AD DS):
+    - Azure AD is a toned down version of AD (works very differently)
+    - Azure AD (flat structure) vs AD (heirarchical with organizational units OUs and group policy
+    objects GPOs)
+    - Azure AD (web based protocols - OAuth, SAML, Open ID) vs AD (kerberos, LDAP, NTLM)
+    - Azure Active Directory Domain service (Azure AD DS) helps you use managed domain services
+    (domain joining, LDAP, Kerberos Authentication) with Azure AD
+
+Role Base Access Control:
+    - Role Assignment has three parts:
+        - Who (principal)
+        - What Permissions (role)
+        - What Scope (resource or resource group or subscription or management group)
+
+Passwordless Authentication with Azure AD:
+    - Azure AD provides three passwordless options:
+        - Windows Hello for Business where credentials are tied to the user's own designated PC
+        - Microsoft Autheticator App: Uses employeed phone for authentication
+        - FIDO2 (Fast Identity Online) security keys which is an open standard for passwordless
+        authentication
