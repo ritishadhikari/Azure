@@ -1,0 +1,22 @@
+Azure Monitor:
+    - Application Insights
+    - VM Insights
+    - Container Insights
+    - Log Analytics
+    - Create Smart Alert
+    - Create Visualization with Azure Dashboard
+    - Collect data from monitored resources using Azure Monitor Metrics
+
+Azure Service Health:
+    - Pesonalized alerts and guidance for Azure service issues
+    - Personalized based on your Azure usage - subscriptions, services and regions
+    - Notifies about Azure service incidents and planned maintenance
+    - Best Practice is to set up Service Health Alerts through email, SMS, push notification, 
+    webhook, etc
+    - Heirarchy: Azure Status > Azure Service Health > Azure Resource Health
+    - Azure Status: Global View of the health of Azure Services and regions
+    - Azure Service Health: Personalized dashboard based on your Azure usage
+    - Azure Resource Health: Provides information about the health of your individual cloud resources
+    such as specific VM instance
+
+    

@@ -80,3 +80,14 @@ Service Lifecycle:
     - General availability:
         - Available to all Azure customers as a normal service, including SLA
         - Can be a gradual rollout to some regions first 
+
+Azure Advisor:
+    - Provides Automated recommendations to improve reliability, security and performance, achieve
+    operational excellence and reduce costs
+    - Gives a total score, where score improves as you take remedial actions
+    - Provides Azure Advisor Alerts wherein automated alerts can be provided based on the requirement
+
+Azure Monitor:
+    - Gather, analyze and visualize logs and metrics
+    - From Azure and on-premise resources
+    - 
