@@ -42,9 +42,20 @@ Compliance Hub:
     - Caters to International Organization for Standardization (ISO), Service Organization
     Controls (SOC), National Institute of Standards and Technology (NIST), Federal Risk
     and Authorization Management Program (FedRAMP) and General Data Protection Regulation (GDPR)
-    - Link is the Service Trust Portal
+    - Link is the Service Trust Portal which provides independent audit reports for Azure
     - Azure Compliance Hub is where you get how Azure helps you with compliance for legal or 
     regulatory standards
     - AZURE Compliance Manager is a part of service Trust Portal and it automates complete 
     compliance lifecycle - Manage Risks, Implement Controls, Check Compliance against regulations
-    and standards, reporting to Auditors                                                                                                                                                                                          
+    and standards, reporting to Auditors    
+
+Azure Sovereign Region:
+    - Azure Global:
+        - Shared Infrastructure
+    - Azure Government:
+        - Uses physically isolated Data centers and networks located in US
+        - Entitled for only US Government entities
+    - Azure China:
+        - Physically separated Instance of Cloud Services located in China
+        - Not operated by Microsoft, but through 21Vianet
+    - Azure Germany                                                                                                                                                                                        
