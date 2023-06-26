@@ -1,0 +1,26 @@
+Consumption Based:
+    - You are billed for only what you use
+    - Ex. Azure Functions - You pay for number of invocations
+
+Fixed Price:
+    - You are billed for instances irrespective of whether they are used or not
+    - Ex. Provision a VM instance, chose an App Service Plan
+
+Total Cost of Ownership Calculator:
+    - Estimate the cost savings you get by migrating your workloads to Azure
+
+Pricing Calculator:
+    - Estimate the costs of Azure Services
+    - Ideal place to explore and learn important factors about different Azure Services
+
+Deciding on Cost:
+    - Outbound data from Azure to On-Premise is not free
+    - Data traffic between Azure Services in the same region/AZ is free
+    - Inbound data from on-premise to Azure is free
+
+Azure Cost Management:
+    - Setup and manage your account by configuring subscriptions, manage invoices and payment
+    methods
+    - Analyzing and optimizing cloud costs by breaking down costs to get a deeper understanding 
+    of costs and usage patterns
+    - Setup Budget and Cost Alerts with thresholds    
