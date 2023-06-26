@@ -1,0 +1,50 @@
+Azure Policy:
+    - Policy makes sure that resources stay compliant with your policies
+    - Can be assigned to a Management Group, a single Subscription or a resource Group
+    - Group of Policies are called initiatives and initiatives can also be assigned to a 
+    Management Group, a single Subscription or a resource Group
+    - Compliance Dashboard provides aggregated view of the overall compliance with options 
+    to drill down to specific resource/policy
+    - Existing non-compliant resources will be marked as non-compliant, but they continue to work as-is
+    - Policy evaluation is not immediate and it runs every one-hour
+
+Azure BluePrints:
+    - One or more of (Policy + Role + ARM template + Resource Group Configurations)
+    - Different pre-built blueprints available (Australian Government, HIPAA, ISO, etc)
+    - Your organization team can create blueprints adhering to your organization's 
+    standard, patterns and requirements
+    - You can even set-up an automated CI/CD pipeline 
+
+Resource Locks:
+    - Prevent accidental deletion/modification of resources
+    - Applicable at multiple levels: subscription, resource group or resource
+    - Azure Resource inherits locks from its resource group and subscriptions
+    - Two locks:
+        - CanNotDelete: Authorized Users can read and modify but not delete the resource
+        - ReadOnly: Authorized Users can read but cannot delete or update the resource
+    - Locked resources should be unlocked before it can be changed (even by owners)
+    - You can have multiple locks at different levels
+
+Privacy and Compliance:
+    - Microsoft Privacy Statement:
+        - Explains the personal data that microsoft processes and for what purpose
+    - Product term site:
+        - Terms and conditions for software and online services products
+    - Data Protection Addendum:
+        - Your and Microsoft's obligations with respect to the processing and security of 
+        customer data and personal data in connection with Azure
+    - Azure Information Protection:
+        - Classify and protect your documents and emails
+        - Add labels indicating what kind of protection/encryption you want
+        - Uses Azure Rights Management (RMS) - integrates with Office 365 and Azure AD    
+
+Compliance Hub:
+    - Caters to International Organization for Standardization (ISO), Service Organization
+    Controls (SOC), National Institute of Standards and Technology (NIST), Federal Risk
+    and Authorization Management Program (FedRAMP) and General Data Protection Regulation (GDPR)
+    - Link is the Service Trust Portal
+    - Azure Compliance Hub is where you get how Azure helps you with compliance for legal or 
+    regulatory standards
+    - AZURE Compliance Manager is a part of service Trust Portal and it automates complete 
+    compliance lifecycle - Manage Risks, Implement Controls, Check Compliance against regulations
+    and standards, reporting to Auditors                                                                                                                                                                                          
