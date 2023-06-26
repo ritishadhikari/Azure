@@ -1,0 +1,24 @@
+Tags:
+    - Report and track costs for a group of resources by assigning them with the same tag
+    - Best practice is to identify mandatory tags that all resources should have and enforce it
+    using Azure Policy. Ex. Environment, Business Unit, Priority
+
+Windows Virtual Desktop:
+    - When an enterprise has many developers, we can provide desktops to them using Windows Virtual 
+    Desktop
+    - Connect with Windows, Mac, Ios, Android and Linux
+    - Centralized security with Azure Active Directory
+    - Option to bring your own licenses (BYOL)
+
+Azure Marketplace:
+    - Customized and certified solutions optimized for Azure provided by Microsoft Partners and other
+    software vendors
+    - Comes with flexible hourly billing
+
+Azure Migrate:
+    - Central Hub to manage your Azure migration with a host of tools
+        - Discovery and Assessment:  Assess Migrations for on-premise servers, applications and data
+        - Server Migration: Migrate VMs to Azure
+        - Database Migration: Migrate Databases to Azure
+        - Web app migration assistant: Migrate web apps to Azure App service
+        - Azure Data Box: Offline Data transfer to Azure 
