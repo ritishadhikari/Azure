@@ -1,0 +1,45 @@
+Continous Integration:
+    - Continously run tests and packaging
+Continous Deployment:
+    - Continiously deploy to test environments
+Continous Delivery:
+    - Continously deploy to production
+
+CI,CD Tools:
+    - Azure Repos - Private Source Control (Git). Alternative is Github.
+    - Azure Pipelines - Orchestrate CI/CD Pipelines. Alternative is Github Actions.
+    - Azure Boards - Scrum, Agile and Kanban Boards
+    - Azure Artifacts - Artifact repositories to store Artifacts
+    - Azure Test Plans - Automation Test Tools to check software quality. Integrate into CI/CD 
+    pipelines
+
+Infrastructure as a Code:
+    - Treat Infrastructure the same way as application Code
+    - Track your infrastructure changes over time (version control)
+    - Bring Repeatibility into your infrastructure
+    - Infrastructure Provisioning through Terraform
+        - Provision compute, database, storage and networking
+        - Terraform is Open source cloud neutral 
+    - Azure Service is called Azure Resource Manager Templates (ARM)
+    - Can also use Powershell or Azure CLI Automation instead of ARM, but they are not powerful
+    - Configuration Management
+        - Install right software and tools on the provisioned resources
+        - Open Source Tools - Chef, Puppet, Ansible 
+
+ARM:
+    - Deployment and Management Service in Azure
+    - All actions to any resource in Azure go through ARM
+    - Avoid Configuration drift by standardizing it with a JSON file - ARM Template
+    - Avoid mistakes with manual configuration 
+    - Declarative approach to Infrastructure as Code
+    - Parallize creation of resources when possible
+    - Version Control and Automatic rollback in case of failures
+    - Powershell and Bash Scripts can also be used to write IAAC through Imperative way
+
+Azure Cloud Shell supports both CLI (Bash) and Powershell 
+
+DevTest Labs:
+    - Quickly provision development and Test Environments through windows and Linux environments
+    - Uses ARM templates
+    - Can be integrated into your CI/CD pipelines
+    - Set Automated Shutdowns to minimize costs
