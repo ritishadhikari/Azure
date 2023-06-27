@@ -4,7 +4,7 @@ Azure App Service:
     - Azure App Service natively supports many programming language with automated deployment, 
     management, load balancing and auto scaling. 
     - The only thing to consider in App Service is the App Service Plan which defines a set of compute
-    resources for the web app app
+    resources for the web app
     - We have scale out and scale up features
 
 MicroServices:
