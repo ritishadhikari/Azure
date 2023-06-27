@@ -31,7 +31,7 @@ Consistency:
     - Strong Consistency through Synchronous Replication to all replicas, it will be slow if there are
     multiple replicas or standbys
     - Eventual Consistency through Asynchronous Replication. A little lag few seconds - before the change
-    is available in all replicas. In the intermediate perios, different replicas might return different 
+    is available in all replicas. In the intermediate periods, different replicas might return different 
     values. Used when scalability is more important than data integrity
     - Read After write consistency where inserts are immediately available while updates would have 
     eventual consistency
