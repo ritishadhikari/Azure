@@ -32,7 +32,7 @@ ARM:
     - Avoid Configuration drift by standardizing it with a JSON file - ARM Template
     - Avoid mistakes with manual configuration 
     - Declarative approach to Infrastructure as Code
-    - Parallize creation of resources when possible
+    - Parallelize creation of resources when possible
     - Version Control and Automatic rollback in case of failures
     - Powershell and Bash Scripts can also be used to write IAAC through Imperative way
 
