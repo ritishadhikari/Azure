@@ -11,7 +11,7 @@ Subnets:
     - Helps to separate public resources from private resources inside a Virtual Network
     - Create different subnets for public and private resources
     - All the resources in a Virtual Network spread across subnets can talk to each other
-    - VNET in the same VNet can communicate using private IP addresses
+    - Resources in the same VNet can communicate using private IP addresses
 
 Network Peering:
     - Connect resources in different Virtual Network
