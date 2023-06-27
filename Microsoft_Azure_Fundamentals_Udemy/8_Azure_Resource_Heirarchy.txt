@@ -2,12 +2,12 @@ Multiple Resources tagged to Resource Groups
 
 Multiple Resource Groups are tagged to specific subscription
 
-Multiple Subscription are tagged to a Specific Subscription
+Multiple Subscription are tagged to a Specific Management Groups
 
 No heirarchy in resource groups but management groups can have a heirarchy where-in inside a 
 managament group we can have another management group
 
-A specific resource can be associate with only one Resource Group
+A specific resource can be associated with only one Resource Group
 
 Tags applied to a resource group are not automatically applied to resources 
 
