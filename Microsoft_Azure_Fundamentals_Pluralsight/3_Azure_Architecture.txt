@@ -1,4 +1,4 @@
-Regions:
+Region:
     - A region is a set of data centers deployed within a latency-defined perimeter and connected
     through a dedicated regional low-latency network
     - Chose a region closest to your users to minimize latency
@@ -24,7 +24,7 @@ Resource Groups:
     in it
 
 Azure Resource Manager: 
-    - All interaction with Azure resources go throgh the ARM
+    - All interaction with Azure resources go through the ARM
     - It is the main Azure Architecture component for creating, updating and manipulating
     resources
     - Group Resource Handling:

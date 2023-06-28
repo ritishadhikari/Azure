@@ -40,7 +40,7 @@ Cloud Service Models:
         - Avoids software licence problems
     - Software as a Service:
         - Provides a managed Service
-        - Pay an access fee to used
+        - Pay an access fee to use
         - No maintenance and latest features
     - Serverless:
         - Azure Functions
