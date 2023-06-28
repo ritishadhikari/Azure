@@ -45,7 +45,7 @@ Compliance Hub:
     - Link is the Service Trust Portal which provides independent audit reports for Azure
     - Azure Compliance Hub is where you get how Azure helps you with compliance for legal or 
     regulatory standards
-    - AZURE Compliance Manager is a part of service Trust Portal and it automates complete 
+    - Azure Compliance Manager is a part of service Trust Portal and it automates complete 
     compliance lifecycle - Manage Risks, Implement Controls, Check Compliance against regulations
     and standards, reporting to Auditors    
 

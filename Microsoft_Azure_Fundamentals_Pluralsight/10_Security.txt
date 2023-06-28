@@ -1,8 +1,7 @@
 Defence in Depth:
     - You are responsible for the security of the physical hardware, buildings and
     stuffs
-    - You w
-    l layers of Defence, as with a castle, such as swipe cards, 
+    - You wall layers of Defence, as with a castle, such as swipe cards, 
     security guards, firewalls and more
     - You own the infrastructure, so you are responsible for adequate defense of hardware 
     and data
