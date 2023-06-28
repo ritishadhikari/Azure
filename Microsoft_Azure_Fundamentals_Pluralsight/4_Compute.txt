@@ -72,8 +72,7 @@ Azure Kubernetes Service (AKS):
     to determine when to scale the number of containers used
     - AKS helps to reuse your container architecture by managing it in Kubernetes. This makes the 
     setup quicker and confidence in the system increases
-    - You can use Kubernetes with supported Azure regions and on premise installations using Azure
-    Stack
+    - You can use Kubernetes with supported Azure regions and on premise installations using Azure Stack
 
 Azure Container Registry(ACR):
     - This service keeps track of current valid container images
