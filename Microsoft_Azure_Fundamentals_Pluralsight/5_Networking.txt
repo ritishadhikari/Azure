@@ -28,7 +28,7 @@ Virtual Network (VNet):
 Load Balancer
     - It distributes new inbound flows that arrive on the load balancer's frontend to backend pool
     instances, according to rules and health probes
-    - With Health Probes, ensures that the Load Balancer always sends traffic to a healthy VM
+    - Health Probes, ensures that the Load Balancer always sends traffic to a healthy VM
 
 VPN Gateway
     - Securely communicate with Azure Resources and your on-premises network 
