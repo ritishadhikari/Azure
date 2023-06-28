@@ -91,7 +91,7 @@ Devops:
                 - Suitable for Project Managers
             - Azure Pipelines:
                 - Produce and test your software automatically and continously
-            - Azuere Repos
+            - Azuere Repos:
                 - Store Source Code for your application securely in a managed way.
                 - Suitable for Developers
             - Azure Test Plans:
