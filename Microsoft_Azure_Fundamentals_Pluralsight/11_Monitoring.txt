@@ -103,7 +103,7 @@ Compliance:
         - Get reports of compliance data to provide to managers and auditors
     - Azure Government Cloud:
         - Dedicated regions which consists of dedicated separate datacenters
-        - Exclusivisity for select few designated personnel
+        - Exclusivity for select few designated personnel
         - Get standard Azure Cloud Benefits: high availability, scalability and managed
         resources
     - China Region:
@@ -135,7 +135,7 @@ Azure Arc:
         - On-Premises
         - Other Clouds
     - Challenge is each computing sources uses its own management tools
-        - Cannot apply Azure Government policies to Non Azure resources 
+        - Cannot apply Azure Governmenance policies to Non Azure resources 
     - Azure Arc lets you manage both Azure and Non Azure resources in the same interface where 
     Azure Governance policies can be applied to Non-Azure resources 
     - Azure Arc extends the Azure Control Management to non Azure Locations
