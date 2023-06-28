@@ -38,7 +38,6 @@ Azure SQL:
         - SQL server profiler
         - SQL server agent  
 
-
 MYSQL:
     - PAAS where service infrastructure is managed by Microsoft
     - Focus on developing your business strengths instead of managing servers and networks
