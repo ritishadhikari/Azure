@@ -90,4 +90,3 @@ Azure Advisor:
 Azure Monitor:
     - Gather, analyze and visualize logs and metrics
     - From Azure and on-premise resources
-    - 
