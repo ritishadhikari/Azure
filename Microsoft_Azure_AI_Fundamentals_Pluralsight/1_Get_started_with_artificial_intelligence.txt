@@ -1,0 +1,76 @@
+Azure Machine Learning Provides with the following features and capabilities:
+    - Automated Machine Learning:
+        - Enables non experts to quickly create an effective machine learning model from data
+    - Azure Machine Learning Designer:
+        - A graphical interface enabling no-code development of machine learning solutions
+    - Data and Compute Management:
+        - Cloud based data storage and compute resources that professional data scientists can
+        use to run data experiment code at scale
+    - Pipelines:
+        - Data Scientists, software engineers and IT operations professionals can define 
+        pipelines to orchestrate model training, deployment and management tasks
+    
+Anamoly Detector service provides an Application Programming Interface (API) that developers can 
+use to create anomaly detection solutions
+
+Computer Vision Services in Microsoft Azure:
+    - Computer Vision:
+        - Analyze images and videos and extract descriptions, tags, objects and text
+    - Custom Vision:
+        - Train custom image classification and object detection models using your own images
+    - Face:
+        - Enables you to build face detection and facial recognition solutions
+    - Form Recognizer:
+        - Extract information from scanned forms and invoices
+
+Natural Language Processing in Microsoft Azure:
+    - Language:
+        - Access features for understanding and analyzing text, training language models that 
+        can understand spoken or text based commands and building intelligent applications
+    - Translator:
+        - Translate text between more than 60 languages
+    - Speech:
+        - Recognize and synthesize speech and translate spoken language
+    - Azure Bot:
+        - Conversational AI solution, wherein giving the capability of a software agent to
+        participate in a conversation.
+
+Azure Cognitive Search:
+    - It is a private, enterprise, search solution that has tools for building indexes
+    - The indexes can be used for internal use or to enable searchable content on public 
+    facing internet assets
+    - Perform knowledge mining of documents by utilizing the built-in capabilities of Azure
+    Cognitive Services such as Image Processing, content extraction and NLP
+    - Makes it possible to index previously unsearchable documents and to extract and surface 
+    insights from large amounts of data quickly
+
+Challenges and Risks of AI:
+    - Bias can affect results   
+    - Errors may cause harm
+    - Data may be exposed
+    - Solutions may not work for everyone
+    - Users must trust a complex system
+    - Who's liable for AI-driven decisions
+
+Responsible AI:
+    - Fairness:
+        - AI systems should treat all people fairly
+    - Reliability and Safety:   
+        - Unreliability in autonomous vehicles or recommending patient symptoms can result in 
+        substantial risk to human life
+        - AI based system must be subjected to rigorous testing and deployment management
+        processes to ensure they work as expected before release
+    - Privacy and Security: 
+        - Data and decisions made from the data are subject to privacy and security concerns
+    - Inclusiveness:
+        - Should bring benefits to all parts of society, regardless of physical ability, gender,
+        sexual orientation, ethnicity or other factors
+    - Transparency:
+        - AI Systems should be understandable and intrepretable
+        - Users should be made fully aware of the purpose of the system, how it works and what
+        limitations may be expected
+    - Accountability:
+        - Designers and developers of AI based solutions should work with a framework of 
+        governance and organizational principles that ensure the solution meets ethical standards
+        and legal standards that are clearly defined
+        - People should be accountable for AI systems
