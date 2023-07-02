@@ -74,3 +74,5 @@ Responsible AI:
         governance and organizational principles that ensure the solution meets ethical standards
         and legal standards that are clearly defined
         - People should be accountable for AI systems
+
+OpenAI
