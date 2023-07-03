@@ -1,0 +1,60 @@
+Use Automated Machine Learning in Azure Machine Learning:
+    - Azure Machine Learning Workspace:
+        - To use Azure Machine Learning, you first create a workspace resource in your Azure 
+        Subscription
+        - Use Workspace to manage data, compute resources, code, models and other artifacts related
+        to your machine learning workloads
+        - After creating Azure ML workspace, you can develop solutions with the Azure Machine 
+        Learning service with developer tools or the Azure ML studio web portal
+
+    - Azure Machine Learning Studio:
+        - It is a web portal for Machine Learning Solutions in Azure
+        - Includes a wide range of features and capabilities that help data scientists prepare data,
+        train models, publish predictive services and monitor their usage   
+        - To begin using ML Studio, you need to assign the workspace you created in Azure Portal to 
+        Azure Machine Learning Studio
+
+    - Azure Machine Learning Compute:
+        - These are cloud based compute resources on which you can run model training and data
+        exploration processes
+        - In Azure ML Studio, you can manage the compure targets for Data Science Activities
+        - There are four kinds of compute resources:
+            - Compute Instances:
+                - Development workstations that data scientists can use to work with data and models
+            - Compute Clusters:
+                - Scalable Clusters of VMs for On Demand processing of experiment code
+            - Inference Clusters:
+                - Deployment targets for predictive services that use your trained models
+            - Attached Compute:
+                - Links to existing Azure compute resources, such as Virtual Machines or Azure Data
+                Bricks clusters
+
+    - Azure Automated Machine Learning:
+        - Azure ML includes an automated machine learning capability that automatically tries 
+        multiple preprocessing techniques and model-training algorithms in parallel
+        - It uses the power of cloud compute to find the best performing supervised ML model for 
+        your data
+        - For Data Scientists, it saves time and resources by automating algorithm selection and 
+        hyperparameter tuning
+        - It is also useful for people without extensive data science or programming knowledge 
+
+    -  Understanding the AutoML Process:
+        - The steps includes:
+            - Prepare Data:
+                - In Azure ML, data for model training and other operations is usually encapsulated
+                in an object called a data asset
+                - Create your own asset in Azure ML Studio
+            - Train Model:
+                - Use Automated ML to train models for:
+                    - Classification
+                    - Regression 
+                    - Time Series Forecasting 
+                    - Natural Language Processing
+                    - Computer Vision
+            - Evaluate Performance:
+                - The best model is identified on the evaluation metric you specified
+                - Cross Validation is used to calculate the evaluation metric
+                - Deploy the best performing model as a service for client applications to use
+            - Deploy a Predictive Service:
+                - Deploy a service as an Azure Container Instances (ACI) (test) or to an Azure
+                Kubernetes Cluster (AKS) (production)
