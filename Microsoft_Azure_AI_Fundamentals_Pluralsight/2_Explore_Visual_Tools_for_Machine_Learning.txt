@@ -58,3 +58,53 @@ Use Automated Machine Learning in Azure Machine Learning:
             - Deploy a Predictive Service:
                 - Deploy a service as an Azure Container Instances (ACI) (test) or to an Azure
                 Kubernetes Cluster (AKS) (production)
+
+Create a classification model with Azure Machine Learning designer:
+    - You can use Azure Machine Learning Designer to create classification models by using a drag and
+    drop visual interface, without needing to write any code
+
+    - Azure Machine Learning Designer:
+        - In Azure, one of many several ways to use a Classfication Machine Learning model is
+        Azure Machine Learning Designer
+        - It is a visual interface with drag and drop capability to train, test and deploy 
+        ML models which can be shared, reused and version controlled
+    
+    - Pipelines:
+        - Pipelines ley you organize, manage and reuse complex ML workflows across projects and users
+        - A pipeline starts with dataset from which you want to train the model
+        - Each time a pipeline is run, the configuration of the pipeline and its results are stored
+        in your workspace as a pipeline job
+    
+    - Components:
+        - A component encapsulates one step in a ML pipeline and is the building block for Azure ML
+        Pipelines
+    
+    - Datasets:
+        - Create Data assets from Data page from local files, a data store, web files and Open Datasets
+
+    - Azure Machine Learning Jobs:
+        - Azure ML Job executes a task against a specified compute target 
+        - It enables a systemetic tracking for you ML experimentation and workflows
+        - Once a job is created, Azure ML maintains a run record for the job
+    
+    - Steps for Classification in Azure Includes:
+        - Prepare Data
+            - Azure provides several pre-built components that can be used to prepare data for 
+            training
+            - These components enable you tp clean data, normalize features, join tables, etc
+        - Train Model:
+            - Dataset is required to train a classification model
+            - You will use designer's Score component to generate the predicted class label value
+        - Evaluate Performance
+            - Azure provides many performance metrics and methodologies for evaluating how well a
+            model makes predictions
+        - Deploy a Predictive Service
+            - Create and deploy an inference pipeline so as to automate your model into a service 
+            that makes continous predictions 
+            - Convert the training pipelines into a real-time inference pipeline. This
+            process removes training components and adds web service inputs and outputs to handle 
+            requests
+            - After creating the inference pipeline, you can deploy it as an endpoint
+            - In the endpoints page, you can view deployment details, test your pipeline service
+            with sample data, and find credentials to connect your pipeline service to a client 
+            application
