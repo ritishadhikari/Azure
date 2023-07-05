@@ -108,3 +108,7 @@ Create a classification model with Azure Machine Learning designer:
             - In the endpoints page, you can view deployment details, test your pipeline service
             with sample data, and find credentials to connect your pipeline service to a client 
             application
+
+Create a regression model with  Azure Machine Learning Designer:
+    - 
+
