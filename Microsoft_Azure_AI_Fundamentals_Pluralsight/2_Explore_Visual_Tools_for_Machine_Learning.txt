@@ -109,6 +109,19 @@ Create a classification model with Azure Machine Learning designer:
             with sample data, and find credentials to connect your pipeline service to a client 
             application
 
-Create a regression model with  Azure Machine Learning Designer:
+Create a regression model with Azure Machine Learning Designer:
     - 
+
+Create a Clustering model with Azure Machine Learning Designer:
+    - Use designer's Assign Data to Clusters component to group the data into clusters 
+    - Evaluation Metrics for Clustering in Azure ML Designer are:
+        - Average Distance to Other Center: Indicates how close on average each point in the cluster is
+        to the centroids of all other clusters
+        - Average Distance to Cluster Center: Indicates how close on average each point in the cluster
+        is to the centroid of the cluster 
+        - Number of Points: The number of points assigned to the cluster
+        - Maximal Distance to Cluster Center: The maximum of the distances between each point and the
+        centroid of that point's cluster. If this number is high, the cluster may be widely dispersed.
+        This statistics in combination with the Average Distance to Cluster Center helps you
+        determine the cluster's spread
 
