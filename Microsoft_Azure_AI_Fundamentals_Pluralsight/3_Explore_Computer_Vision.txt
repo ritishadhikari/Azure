@@ -119,3 +119,14 @@ Classify images with the Custom Vision service:
         - Prediction key: 
             - The authentication key for the prediction resource to which you published the model
             (not the training resource)
+
+Detect objects in images with the Custom Vision service:
+    - Uses of Object Detection:
+        - Checking for Building Safety
+        - Driving Assistance with Lane Assist Capabilities
+        - Detecting Tumors
+    - An object detection model is used to identify the individual objects in an image and return 
+    the following information:
+        - Class of each object identified in the image
+        - The probability score of the object classification
+        - The coordinates of a bounding box for each object
