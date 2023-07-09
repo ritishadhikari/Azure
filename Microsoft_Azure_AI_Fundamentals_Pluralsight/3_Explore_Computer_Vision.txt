@@ -251,3 +251,28 @@ Read text with the Computer Vision serviceL
             - Words
                 - The words in a line of text, including the bounding box co-ordinates and text
                 itself
+
+Analyze receipts with the Form Recognizer service:
+    - Increasingly, organizations with large volumes of receipts and invoices to process are looking 
+    for artificial intelligence (AI) solutions that can not only extract the text data from receipts, 
+    but also intelligently interpret the information they contain.
+    - Azure's Form Recognizer service can solve for this issue by digitizing fields from forms 
+    using optical character recognition (OCR).
+    Using the Form Recognizer service, we can input an image of a receipt like the one above, 
+    and return useful information that might be required for an expense claim, including: 
+        - The name, address, and telephone number of the merchant
+        - The date and time of the purchase.
+        - The quantity and price of each item purchased.
+        - The subtotal, tax, and total amounts
+    - To use the Form recognizer, you need to either create a Form Recognizer resource or a 
+    Cognitive Services resource in your Azure subscription.
+    - Form Recognizer supports automated document processing through:
+        - A pre-built receipt model that is provided out-of-the-box, and is trained to recognize 
+        and extract data from sales receipts
+        - Custom models which enable you to extract what are known as key/value pairs and 
+        table data from forms. They are trained using your own data, which helps to tailor this 
+        model to your specific forms. 
+    - Guidelines:  
+        - Images must be JPEG, PNG, BMP, PDF, or TIFF formats
+        - File size must be less than 50 MB
+        - For PDF documents, no larger than 17 inches x 17 inches
