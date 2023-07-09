@@ -130,3 +130,73 @@ Detect objects in images with the Custom Vision service:
         - Class of each object identified in the image
         - The probability score of the object classification
         - The coordinates of a bounding box for each object
+
+Detect and analyze faces with the Face service:
+    - Face Detection involves identifying regions of an image that contain a human face, typically
+        by returning bounding box coordinates that form a rectangle around the face 
+    
+    - Facial Recognition:
+        - It is a further application of facial analysis is to train a machine learning model to 
+        identify known individuals from their facial features
+        - It involves multiple images of each person you want to recognize to train a model so that it 
+        can detect those individuals in new images on which it wasn't trained
+    
+    - Uses of Face Detection:
+        - Security:
+            - Smartphones OS for unlocking devices
+        - Social Media:
+            - Automatically tag known friends in photographs
+        - Intelligent Monitoring:
+            - Monitoring driver face related tiredness or distraction
+        - Advertisements:
+            - Analyze face and help direct advertisements to an appropriate demographic audience
+        - Missing Persons:
+            - Using Public Camera, identify missing person in an image frame
+        - Identity Validation:
+            - Useful at entry kiosks where an authorized person is permitted
+    
+    - Microsoft Azure provides multiple cognitive services that can be used to detect and analyze
+    faces:
+        - Computer Vision:
+            - Offers Face Detection and some basic face analysis such as returning the bounding box
+            coordinates around an image
+        - Video Indexer:
+            - Used to detect and identify faces in a Video
+        - Face:
+            - Offers pre-built algorithms that can detect, recognize and analyze faces
+            - It offers the widest range of facial analysis capabilities
+    
+    - Attributes generated from Face Service:
+        - Blur:     
+            - How blurred the face is
+        - Exposure:
+            - UnderExposed or OverExposed and applies to the face in the image and not the overall
+            image Exposure
+        - Glasses:
+            - If the person is wearing Glasses
+        - Head pose:
+            - The person's orientation in a 3D space
+        - Noise:
+            - How much noisy and grainy the image of the person is
+        - Occlusion:
+            - If there may be objects blocking the face in the image
+    
+    - The Limited Access Policy requires customers to submit an inatake form to access Additional
+    Face service capabilities including:
+        - The ability to compare faces for similarity
+        - The ability to identify individuals in an image
+    
+    - Azure Resources for Face:
+        - Face:
+            - Use this specific resource if you do not intend to use any other cognitive services, 
+            or if you want to track utilization and costs for face separately
+        - Cognitive Service:
+            - A general cognitive services resource that includes Computer Vision along with many 
+            other cognitive services; such as Custom Vision, Form Recognizer, Language, and others. 
+            - Use this service if you plan to use multiple cognitive services and want to simplify 
+            administration and development
+    
+    - Which ever resources we chose to create, it will provide two pieces of information that we will
+    need to use it:
+        - A key that is used to authenticate client applications
+        - An endpoint that provides HTTP address at which your resource can be accessed
