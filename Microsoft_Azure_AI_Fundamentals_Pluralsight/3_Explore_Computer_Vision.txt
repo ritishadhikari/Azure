@@ -200,3 +200,54 @@ Detect and analyze faces with the Face service:
     need to use it:
         - A key that is used to authenticate client applications
         - An endpoint that provides HTTP address at which your resource can be accessed
+
+Read text with the Computer Vision serviceL
+    - The ability for computer systems to process written or printed text is an area of 
+    artificial intelligence (AI) where computer vision intersects with Natural Language
+    Processing
+    - You need computer vision capabilities to "read" the text and then you need natural 
+    language processing capabilities to make sense of it
+    - The basic foundation of processing printed text is optical character recognition (OCR),
+    in which a model can be trained to recognize individual shapes as letters, numerals,
+    punctuations, or other elements of text
+
+    - OCR Uses:
+        - Note Taking
+        - Digitizing Forms, such as medical records or historical documents
+        - Scanning printed or handwritten checks for bank deposits
+    
+    - Azure Read API:
+        - Computer Vision
+            - A specific resource for the Computer Vision service
+            - Use this if you do not intend to use any other cognitive service or if you want 
+            to track utilization and costs for your Computer Vision resource separately
+        - Cognitive Services: 
+            - Use this resource type if you plan to use multiple cognitive services and want to simplify 
+            administration and development
+        - This service also provides the usual 
+            - Key
+            - endpoint
+        - The Read API service within the computer vision resource, uses the latest recognition 
+        models and is optimized for images that have a significant amount of text or has considerable
+        visual noise
+        - It handles scanned documents that handle that have a lot of text
+        - It provides the ability to extract large amounts of typewritten text from images
+        - It has the ability to automatically determine the proper recognition model to use, taking
+        into consideration lines of text and supporting images with printed text as well as
+        recognize handwriting   
+        - Since the ReadAPI can work with large documents, it works asyncronously so as not to 
+        block application while it is reading the content and returning results to your application
+        - For asyncronous read, the application must use a three-step process:
+            - Submit an image to the API and retrieve an operation id in response
+            - Use the operation ID to check on the status of the image analysis operation and wait
+            until it has completed
+            - Retrieve the results of the operation   
+        - The results from the Read API are arranged into the following heirarchy:
+            - Pages:
+                - One for each page of text, including information about the page size and 
+                orientation
+            - Lines:
+                - The lines of text on a page
+            - Words
+                - The words in a line of text, including the bounding box co-ordinates and text
+                itself
