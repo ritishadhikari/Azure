@@ -48,3 +48,64 @@ Analyze text with the Language service:
         specific reference. For recognized entities, the service returns a URL for a relevant 
         Wikipedia article
     
+Recognize and Synthesize Speech:
+    - Speech Recognition: 
+        - The ability to detect and interpret spoken input
+        - To accomplish this feat, the software typically uses multiple types of models, including:
+            - An accoustic Model that converts the audio signal into phenomes (representations
+            of specific sounds)
+            - A language model that maps phenomes into word, usually using a statistical algorithm
+            that predicts the most probable sequence of words based on the phenomes
+        - The recognized words are typically converted to text for the purpose of:
+            - Providing closed captions for recorded or live videos
+            - Creating a transcript of a phone call or meeting
+            - Automated note dictation
+    
+    - Speech Synthesis:
+        - The ability to generate spoken output
+        - It requires typically the following information:
+            - The text to be spoken
+            - The voice to be used to vocalize the speech 
+        - Use cases includes:
+            - Generating spoken responses to user input
+            - Creating Voice menus for telephone systems
+            - Reading Email or text messages aloud in hands-free scenarios
+            - Broadcasting announcements in public locations, such as railway stations or airports
+        
+    - To use the Speech Service in an application, you must create an appropriate resource in Azure
+    subscription:
+        - A Speech resource
+         - For exclusive access and managing and billing separately
+        - Cognitive Service Resource
+            - If you want to pair this service with other cognitive services and managing and billing
+            togather
+    
+    - Speech to Text API:
+        - Perform real-time or batch transcription of audio into a text format
+        - The model for this API is built on the Universal Language Model that was trained by 
+        Microsoft
+        - The model is optimized for two scenarios, conversational and dictation
+        - You can create your own custom models including accoustics, language, and pronounciation
+        if the pre-built models from Microsoft do not provide what you need
+        - Speech to text Real Time:
+            - In order for a real time transcription to work, your application need to be listening 
+            for incoming audio from a microphone or other input source such as an audio file. 
+            - The application code streams the audio to the service, which returns the transcribed 
+            text
+        - Speech to Text for Batch Transcription:
+            - You may have audio recordings on a file share, a remote server, or even on Azure 
+            storage
+            - You can point to audio files with a Shared Access Signature (SAS) URI and 
+            synchronously recieve transcription results
+            - Normally a job will start executing within minutes of the request but there is no 
+            estimate for when a job changes into the running state
+    
+    - The text to speech API:
+        - It enables you to convert text input to audible speech, which can either be played 
+        directly through a computer speaker or written to an audio file
+        - The service includes multiple pre-defined voices with support for multiple languages
+        and regional pronunctiation, including standard voices as well as neural voices
+        - Neural voices leverage neural networks to overcome common limitations in speech 
+        synthesis with regard to intonation, resulting in a more natural sounding voice
+        - You can also develop custom voices and use them with the text to speech API
+    
