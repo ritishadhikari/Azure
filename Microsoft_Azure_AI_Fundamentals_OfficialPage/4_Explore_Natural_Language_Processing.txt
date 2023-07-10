@@ -1,0 +1,50 @@
+Analyze text with the Language service:
+
+    - The language service is a part of the Azure Cognitive Services offerings that can perform 
+    advanced natural language processing over raw text
+
+    - The Language Cognitive Service can help simplify application development by using pre-trained
+    models that can:
+        - Determine the language of a document or text (for ex. French or English). Submit multiple
+        Documents at a time. Returns the following output:
+            - The language name (ex. English)
+            - The ISO 639-1 language code (ex. "en")
+            - A score indicating a level of confidence in the language detection
+        - Perform Sentiment Analysis on text to determine a positive or negative Sentiment
+            - Score between 0 to 1
+            - Close to 1 is a positive Sentiment
+            - Close to 0 is a negative Sentiment
+            - Close to 0.5 is a neutral sentiment 
+        - Extract Key phrases from text that might indicate its main talking points
+            - Used to identify important elements of the review   
+        - Identify and categorize entities in the text. Entities can be people, places, organizations
+        or even everyday items such as dates, times, quantities and so on
+
+    - The Language Service can be provisioned through a:
+        - Language Resource: 
+            - For exclusive access and managing and billing separately
+        - Cognitive Service Resource
+            - If you want to pair this service with other cognitive services and managing and billing
+            togather
+    
+    - Language Detection:
+        - For a sentence having text with mixed languages, the language detection service will focus on 
+        the predominant language in the text
+        - The service uses an algorithm to determine the predominant language, such as length of phrases 
+        or total amount of text for the language compared to other languages in the text
+        - The predominant language will be the value returned, along with the language code
+        - The confidence score may be less than 1 as a result of the mixed language text
+        - For ambitious and mixed language content like ":-)", it results in a value of "unknown" 
+        for the language name and the language identifier, and a score of NaN
+    
+    - Sentiment Analysis:
+        - A list of words in a sentence that has no structure could result in an indeterminate score
+        - Also if the content is in some different language and the language is passed different, 
+        that will also generate an indeterminate score
+    
+    - Entity Recognition:
+        - It is essentially an item of a particular type or a category and in some cases, subtype
+        - The service also supports entity linking to help disambiguate entities by linking to a 
+        specific reference. For recognized entities, the service returns a URL for a relevant 
+        Wikipedia article
+    
