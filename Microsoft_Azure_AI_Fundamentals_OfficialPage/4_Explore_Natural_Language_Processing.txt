@@ -109,3 +109,54 @@ Recognize and Synthesize Speech:
         synthesis with regard to intonation, resulting in a more natural sounding voice
         - You can also develop custom voices and use them with the text to speech API
     
+Translate Text to Speech:
+    - A translation service must take into account the semantic context and return a translation
+    and not just apply literal translation (word to word)
+    - Text Translation can be used to translate documents from one language to another, translate
+    email communications that come from foreign governments or translate a webpage
+    - Speech Translation is used to translate between spoken language, sometimes directly 
+    (speech-to-speech translation) and sometimes by translating to an intermediary text format 
+    (speech-to-text translation)
+
+    - To use the Speech Service in an application, you must create an appropriate resource in Azure
+    subscription:
+        - A Translator or Speech resource
+         - For exclusive access and managing and billing separately
+        - Cognitive Service Resource
+            - If you want to pair this service with other cognitive services and managing and billing
+            togather
+    
+    - Translator Service:
+        - Supports Text-to-Text translation
+        - This service uses a neural machine translation model for translation
+        - You must specify the language you are translating from and the language you are translating
+        to using ISO 639-1 language codes, such as en for english, fr for french, etc
+        - Alternately you can specify cultural variants of languages by extending the language code 
+        with the appropriate 3166-1 cultural code - for example, en-US for US english, en-GB for
+        Great Britain or fr-CA for Canadian French
+        - You can also specify one from language with multiple to language enabling you to
+        simultaneously translate a source document into multiple languages
+        - Optional Configurations includes:
+            - Profanity Filtering:
+                - By marking the translated text as profane or by omitting it in the results
+            - Selective Translation
+                - You may tag a content that isn't translated
+
+    - Speech Service:
+        - Supports Speech to text and speech-to-speech translation
+        - This service includes the following APIs:
+            - Speech to Text:
+                - Transcribe speech from an audio source to text format
+            - Text to Speech
+                - Generate spoken audio from a text source
+            - Speech Translation 
+                - Translate speech in one language to text or speech in another
+        - Use the Speech Translation API to translate spoken audio from a streaming source, 
+        such a microphone or audio file, and return the translation as text or an audio stream
+        - You can specify one source language and one or more target language to which the source
+        should be translated
+        - The source language must be specified using the extended language and culture code 
+        format, ex: es-US for American Spanish
+        - The target languages must be specified using a two-character language code, 
+        ex: en for English
+
