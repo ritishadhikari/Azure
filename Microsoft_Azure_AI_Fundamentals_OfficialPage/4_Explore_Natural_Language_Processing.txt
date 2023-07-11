@@ -160,3 +160,79 @@ Translate Text to Speech:
         - The target languages must be specified using a two-character language code, 
         ex: en for English
 
+Create a Language Model with Conversational Language Understanding:
+    - Conversational language understanding is supported through the Language Service
+    
+    - You need to take into account three concepts:
+        - Utterances:
+            - Example of something a user might say, and which your application must interpret
+            - Ex: "Switch the fan on", "Turn on the light"
+        - Entities:
+            - An entity is an item to which an utterance refers
+            - Ex. Fan and Light in the above Utterance
+        - Intents
+            - Represents the purpose or goal expressed in a user's utterance
+            - The intent is to turn on a device for both the utterance
+            - Hence in this case, you might define a TurnOn intent that is related to these Utterances
+    
+    - Utterances are used to train the model to identify the most likely intent and entities to which
+    it should be applied based on a given input
+
+    - None Intent:
+        - You should consider always using the None intent to help handle utterances that do not map any
+        of the utterances you have entered. 
+        - It is considered a fallback, and is typically used to provide a generic response to users when 
+        their requests don't match any other intent. 
+        - It is a required intent and cannot be deleted or renamed
+        - Fill it with utterances that are outside of your domain
+    
+    - After defining the entities and intents with sample utterances in Conversational Language 
+    Understanding (CLU) application, you can train a language model to predict intents and entities 
+    from user input, even if it does not match the sample utterances exactly
+
+    - Creating CLU consists of two main tasks:  
+        - Authoring:
+            - Define entities, intents and utterances with which to train the language model
+            - CLU provides a comprehensive collection of prebuilt domains that include 
+            pre-defned intents and entities for common scenarios; which you can use as a starting
+            point for your model
+            - You can also create your own entities and intents
+            - You can write code to define elements of your model or use the CLU portal for creating
+            and managing Conversational Language Understanding
+            
+            - Intents:
+                - Define Intents based on actions a user would want to perform with your application
+                - Include a variety of utterances for each intent that provides examples of how a 
+                user might express the intent
+                - If an intent can be applied to multiple entities, include sample utterances for
+                each potential entity and ensure that each entity is identified in the utterance
+            
+            - Entities:
+                - Machine Learned:
+                    - Entities that are learned by your model during training from context in the 
+                    sample utterances you provide
+                - List:
+                    - Entities that are defined as a heirarchy of lists and sublists. Ex Device 
+                    list includes sublists such as lamp, fan etc. Synonyms can be added - light (lamp)
+                - Regex:
+                    - Describing a pattern. Ex. [0-9]{3}-[0-9]{3}-[0-9]{4} signifying telephone number
+                - Pattern.any:
+                    - Entities that are used with patterns to define complex entities that may be hard
+                    to extract from sample utterances 
+            
+            - Training:
+                - It is the process of using your sample utterances to teach your model to match 
+                natural language expressions that a user might say to probable intents and entities
+                - Post training, test your model by submitting text and reviewing the predicted intents
+
+        - Prediction:
+            - Publish the model so that client applications can use it for intent and entity    
+            prediction based on user input
+            - The predictions (intents and entities) are returned to the client applications
+            which can take appropriate action based on the predicted intent 
+ 
+    
+    - Resources for Conversational Language Understanding:
+        - Language Service:
+        - Cognitive Service:
+            - This service can be used only for prediction
