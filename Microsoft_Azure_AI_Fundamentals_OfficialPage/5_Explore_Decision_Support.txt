@@ -1,0 +1,56 @@
+Explore Decision Support:
+    - The Azure Anomaly detector is a cloud based service that helps you monitor and detect abnormalities
+    in your historical time series and real-time dataset
+    - It supports batch processing of time series data and last-point anomaly detection for real time
+    data
+    - The sensitivity boundary is a parameter that you can specify when calling the service; It allows 
+    the boundary settings to tweak the results
+    - Accurate anomaly detection leads to prompt trouble shooting, which helps to avoid revenue loss
+    and maintain brand reputation
+    - Azure Anomaly detector is a part of decision services category in Azure Cognitive Services
+    - You can use the REST API to integrate Anomaly detector into your applications with relative
+    ease
+    - The main parameter you need to customize is "Sensitivity", which is from 1 to 99 to adjust the 
+    outcome to fit the scenario
+    - The service can detect anomalies in historical time series data and also in real-time data such 
+    as streaming input from IoT devices, sensors, or other streaming input sources
+    - By default the upper and lower boundaries for anomaly detection are calculated using concepts
+    known as expectedValue, upperMargin and lowerMargin
+    - You can adjust the boundaries by applying a margin scale to the upper and lower margins as 
+    demonstrated by the following formula:
+        - upperBoundary=expectedValue+(100-marginScale)*upperMargin
+    
+    - Data Format:
+        - The Anomaly Detector service accepts data in a JSON format
+        - The key aspects of the data being sent includes the granularity (Hourly), a timestamp, and a 
+        value that was recorded for that timestamp
+        - The service supports a maximum of 8640 data points however sending this many data points in 
+        the same JSON object can result in latency for the response
+        - You can improve the response by breaking your data points into smaller chunks (windows) and 
+        sending these in a sequence
+        - The same JSON object format is used in a streaming scenario, the main difference is that
+        you will send a single value in each request
+        - The streaming detection method will compare the current value being sent and the previous 
+        value sent
+
+    - Data Consistency:
+        - If your data has less that 10% missing values in the sequence of the expected number of 
+        points, the impact is negligible on the detection results
+        - However if you have more than 10% missing, there are options to help "fill" the data set, 
+        where we can use linear interpolation method to fill in the missing values and complete the 
+        data set. This will fill gaps with evenly distributed values
+        - The anomaly detector service will provide the best results if your time series data is evenly
+        distributed
+        - If data is more randomly distributed, you can use an aggregation method to create a more even
+        distribution data set
+      
+    - Batch Detection:
+        - When using the batch detection mode, Anomaly Detector creates a single statistical model
+        based on the entire data set that you pass to the service
+        - From this model, each data point in the data set is evaluated and anomalies are identified
+
+    - Real time detection:
+        - It uses streaming data by comparing previously seen data points to the last data point 
+        to determine if your latest one is an anomaly
+        - This operation generates a model using the data points you send, and determines if the 
+        target (current) point is an anomaly 
