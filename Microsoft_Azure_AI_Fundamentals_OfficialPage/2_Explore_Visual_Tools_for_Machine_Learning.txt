@@ -17,7 +17,7 @@ Use Automated Machine Learning in Azure Machine Learning:
     - Azure Machine Learning Compute:
         - These are cloud based compute resources on which you can run model training and data
         exploration processes
-        - In Azure ML Studio, you can manage the compure targets for Data Science Activities
+        - In Azure ML Studio, you can manage the compute targets for Data Science Activities
         - There are four kinds of compute resources:
             - Compute Instances:
                 - Development workstations that data scientists can use to work with data and models
@@ -70,7 +70,7 @@ Create a classification model with Azure Machine Learning designer:
         ML models which can be shared, reused and version controlled
     
     - Pipelines:
-        - Pipelines ley you organize, manage and reuse complex ML workflows across projects and users
+        - Pipelines lets you organize, manage and reuse complex ML workflows across projects and users
         - A pipeline starts with dataset from which you want to train the model
         - Each time a pipeline is run, the configuration of the pipeline and its results are stored
         in your workspace as a pipeline job
@@ -84,7 +84,7 @@ Create a classification model with Azure Machine Learning designer:
 
     - Azure Machine Learning Jobs:
         - Azure ML Job executes a task against a specified compute target 
-        - It enables a systemetic tracking for you ML experimentation and workflows
+        - It enables a systemetic tracking for your ML experimentation and workflows
         - Once a job is created, Azure ML maintains a run record for the job
     
     - Steps for Classification in Azure Includes:
@@ -113,7 +113,7 @@ Create a regression model with Azure Machine Learning Designer:
     - 
 
 Create a Clustering model with Azure Machine Learning Designer:
-    - Use designer's Assign Data to Clusters component to group the data into clusters 
+    - Use designer's Assign Data to Cluster component to group the data into clusters 
     - Evaluation Metrics for Clustering in Azure ML Designer are:
         - Average Distance to Other Center: Indicates how close on average each point in the cluster is
         to the centroids of all other clusters
@@ -122,6 +122,6 @@ Create a Clustering model with Azure Machine Learning Designer:
         - Number of Points: The number of points assigned to the cluster
         - Maximal Distance to Cluster Center: The maximum of the distances between each point and the
         centroid of that point's cluster. If this number is high, the cluster may be widely dispersed.
-        This statistics in combination with the Average Distance to Cluster Center helps you
+        This statistics in combination with the Average Distance to Cluster Center helps you 
         determine the cluster's spread
 
