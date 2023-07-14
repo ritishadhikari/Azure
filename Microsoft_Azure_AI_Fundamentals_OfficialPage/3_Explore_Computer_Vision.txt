@@ -106,8 +106,8 @@ Classify images with the Custom Vision service:
     - Model Evaluation happens through:
         - Precision
         - Recall
-        - Average Precision (Recall)
-    - Once model is evaluates, you can publish the model to the prediction resource.
+        - Average Precision (F1 Score)
+    - Once model is evaluated, you can publish the model to the prediction resource.
     - To use model for prediction, client application developers need the following information:
         - Project ID:
             - The unique ID of the Custom Vision project you created to train the model
@@ -201,7 +201,7 @@ Detect and analyze faces with the Face service:
         - A key that is used to authenticate client applications
         - An endpoint that provides HTTP address at which your resource can be accessed
 
-Read text with the Computer Vision serviceL
+Read text with the Computer Vision service:
     - The ability for computer systems to process written or printed text is an area of 
     artificial intelligence (AI) where computer vision intersects with Natural Language
     Processing
@@ -230,7 +230,7 @@ Read text with the Computer Vision serviceL
         - The Read API service within the computer vision resource, uses the latest recognition 
         models and is optimized for images that have a significant amount of text or has considerable
         visual noise
-        - It handles scanned documents that handle that have a lot of text
+        - It handles scanned documents that have a lot of text
         - It provides the ability to extract large amounts of typewritten text from images
         - It has the ability to automatically determine the proper recognition model to use, taking
         into consideration lines of text and supporting images with printed text as well as
@@ -258,7 +258,7 @@ Analyze receipts with the Form Recognizer service:
     but also intelligently interpret the information they contain.
     - Azure's Form Recognizer service can solve for this issue by digitizing fields from forms 
     using optical character recognition (OCR).
-    Using the Form Recognizer service, we can input an image of a receipt like the one above, 
+    - Using the Form Recognizer service, we can input an image of a receipt like the one above, 
     and return useful information that might be required for an expense claim, including: 
         - The name, address, and telephone number of the merchant
         - The date and time of the purchase.
