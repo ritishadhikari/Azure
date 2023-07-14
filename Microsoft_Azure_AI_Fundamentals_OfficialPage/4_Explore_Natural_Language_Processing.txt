@@ -34,7 +34,7 @@ Analyze text with the Language service:
         or total amount of text for the language compared to other languages in the text
         - The predominant language will be the value returned, along with the language code
         - The confidence score may be less than 1 as a result of the mixed language text
-        - For ambitious and mixed language content like ":-)", it results in a value of "unknown" 
+        - For ambigious and mixed language content like ":-)", it results in a value of "unknown" 
         for the language name and the language identifier, and a score of NaN
     
     - Sentiment Analysis:
@@ -231,7 +231,6 @@ Create a Language Model with Conversational Language Understanding:
             - The predictions (intents and entities) are returned to the client applications
             which can take appropriate action based on the predicted intent 
  
-    
     - Resources for Conversational Language Understanding:
         - Language Service:
         - Cognitive Service:
@@ -246,8 +245,7 @@ Build a bot with the Language Service and Azure Bot Service:
             - A Knowledge base of question and answer pairs:
                 - Usually with some built-in natural language processing model to enable questions
                 that can be phrased in multiple ways to be understood with the same semantic meaning
-            - A bot service that provides an interface to the knowledge base through one or more
-            channels
+            - A bot service that provides an interface to the knowledge base through one or more channels
     
     - You can easily create a user support bot solution on Microsoft Azure using a combination of 
     two core services:
