@@ -1,0 +1,30 @@
+Applications of Computer Vision:
+    - Image Classification
+    - Object detection
+    - Semantic Segmentation
+    - Image Analysis
+    - Face detection & Recognition:
+        - Detect Face, Age and Emotional State
+    - Optical Character Recognition
+
+ Azure Computer Vision:
+    - Provides a pre-trained computer vision model that can be used to analyze images
+    - Provides Captions, Tags as well as Ratings
+    - Either use Computer Vision or Cognitive Services
+
+Training Models with the Custom Vision Service:
+    - Image Classification
+    - Object Detection 
+
+Face Detection Services in Azure provides more functionality for faces than the computer Vision
+Services including:
+    - Facial Attributes:
+        - Age
+        - Emotions
+    - Facial Recognition:
+        - Similarity Matching
+        - Identity Matching
+
+Reading Text with Computer Vision Service
+
+Analyzing Forms with the Form Recognizer Service

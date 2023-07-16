@@ -1,0 +1,24 @@
+Azure Machine Learning:
+    - Takes the hard work out of Machine Learning
+    - Supply the data and desired model type, and let Azure Machine Learning find the best
+    model
+
+Azure Machine Learning Designer:
+    - Visual tool for creating an ML Pipelines 
+
+Authoring Services:
+    - Notebooks
+    - Automated ML
+    - Designer
+
+Assets services:
+    - Datasets
+    - Experiments
+    - Pipelines
+    - Models
+    - Endpoints
+
+Manage Services:
+    - Compute
+    - Datastores
+    - Data Labelling

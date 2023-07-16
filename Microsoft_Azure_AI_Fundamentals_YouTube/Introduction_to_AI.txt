@@ -1,0 +1,21 @@
+Azure Machine Learning:
+    - Platform for Training, Deploying and Managing Machine Learning Models
+
+Cognitive Services:
+    - Suite of services developers can build AI solutions
+
+Azure Bot Service:
+    - Cloud Bases Solutions for developing and managing Bots
+
+
+Challenges and Risks with AI:   
+    - Bias can affect Results: (Fairness)
+    - Errors may cause harm (Reliability and Safety)
+    - Data could be exposed (Privacy & Security)
+    - Solutions may not work for everyone (Inclusiveness)
+    - Users must trust a complex system (Transparency)
+    - Who's liable for AI-driven decisions? (Accountability)
+        - Solutions must meet ethical standards that are clearly defined
+
+# Go through Resonsible AI videos once more
+

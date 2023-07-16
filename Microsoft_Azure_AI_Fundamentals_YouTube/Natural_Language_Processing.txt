@@ -1,0 +1,23 @@
+Areas under Natural Language Processing:
+    - Text Analysis and Entity Recognition:
+        - Text Analytics or Cognitive Services
+        - Language Detection Service with ISO 6391 code, language name and confidence score
+        - Entity Recognition comes with Type (Qtty), Subtype(ordinal) and the label (2nd)
+    - Sentiment Analysis
+        - Text Analytics Service  
+    - Key Phrase Extraction:
+        - Identifying main points around the context of the documents
+    - Speech Recognition and Synthesis
+    - Machine translation
+    - Semantic Language Modelling
+
+Azure NLP:
+    - Text Analytics Services:
+        - Analyze Text documents
+        - Extract key phrases
+        - Detect Entities
+        - Sentiment Analysis
+    - Translator
+    - Speech Servies:
+        - Recognize and Synthesize Speech and tranlate spoken Languages
+    - Language Understanding:
