@@ -9,7 +9,7 @@ Azure Cognitive Search:
     images, or new entities and key phrases detection through text analytics
     - It'a a PAAS where Microsoft manages the infrastructure and availability
     - It provides a programmable search engine and is built on top of Apache Lucene
-    - It provides 99.9% uptime SLA for cloud and Onpremise Assets
+    - It provides 99.9% uptime SLA for cloud and On-premise Assets
 
 Features of Azure Cognitive Search:
     - Data from any source:
@@ -94,7 +94,7 @@ Knowledge Store:
         - Table projections are used to structure the extracted data in a relational schema for 
         querying and visualization
         - Object projections are JSON documents that represent each data entity
-        - File projections are used to store extracted images in KPG format
+        - File projections are used to store extracted images in JPG format
     - The two outputs, search index and knowledge store are mutually exclusive products of the same 
     pipeline; derived from the same inputs but resulting in output that is structured, stored and 
     used in different applications
