@@ -7,7 +7,9 @@ Areas under Natural Language Processing:
         - Text Analytics Service  
     - Key Phrase Extraction:
         - Identifying main points around the context of the documents
-    - Speech Recognition and Synthesis
+    - Speech Recognition and Synthesis:
+        - Semantic Translation over Literal Translation
+        - Text and Speech Translation 
     - Machine translation
     - Semantic Language Modelling
 

@@ -1,0 +1,136 @@
+Knowledge Mining is a discipline in AI that uses a combination of intelligent services to quickly 
+search and learn from vast amounts of information.
+
+Azure Cognitive Search:
+    - It is a cloud search service that has tools for building user managed indexes
+    - The indexes can be used for internal only use or to enable searchable content on public-facing
+    internet assets
+    - The search results contains only your data, which includes text inferred or extracted from 
+    images, or new entities and key phrases detection through text analytics
+    - It'a a PAAS where Microsoft manages the infrastructure and availability
+    - It provides a programmable search engine and is built on top of Apache Lucene
+    - It provides 99.9% uptime SLA for cloud and Onpremise Assets
+
+Features of Azure Cognitive Search:
+    - Data from any source:
+        - Format should be JSON with auto crawling support for selected data sources in Azure
+    - Full text search and analysis:
+        - You can query both simple query and full Lucene query syntax
+    - AI powered search:
+        - Has cognitive AI capabilities built in for image and text analysis from raw content
+    - Multi Lingual:
+        - Offers Lingustic analysis for 56 languages to intelligently handle phonetic matching 
+        or language-specific linguistics
+    - Geo Enabled: 
+        - Supports Geo-Search filtering based on proximity to a physical location
+    - Configurable User Experience:
+        - Has several features like AutoComplete, AutoSuggest, Pagination and Hit Highlightning
+
+Elements of a search solution:
+    - The Cognitive Search Solution starts with a data source that contains data artifacts you would
+    want to search
+    - This could be a heirarchy of files and folders in Azure Storage, or text in a database
+    such as Azure SQL or Azure Cosmos DB
+    - Data Format is JSON
+    - The fields containing your content are persisted in an index which can be searched by client
+    applications for sorting, filtering and searching
+
+Features of Cognitive Search Solution:
+    - Indexer:
+        - Automate Data Ingestion including JSON serialization of source data in native formats
+        - It connects to a data source, serializes the data and passes to the search engine for 
+        indexing and supports change detection
+    - AI enrichment:
+        - Attach a skillest that applies a sequence of AI skills to enrich the data, making It
+        more searchable
+        - Skillsets are based on Cognitive Services APIs, ex., recognizing entities in text, 
+        translating text, evaluating sentiment or predicting appropriate caption for images
+        - AI skills can be either built-in skills, such as text translation or OCR or custom
+        skills that you provide
+        - Enriched content can be sent to a knowledge store which stores the output from 
+        an AI enrichment pipeline in tables and blobs in Azure Storage for independent analysis
+        and downstream processing
+    
+Index Schema:
+    - An index is a persistent collection of JSON documents and other content used to enable search
+    functionality
+    - The documents within a row can be thought of as a rows in a table, where each document
+    is a single unit of searchable data in the index
+
+Index Attribute:
+    - By assigning attributes or behaviors to the fields, you can let Azure Cognitive Search know 
+    how you would like to search and display the fields in the documents
+    - For each field in the document, the index stores its name, the data type, and supported 
+    behaviors for the field such as, is the field searchable, sortable, extracted
+    - If you forget to set a required behavior on a field when designing, the only way to get 
+    that feature is to rebuild that index
+
+Indexer:
+    - In order to export data in any format to JSON, and load it into an index, we use an Indexer
+    - To create search documents, you can either generate JSON documents with application code or 
+    you can use Azure's indexer to export incoming documents into JSON
+
+Load JSON documents into an index with two approaches:
+    - Push Method:
+        - JSON data is pushed into a search index via either REST API or .NET SDK
+        - Has no restrictions on the data source type, location or frequency of location
+    - Pull Method:
+        - Search Service Indexers can pull data from popular Azure data sources and if necessary,
+        export data into JSON if it's not already formatted
+
+Dashboard for Data Importing and Verification:
+    - Search Services overview page has a dashboard that lets you quickly see the health of the 
+    search service
+    - You can see how many documents are there in the search service, how many indexes have been 
+    used and how much storage is in use
+    - An index is ready when the first document is successully loaded
+    - Indexer only import new or updated documents, so it is normal to see zero documents indexed
+
+Knowledge Store:
+    - It is a persistent storage of enriched content
+    - It's purpose is to store the data generated from AI enrichment in a container
+    - Ex. You may want to save the results of an AI skillset that generates captions from images
+    - It can contain one or more of three types of projection of the extracted data:
+        - Table projections are used to structure the extracted data in a relational schema for 
+        querying and visualization
+        - Object projections are JSON documents that represent each data entity
+        - File projections are used to store extracted images in KPG format
+    - The two outputs, search index and knowledge store are mutually exclusive products of the same 
+    pipeline; derived from the same inputs but resulting in output that is structured, stored and 
+    used in different applications
+     
+Supported Data Source for creating indexers:
+    - Cosmos DB
+    - Azure SQL
+    - Azure Storage (Blob, ADLS2, Table Storage)
+
+To use Azure Cognitive Search:
+    - You will need an Azure Cognitive Search resource which can be created in the Azure Portal
+    - Once created, you can manage components of your service from the resource Overview page
+    in the portal
+    - You can build Azure search indexes using the Azure portal or programatically with the REST
+    API or software development kit (SDKs)
+
+Import Data Wizard:
+    - It automates process in the Azure Portal to create various objects needed for the search
+    engine
+    - You can see it in action when creating any of the following objects using the Azure Portal:
+        - Data Source
+        - Index
+        - Indexer
+        - Skillset
+        - Knowledge Store
+
+Querying Data post Indexing:
+    - After we build the index, we can perform queries
+    - Schema of the index determines what queries can be answered
+    - Azure Cognitive Search Queries can be submitted as an HTTP or REST API request, with the 
+    response coming back as JSON
+    - Query can specify what fields are searched and returned, how search results are shaped and
+    how the results should be filtered and sorted
+    - A query that does not specify the field to search will execute against all the searchable 
+    fields within the index
+    - Simple Syntax covers all of the common query scenarios while full Lucene is useful for 
+    advanced scenarios
+    - The simple query syntax is the default search syntax for queries
+    - Ex. coffee (-"busy" + "wifi"); find content about coffee, excluding busy and including wifi
