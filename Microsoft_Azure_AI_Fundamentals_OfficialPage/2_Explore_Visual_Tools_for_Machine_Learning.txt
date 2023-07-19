@@ -89,9 +89,8 @@ Create a classification model with Azure Machine Learning designer:
     
     - Steps for Classification in Azure Includes:
         - Prepare Data
-            - Azure provides several pre-built components that can be used to prepare data for 
-            training
-            - These components enable you tp clean data, normalize features, join tables, etc
+            - Azure provides several pre-built components that can be used to prepare data for training
+            - These components enable you to clean data, normalize features, join tables, etc
         - Train Model:
             - Dataset is required to train a classification model
             - You will use designer's Score component to generate the predicted class label value
