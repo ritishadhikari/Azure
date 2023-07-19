@@ -244,8 +244,7 @@ Read text with the Computer Vision service:
             - Retrieve the results of the operation   
         - The results from the Read API are arranged into the following heirarchy:
             - Pages:
-                - One for each page of text, including information about the page size and 
-                orientation
+                - One for each page of text, including information about the page size and orientation
             - Lines:
                 - The lines of text on a page
             - Words
