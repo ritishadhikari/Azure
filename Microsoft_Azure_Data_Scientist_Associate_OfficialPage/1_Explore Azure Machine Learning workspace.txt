@@ -1,0 +1,145 @@
+Explore Azure Machine Learning workspace resources and assets:
+    -  Azure Machine Learning provides a platform for data scientists to train, deploy 
+    and manage their machine learning models on the Microsoft Azure platform
+    - It provides a comprehensive set of resources and assets to train and deploy
+    effective ML models
+    - To use these resources and assets, you create Azure Machine Learning workspace
+    resource in your Azure Subscription
+    - In this workspace, you can manage data, compute resources, models, endpoints, 
+    and other artifacts related to your machine learning workloads
+    
+    - As a part of Azure ML Workspace, the following are provided:
+        - Azure Storage Account:
+            - To store files and notebooks used in the workspace and to store metadata
+            of jobs and models
+        - Azure Key Vault:
+            - To securely manage secrets such as authentication keys and credentials used by The
+            workspace
+        - Application Insights:
+            - To monitor predictive services in the workspace
+        - Azure Container Registry:
+            - Created when needed to store images for Azure Machine Learning environments
+    
+    Create Azure ML Workspace using:
+        - Azure Portal  
+        - Azure Resource Manager Template (ARM)
+        - Azure Command Line Interface (CLI)
+        - Azure ML Python SDK
+    
+    Access is granted in Azure using Role Based access control (RBAC) with three built in roles that
+    you can use across resources and resource groups to assign permission to users:
+        - Owner:
+            - Gets full access to the resource and can grant access to others using access control
+        - Contributor:
+            - Gets full access to all resources, but can't grant access to others
+        - Reader:
+            - Can only view the resource, but isn't allowed to make any changes
+    
+    Additional specific built-in roles:
+        - AzureML Data Scientist:
+            - Can perform all actions within the workspace, except for creating or deleting compute
+            resources or editing the workspace settings
+        - AzureML Compute Operator:
+            - Is allowed to create, change and manage access the compute resources within a workspace
+
+    
+    To fully customize permissions, we create a custom role
+
+    Azure Machine Learning Resource:
+        - The Workspace
+        - Compute resources:
+            - Compute Cluster
+            - Inference Cluster
+            - Attached Compute
+            - Compute Instance
+        - DataStores:  
+            - All data is stored in DataStores which are references to Azure Data Services
+    
+    Azure Machine Learning Assets:
+        - Models:
+            - Train ML models with frameworks like Sklearn, Pytorch, etc
+            - Common ways to store a model is wih pkl
+        - Environments:
+            - Specify Software packages, environment variables and software settings to run scripts
+            - Environment is stored as an image in the Azure Container Registry created with the 
+            workspace when it's used for the first time
+        - Data:
+            - As Data Assets
+            - Name and Version your Data Assets
+        = Components:
+            - Make it easier to share code with a component in a workspace
+
+    Authoring of ML can be done with:
+        - Designer
+        - Automated ML
+        - Notebooks
+            - Run a script as a job in Azure Machine Learning
+            - When you submit a job to the workspace, all inputs and outputs will be stored in the workspace
+            - There are three types of jobs:
+                - Command: 
+                    - Execute a single script
+                - Sweep:
+                    - Perform Hyperparameter tuning when executing a single script
+                - Pipeline:
+                    - Run a pipeline consisting of multiple scripts or components 
+
+    Azure Machine Learning Workspace:   
+        - The workspace is a central place where you can work with all resources and assets available
+        to train and deploy machine learning models
+        - For reproducibiity, the workspace stores a history of all training jobs, including logs, 
+        metrics, outputs, and a snapshot of your code
+        - A Machine Learning Service is required to create a workspace
+        - When a workspace is created, Azure will automatically create other Azure resources 
+        within the same resource group to support the workspace
+        - You can create Azure ML workspace using:
+            - Azure Portal  
+            - Azure ARM template
+            - Azure CLI with Azure Machine Learning CLI extension
+            - Azure Machine Learning Python SDK
+        - The Azure Machine Learning Studio is a web portal and provides an easy to use interface
+        to create, manage and use resources and assets in the workspace
+        - From the Azure Portal, you can also give others access to the Azure Machine Learning 
+        Workspace, using Access Control as individual users or teams
+        - Initially, you may work with one workspace; however when working on large-scale projects, 
+        you may choose to use multiple workspace
+        - You can use workspace to group machine learning assets based on projects, deployment 
+        environments (for example, test and production), teams or some other organizing principle
+        - Link on organizing and setting up Azure ML environments
+    
+    - Ideally you would want someone like an administrator to create and manage the resources:
+        - The Workspace:
+            - Train and Track Models
+            - Deploy the models to the endpoint
+            - Stores all the logs, metrics, outputs and snapshots of your code
+        - Compute resources:
+            - There are four types of compute in the Azure Machine Learning Workspace:
+                - Compute Instances:
+                    - Development workstations that data scientists can use to work with data and models
+                - Compute Clusters:
+                    - Scalable Clusters of VMs for On Demand processing of experiment code
+                    - Ideal to use for production workloads as they automatically scale to your needs
+                - Inference Clusters:
+                    - Deployment targets for predictive services that use your trained models
+                - Attached Compute:
+                    - Links to existing Azure compute resources, such as Virtual Machines or Azure Data
+                    Bricks clusters
+            - Best practice is to only allow administrators to create and manage compute resources
+            - Data scientists should not be allowed to edit compute, but only use the available compute to
+            run their workloads
+        - Datastores:
+            - The workspace does not store any data itself
+            - All data is stored in datastores, which are references to Azure Data Services
+            - The connection information to a data service that a datastore represents is stored in the 
+            Azure Key Vault
+            - When a workspace is created, an Azure Storage account is created and automatically connected 
+            to the workspace
+            - As a result, two data stores are already added to the workspace:
+                - workspacefilestore:
+                    - Connects to the file share of the Azure Storage account created with the workspace
+                    - Used to store files like Jupyter Notebook and Python scripts
+                - workspaceblobstore
+                    - Connects to the blob storage of the Azure Storage account created with the workspace
+                    - Used to store metrics and output when tracking model training
+            - Additionally you can also create datastores to connect to other Azure data services like 
+            Azure Storage Accounts or Azure Data Lake Storage (Gen2)
+    
