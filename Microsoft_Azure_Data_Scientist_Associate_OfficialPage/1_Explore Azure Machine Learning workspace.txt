@@ -143,3 +143,62 @@ Explore Azure Machine Learning workspace resources and assets:
             - Additionally you can also create datastores to connect to other Azure data services like 
             Azure Storage Accounts or Azure Data Lake Storage (Gen2)
     
+    - Assets are created and used at various stages of a project and includes:
+        - Models:
+            - Common way to store ML models is to package the model as a python picke file (.pkl extension)
+            - Alternatively, you can use the open-source platform MLFlow to store your model in the MLModel
+            format
+            - To persist models, you can create or register a model in the workspace
+            - While creating, specify name and version of the model
+            - Versioning allows you to track the specific model you want to use
+        - Environments:
+            - When you write code that uses any frameworks or libraries, you will need to ensure the 
+            necessary components are installed on the compute that will execute the code
+            - To list all necessary requirements, you can create environments specifying name and version
+            - Environments specify software packages, environment variables and software settings to run
+            script
+            - An environment is stored as an image in the Azure Container Registry created with the workspace
+            when it's used for the first time
+            - Whenever you run your script, you can specify the environment that needs to be used by the 
+            compute target
+            - The environment will install all necessary requirements on the compute before executing the
+            script, making your code robust and reusable across compute targets
+        - Data:
+            - Data Assets refer to a specific file or folder
+            - Use data assets to easily access data every time, without having to provide authentication
+            every time you want to access it
+            - When you create a data asset in the workspace, you will need to point to the file or 
+            folder, and the name and version
+        - Components:
+            - To train ML models, we would need to write code
+            - Across projects, there may be code you can reuse
+            - Instead of writing code from scratch, you will want to reuse snippets of code from other
+            projects
+            - Component make it easier to share code in a workspace
+            - To create a component, you have to specify the name, version, code and environment needed 
+            to run the code 
+            - You can use components when creating pipelines    
+            - Ex. Normalize Data, Train Regression Model, test the trained model on a validation dataset
+    
+    - To train models with the Azure Machine Learning Workspace, you can:
+        - Use the designer in the Azure Machine Learning Studio:
+            - It is ideal for easy and quick exploration during the initial phase of training machine learning
+            models
+            - Use designer to swiftly create pipelines using components you have created and registered in 
+            the workspace
+        - Use Automated Machine Learning:
+            - Experiment with various algorithms and hyperparameter values
+            - It iterates through algorithms paired with feature selections to find the best performing 
+            model for your data
+        - Run a Jupyter Notebook:
+            - All the files you clone or create in the notebooks section are stored in the file share of the 
+            Azure Storage account created with the workspace
+            - To run notebooks, you will use a compute instance as they are ideal for development and work 
+            similar to a virtual machine
+            - You can chose to edit and run notebooks in Visual Studio Code, while still using a compute 
+            instance to run the notebooks
+        - Run a script as a Job
+            - Use Scripts to run production ready code
+            - You can easily automate the execution of scripts to automate any machine learning workspace
+            - Run a script as a job in Azure Machine Learning
+            - When you submit a job to the workspace, all inputs and outputs will be stored in the workspace
