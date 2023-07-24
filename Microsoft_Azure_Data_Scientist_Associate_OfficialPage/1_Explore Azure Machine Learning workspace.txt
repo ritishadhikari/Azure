@@ -202,3 +202,83 @@ Explore Azure Machine Learning workspace resources and assets:
             - You can easily automate the execution of scripts to automate any machine learning workspace
             - Run a script as a job in Azure Machine Learning
             - When you submit a job to the workspace, all inputs and outputs will be stored in the workspace
+
+Explore developer tools for workspace interaction:
+    - There are two ways to access the Azure Machine Learning Studio:
+        - Launch the studio from the Overview page in the Azure Portal
+        - Navigate to the studio directly by signing in at https://ml.azure.com
+    
+    - Python SDK:
+        - It is ideal tool for data scientists that can be used in any python environments
+        - Python SDK V2 in Machine Learning studio by default supports Python version 3.10
+        - Necessary parameters for authentication:
+            - subscription_id
+            - resource_group
+            - workspace_name
+
+
+    - Install the Python SDK:
+        pip install azure-ai-ml
+    
+    - Define Authentication
+        from azure.ai.ml import MLClient
+        from azure.identity import DefaultAzureCredential
+
+        ml_client=MLClient(
+            DefaultAzureCredential(), 
+            subscription_id, 
+            resource_group, 
+            workspace
+        )
+    
+    - Connect to the workspace when you create a new job to train a model:
+        # configure the Job
+        job=command(
+            code="./src",
+            command="python train.py",
+            environment="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest",
+            compute="aml-cluster",
+            experiment_name="train-model"
+        )
+        # connect to workspace and submit job 
+        returned_job=ml_client.create_or_update(job)
+    
+    - Reference Documentation for Python SDK:
+        - https://shorturl.at/lstvZ
+        - You will find all possible classes, methods and parameters available within the Python SDK
+        which can be used to connect and interact
+        - Includes a list of classes for all entities you can interact with, for ex. separate classes
+        exists when you want to create a datastore that links to an Azure Blob Storage, or to an 
+        Azure Data Lake Gen 2   
+
+
+    - Azure CLI:
+        - You can install Azure CLI on a Linux, Mac or windows computer
+        - You run commands or scripts to manage Azure resources
+        - You can also use the Azure CLI from a browser through the Azure Cloud Shell
+        - Check for list of commands available with Azure ML Extension:
+            - az ml -h
+        - Command to create a compute target:
+            - az ml compute create --name aml-cluster --size STANDARD_DS3_V2 \
+            --min_instances 0 --max-instances 5  --type AmlCompute \
+            --resource-group my-resource-group --workspace-name my-workspace
+        - You may prefer using yaml files to define the configuration instead as it becomes
+        easier to organize and automate tasks
+        - Command to create a compute target with the yaml file (compute.yml)
+            - az ml compute create --file compute.yml \
+            --resource-group my-resource-group --workspace-name my-workspace
+        
+    - Advantages of using the Azure CLI with Azure Machine Learning. It allows you to:
+        - Automate the creation and configuration of assets and resources to make it repeatable
+        - Ensure Consistency for assets and resources that must be replicated in multiple environments
+        - Incorporate ML asset configuration into developer operations (DevOps) workflows, such as
+        CI/CD Pipelines
+        - Recommended for Model retraining with new data
+
+    
+    - Use Azure ML studio:
+        - When you want to use a no-code approach
+        - When you are exploring and you quickly want to review your work
+        - If you want to verify that your pipeline ran successfully or what error messages were raised
+        if the pipeline failed
+    
