@@ -1,0 +1,129 @@
+Make Data Available in Azure Machine Learning:
+    - An Uniform Resource Identifier (URI) references the location of your Data
+    - In Azure ML, you need to prefix the URI with the appropriate protocol so as to connect to your
+    data directly
+    - Three Common Protocols in the context of Azure ML:
+        - http(s): 
+            - Use for data stores publicly or privately in an Azure Blob storage or publicly 
+            available http(s) location
+        - abfs(s): 
+            - Use for data stores in an Azure Data Lake Storage Gen 2
+        - azureml:
+            - Use for data stored in an Azure Machine Learning Datastore
+    
+    - Azure ML supports the creation of data stores for the following kinds of Azure Data Source:
+        - Azure Blob Storage
+        - Azure File Share
+        - Azure Data Lake (Gen 1)
+        - Azure Data Lake (Gen 2)
+    
+    - When you create a datastore in Azure Machine Learning, you will store the connection and 
+    authentication information in the workspace, and then to access the data in the container, 
+    you can use the AzureML protocol
+
+    - DataStores allows to easily connect to storage services without having to provide all 
+    necessary details every time you want to read or write data 
+
+    - You have the choice between two different authentication methods when creating a datastore with 
+    an existing storage account on Azure:  
+        - Credential Based:
+            - Use a Service Principal, Shared Access Signature (SAS) token or account key to 
+            authenticate access to your storage account
+        - Identity Based:
+            - Use your Azure Active Directory identity or managed Identity       
+    
+    - Datastores are attached to workspaces and are used to store connection information to storage
+    services
+    - You can create a datastore through:
+        - The Graphical user interface (studio)
+        - The Azure Command Line Interface (CLI)
+        - The Python software development kit (SDK)
+
+    - Built-In Datastores:
+        - Every workspace has four built-in data stores (two Azure Storage blob containers and two
+        Azure Storage File Shares), which are used as System Storage by Azure ML
+        - Another datastore gets added to your workspace if you make use of the open datasets
+        provided as samples
+    
+    - You can create data assets to get access to data in 
+        - Datastores
+        - Azure Storage services,
+        - Public URLs
+        - Data stored on your local device
+    
+    - When you create a data asset and point to a file or folder stored on your local device:
+        - A copy of the file or folder will be upladed to the default datastore workspaceblobstore
+        - You can find the file or folder in the LocalUpload folder
+        - By uploading a copy, you will still be able to access the data from Azure ML workspace,
+        even when the local device on which the data is stored in unavailable
+    
+    - When to use Data Assets:
+        - Executing Machine Learning tasks as Azure Machine Learning jobs
+        - As a job, you can run a python script that takes inputs and generates outputs
+        - It can be parsed as both an input or output of an Azure Machine Learning Job
+
+    - Benefits of using Data Assets:
+        - You can share and reuse data with other members of the team such that they don't need to
+        remember file locations
+        - You can seamlessly access data during model training without worrying about connection strings
+        or data paths
+        - You can version the metadata of the data Assets
+    
+    - Three main types of Data Assets you can use are:
+        - URI File:
+            - Points to a specific file
+        - URI Folder:
+            - Points to a folder
+        - MLTable:
+            - Points to a folder or file, and includes a schema to read as tabular data
+    
+    - ML Table Data Asset:
+        - It allows you to point to a tabular data
+        - When you create a MLTable data asset, you specify the schema definition to read the data
+        - As the schema is already defined and stored within the data asset, you don't have to 
+        specify how to read the data when you use it
+        - Use a ML Table data asset when the schema of your data is complex or changes frequently
+        - You can also chose to only specify a subset of the data
+        - A common approach is to convert the tabular data to a pandas dataframe 
+        - However you can also convert the data into a spark data frame
+    
+    - URI File Data Asset Example Creation:
+        """
+            from azure.ai.ml import MLClient
+            from azure.ai.ml.entities import Data
+            from azure.ai.ml.constants import AsseTypes
+
+            my_path="<supported-path>"
+            my_data=Data(
+                path=my_path,
+                type=AssetTypes.URI_FILE,  # AssetTypes.URI_FOLDER, AssetTypes.MLTABLE
+                description="<description>",
+                name="<name>",
+                version="<version>"
+            )
+
+            ml_client=MLClient(
+            DefaultAzureCredential(), 
+            subscription_id, 
+            resource_group, 
+            workspace)
+
+            ml_client.data.create_or_update(my_data)
+
+        """
+    - URI File as an input to Azure ML job
+    """
+        import argparse
+        import pandas as pd
+
+        parser = argparse.ArgumentParser()
+        parser.add_argument("--input_data", type=str)
+        args = parser.parse_args()
+
+        # tbl = mltable.load(args.input_data)  # Applicable for MLTable
+        # df = tbl.to_pandas_dataframe()  # Applicable for MLTable  
+        df = pd.read_csv(args.input_data)
+        print(df.head(10))
+    """
+    - It's considered a best practice to avoid any sensitive data in your code, like authentication
+    information. Hence, whenever possible, you should work with datastores and data assets in Azure ML
