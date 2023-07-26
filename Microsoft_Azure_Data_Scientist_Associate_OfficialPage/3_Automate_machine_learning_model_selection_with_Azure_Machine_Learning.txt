@@ -1,0 +1,158 @@
+Find the best classification model with Automated Machine Learning:
+    
+    -AutoML allows you to try multiple preprocessing transformations and algorithms with your data to
+    find the best machine learning model
+    
+    - You can Create AutoML experiment using 
+        - Visual interface of Azure Machine Learning Studio
+        - Azure CLI
+        - Python Software Development Kit
+    
+    - Use AutoML for tasks like:
+        - Regression
+        - Forecasting
+        - Image classification
+        - Natural Language Processing
+
+    - Prepare Data in AutoML:
+        - Classification requires tabular data
+        - Create a Data Asset in Azure Machine Learning
+        - Create a MLTable data asset by storing your data in a folder togather with a MLTable
+
+    - Scaling and Normalization:
+        - Scaling and Normalization to numeric data applies automatically in AutoML
+        - It prevents any large-scale features from dominating training
+        - During AutoML experiment, multiple scaling or normalization techniques will be applied
+
+    - Configure Optional Featurization:
+        - Missing Value Imputations
+        - Categorical Encoding
+        - Dropping high cardinality features, ex. record IDs
+        - Feature Engineering (for ex. deriving individual date parts from DateTime features)
+        - Same featurization techniques will be applied for prediction dataset, which were applied 
+        during training
+    
+    - By default AutoML will perform featurization on your data, you can disable it if you don't 
+    want to be transformed
+ 
+    
+    - The Algorithms AutoML uses will depend on the task you specify
+    
+    - When you want to train a classification model, AutoML will choose from a list of algorithms:
+        - Logistic Regression   
+        - NaiveBayes
+        - Light Gradient Boosting Machine (LGBM)
+        - Decision Tree
+        - XGBoost
+        - Linear Support Vector Machine (SVM)
+        - Random Forest
+        - Stochasstic Gradient Descent 
+    
+    - Restrict Algorithm Selection:
+        - By Default, AutoML will randomly select from the full range of algorithms for the
+        specified task
+        - You can chose to block individual algorithms as per your needs 
+    
+    - Configure an AutoML experiment or job with Python SDK (V2):
+        - Configure the metric with the automl class
+        - The best model is based on the Primary Metric
+        - Set limits to automl experiments by using set_limits() to minimize costs and time spent
+        on training
+        - Set the training properties so that AutoML will try various combinations of featurization
+        and algorithms to train an ML model
+    
+    - In order for AutoML to understand how to read the data, you need to create a MLTable data
+    asset that includes the schema of the data
+    
+    - You can create a MLTable data asset when your data is stored in a folder togather with a MLTable
+    file
+
+    - Specify input with the following code:
+        """
+            from azure.ai.ml.constants import AssetTypes
+            from azure.ai.ml import Input
+            my_training_data=Input(type=AssetTypes.MLTable, path="azureml:input-data-automl:1")
+        """
+    
+    - Configure and AutoML Experiment for classification:
+        """
+            from azure.ai.ml import automl
+
+
+            classification_job=automl.classification(
+                compute="aml-cluster",
+                experiment_name="auto-ml-class-dev",
+                training_data=my_training_data_input,
+                target_column_name="Diabetic",
+                primary_metric="accuracy",
+                n_cross_validations=5,
+                enable_model_explanability=True
+            )
+        """
+    
+    - Configure to set limits to an AutoML experiment:
+        """
+            classification.set_limits(
+                # number of minutes after which the complete AutoML job gets terminated
+                timeout_minutes=60,
+                # Maximum number of minutes one trial can take
+                trial_timeout_minutes=20,
+                # maximum number of trails or models that will be trained
+                max_trials=5,
+                # whether to end the experiment if the score isn't improving in the short term
+                enable_early_termination=True
+
+            )
+        """
+    
+    - Multiple trials in parallel:
+        - You can have as many parallel trials as you have nodes
+        - The Maximum number of parallel trials is therefore related to the maximum number of nodes
+        your compute cluster has
+        - If you want to set the maximum number of parallel trials to be less than the maxximum number
+        of nodes, you can use max_concurrent_trials 
+
+
+
+    - Submit an AutoML experiment with the following code:
+        """
+        returned job = ml_client.jobs.create_or_update(clasification_job)
+        """
+    
+    - Experiment consists of child jobs:
+        - Featurization is performed in a child job
+        - Each model is trained in a separate child job
+    
+    - Evaluate and Compare Models:
+        - In Azure ML Studio, select an AutoML experiment to explore its details
+        - On the overview page of the AutoML experiment run, you can review input data and 
+        summary of the best model
+        - Select the Models tab to explore all models that have been trained
+    
+    - When you have enabled featurization for AutoML experiment:
+        - Data Guardrails will be automatically applied
+        - The three guardrails that are supported for classification models are:
+            - Class Balancing Detection
+            - Missing Feature Values Imputations
+            - High Cardinality feature detection
+        - Each of the guardrails will show one of the three possible states:
+            - Passed:
+                - No Problems were detected and no action is needed
+            - Done:
+                - Changes were applied to your data
+                - You should review the changes AutoML has made to your data
+            - Alerted:
+                - An issue was detected but could not be fixed
+                - You should review the data to fix the issue
+    
+    - To explore a model even further, you can generate explanations for each model that has 
+    been trained
+
+    - Monitor AutoML job runs in Azure ML Studio by running the following code and get direct link:
+        """
+            aml_url=returned_job.studio_url
+            print(f"Monitor Your Job at {aml_url}")
+        """
+        
+
+    
