@@ -1,0 +1,76 @@
+Run a training script as a command job in Azure Machine Learning:
+    - When you write code to process data and train models, you want the code to be scalable, repeatable
+    and ready for automation
+    - Scripts are a better fit for production workloads
+    - In Azure ML, you can run a script as a command job using Python SDK V2
+
+    - To configure a command job to run a script, you will need to specify values for the following parameters:
+        - code:
+            - The Folder that includes the script to run
+        - command:
+            - Specifies which file to run
+        - environment:
+            - The necessary packages to be installed on the compute before running the command
+        - compute:
+            - The compute to use to run the command
+        - display_name:
+            - The name of the individual job
+        - experiment_name:
+            - The name of the experiment, the job belongs to
+        
+    - Command Job with the Python SDK (v2):
+        """
+            from azure.ai.ml import command
+
+            job=command(
+                code="./src",
+                command="python train.py", # "python train.py --training_data=diabetes.csv"
+                environment="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest",
+                compute="aml-cluster",
+                display_name="train-model",
+                experiment_name="train-classification-model"
+            )
+
+            returned_job=ml_client.create_or_update(entity=job)
+        """
+
+    - Define Parameters in the Script:
+        - To use parameters in the script, use a library such as argparse to read arguments
+        passed to the script and assign them to variables
+        - To pass parameter values to a script, you need to provide the argument value in the command 
+    
+    - Scripts are ideal for testing and automation in your production environment
+        - Remove nonessential code
+        - Refactor your code into functions
+            """
+                def main(csv_file):
+                    # Reads the CSV File
+                    df=get_data(csv_file)
+                    # Does Train Test and Split
+                    X_train,X_test,y_train,y_test=split_data(df)
+                
+                def get_data(path):
+                    df=pd.read_csv(path)
+                    return df
+                
+                def split_data(df):
+                    X,y=(df[['Pregnancies','PlasmaGlucose','DiastolicBloodPressure',
+                    'TricepsThickness', 'SerumInsulin','BMI','DiabetesPedigree',
+                    'Age']].values, df['Diabetic'].values)
+                    X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3, random_state=0)
+                    return X_train, X_test, y_train, y_test
+
+
+            """ 
+        - Test your script in the terminal
+            """
+                python train.py
+            """
+
+    - Experiments:
+        - All jobs with the same experiment name will be grouped under the same experiment
+        - You can find an individual job using the specified display name
+        - All inputs and outputs of a command job are tracked
+        - You can review which command you specified, which compute was used and which environment
+        was used to run the script on the specified compute
+        
