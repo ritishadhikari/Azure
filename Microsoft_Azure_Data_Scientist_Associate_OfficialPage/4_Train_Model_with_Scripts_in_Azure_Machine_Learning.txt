@@ -74,3 +74,119 @@ Run a training script as a command job in Azure Machine Learning:
         - You can review which command you specified, which compute was used and which environment
         was used to run the script on the specified compute
         
+
+Track Model Training with MLFlow in Jobs:
+    
+    - Next to tracking models that are trained in notebooks, you can also use MLFlow to track 
+    models in scripts
+    - MLFlow is an open source platform that helps you to track model metrics and artifacts across
+    platforms and is integrated with Azure Machine Learning
+    - Use MLFlow togather with AzureML to run training scripts locally or in the cloud.
+    
+    - Two options to track ML jobs with MLFlow:
+        - Enable AutoLogging with mlflow.autolog()
+        - Use logging functions to track custom metrics using mlflow.log_*
+
+    - We need to include the ml-flow and azureml-mlflow in the environment to ensure the pip packages 
+    are installed on the compute before running the script
+    - Create an environment by referring to a YAML file that describes the Conda Environment
+        """
+            name: mlflow-env
+            channels:   
+                - conda-forge
+            dependencies:
+                - python=3.8
+                - pip
+                - pip:
+                    - numpy
+                    - pandas
+                    - scikit-learn
+                    - matplotlib
+                    - mlflow
+                    - azure-mlflow
+        """
+    - Once the environment is defined and registered, make sure to refer to it when submitting a job
+
+
+    - Enable Autologging in MLFlow to log (without anyone needing to specify what needs to be logged):
+        - Parameters
+        - Metrics
+        - Model Artifacts
+    
+    - Python Code for autologging:
+        """
+            import mlflow
+            mlflow.autolog()
+        """
+    
+    -  Log Custom Metrics with MLFlow(use the MLflow command to store metric with the experiment run):
+        - mlflow.log_param():
+            - Log single key-value parameter.
+            - Use this function for an input parameter you want to log
+        - mlflow.log_metric():
+            - Log single key-value metric. 
+            - Value must be a number. 
+            - Use this function for any output you want to store with the run
+        - mlflow.log_artifact():
+            - Log a file
+            - Use this function for any plot you want to log, save as image file first
+    
+    - Add Mlflow to an existing training script:
+        """
+         import mlflow
+         reg_rate=0.1
+         mlflow.log_param(f"Regularization Rate: {reg_rate}")
+        """
+    
+    - Submit the Job:
+        - Finally submit the training script as a job in Azure ML
+        - You need to make sure that the environment you refer to in the job includes the necesary packages,
+        and the script describes which you want to log 
+
+    - View the metrics in the Azure Machine Learning Studio:
+        - Logged Metrics will show in the Overview and Metrics tabs
+        - Plots that are logged as artifacts are shown under Images
+        - Find other artifacts like model files under Outputs + logs
+    
+    - Retrieve metrics with MLFlow in a Notebook:
+        - MLflow in a notebook allows more control over which runs you want to retrieve to compare
+        - List Active Experiments:
+            """
+                experiments=mlflow.search_experiments(max_results=2)
+                for exp in experiments:
+                    print(exp.name)
+            """
+        - List archived Experiments:
+            """
+                from mlflow.entities import ViewType
+
+                experiments=mlflow.search_experiments(view_type=ViewType.ALL)
+                for exp in experiments:
+                    print(exp.name)
+
+            """
+        - 
+        - Retrieve Runs in a specific experiment:
+            """
+            mlflow.search_runs(exp.experiment_id)
+            """
+        - If you want to search across all the experiments in the workspace:
+            """
+                mlflow.search_runs(exp.experiment_id, search_all_experiments=True)
+            """
+        - By default, experiments are ordered descending by start_time, which is the time the 
+        experiment was queued in Azure Machine Learning. Change this using order_by
+            """
+                mlflow.search_runs(exp.experiment_id, order_by=["start_time DESC"], max_results=2)
+            """
+        - You can also look for a run with a specific combination in the hyperparameters:
+            """
+                mlflow.search_runs(
+                    exp.experiment_id, filter_string="params.num_boost_round=100", max_results=2
+                )
+            """
+    - Metrics:   
+        - Any plots that are logged as artifacts can be found under Images
+        - The model assets that can be used to register and deploy the model are stored in the models
+        folder under Outputs+logs
+
