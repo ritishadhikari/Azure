@@ -190,3 +190,174 @@ Track Model Training with MLFlow in Jobs:
         - The model assets that can be used to register and deploy the model are stored in the models
         folder under Outputs+logs
 
+Perform hyperparameter tuning with Azure Machine Learning:
+    - Sweep Job:
+        - In Azure ML, tune hyperparameters by submitting a script as a sweep job
+        - A sweep job will run a trial for each hyperparameter combination to be tested
+        - Each trial uses a training script with parameterized hyperparameter values to train
+        a model, and logs the performance metric achieved by the trained model
+
+    - Search Space:
+        - It is the set of hyperparameter values tried during hyperparameter tuning 
+        - Type of Hyperparameters:
+            - Discrete Hyperparameters:
+                - Require Discrete Values 
+                - Values are selected from a particular finite set of possibilities
+                - Define as a python List
+                     # Choice(values=[10,20,30])
+                - Define as a Python Range
+                    # Choice(values=range(1,10))
+                - Define in a Tuple:
+                    # Choice(values=range(30,50,100))
+                - Also select discrete values from any of the following discrete distributions:
+                    - QUniform(min_value, max_value, q)
+                    - QLogUniform(min_value, max_value, q)
+                    - QNormal(mu, sigma, q)
+                    - QLogNormal(mu, sigma, q)
+            - Continous Hyperparameters:
+                - Continous Values
+                - Infinite number of possibilities
+                - Specify any of the following distribution types:
+                    - Uniform(min_value, max_value):
+                        - Returns a Value distrbuted between min_value and max_value
+                    - LogUniform(min_value, max_value):
+                        - Returns a value drawn according to exp(Uniform(min_value, max_value))
+                        - Logarithm of the returned value is uniformly distributed
+                    - Normal(mu, sigma):
+                        - Returns a real value thats normally distributed with mean mu and stdev sigma
+                    - LogNormal(mu, sigma):
+                        - Returns a value drawn according to exp(Normal(mu, sigma))
+                        - Logarithm of the returned value is normally distributed
+    - Defining a Search Space:
+        """
+            from azure.ai.ml.sweep import Choice, Normal
+
+            command_job_for_sweep=job(
+                batch_size=Choice(values=[16,32,64])
+                learning_rate=Normal(mu=10, sigma=3)
+            )
+
+        """     
+
+    - Sampling Methods: 
+        - The specific values used in a hyperparameter tuning run or sweep job depends on the 
+        type of sampling used
+        - Grid Sampling:
+            - Tries every possible combination
+            """
+            from azure.ai.ml.sweep import Choice, Normal
+
+            command_job_for_sweep=job(
+                batch_size=Choice(values=[16,32,64])
+                learning_rate=Normal(mu=10, sigma=3)
+            )
+
+            sweep_job=command_job_for_sweep.sweep(
+                sampling_algorithm="grid"
+            )
+            """  
+
+
+        - Random Sampling:
+            - Randomly choses values from the search Space
+            """
+            from azure.ai.ml.sweep import Choice, Normal
+
+            command_job_for_sweep=job(
+                batch_size=Choice(values=[16,32,64])
+                learning_rate=Normal(mu=10, sigma=3)
+            )
+
+            sweep_job=command_job_for_sweep.sweep(
+                sampling_algorithm="random"
+            )
+            """
+            - Sobol function adds a random sampling to make the results reproducible
+             """
+            from azure.ai.ml.sweep import RandomParameterSampling, Choice, Normal
+
+            command_job_for_sweep=job(
+                batch_size=Choice(values=[16,32,64])
+                learning_rate=Normal(mu=10, sigma=3)
+            )
+
+            sweep_job=command_job_for_sweep.sweep(
+                sampling_algorithm=RandomParameterSampling(seed=123, rule="sobol")
+            )
+            """
+        - Bayesian Sampling:
+            - Choses new values based on previous results
+            - Only Choice, Uniform and QUniform parameter expressions can be used
+            """
+            from azure.ai.ml.sweep import Choice, Uniform
+
+            command_job_for_sweep=job(
+                batch_size=Choice(values=[16,32,64])
+                learning_rate=Uniform(min_value=0.05, max_value=0.1)
+            )
+
+            sweep_job=command_job_for_sweep.sweep(
+                sampling_algorithm="bayesian"
+            )
+            """
+    
+    - Configuring Early Termination:
+        - Default way in a sweep job is to set a maximum number of trials
+        - A more sophisticated approach is to stop a sweep job when newer models don't produce
+        significant results 
+        - To stop a sweep job based on the performance of the models, you can use an early
+        termination policy
+        - This policy can be especially beneficial when working with continous hyperparameters
+        in your search space
+        - Two Main Parameters to chose when you use an early termination policy:
+            - evaluation_interval:
+                - Specifies at which interval you want the policy to be evaluated
+            - delay_evaluation:
+                - Specifies when to start evaluating the policy
+        - To determine the extent to which a model should perform better than the previous trials,
+        there are three options for early termination:
+            - Bandit Policy:
+                - Use this policy to stop a trial if the target performance metric underperforms
+                the best trial so far by a specified margin
+                """
+                    from azure.ai.ml.sweep import BanditPolicy
+                    
+                    sweep_job.early_termination=BanditPolicy(
+                        slack_amount=0.2,  # Margin difference
+                        delay_evaluation=5,
+                        evaluation_interval=1
+                    )
+                """
+                - You can also use a slack factor which compares the performance metric as a ratio
+                rather than an absolute value
+            - Median Stopping Policy:
+                - Abandons the trials where the target performace metric is worse than the Median
+                of the running averages for all trials
+                """
+                    from azure.ai.ml.sweep import MedianStoppingPolicy
+
+                    sweep_job.early_termination=MedianStoppingPolicy(
+                        delay_evaluation=5,
+                        evaluation_interval=1
+                    )
+                """
+            - Truncation Selection Policy:
+                - It cancels the lowest performing X% of the trials at each evaluation interval
+                based on the truncation_percentage value you specify for X
+                """
+                    from azure.ai.ml.sweep import TruncationSweepPolicy
+
+                    sweep_job.early_termination=TruncationSweepPolicy(
+                        evaluation_interval=1,
+                        truncation_percentage=20,
+                        delay_evaluation=4
+                    )
+
+                """
+    
+    - Process to tune Hyperparameters by running a sweep job:
+        - Create a script for Hyperparameter tuning
+        - Configure and run a sweep job
+        - Monitor and review sweep jobs
+    
+    
