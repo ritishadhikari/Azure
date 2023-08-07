@@ -1,0 +1,56 @@
+Run pipelines in Azure Machine Learning:
+    - In an enterprise Data Science Project, you can train and retrain machine Learning models
+    by running scripts as jobs
+    - In an enterprise data science process, you will want to separate the overall process into
+    individual tasks
+    - You can group tasks togather as pipelines
+    - Pipelines are key to implementing an effective Machine Learning Operations (MLOPS) solution
+    in Azure
+    - Create components of individual tasks, making it easier to reuse and share code.
+    - Then combine components into an Azure Machine Learning Pipeline, which you will run as 
+    a pipeline job
+    - An Azure Devops or Azure Synapse Analytics pipeline can trigger an Azure  Machine Learning
+    Pipeline
+    
+    - Components:
+        - Allows you to create reusable scripts that can easily be shared across users within 
+        the same Azure Machine Learning Workspace
+        - Use of Components:
+            - To build a pipeline
+            - To share ready-to-go code
+        - Consists of three parts:
+            - Metadata:
+                - Includes the component's name, version, etc
+            - Interface:
+                - Includes the expected input parameters (like a dataset or hyperparameter) and
+                expected output (like metrics and artifacts)
+            - Command, Code and Environment:
+                - Specifies how to run the code
+        - To create a component, you would need two files:
+            - A script that contains the workflow you want to execute
+            - An YAML file to define the metadata, interface, and command, code and environment
+            of the component
+        - Register a component:
+            - Pre-requisite is script and the YAML file
+            - To make components accessible to other users in the workspace, you can also 
+            register components  to the Azure Machine Workspace
+            - Register a components using the following code:
+                """
+                    prep=ml_client.components.create_or_update(entities=prepare_data_component)
+                """
+        - Each components can be run on a specific compute target
+        - Each component is executed as a child job as a part of overall pipeline job
+    
+    - Pipeline:
+        - A pipeline is a workflow of Machine Learning tasks in which each task is defined
+        as component
+        - An AZML pipeline is defined in a YAML file which includes the pipeline job name, 
+        inputs, outputs and settings
+        - Once you have built a component-based pipeline in Azure ML, you can run the workflow 
+        as a pipeline job
+        - A pipeline is defined in a YAML file, which you can also create using the @pipeline 
+        function
+        - Once you have configured the pipeline, you are ready to run the workflow as a pipeline
+        job
+        - To schedule a pipeline job, you will use the JobSchedule class to associate a schedule
+        to a pipeline job using Frequency and Interval
