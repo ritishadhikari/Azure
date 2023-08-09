@@ -1,0 +1,101 @@
+Deploy a model to a managed online endpoint:
+    
+    - To consume the model, you need to deploy it
+    - One way to deploy a model is to integrate it with a service that allows applications to 
+    request instant, or real time, predictions for individual or small sets of data points
+    - In AZ-ML, you can use online endpoints to deploy and consume your model
+    
+    - Explore Managed Online Endpoints:
+        - Real Time Predictions:
+            - Deploy a model to an endpoint
+        - Two types of online endpoints:
+            - Managed online endpoints:
+                - Az-ML manages all the underlying infrastructure
+                - Easier to work with as a beginner
+            - Kubernetes online endpoints:
+                - Users manage the kubernetes cluster
+        - Requisites for Model deployment:
+            - Model Assets:
+                - Registered Model's pickl file
+            - Scoring Script:
+                - Loads the model
+            - Environment:
+                - List of packages required for your Model
+            - Compute Configuration
+                - Configuration under which my model will be deployed 
+        - Blue/Green Deployment:
+            - Allows Multiple models to be deployed in a single endpoint 
+            - One endpoint can have multiple deployments
+        - Create an endpoint:
+            - Through the Managed OnlineEndpoint class
+            - Requires the following mandatory parameter:
+                - Name of the endpoint
+                - Auth mode (tokens)
+
+    - When deploying a model using MLFlow to an online endpoint:
+        - No need to worry about scoring script
+        - No need to worry about the environment
+        - Only worry about the model assets and the compute Configuration
+
+    - The easiest way to deploy a model through online endpoint is through MLFlow:
+        - No need to have the scoring script and environment
+        - The scoring script here will be auto-generated
+        - The model files must be stored on a local path or with a registered model
+        - Specify the compute configuration for the deployment
+            - instance_type:
+                - VM size to use
+            - instance_count:
+                - Number of instances to use 
+    
+    - Deploy a model to a managed online (non mlflow) endpoint:
+        - Create the Scoring Script with two functions:
+            - init() : 
+                - Called when the service is initialized
+                - Deployment is made
+            - run() : 
+                - Called when new data is submitted to the service
+                - Invoked everytime the endpoint is invoked
+        - Create an environment:
+            - The deployment requires an execution environment in which to run the scoring script
+        - Create the deployment:
+            - Requires:
+                - Model files
+                    - Stored on local path or registered model
+                - Scoring Script
+                - Execution Environment
+        - The model files can be logged and stored when you train a model
+
+    - Test Managed Online Endpoints:
+        - List all endpoints in the Azure Machine Learning Studio by navingating to 
+        the endpoints tab
+        - Select an endpoint to review its details and deployment logs
+        - Use the studio to test the endpoint
+    
+    - Testing can also be done with Azure ML python SDK  to invoke an endpoint:
+        - Send data to the deployed model in JSON format 
+            """
+                {
+                    "data":[
+                        [0.1,2.3,4.1,2.0],  // case 1
+                        [0.2,1.8,3.9,2.1], // case 2
+                    ]
+                }
+            """
+        - The response from the deployed model is a JSON collection with a prediction for 
+        each case that was submitted to the data
+        - Python code to invoke the endpoint:
+            """
+                response=ml_client.online_endpoints.invoke(
+                    endpoint_name=online_endpoint_name,
+                    deployment_name="blue",
+                    request_file="sample-data.json"
+                )
+
+                if response[1]=="1":
+                    print("Yes")
+                else:
+                    print("No")
+            """
+
+        
+        
