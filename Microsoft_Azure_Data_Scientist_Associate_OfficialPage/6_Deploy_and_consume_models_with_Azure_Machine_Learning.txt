@@ -12,6 +12,9 @@ Deploy a model to a managed online endpoint:
             - Managed online endpoints:
                 - Az-ML manages all the underlying infrastructure
                 - Easier to work with as a beginner
+                - Only specify the Virtual Machine (VM) type and scaling settings
+                - Everything else, such as provisioning compute power and updating the 
+                host operating system (OS) is done for you automatically
             - Kubernetes online endpoints:
                 - Users manage the kubernetes cluster
         - Requisites for Model deployment:
@@ -26,11 +29,26 @@ Deploy a model to a managed online endpoint:
         - Blue/Green Deployment:
             - Allows Multiple models to be deployed in a single endpoint 
             - One endpoint can have multiple deployments
+            - You can decide how much traffic to forward to each deployed model
+            - This way you can switch to the new version of the model without interrupting 
+            service to the consumer
         - Create an endpoint:
             - Through the Managed OnlineEndpoint class
             - Requires the following mandatory parameter:
-                - Name of the endpoint
-                - Auth mode (tokens)
+                - Name of the endpoint, must be unique in the Azure Region
+                - Auth mode. Use key for key based authentication and aml_token for Azure
+                Machine Learning token-based authentication
+            - Python code to create an endpoint:
+                """
+                    from azure.ai.ml.entities import ManagedOnlineEndpoint
+                    
+                    endpoint=ManagedOnlineEndpoint(
+                            name="endpoint-example",
+                            description="Online Endpoint",
+                            auth_mode="key"
+                    )
+                    ml_client.begin_create_or_update(endpoint).result()
+                """
 
     - When deploying a model using MLFlow to an online endpoint:
         - No need to worry about scoring script
@@ -45,25 +63,145 @@ Deploy a model to a managed online endpoint:
             - instance_type:
                 - VM size to use
             - instance_count:
-                - Number of instances to use 
-    
+                - Number of instances to use
+        - Python code to automatically register the model
+            """ 
+                from azure.ai.ml.entities import Model, ManagedOnlineDeployment
+                from azure.ai.ml.constants import AssetTypes
+
+                model=Model(
+                    path="./Model",
+                    type=AssetTypes.MLFLOW_MODEL,
+                    description="my sample mlflow model"
+                )
+
+                blue_deployment=ManagedOnlineDeployment(
+                    name="blue",
+                    endpoint_name="endpoint-example",
+                    model=model,
+                    instance_type="Standard_F4s_v2",
+                    instance_count=1
+                )
+
+                ml_client.online_deployments.begin_create_or_update(blue_deployment).result()
+            """
+        
+        - Python code to route traffic to a specific deployment:
+            """ 
+                # blue deployment takes in 100% of the traffic
+                endpoint.traffic={"blue":100}
+                ml_client.begin_create_or_update(endpoint).result()
+            """ 
+        - Python code to delete all the associated deployments:
+            """
+                ml_client.online_endpoints.begin_delete(name="endpoint-example")
+            """
+
+
     - Deploy a model to a managed online (non mlflow) endpoint:
         - Create the Scoring Script with two functions:
             - init() : 
                 - Called when the service is initialized
-                - Deployment is made
+                - Deployment is created or updated to load and cache the model from the model
+                registry
             - run() : 
                 - Called when new data is submitted to the service
-                - Invoked everytime the endpoint is invoked
+                - Invoked everytime the endpoint is invoked to generate predictions
+
+        - Python code to demonstrate a Scoring Script -> score.py
+            """
+                import json
+                import joblib
+                import numpy as np
+                import os
+
+                def init():
+                    global model
+                    model_path=os.path.join(os.getenv("AZURE_MODEL_DIR"),"model.pkl")
+                    model=joblib.load(model_path)
+                
+                def run(raw_data):
+                    # get input data as a numpy array
+                    data=np.array(json.loads(raw_data)['data'])
+                    predictions=model.predict(data)
+                    return predictions.tolist()
+            """
+
         - Create an environment:
             - The deployment requires an execution environment in which to run the scoring script
+            - You can create an environment with a Docker Image with Conda dependencies or with
+            a Dockerfile
+            - Yaml file to create an environment using a Base Docker image with conda 
+            dependencies -> conda.yml
+                """
+                    name: basic-env-compute
+                    channels:
+                        - conda-forge
+                    dependencies:
+                        - python=3.7
+                        - scikit-learn
+                        - pandas
+                        - numpy
+                        - matplotlib
+                """
+
+            - Python code to create the environment:
+                """
+                    from azure.ai.ml.entities import Environment
+                    env=Environment(
+                        image="mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04",
+                        conda_file="./src/conda.yml",
+                        name="deployment-environment",
+                        description='''
+                                Environment created from a Docker Image plus
+                                conda Environment
+                                '''
+                    )
+                    ml_client.environments.create_or_update(env)
+
+                """
+
         - Create the deployment:
             - Requires:
                 - Model files
                     - Stored on local path or registered model
                 - Scoring Script
                 - Execution Environment
+
+        - Python code to automatically register the model
+            """ 
+                from azure.ai.ml.entities import (Model, 
+                ManagedOnlineDeployment, CodeConfiguration)
+                from azure.ai.ml.constants import AssetTypes
+
+                model=Model(
+                    path="./model",
+                    
+                )
+
+                blue_deployment=ManagedOnlineDeployment(
+                    name="blue",
+                    endpoint_name="endpoint-example",
+                    model=model,
+                    environment="deployment-environment",
+                    code_configuration=CodeConfiguration(
+                        code="./src", 
+                        scoring_script="score.py"
+                    )
+                    instance_type="Standard_DS2_v2",
+                    instance_count=1
+                )
+
+                ml_client.online_deployments.begin_create_or_update(blue_deployment).result()
+
+                # code for allocating the traffic and deleting the endpoint remains the 
+                same as was described in MLFlow endpoints
+            """
+
+            
         - The model files can be logged and stored when you train a model
+
+
 
     - Test Managed Online Endpoints:
         - List all endpoints in the Azure Machine Learning Studio by navingating to 
