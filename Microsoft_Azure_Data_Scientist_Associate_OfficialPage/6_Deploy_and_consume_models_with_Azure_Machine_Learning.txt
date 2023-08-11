@@ -235,5 +235,249 @@ Deploy a model to a managed online endpoint:
                     print("No")
             """
 
+
+Deploy a model to a batch endpoint:
+    - In Machine Learning, batch inferencing is used to asynchronously apply a predictive 
+    model to multiple cases and write the results to a file or database
+    - You can implement batch inferencing solutions by deploying a model to a batch endpoint
+    
+    - Batch Predictions:
+        - An endpoint is an HTTPS endpoint that you can call to trigger a batch scoring job
+        - The advantage of an endpoint is that you can the batch scoring job from another service,
+        such as Azure Synapse Analytics or Azure Databricks
+        - Whenever the endpoint is invoked, a batch scoring job is submitted to the Azure Machine 
+        Learning workspace
+    
+    - Create a Batch Endpoint:
+        - First Create the Batch Endpoint using the BatchEndpoint class
+        - Batch Endpoint needs to be unique within an Azure Region
+        - Python code to create a Batch Endpoint
+            """
+                endpoint=BatchEndpoint(
+                    name="endpoint-example",
+                    description="A batch endpoint"
+                )
+                ml_client.batch_endpoints.begin_create_or_update(endpoint)
+
+    - Deploy a model to a Batch Endpoint:
+        - Deploy multiple models to a batch endpoints
+        - The default deployment will be used unless specified otherwise
+    
+    - Compute Clusters for Batch Deployments:
+        - Ideal compute to use for batch deployments is Azure Machine Learning Compute Cluster
+        - Kubernetes Clusters can also be used
+        - If you want the batch scoring job to process the new data in parallel batches, you need
+        to provision a compute cluster with more than one maximum instances
+        - To create a compute cluster, you can use the AML Compute Class
+        - Python code to create Compute Clusters for batch deployments: 
+            """
+                from azure.ai.ml.entities import AmlCompute
+
+                cpu_cluster=AmlCompute(
+                    name="aml-cluster",
+                    type="amlcompute",
+                    size="STANDARD_DS11_V2",
+                    min_instances=0,
+                    max_instances=4,
+                    idle_time_before_scale_down=120,
+                    tier="Dedicated"
+                )
+
+                cpu_cluster=ml_client.compute.begin_create_or_update(cpu_cluster)
+            """
+
+    - Register an MLFlow Model:
+        - For no-code deployment, an MLflow model needs to be registered in the Azure Machine 
+        Learning workspace before you can deploy it to batch endpoint
+        - To register an MLflow model, you will use the Model class, while specifying
+        the model type to be MLFLOW_MODEL
+        - Python Code to register an MLflow model:
+            """
+                from azure.ai.ml.entities import Model
+                from azure.ai.ml.constants import AssetTypes
+
+                model_name="mlflow-model"
+                model=ml_clients.models.create_or_update(
+                    Model(
+                        name=model_name,
+                        path="/.model",
+                        type=AssetTypes.MLFLOW_MODEL 
+                    )
+                )
+
+            """
         
-        
+    - Deploy an MLflow model to an endpoint:
+        - To deploy an MLflow model to a batch endpoint, you will use the BatchDeployment
+        class
+        - When you deploy the model, you will need to specify how you want the batch scoring
+        job to behave
+        - While configuring the model deployment, you can specify:
+            - instance_count 
+            - max_concurrency_per_instance:
+                - Number of parallel scoring scripts that can run per computer node
+            - mini_batch_size
+                - Number of files that can be passed per scoring script run
+            - output_action:
+                - summary
+                - append_row
+            - output_file_name:
+                - where you would want the predictions to be appended
+
+        - Python Script to deploy an MLFlow Model to a batch endpoint
+            """
+                from azure.ai.ml.entities import BatchDeployment, BatchRetrySettings
+                from azure.ai.ml.constants import BatchDeploymentOutputAction
+
+                deployment=BatchDeployment(
+                    name="forecast-mlflow",
+                    description="A sales forecaster",
+                    endpoint_name=endpoint.name,
+                    model=model,
+                    compute="aml-cluster",
+                    instance_count=2,
+                    max_concurrency_per_instance=2.
+                    mini_batch_size=2,
+                    output_action=BatchDeploymentOutputAction.APPEND_ROW,
+                    output_file_name="predictions.csv",
+                    retry_settings=BatchRetrySettings(max_retries=3, timeout=300),
+                    logging_level="info"
+                )
+
+                ml_client.batch_deployments.begin_create_or_update(deployment)
+
+            """
+    
+    - Deploy a custom model to a batch endpoint
+        - Need to create the scoring script and environment
+        - Scoring script:
+            - It is a file that reads the new data, loads the model and performs the
+            scoring
+            - The scoring script includes two functions:
+                - init():
+                    - Called at the beginning of the process
+                    - Use for any costly or common preparation like loading the model
+                - run():
+                    - Called for each mini batch to perform the scoring
+            - Python Script for scoring script:
+                """
+                    import os
+                    import mlflow
+                    import pandas as pandas
+
+                    def init():
+                        # "AZUREML_MODEL_DIR" is an environment variable that you can use
+                        # to locate files associated with the model
+                        model_path=os.path.join(os.environ["AZUREML_MODEL_DIR"],"model")
+                        model=mlflow.pyfunc.load(model_path)
+                    
+                    def run(mini_batch):
+                        """
+                            By default the predictions will be run in one single file
+                        """
+                        print(f"run method start: {__file__}, run ({len(mini_batch)} files)")
+                        resultList=[]
+
+                        for file_path in mini_batch:
+                            data=pd.read_csv(file_path)
+                            pred=model.predict(data)
+
+                            df=pd.DataFrame(data=pred, columns=['predictions'])
+                            df['file']=os.path.basename(file_path)
+                            resultList.extend(df.values)
+                        return resultList
+                """ 
+        - Environment:
+            - Deployment would need an execution environment in which to run the scoring 
+            script
+            - Any dependencies your code requires should be included in the environment
+            - You will need to add the library azureml-core as it is required for batch 
+            deployments to work
+            - yml file to create an environment using a base docker image in a conda.yml file
+            """
+                    name: basic-env-cpu_cluster
+                    channels:
+                        - conda-forge
+                    dependencies:
+                        - python=3.8
+                        - pandas
+                        - pip
+                        - pip:
+                            - azureml-core
+                            - mlflow
+            """
+            - python code to create the environment:
+                """
+                    from azure.ai.ml.entities import Environment
+
+                    env=Environment(
+                        image="mcr.microsoft.com/azureml/openmpi3.1.2-ubuntu18.04",
+                        conda_file="./src/conda-env.yml",
+                        name="deployment-environment",
+                        description="""
+                            Environment created from a docker 
+                            image plus Conda environment
+                            """
+                    )
+                    ml_client.environments.create_or_update(env)
+                """
+
+        - Configure and create the deployment with the BatchDeployment class
+            """
+                from azure.ai.ml.entities import BatchDeployment, BatchRetrySettings
+                from azure.ai.ml.constants import BatchDeploymentOutputAction
+
+                deployment=BatchDeployment(
+                    name="forecast-mlflow",
+                    description="A sales forecaster",
+                    endpoint_name=endpoint.name,
+                    model=model,
+                    compute="aml-cluster",
+                    code_path="./code",  # addition
+                    scoring_script="score.py",  # addition
+                    environment=env,  # addition
+                    instance_count=2, 
+                    max_concurrency_per_instance=2.
+                    mini_batch_size=2,
+                    output_action=BatchDeploymentOutputAction.APPEND_ROW,
+                    output_file_name="predictions.csv",
+                    retry_settings=BatchRetrySettings(max_retries=3, timeout=300),
+                    logging_level="info"
+                )
+
+                ml_client.batch_deployments.begin_create_or_update(deployment)
+
+            """
+
+    
+    - Invoke and troubleshoot batch endpoints:
+        - To prepare data for batch predictions, you can register a folder as a Data Asset in 
+        the Azure Machine Learning workspace
+        - You can then use the registered data asset as input when invoking the batch endpoint
+        with the Python SDK
+        - Python code to invoke a Batch Endpoint:
+            """
+                from azure.ai.ml import Input
+                from azure.ai.ml.constants import AssetTypes
+
+                input=Input(type=AssetTypes.URI_FOLDER, path="azureml:new-data:1")
+                job=ml_client.batch_endpoints.invoke(
+                    endpoint_name=endpoint.name,
+                    input=input
+                )
+            """ 
+        - Monitor the run of the pipeline job in the AML studio 
+        - All jobs that are triggered by invoking the batch endpoint will show 
+        in the Jobs tab of the batch endpoint
+    
+    - Troubleshoot a batch scoring job:
+        - The batch scoring job runs as a pipeline job
+        - If you want to troubleshoot the pipeline job, you can select child jobs and 
+        review its outputs and logs
+        - Under the Outputs+logs tab, logs/user/ contains the following files to troubleshoot:
+            - job-error.txt:
+                - Summarize the errors in your script:
+            - job_progress-overview.txt
+                - Provides high level information about the number of mini batches processed so far
+            - job_results.txt:
+                - Shows errors in calling the init() and run() function in the scoring script
