@@ -145,7 +145,7 @@ Explore Azure Machine Learning workspace resources and assets:
     
     - Assets are created and used at various stages of a project and includes:
         - Models:
-            - Common way to store ML models is to package the model as a python picke file (.pkl extension)
+            - Common way to store ML models is to package the model as a python pickle file (.pkl extension)
             - Alternatively, you can use the open-source platform MLFlow to store your model in the MLModel
             format
             - To persist models, you can create or register a model in the workspace
