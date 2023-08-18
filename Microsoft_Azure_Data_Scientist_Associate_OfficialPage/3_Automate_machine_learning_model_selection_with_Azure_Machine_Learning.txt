@@ -34,7 +34,6 @@ Find the best classification model with Automated Machine Learning:
     
     - By default AutoML will perform featurization on your data, you can disable it if you don't 
     want to be transformed
- 
     
     - The Algorithms AutoML uses will depend on the task you specify
     
@@ -74,7 +73,7 @@ Find the best classification model with Automated Machine Learning:
             my_training_data=Input(type=AssetTypes.MLTable, path="azureml:input-data-automl:1")
         """
     
-    - Configure and AutoML Experiment for classification:
+    - Configure an AutoML Experiment for classification:
         """
             from azure.ai.ml import automl
 
@@ -97,7 +96,7 @@ Find the best classification model with Automated Machine Learning:
                 timeout_minutes=60,
                 # Maximum number of minutes one trial can take
                 trial_timeout_minutes=20,
-                # maximum number of trails or models that will be trained
+                # maximum number of trials or models that will be trained
                 max_trials=5,
                 # whether to end the experiment if the score isn't improving in the short term
                 enable_early_termination=True
