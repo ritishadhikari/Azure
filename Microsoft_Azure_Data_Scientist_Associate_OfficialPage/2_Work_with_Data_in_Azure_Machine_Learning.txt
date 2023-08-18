@@ -60,7 +60,7 @@ Make Data Available in Azure Machine Learning:
     - When to use Data Assets:
         - Executing Machine Learning tasks as Azure Machine Learning jobs
         - As a job, you can run a python script that takes inputs and generates outputs
-        - It can be parsed as both an input or output of an Azure Machine Learning Job
+        - It can be parsed as both an Input or Output of an Azure Machine Learning Job
 
     - Benefits of using Data Assets:
         - You can share and reuse data with other members of the team such that they don't need to
