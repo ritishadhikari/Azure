@@ -330,7 +330,7 @@ Perform hyperparameter tuning with Azure Machine Learning:
                 - You can also use a slack factor which compares the performance metric as a ratio
                 rather than an absolute value
             - Median Stopping Policy:
-                - Abandons the trials where the target performace metric is worse than the Median
+                - Abandons the trials where the target performance metric is worse than the Median
                 of the running averages for all trials
                 """
                     from azure.ai.ml.sweep import MedianStoppingPolicy
