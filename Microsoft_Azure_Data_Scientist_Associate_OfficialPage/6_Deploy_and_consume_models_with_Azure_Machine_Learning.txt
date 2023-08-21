@@ -175,15 +175,16 @@ Deploy a model to a managed online endpoint:
                 from azure.ai.ml.constants import AssetTypes
 
                 model=Model(
-                    path="./model",
-                    
+                    path="./model",  
                 )
 
                 blue_deployment=ManagedOnlineDeployment(
                     name="blue",
                     endpoint_name="endpoint-example",
                     model=model,
+                    # additional code
                     environment="deployment-environment",
+                    # additional code
                     code_configuration=CodeConfiguration(
                         code="./src", 
                         scoring_script="score.py"
@@ -204,7 +205,7 @@ Deploy a model to a managed online endpoint:
 
 
     - Test Managed Online Endpoints:
-        - List all endpoints in the Azure Machine Learning Studio by navingating to 
+        - List all endpoints in the Azure Machine Learning Studio by navigating to 
         the endpoints tab
         - Select an endpoint to review its details and deployment logs
         - Use the studio to test the endpoint
