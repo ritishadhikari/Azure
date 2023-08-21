@@ -24,7 +24,7 @@ Run a training script as a command job in Azure Machine Learning:
 
             job=command(
                 code="./src",
-                command="python train.py", # "python train.py --training_data=diabetes.csv"
+                command="python train.py",  # "python train.py --training_data=diabetes.csv"
                 environment="AzureML-sklearn-0.24-ubuntu18.04-py37-cpu@latest",
                 compute="aml-cluster",
                 display_name="train-model",
@@ -106,7 +106,6 @@ Track Model Training with MLFlow in Jobs:
                     - azure-mlflow
         """
     - Once the environment is defined and registered, make sure to refer to it when submitting a job
-
 
     - Enable Autologging in MLFlow to log (without anyone needing to specify what needs to be logged):
         - Parameters
@@ -331,7 +330,7 @@ Perform hyperparameter tuning with Azure Machine Learning:
                 - You can also use a slack factor which compares the performance metric as a ratio
                 rather than an absolute value
             - Median Stopping Policy:
-                - Abandons the trials where the target performace metric is worse than the Median
+                - Abandons the trials where the target performance metric is worse than the Median
                 of the running averages for all trials
                 """
                     from azure.ai.ml.sweep import MedianStoppingPolicy
