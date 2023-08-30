@@ -91,7 +91,7 @@ Make Data Available in Azure Machine Learning:
         """
             from azure.ai.ml import MLClient
             from azure.ai.ml.entities import Data
-            from azure.ai.ml.constants import AsseTypes
+            from azure.ai.ml.constants import AssetTypes
 
             my_path="<supported-path>"
             my_data=Data(

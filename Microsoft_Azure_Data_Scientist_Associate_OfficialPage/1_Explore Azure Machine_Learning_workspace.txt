@@ -58,7 +58,7 @@ Explore Azure Machine Learning workspace resources and assets:
     Azure Machine Learning Assets:
         - Models:
             - Train ML models with frameworks like Sklearn, Pytorch, etc
-            - Common ways to store a model is wih pkl
+            - Common ways to store a model is with pkl
         - Environments:
             - Specify Software packages, environment variables and software settings to run scripts
             - Environment is stored as an image in the Azure Container Registry created with the 
