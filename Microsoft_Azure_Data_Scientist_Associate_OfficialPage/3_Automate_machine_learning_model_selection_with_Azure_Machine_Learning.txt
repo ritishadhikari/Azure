@@ -108,7 +108,7 @@ Find the best classification model with Automated Machine Learning:
         - You can have as many parallel trials as you have nodes
         - The Maximum number of parallel trials is therefore related to the maximum number of nodes
         your compute cluster has
-        - If you want to set the maximum number of parallel trials to be less than the maxximum number
+        - If you want to set the maximum number of parallel trials to be less than the maximum number
         of nodes, you can use max_concurrent_trials 
 
 
