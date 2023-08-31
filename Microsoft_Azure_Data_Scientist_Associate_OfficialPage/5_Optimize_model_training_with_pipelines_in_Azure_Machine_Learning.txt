@@ -105,9 +105,6 @@ Run pipelines in Azure Machine Learning:
         - Code to change the default datastore where all the outputs will be stored:
             # pipeline_job.settings.default_datastore="workspaceblobstore"
         
-
-
-
         - Once you have configured the pipeline, you are ready to run the workflow as a pipeline
         job; Code to run a pipeline job:
             """
