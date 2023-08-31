@@ -10,10 +10,14 @@ import matplotlib.pyplot as plt
 
 
 def main(args):
-    df=get_data(args.training_data)
-    X_train, X_test, y_train, y_test=split_data(df)
-    model=train_model(args.reg_rate,X_train,y_train)
-    evaluate_model(model,X_test,y_test)
+    df=get_data(path=args.training_data)
+    X_train, X_test, y_train, y_test=split_data(df=df)
+    model=train_model(reg_rate=args.reg_rate,
+                      X_train=X_train,
+                      y_train=y_train)
+    evaluate_model(model=model,
+                   X_test=X_test,
+                   y_test=y_test)
 
 def parse_args():
     parser=argparse.ArgumentParser()
