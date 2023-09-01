@@ -199,10 +199,8 @@ Deploy a model to a managed online endpoint:
                 same as was described in MLFlow endpoints
             """
 
-            
+
         - The model files can be logged and stored when you train a model
-
-
 
     - Test Managed Online Endpoints:
         - List all endpoints in the Azure Machine Learning Studio by navigating to 
