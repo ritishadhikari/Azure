@@ -1,6 +1,6 @@
 Find the best classification model with Automated Machine Learning:
     
-    -AutoML allows you to try multiple preprocessing transformations and algorithms with your data to
+    - AutoML allows you to try multiple preprocessing transformations and algorithms with your data to
     find the best machine learning model
     
     - You can Create AutoML experiment using 

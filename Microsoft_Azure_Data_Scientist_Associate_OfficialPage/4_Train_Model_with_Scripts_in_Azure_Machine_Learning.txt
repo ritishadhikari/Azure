@@ -218,7 +218,7 @@ Perform hyperparameter tuning with Azure Machine Learning:
                 - Infinite number of possibilities
                 - Specify any of the following distribution types:
                     - Uniform(min_value, max_value):
-                        - Returns a Value distrbuted between min_value and max_value
+                        - Returns a Value distributed between min_value and max_value
                     - LogUniform(min_value, max_value):
                         - Returns a value drawn according to exp(Uniform(min_value, max_value))
                         - Logarithm of the returned value is uniformly distributed
