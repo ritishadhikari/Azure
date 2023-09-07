@@ -1,0 +1,219 @@
+Explore Core Data Concepts:
+
+    - Structured Data:
+        - Adheres to the same schema
+        - All of the data has the same fields or properties
+        - Represented in tabular format
+            - Rows and Columns
+        - Often stored in a database in which multiple tables can reference one
+        another by using key values in a relational model
+    
+    - Semi-Structured Data:
+        - Information that has some structure
+        - Allows for some variation in entity instances
+        - JSON is a common format for semi-structured data
+    
+    - Unstructured Data:
+        - Documents, Audio, Images, Video data and Binary Files might
+        not have a specific structure
+    
+    - Data Stores:
+        - Stored data can be retrieved for analysis and reporting later
+        - Two broad categories of data store in common use:
+            - File Stores
+            - Databases
+    
+    - The specific file format used to store data depends on a number of factors:
+        - The type of data being stored (structured, semi-structured or unstructured)
+        - The applications and services that will need to read, write and process the
+        data
+        - The need for the files to be readable by humans, or optimized for efficient
+        storage and processing
+
+    - Delimited Text Files:
+        - Good Choice for structured data that needs to be accessed by a wide range of
+        applications and services in a human-readable format
+
+        - Ex:
+            - Comma Separated Values (CSV):
+                - Fields are separated by Comma
+                - Rows are terminated by a carriage return / new line
+                - Optionally the first line may include the field names
+            - Tab Separated Values (TSV):
+            - Space Delimited
+            - Fixed width Data:
+                - Each field is allocated a fixed number of characters
+
+    - JSON:       
+        - A format in which a hierarchical schema is used to define data entities
+        (objects) that have multiple attributes
+        - Good with both structured and semi-structured data
+
+    - Extensible Mark Up Language (XML):
+        - Human Readable which was popular in the 90s and 2000s
+        - Uses Tags, enclosed in angle-brackets (<../>) to define elements and 
+        attributes
+
+    - Binary Large Objects (BLOBS) :
+        - Ultimately all files are stored as binary data (1's and 0's)
+        - In the human readable formats, the bytes of binary data are mapped to printable
+        characters (typically through a character encoding scheme such as ASCII or
+        Unicode)
+        - Some file formats, particularly for unstructured data, store the data as raw 
+        binary that must be interpreted by applications and rendered
+        - Common types of data stored as binary includes:
+            - Video
+            - Audio
+            - Application specific documents
+        - When working with data like this, data professionals often refer to the data
+        files as BLOBs (Binary Large Objects)
+
+    - Optimized File Formats:
+        - Specialized formats that enable compression, indexing and efficient storage
+        and processing have been developed
+        - Avro:
+            - Row based format created by Apache
+            - Each record contains a header that describes the structure of the data
+            in the record
+            - The header is stored as JSON, the data is stored as binary information
+            - An application uses the information in the header to parse the binary
+            data and extract the fields it contains
+            - Avro is a good format for compressing data and minimizing storage and
+            network bandwidth requirements
+        - Optimized Row Columnar Format (ORC):
+            - Organizes data into columns rather than rows
+            - Developed by HortonWorks for optimizing read and write operations in 
+            Apache Hive
+            - An ORC file contains stripes of data, where each stripe holds the data
+            for a column or set of columns
+            - A stripe contains 
+                - An index into the rows in the stripe
+                - The data for each row
+                - Footer that holds statistical information (count, sum, max, min, etc)
+                for each column
+        - Parquet:
+            - Columnar Data Format
+            - Created by Clodera and Twitter
+            - A parquet file contains row groups
+            - Data for each column is stored togather in the same row group 
+            - Each row group contains one or more chunks of data
+            - A Parquet file includes metadata that describes the set of rows found 
+            in each chunk
+            - An application can use this metadata to quickly locate the correct chunk
+            for a given set of rows, and retrieve the data in the specified columns
+            for these rows
+            - Parquet specializes in storing and processing nested data types efficiently
+            - It supports very efficient compression and encoding schemes
+    
+    - Explore Databases:
+        - Relational databases are commonly used to store and query structured data
+        - Data is stored in tables that represents entities
+        - Each instance of an entity is assigned a primary key that uniquely identifies
+        it 
+        - These keys are used to reference the entity instances in other tables
+        - The use of keys to reference data entities enables a relational database
+        to be normalized, which in part means the elimination of duplicate data values
+        so that, for example, the details of an individual customer are stored only once;
+        not for each sales order the customer places
+        - Tables are managed and queried using Structured Query Language (SQL)
+    
+    - Non Relational Databases:
+        - Don't apply a relational schema to the data
+        - Often called as NoSQL database, even though some support variant of SQL
+        - Four Common types of Non-Relational Database:
+            - Key-Value Databases:
+                - Each record consists of a unique key and an associated value
+                - Can be in any format
+            - Document Databases:
+                - Specific form of key-value database in which the value is a JSON 
+                document which the system is optimized to parse and query
+            - Column Family Databases:
+                - Stores Tabular data comprising rows and columns
+                - You can divide the columns into groups known as column families
+                - Each column holds a set of columns that are logically related
+                togather
+            - Graph Databases:
+                - Stores entities as nodes with links to define relationships
+                between them
+    
+    - Transactional Data Processing (OLTP):
+        - Transaction is a small, discrete unit of work
+        - Transactional systems are often high-volume, sometimes handling many 
+        millions of transactions in a single day
+        - The data being processed has to be accessible very quickly
+        - The work performed by transactional systems is often referred to as 
+        Online Transactional Processing (OLTP)
+        - OLTP relies on a database system in which data storage is optimized for both
+        read and write operations in order to support transactional workloads in which 
+        data records are created, retrieved, updated and deleted (CRUD)
+        - OLTP systems are typically used to support live applications that process
+        business-data - often referred to as line of business applications
+        - OLTP systems enforce transactions that support so-called ACID semantics:
+            - Atomicity:
+                - Each transaction is treated as a single unit, which suceeds completely
+                or fails completely
+                - Ex. Debiting and Crediting must be completed togather, if either
+                action can't be completed than the other action must fail
+            - Consistency:
+                - Transactions can only take the data in the database from one valid
+                state to another 
+                - Ex. In debit and Credit, the completed state of the transaction must
+                reflect the transfer of funds from one account to the other
+            - Isolation:
+                - Concurrent transactions cannot interfere with one another, and must
+                result in a consistent database state
+                - Ex. While transaction to transfer funds from one account to another
+                in in-process, another transaction that checks the balance of these 
+                accounts must return consistent results
+                - W.r.t. above, the balance checking transaction can't retrieve a value
+                for one account that reflects the balance before the transfer and a 
+                value for the other account that reflects the balance after the transfer
+            - Durability:
+                - When a transaction has been committed, it will remain committed
+                - Ex., After the account transfer transaction has completed, the revised
+                account balances are persisted, so that even if the database system 
+                were to be switched off, the committed transaction would be reflected,
+                when it is switched on again
+    
+    - Analytical Data Processing (OLAP):
+        - This type of data processing typically uses read-only (or read-mostly) 
+        systems that stores vast volumes of historical data or business metrcis
+        - OLAP model is an aggregated type of data storage that is optimized 
+        for analytical workload
+        - Ex. Find sales by region, by city, or for an individual address 
+        - Analytics can be based on a snapshot of the data at a given point in
+        time, or a series of snapshots
+        - One common architecture for enterprise-scale analytics looks like:
+            - Data files may be stored in a central data lake for analysis
+            - An ETL process copies data from files and OLTP databases into a data
+            warehouse that is optimized for read activity
+            - Data in the data warehouse may be aggregated and loaded into an online
+            analytical processing (OLAP) model, or cube
+            - The data in the data lake, data warehouse and analytical model can be 
+            queried to produce reports, visualizations and dashboards
+        
+        - Data Lakes 
+            - Common in large-scale analytical processing scenarios, where
+            a large volume of file-based data must be collected and analyzed
+        - Data Warehouse:
+            - Established way to store data in a relational schema that is optimized
+            for read operations, primary queries to support reporting and data
+            visualization
+            - The data normalization schema may require some denormalization of data
+            in an OLTP data source (introducing some duplication to make queries
+            perform faster)
+
+        - Since OLAP data is pre-aggregated, queries to return the summaries it
+        contains can be run quickly
+
+        - OALP for different types of users:
+            - Data Scientists:
+                - Work directly with data files in a data lake to explore and model
+                data
+            - Data Analysts:
+                - Query tables directly in the data warehouse to produce complex
+                reports and visualizations
+            - Business Users:
+                - Consume pre-aggregated data in an analytical model in the form of 
+                reports or dashboards
+            
