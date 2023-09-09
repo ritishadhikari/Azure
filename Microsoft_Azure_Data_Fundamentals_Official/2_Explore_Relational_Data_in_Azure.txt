@@ -1,0 +1,149 @@
+Explore fundamental relational data concepts:
+    - Typically, a relational database management system (RDBMS) can enforce 
+    referential integrity to ensure that a value entered into a foreign key
+    field has an existing corresponding primary key in the related table
+
+    - Some popular dialects of SQL include:
+        - Transact-SQL (TSQL):
+            - This version of SQL is used by Microsoft SQL server and Azure SQL
+            services
+        - pgSQL:
+            - Implemented in PostgreSQL
+        - PL/SQL:
+            - Implemented in Oracle.
+            - Stands for Procedural Language/SQL
+    
+    - Data Definition Language:
+        - CREATE
+        - ALTER
+        - DROP
+        - RENAME
+    
+    - Data Control Language:
+        - GRANT
+            """
+            GRANT 
+                SELECT, INSERT, UPDATE
+            ON
+                product
+            TO
+                user1;
+            """
+        - DENY
+        - REVOKE
+    
+    - Data Manipulation Language:
+        - SELECT
+            """
+            SELECT  
+                firstName,
+                lastName,
+                address,
+                city
+            FROM 
+                customer
+            WHERE
+                city="Seattle"
+            ORDER BY
+                lastName; 
+            """
+        - INSERT
+            """ 
+            INSERT 
+            INTO 
+                product(
+                        id,
+                        name,
+                        price
+                    )
+            VALUES
+                (
+                    99,
+                    "Drill",
+                    4.99
+                );
+            """
+        - UPDATE
+            """
+            UPDATE 
+                customer
+            SET 
+                address="123 High St."
+            WHERE 
+                id=1;
+            """
+        - DELETE
+            """
+            DELETE 
+            FROM    
+                product
+            WHERE   
+                id=162;
+
+            """
+    - View:
+        - A virtual Table based on the result of a Select Query
+        """
+            CREATE 
+            VIEW
+                deliverables
+            AS
+            SELECT  
+                o.orderNo,
+                o.orderDate,
+                c.firstName,
+                c.lastname,
+                c.address,
+                c.city
+            FROM    
+                order AS o
+            JOIN
+                customer AS c
+            ON
+                o.customer=c.id
+        """
+    - Stored Procedure:
+        - It defines SQL statements that can be run on Command
+        - They are used to encapsulate programmatic logic in a database for actions
+        that applications need to perform when working with data
+        - Define a Stored Proc with paramaters to create a flexible solution
+        for common actions that might need to be applied to data on a specific key
+        or criteria
+        - Stored Procedure to change the name of a product based on the specified
+        prouctid
+            """
+                CREATE 
+                PROCEDURE 
+                    renameProduct
+                        @ProductID INT,
+                        @NewName VARCHAR(20)
+                AS 
+                UPDATE 
+                    product
+                SET 
+                    name=@NewName
+                WHERE
+                    id=@ProductID ;
+            """
+            """
+            EXEC 
+                renameProduct 
+                    201,
+                    "Spanner";
+            """
+    - Index:
+        - Helps you search for data in a Table
+        - When you create an index, you specify a column from the table
+        - The index contains a copy of this data in a sorted order, with pointers
+        to the corresponding rows in the table
+        """
+        CREATE 
+        INDEX
+            idx_ProductName
+        ON
+            product(name);
+        """
+        - When a table has many rows, indexes can dramatically improve the 
+        performances of queries
+        - An index consumes storage space, and each time you insert, update or
+        delete operations, the indexes for that table must be maintained
