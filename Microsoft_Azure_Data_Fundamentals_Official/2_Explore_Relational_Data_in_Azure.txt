@@ -147,3 +147,86 @@ Explore fundamental relational data concepts:
         performances of queries
         - An index consumes storage space, and each time you insert, update or
         delete operations, the indexes for that table must be maintained
+
+Explore Relational Database Service in Azure:
+    - SQL Server on Azure Virtual Machines (VMs):
+        - A VM running in Azure with an installation of SQL Server
+        - Infrastructure As a Service
+        - Great option for Lift and Shift migration of existing 
+        on-premise SQL server installations to the cloud
+        - You can quickly resize an Azure VM without the requirement that you
+        reinstall the software that is running on it
+    - Azure SQL Managed Instance:
+        - Platform as a Service
+        - Provides near 100% compatibility with on-premises SQL Server
+        instances while abstracting the underlying hardware and operations
+        - Install Multiple Databases on the same instance
+        - All communications are encrypted and signed using certificates
+        - Managed Instances depend on other Azure Services:
+            - Azure Storage for Backups
+            - Azure EventHub for telemetry
+            - Azure Active Directory for Authentication
+            - Azure Key vault for Transparent Data Encryption (TDE)
+        - Use Managed Instance (and not Azure SQL Database), if your system uses features 
+        such as:
+            - Service Brokers
+            - Database Mail
+        - Use Data Migration Assistant to detect compatibility issues with your Databases
+        that can impact database functionality
+    - Azure SQL Database:
+        - Fully Managed, highly scalable PaaS database service that is designed for
+        the cloud
+        - This service includes the core database-level capabilities of on-premises
+        SQL Server
+        - Good option when you need to create a new application in the cloud
+        - Supports Single Database as well as Elastic Pool
+        - Under single database, you create and run a database server in the cloud
+        and you access the database through this server. You can also specify a 
+        serverless configuration
+        - Under Elastic Pool, Multiple Databases can share the same resources through 
+        Multiple tenancy and this resource is referred to as pool
+        - You create the pool and only your databases can use the pool
+        - This pool model is useful, if you have databases with resource requirements
+        that vary over time 
+        - Elastic pool enables you to use the resources available in the pool, 
+        and then release the resources once processing has completed
+        - This is highly available (99.995%) and scalable
+    - Azure SQL Edge:
+        - SQL engine that is optimized for IoT scenarios that need to work with
+        streaming time series data
+    
+    - One notable feature of MariaDB is its built-in support for temporal data, where
+    a table can hold several versions of data, enabling an application to query the data
+    as it appeared at some point in the past
+
+    - One key fearture of PostGreSQL is the ability to store and manipulate geometric
+    data, such as lines, circles and polygons
+
+    - Azure Database for MYSQL:
+        - It is a PaaS implementation of MySQL in the Azure Cloud, based on the MySQL
+        community edition
+        - High Availability and scalability as required with pay for what you use
+        - Azure Database provides a global database system that scales up to 
+        large databases with the need to manage hardware, network components, 
+        virtual servers, software patches and other underlying components
+        - Provides automatic backups and point-in-time restore for the last 35 days
+        - Provides monitoring functionality to add alerts and to view metrics and logs
+    
+    - Azure Database for MariaDB:
+        - Based on the MariaDB community edition
+        - Fully managed and is controlled by Azure
+        - Provides automatic backups and point-in-time restore for the last 35 days
+    
+    - Azure Database for PostGreSQL:
+        - PaaS as a Service
+        - Provides the same availability, performance, scaling, security and 
+        administrative benefits as the MySQL service
+        - Some features of on-premise PostGreSQL databases aren't available in 
+        Azure Database for PostGreSQL, like extensions that users can add to a database
+        to perform specialized tasks, such as writing Stored Procs in programming
+        languages other than pgsql and interacting directly with the OS
+        - Continue to use the pgAdmin tool to connect to Azure Database for PostgreSQL
+        - Information about query run against databases on the server are saved 
+        in azure_sys database and you can query the query_store.qs_view to see and 
+        monitor queries that users are running
+    
