@@ -100,3 +100,30 @@ Explore Azure Storage for Non Relational Data:
                 - File sharing used by Linux and MacOS
                 - You must use a premium tier storage account and create and configure
                 a Virtual Network through which access to the share can be controlled
+
+    - Explore Azure Tables:
+        - It is a no-SQL storage solution that makes use of tables containing 
+        key/value data items
+        - It enables you to store semi-structured data
+        - All rows in a table must have a unique key (composed of a Partition
+        key and a row key)
+        - When you modify data in a table, a timestamp column records the date and
+        time the modification was made
+        - Columns in each row can vary
+        - Has no concepts of foreign keys, relationships, stored procedures, views, etc
+        - Data is usually denormalized with each row holding the entire data for a logical
+        entity
+        - To help fast access, Azure Table Storage splits a table into partitions, which
+        is a mechanism for grouping related rows, based on a common property or partition
+        key
+        - Rows that share the same partition key will be stored togather 
+        - A table can contain any number of partitions and partitions are independent
+        of each other
+        - Partitions can grow or shrink as rows are added to or removed
+        - During searching for data, you can include the partition key in the search 
+        criteria, which improves the performance by reducing the amount of I/O
+        - Items in the same partition are stored in row key order and if an application adds
+        a new row to a table, it ensures that the row is placed in the correct position
+        in the table
+        - This helps to perform point queries that identifies a single row and range queries
+        that fetch a contigous block of rows in a partition
