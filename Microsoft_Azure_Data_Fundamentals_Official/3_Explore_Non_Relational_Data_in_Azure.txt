@@ -1,0 +1,102 @@
+Explore Azure Storage for Non Relational Data:
+    
+    - Azure Blob Storage:
+        - It is a service that enables you to store massive amounts of unstructured
+        data as binary large objects or blobs in the cloud
+        - Applications can read and write in blob storage by using the Azure blob
+        storage API
+        - In Azure, you store blobs in containers, which provides a convenient way
+        of grouping related blobs togather
+        - You control who can read and write blobs inside a container at the container
+        level
+        - Within a container, you can organize blobs in a hierarchy of virtual folders,
+        similar to files in a file system on disk
+        - The folders are purely virtual, and you can't perform folder-level operations 
+        to control access or perform bulk operations
+        - Azure Blob Supports three different types of blob:
+            - Block Blobs:
+                - The block is the smallest amount of data that can be read or written
+                as an individual unit
+                - It is handled as a set of blocks
+                - Each block varies in size, upto 100 MB
+                - A block blob can contain upto 50k blocks, or maximium size of 4.7 TB
+                - Best used to store discrete, large, binary objects that change
+                infrequently
+            - Page Blobs:
+                - It is organized as a collection of fixed size 512-byte pages
+                - It is optimized to support random read and write operations
+                - Fetch and store data for a single page if necessary
+                - Can hold upto 8 TB of data
+                - Azure uses page blobs to implement virtual disk storage for VMs
+            - Append Blobs:
+                - Optimized to support append operations
+                - Only add blocks to the end of an append blob, updating or deleting
+                existing blocks is not supported
+                - Each block can vary in size upto 4 MB 
+                - Maximum size of append blob is just over 195 GB
+        
+        - Tiers:
+            - Hot:
+                - The blob data is stored on high performance media
+            - Cool
+            - Archive:
+                - Blobs are effectively stored in an offline state
+                - Reading latency unlike in Hot and Cool which is milli-seconds,
+                it can take hours for the data to become available
+                - To retrieve a blob from the archive tier, you must change the access
+                tier to hot or cool, which makes the blob to be rehydrated
+        
+        - Lifecycle Management Policies for blobs in a storage account:
+            - Automatically move a blob from hot to cool and then to the Archive tier
+            as it ages and is used less frequently
+            - Policy is based on the number of days since modification
+            - Policy can also be arranged to delete outdated blobs
+
+    - Azure Data Lake Storage Gen2:
+        - Gen2 is newer version of Azure Data Lake Store (Gen1) that is 
+        integrated into Azure Storage
+        - It enables you to take advantage of the scalability of blob storage
+        and the cost-control of storage tiers, combined with the heirarchical file
+        system capabilities and compatibility with major analytics systems of Azure
+        Data Lake Store
+        - The following services mounts a distributed file system hosted in Azure 
+        Data Lake Store Gen2 and use to process huge volumes of data:
+            - Azure HDInsight
+            - Azure DataBricks
+            - Azure Synapse Analytics
+        - To create Gen2 files system, you must enable the Heirarchical Namespace
+        option of an Azure Storage account
+        - The Heirarchical Namespace option can be enabled when creating the storage 
+        account or upgrade an existing Azure Storage account to support Gen 2
+        - Upgrading is a one-way process and once upgraded, you can't revert to 
+        a flat namespace
+    
+    - Explore Azure Files:
+        - It is essentially a way to create cloud-based network shares, such as 
+        you typically find in on-premises organizations to make documents and other
+        files available to multiple users
+        - Organizations can eliminate hardware costs and maintenance overhead, and
+        benefit from highly scalable cloud storage for files
+        - Create Azure File Storage in a storage account
+        - Enables you to share upto 100 TB of data in a single storage account
+        which can be distributed across any number of file shares in the account
+        - Maximum size of a single file is 1 TB, but you can set quotas to limit
+        the size of each share below this figure
+        - Currently Azure File Storage supports upto 2000 concurrent connections
+        per shared file
+        - Upload file to AFS using portal or azcopy command
+        - You can also use Azure File Sync to synchronize locally cached copies
+        of shared files with the data in Azure File Storage
+        - Offers Two Performance Tiers:
+            - Standard Storage:
+                - Uses HDDs
+            - Premium Storage:
+                - Uses SSDs
+                - Offers greater throughput
+        - Supports two common network file sharing protocols:
+            - Server Message Block (SMB):
+                - File Sharing which is commonly used across multiple OS
+            - Network File System (NFS):
+                - File sharing used by Linux and MacOS
+                - You must use a premium tier storage account and create and configure
+                a Virtual Network through which access to the share can be controlled
