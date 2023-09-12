@@ -127,3 +127,105 @@ Explore Azure Storage for Non Relational Data:
         in the table
         - This helps to perform point queries that identifies a single row and range queries
         that fetch a contigous block of rows in a partition
+
+Explore Fundamentals of Azure Cosmos DB:
+    - Supports Multiple APIs and is a highly scalable DBMS
+    - The Internal data structure is abstracted, enabling developers to use Cosmos
+    DB to store and query data using APIs with which they are already familier
+    - It uses indexes and partitioning to provide fast read and write performance and
+    can scale to massive volumes of data
+    - You can enable multi-region writes, adding Azure regions of choice to the
+    Cosmos DB account so that globally distributed users can each work with data in 
+    their local replica
+    - It automatically allocates space in a container for your partitions and each
+    partitions can grow up to 10 GB in size
+    - Indexes are created and maintained automatically without any admin overheads
+    - Use Cases of Cosmos DB:
+        - IOT and Telematics:   
+            - Ingests large amount of data in frequent burst of activity and
+            store these information quickly
+            - Data then can be used for analytic services like AZML and AZBI
+            - Additionally you can process data realtime with Azure Functions
+        - Retail and Marketing:
+            - Storing Catalog data and for event sourcing in order processing 
+            pipelines
+        - Gaming:
+            - Database tier is a crucial component
+            - Games that often require single-millisecond latencies for reads
+            and write to provide an engaging in-game experience
+            - Game Database needs to be fast and be able to handle massive spikes
+            in request rates during new game launches and fature updates
+        - Web and Mobile applications:
+            - Modelling social interactions
+            - Integratring with third party services
+            - Building rich personlized experience
+            - Uses Xamarin framework for connecting Cosmos DB SDKs with android/iOS
+
+    - Azure Cosmos DB for NoSQL:
+        - It is Microsoft's native non-relational service for working with the document
+        data model
+        - Manages data in JSON document format
+        - Uses SQL syntax to work with the data
+        """
+            SELECT
+                *
+            FROM 
+                customers c
+            WHERE 
+                c.id="joe@litware.com"
+        ""'
+        - Result consists of one or more JSON documents
+    
+    - Azure Cosmos DB for MongoDB:
+        - In MongoDB data is stored in Binary JSON (BSON) format
+        - Azure Cosmos DB for MongoDB enables developers to use MongoDB client 
+        libraries and code with data in Azure Cosmos DB
+        - Mongodb uses a compact, object-oriented syntax in which developers use objects
+        to call methods
+        """
+            db.products.find({id:123})
+        """
+    
+    - Azure Cosmos DB for PostgreSQL:
+        - It is a native PostgreSQL globally distributed relational database that
+        automatically shards data to help build highly scalable apps 
+        - You can start building apps on a single node server group
+        - As the apps scalability and performance requirements grow, you can seamlessly
+        scale to multiple nodes by transparently distributing your tables
+        """
+            SELECT  
+                productsname, 
+                price
+            FROM 
+                products
+            WHERE
+                productid=123;
+        """
+    
+    - Azure Cosmos DB for Table:
+        - It is used to work with data in key-value tables, similar to Azure Table
+        Storage (ATS)
+        - It offers greater scalability and performance than ATS
+        - You can use table API through one of the language-specific SDKs to make 
+        calls to your service endpoint to retrieve data from the table
+    
+    - Azure Cosmos DB for Apache Cassandra:
+        - This service is compatible with Apache Cassandra, which uses a column-family
+        storage structure
+        - Column families are tables, similar to those in a relational database, 
+        with the exception that it is not mandatory for every row to have the same
+        columns
+        """
+            SELECT
+                *
+            FROM    
+                employees
+            WHERE
+                ID=2;
+        """
+    - Azure Cosmos DB for Apache Gremlin:
+        - It is used with data in a graph structure
+        - Here entities are defined in Vertices that forms nodes in connected graph
+        - Nodes are connected by edges that represent relationships
+        - Gremlin sytax includes functions to operate on vertices and edges, enabling
+        you to insert, update, delete and query data in the graph
