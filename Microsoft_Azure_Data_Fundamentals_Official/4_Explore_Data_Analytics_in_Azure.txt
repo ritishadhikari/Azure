@@ -1,0 +1,123 @@
+Explore Fundamentals of Large Scale Data Warehousing
+    - Big Data processing solutions are used with large volumes of data in multiple
+    formats, which is batch loaded or captured in real-time streams and stored in 
+    a data lake from which distributed processing engines like Apache Spark are used
+    to process it.
+
+    - Data Warehousing Architecture:
+        - Data Ingestion and Processing:
+            - Data from one or more transactional data stores, files, real-time 
+            streams, or other sources is loaded into a data lake or a relational
+            data warehouse
+            - The load operation usually involves ETL or ELT
+            - The resulting data structure is optimized for analytical queries
+            - Data processing is often performed by distributed systems that can 
+            process high volumes of data in parallel using multi-node clusters
+            - Data Ingestion includes both batch processing of static data and real-time
+            processing of streaming data
+        - Analytical Data Store:
+            - Data Stores for Large scale analytics
+            - Includes relational data warehouse or file-system based data lakes
+            - Also may include combined features of data warehouses and data lakes
+            (sometimes called data lakehouses or lake databases)
+        - Analytical Data Model:
+            - It is common to create one or more data models that pre-aggregate the data
+            to make it easier to produce reports, dashboards and interactive 
+            visualizations
+            - Often these models are called cubes, in which numeric data values are 
+            aggregated across one or more dimensions
+        - Data Visualization:
+            - Data Analysts consume data from analytical models, and directly from 
+            analytical stores to create reports, dashboards and other visualizations
+    
+    - Explore Data Ingestion Pipelines:
+        - Pipeline consists of one or more activities that operate on data
+        - In Azure, Large-Scale data ingestion is best implemented by creating pipelines
+        that orchestrate ETL Processes
+        - Create and run pipelines using Azure Data Factory or you can use the same 
+        pipeline in Azure Synapse Analytics if you want to manage all of the components
+        of your data warehousing solution in a unified workspace
+        - An input dataset provides the source data and activities can be defined as a 
+        data flow that incrementally manipulates the data until an output dataset
+        is produced
+        - Pipeline use linked services to load and process data - enabling you to use
+        the right technology for each step of the workflow
+        - Ex of Linked Services:
+            - Azure Blob Store Linked Service
+            - Azure SQL Database Linked Service
+            - Azure Databricks or Azure HDInsight Linked Service
+            - Azure Synapse Analytics Linked Service
+        - Pipelines can also include some built-in activities, which don't require 
+        a linked service
+
+    - Data Warehouses:
+        - Relational Database, where the data is stored in a schema that is optimized
+        for data analytics rather than transactional workloads
+        - Commonly, the data from a transactional store is transformed into a schema 
+        in which numeric values are stored in central fact tables, which are related 
+        to one or more dimension tables that represent entities by which the data can 
+        be aggregated
+    
+    - Data Lake:
+        - It is a file store, typically on a distributed file system for high performance
+        data access
+        - Technologies like Spark or Hadoop are often used to process queries on the 
+        stored files and return data for reporting and analytics
+        - Often applies a schema on read approach to define tabular schemas on 
+        semi structured data files where the data data is read for analysis, without
+        applying write schema contraints when it is stored
+    
+    Hybrid Approach:
+        - Combines features of Data Warehouses and Data Lakes in a lake database
+        or data lakehouse
+        - Raw data is stored as files in a data lake and a relational storage layer
+        abstracts the underlying files and expose them as tables, which can be queried
+        using SQL
+        - SQL pools in Azure Synapse includes Polybase which enables you to define 
+        external tables based on files in a datalake (andother sources) and query 
+        them using SQL
+        - Synapse Analytics also supports a Lake Database approach in which you can use
+        database templates to define the relational schema of your datawarehouse
+        while storing underlying data in data lake storage
+        - This separates the storage and compute for your data warehousing solution
+        - Data Lakehouses are a relatively new approach in Spark based systems and
+        are enabled through Delta Lake Technologies
+        - It adds relational storage capabilities to spark so that you can define tables
+        that enforce schemas and transaction consistency, support batch-loaded and 
+        streaming data sources and provide a SQL API for querying
+    
+    - Azure Service for Analytical Stores:
+        - Azure Synapse Analytics:
+            - Unified end-to-end solution for large scale data analytics
+            - Combines the data integrity and reliability of a scalable, high-performance
+            SQL server based relational data warehouse with the flexibility of data lake
+            and open-source Apache Spark
+            - Includes Native support for log and telemetry analytics with Azure Synapse
+            data explorer tool 
+            - Includes built in Data Pipelines for data ingestion and transformation
+            - All Azure Sypapse analytics can be managed through a single, interactive 
+            user interface called Azure Synapse Studio which includes the ability to 
+            create interactive notebooks in which spark code and markdown content
+            can be combined
+            - Great choice when you want to create a single, unified analytics solution
+            on Azure
+
+        - Azure Databricks:
+            - Azure Implementation of Databricks Platform
+            - Provides an interactive user interface through which the system can be 
+            managed and data can be explored in interactive notebooks
+            - Consider using Azure Databricks as your analytical store if you want to 
+            use existing expertise with the platform or if you need to operate in a 
+            multi-cloud environment or support a cloud-portable solution
+        
+        - Azure HDInsight:
+            - Azure Service that supports multiple open-source data analytics 
+            cluster types
+            - Not as user friendly as Azure Synapse Analytics and Azure Databricks
+            - Can be suitable if your analytics solution relies on multiple open-source
+            frameworks or if you need to migrate an existing on-premises Hadoop-based
+            solution to the cloud
+    
+    - A pipeline might use a MapReduce job running in HDInsight or a notebook running 
+    in Azure Databricks to process a large volume of data in the data lake and 
+    then load it into tables in a SQL pool in Azure Synapse Analytics
