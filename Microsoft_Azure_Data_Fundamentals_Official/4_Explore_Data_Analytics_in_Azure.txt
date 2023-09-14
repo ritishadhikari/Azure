@@ -121,3 +121,115 @@ Explore Fundamentals of Large Scale Data Warehousing
     - A pipeline might use a MapReduce job running in HDInsight or a notebook running 
     in Azure Databricks to process a large volume of data in the data lake and 
     then load it into tables in a SQL pool in Azure Synapse Analytics
+
+Explore Fundamentals of Real Time Analytics:
+    - In stream processing, a source is constantly monitored and processed in real time
+    as new data events occur
+    - Stream Processing is ideal for time-critical operations that require an instant
+    real-time response
+    - Stream processing is intended for individual records or micro batches consisting
+    of few records
+    - Stream Processing typically occurs immediately, with latencies in the order of
+    seconds or milliseconds
+    - Stream Processing is used for simple response functions, aggregates, or
+    calculations such as rolling averages
+    - It's common for stream processing solutions to capture real-time data, process it
+    by filtering or aggregating it and present it in a real time dashboards and 
+    visualizations, while also persisting the processed results in a data store
+    for historical analysis alongside batch processed data
+
+    - Technologies for Real Time Analytics with streaming data in Azure:
+        - Azure Stream Analytics:
+            - A PaaS service, that you can use to define streaming jobs that ingest
+            data from a streaming source, apply a perpetual query and write the results
+            to an output
+        - Spark Structured Streaming:
+            - An open-source library that enables you to develop complex streaming
+            solutions on Apache Spark based Services
+            - Includes Azure Synapse Analytics, Azure Databricks and Azure HDInsight
+        - Azure Data Explorer:
+            - A high-performance database and analytics service
+            - Optimized for ingesting and querying batch or streaming data with a
+            time-series element
+            - Can be used as a standalone Azure service or as an Azure Synapse Data 
+            Explorer runtime in an Azure Synapse Analytics workspace
+    
+    - Source for Stream Processing:
+        - Azure Event Hubs:
+            - A data ingestion service, that you can use to manage queues of event data,
+            ensuring that each event is processed in order, exactly once
+        - Azure IoT Hub:
+            - Data Ingestion service similar to Event Hubs
+            - Optimized for managing event data from IoT devices
+        - Azure Data Lake Storage (Gen 2):
+            - Highly scalable storage service that is often used in batch processing 
+            scenarios, but can also be used as a source of streaming data
+        - Apache Kafka:
+            - Open Source data ingestion solution that is commonly used togather 
+            with Apache Spark
+            - Use Azure HDInsight to create a Kafka cluster
+    
+    - Sinks for Stream Processing:
+        - Azure Event Hubs:
+            - Used to stream the processed data for further downstream processing
+        - Azure Data Lake Store Gen2 or Azure Blob Storage:
+            - Used to persist the processed results as a file
+        - Azure SQL Database or Azure Synapse Analytics or Azure Databricks:
+            - Used to persist the processed results in a database table for querying
+            and analysis
+        - Microsoft Power BI:
+            - Used to generate real time data visualizations in reports and dashboards
+    
+    - Azure Stream Analytics (ASA):   
+        - It is a service for complex event processing and analysis of streaming data
+        - It is used to ingest data from an input, such as an Azure Event Hub, Azure
+        IOT Hub or Azure Storage Blob Container
+        - Then process the data by using a query to select, project and aggregate data
+        values
+        - Finally write the results to an output, such as Azure Data Lake Gen 2, Azure
+        SQL Database, Azure Synapse Analytics, Azure Functions, Azure Event Hub,
+        Microsoft Power BI or others
+        - Once started, a Stream Analytics query will run perpetually, processing
+        new data as it arrives in the input and storing results in the output
+        - The easiest way to use ASA is to create Stream Analytics Job in an 
+        Azure Subscription, configure its input(s) and output(s) and define the 
+        query that the job will use to process the data
+        - The query used is SQL and can incorporate statis reference data from multiple
+        data sources to supply lookup values that can be combined with the streaming
+        data ingested from an input
+        - Create a Stream analysis cluster if your stream process requirements are
+        complex or resource-intensive; it also uses the same underlying processing
+        engine as a Stream Analytics job, but in a dedicated tenant and with configurable
+        scalability that enables you to define the right balance of throughput and cost
+        for your specific scenario
+    
+    - Spark Structured Streaming (SSS):
+        - It is a great choice for real time analytics when you need to incorporate
+        streaming data into a spark based data lake or analytical data store
+        - To process Streaming Data on Spark, you can use the Spark Structured Streaming
+        library which provides an API for ingesting and outputting results from 
+        perpetual streams of data
+        - SSS in built on a ubiquitous structure in Spark called a Dataframe, which
+        encapsulates a table of data
+        - Use SSS streaming API to read data from a real time data source, such as 
+        Kafka hub, a file store or a network port into a boundless dataframe that 
+        is continually populated with the new data from the stream
+        - Define a query on the dataframe that selects or aggregates the data often 
+        in temporal windows
+        - The result of the aggregate query generates another dataframe which can be
+        persisted for analysis or further processing
+    
+    - Delta Lake:
+        - It is an open source storage layer, that supports transactional consistency, 
+        schema enforcement and other common data warehousing features to data lake 
+        storage
+        - Unifies storage for streaming and batch data and can be used in spark to 
+        define relational tables for both batch and stream processing
+        - When used for stream processing, a delta lake table can be used as a streaming
+        source for queries against real-time data, or as as sink to which a stream 
+        of data is written
+        - Spark runtimes in Azure Synapse Analytics and Azure Databricks include
+        support for Delta Lake
+        - Delta Lake combined with SSS is a good solution when you need to abstract
+        batch and stream processed data in a data lake behind a relational schema
+        for SQL based querying and analysis
