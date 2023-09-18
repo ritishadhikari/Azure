@@ -64,7 +64,7 @@ Explore Fundamentals of Large Scale Data Warehousing
         - Technologies like Spark or Hadoop are often used to process queries on the 
         stored files and return data for reporting and analytics
         - Often applies a schema on read approach to define tabular schemas on 
-        semi structured data files where the data data is read for analysis, without
+        semi structured data files where the data is read for analysis, without
         applying write schema contraints when it is stored
     
     Hybrid Approach:
@@ -95,7 +95,7 @@ Explore Fundamentals of Large Scale Data Warehousing
             - Includes Native support for log and telemetry analytics with Azure Synapse
             data explorer tool 
             - Includes built in Data Pipelines for data ingestion and transformation
-            - All Azure Sypapse analytics can be managed through a single, interactive 
+            - All Azure Synapse analytics can be managed through a single, interactive 
             user interface called Azure Synapse Studio which includes the ability to 
             create interactive notebooks in which spark code and markdown content
             can be combined
@@ -194,9 +194,9 @@ Explore Fundamentals of Real Time Analytics:
         - The easiest way to use ASA is to create Stream Analytics Job in an 
         Azure Subscription, configure its input(s) and output(s) and define the 
         query that the job will use to process the data
-        - The query used is SQL and can incorporate statis reference data from multiple
-        data sources to supply lookup values that can be combined with the streaming
-        data ingested from an input
+        - The query used is SQL and can incorporate statistics reference data from 
+        multiple data sources to supply lookup values that can be combined with the 
+        streaming data ingested from an input
         - Create a Stream analysis cluster if your stream process requirements are
         complex or resource-intensive; it also uses the same underlying processing
         engine as a Stream Analytics job, but in a dedicated tenant and with configurable
@@ -217,7 +217,7 @@ Explore Fundamentals of Real Time Analytics:
         - Define a query on the dataframe that selects or aggregates the data often 
         in temporal windows
         - The result of the aggregate query generates another dataframe which can be
-        persisted for analysis or further processing
+        persisted for analysis for further processing
     
     - Delta Lake:
         - It is an open source storage layer, that supports transactional consistency, 
