@@ -122,11 +122,11 @@ Explore Azure Storage for Non Relational Data:
         - Partitions can grow or shrink as rows are added to or removed
         - During searching for data, you can include the partition key in the search 
         criteria, which improves the performance by reducing the amount of I/O
-        - Items in the same partition are stored in row key order and if an application adds
-        a new row to a table, it ensures that the row is placed in the correct position
-        in the table
-        - This helps to perform point queries that identifies a single row and range queries
-        that fetch a contigous block of rows in a partition
+        - Items in the same partition are stored in row key order and if an application 
+        adds a new row to a table, it ensures that the row is placed in the correct 
+        position in the table
+        - This helps to perform point queries that identifies a single row and range 
+        queries that fetch a contigous block of rows in a partition
 
 Explore Fundamentals of Azure Cosmos DB:
     - Supports Multiple APIs and is a highly scalable DBMS
@@ -157,8 +157,8 @@ Explore Fundamentals of Azure Cosmos DB:
             in request rates during new game launches and fature updates
         - Web and Mobile applications:
             - Modelling social interactions
-            - Integratring with third party services
-            - Building rich personlized experience
+            - Integrating with third party services
+            - Building rich personalized experience
             - Uses Xamarin framework for connecting Cosmos DB SDKs with android/iOS
 
     - Azure Cosmos DB for NoSQL:
