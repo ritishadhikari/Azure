@@ -74,7 +74,7 @@ Explore Fundamentals of Large Scale Data Warehousing
         abstracts the underlying files and expose them as tables, which can be queried
         using SQL
         - SQL pools in Azure Synapse includes Polybase which enables you to define 
-        external tables based on files in a datalake (andother sources) and query 
+        external tables based on files in a datalake (and other sources) and query 
         them using SQL
         - Synapse Analytics also supports a Lake Database approach in which you can use
         database templates to define the relational schema of your datawarehouse
