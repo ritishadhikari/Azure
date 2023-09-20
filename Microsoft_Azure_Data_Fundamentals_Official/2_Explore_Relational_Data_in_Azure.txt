@@ -110,7 +110,7 @@ Explore fundamental relational data concepts:
         for common actions that might need to be applied to data on a specific key
         or criteria
         - Stored Procedure to change the name of a product based on the specified
-        prouctid
+        productid
             """
                 CREATE 
                 PROCEDURE 
@@ -199,7 +199,7 @@ Explore Relational Database Service in Azure:
     a table can hold several versions of data, enabling an application to query the data
     as it appeared at some point in the past
 
-    - One key fearture of PostGreSQL is the ability to store and manipulate geometric
+    - One key feature of PostGreSQL is the ability to store and manipulate geometric
     data, such as lines, circles and polygons
 
     - Azure Database for MYSQL:
