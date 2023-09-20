@@ -33,7 +33,6 @@ Explore Core Data Concepts:
     - Delimited Text Files:
         - Good Choice for structured data that needs to be accessed by a wide range of
         applications and services in a human-readable format
-
         - Ex:
             - Comma Separated Values (CSV):
                 - Fields are separated by Comma
@@ -108,7 +107,7 @@ Explore Core Data Concepts:
     - Explore Databases:
         - Relational databases are commonly used to store and query structured data
         - Data is stored in tables that represents entities
-        - Each instance of an entity is assigned a primary key that uniquely identifies
+        - Each instance of an entity is assigned a primary key that uniquely identifies 
         it 
         - These keys are used to reference the entity instances in other tables
         - The use of keys to reference data entities enables a relational database
@@ -177,7 +176,7 @@ Explore Core Data Concepts:
     
     - Analytical Data Processing (OLAP):
         - This type of data processing typically uses read-only (or read-mostly) 
-        systems that stores vast volumes of historical data or business metrcis
+        systems that stores vast volumes of historical data or business metrics
         - OLAP model is an aggregated type of data storage that is optimized 
         for analytical workload
         - Ex. Find sales by region, by city, or for an individual address 
@@ -222,7 +221,7 @@ Explore Data and Services:
         - Database Administrators:
             - Responsible for Design, Implementation, Maintenance and Operational
             aspects of on-premises and cloud-based database systems
-            - Responsible for the overall avaibility and consistent performance 
+            - Responsible for the overall availability and consistent performance 
             and optimizations of databases
             - Works with stakeholders to implement policies, tools and processes
             for backup and recovery plans to recover following a natural disaster
@@ -253,7 +252,7 @@ Explore Data and Services:
         - Azure SQL Managed Instance:
             - Hosted Instance of SQL server with automated maintenance
             - Allows more flexible configuration than Azure SQL DB, but with more
-            adminitrative responsibility for the owner
+            administrative responsibility for the owner
         - Azure SQL VM:
             - A virtual machine with an installation of SQL server
             - Allows maximum configurability with full management responsibility
