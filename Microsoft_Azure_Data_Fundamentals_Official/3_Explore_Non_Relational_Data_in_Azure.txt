@@ -111,11 +111,11 @@ Explore Azure Storage for Non Relational Data:
         time the modification was made
         - Columns in each row can vary
         - Has no concepts of foreign keys, relationships, stored procedures, views, etc
-        - Data is usually denormalized with each row holding the entire data for a logical
-        entity
-        - To help fast access, Azure Table Storage splits a table into partitions, which
-        is a mechanism for grouping related rows, based on a common property or partition
-        key
+        - Data is usually denormalized with each row holding the entire data for a 
+        logical entity
+        - To help fast access, Azure Table Storage splits a table into partitions, 
+        which is a mechanism for grouping related rows, based on a common property 
+        or partition key
         - Rows that share the same partition key will be stored togather 
         - A table can contain any number of partitions and partitions are independent
         of each other
