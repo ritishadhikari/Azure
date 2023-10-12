@@ -1,0 +1,131 @@
+Intoduction to Devops
+    - Devops professionals design and implement application code and infrastructure
+    strategies that allow continous integration, testing, delivery, monitoring,
+    and feedback
+    - Devops professionals must design and implement Devops practices for version
+    control, compliance, infrastructure as code, configuration management, build,
+    release and testing-using Azure technologies
+    - When you adopt devops practices:
+        - You shorten your cycle time by working in smaller batches
+        - Using more automation
+        - Hardening your release pipeline
+        - Improving your telemetry
+        - Deploying more frequently
+    - Continous Integration drives the ongoing merging and testing of code,
+    leading to an early finding of defects. Other befenefits include less
+    time wasted fighting merge issues and rapid feedback for development teams
+    - Continous Delivery of software solutions to production and testing
+    environments helps organizations quickly fix bugs and respond to ever-changing
+    business requirements
+    - Version Control enables teams worldwide to communicate effectively during
+    daily development activities and integrate with software development tools for
+    monitoring activities such as deployments
+    - Monitoring and Logging of running applications, including production 
+    environments for application health and customer usage
+    - Infrastructure as Code (IaC) enables the automation and validation of the
+    creation and teardown of environments to help deliver secure and stable 
+    applications hosting platforms
+    - Microservices architecture isolates business use cases into small reusable
+    services that communicate via interface contracts. This architecture enables
+    scalability and efficiency
+    - Advantages of Shorter Timelines:
+        - It is easier to change plans or priorities when necessary
+        - The reduced delay between doing work and getting feedback helps ensure
+        that the learnings and feedback are incorporated quickly
+        - It is easier to keep organizational support when positive outcomes
+        are clear
+
+Choose the right Project:
+    - Devops can succeed both in greenfield as well as brownfield projects
+    - Management might have a stronger sense of urgency to point brownfield
+    projects in an appropriate direction when compared to greenfield projects
+    that don't currently exists
+    - In looking to take the first step, many organizations start with a greenfield
+    project and then move on
+    - Systems of Record:
+        - Systems that provide the truth about data elements
+        - These systems have historically evolved slowly and carefully
+        - Ex. It is crucial that a banking system accurately reflects your balance
+        - It emphasize accuracy and security
+    - Systems of Engagement:
+        - Systems that are more exploratory
+        - Uses experimentation to solve new problems and are modified regularly
+        - An issue with a system of engagement might end up causing a problem
+        in a system of record
+
+    - Devops practices apply to both types of systems, while the most significant 
+    outcomes often comes from transforming systems of record
+
+    - Users are categorized into three general buckets:
+        - Canary:
+            - Users who voluntarily test bleeding edge features as soon as they
+            are available
+        - Early Adopters:
+            - Voluntarily preview releases, considered more refined than the code
+            that exposes canary users
+        - Users:
+            - Consumes the products after passing through canary and early Adopters
+    
+    - It is essential to find staff members keen to see new features as soon as
+    they are available and highly tolerant of issues when choosing canary
+    - It is essential to find improvement goals that:
+        - Can be used to gain early wins
+        - Small enough to be achievable in a reasonable timeframe
+        - Has benefits that are significant enough to be evident to the organization
+        - Allows constant learning from rapid feedback and recovering from mistakes
+        quickly
+    
+    KPIs based on Faster Outcomes:
+        - Deployment Frequency:
+            - Increase the frequency of deployment
+        - Deployment Speed:
+            - Necessary to reduce the time that it takes
+        - Deployment Size:
+            - How many features, stories and bug fixes are being deployed each time
+        - Lead Time:
+            - How long does it take from the creation of a work item until it
+            is completed
+    
+    KPIs based on Efficiency:
+        - Server to Admin Ratio:
+            - Number of admins required for a given number of servers
+            - Less the better
+        - Staff Members to Customers Ratio:
+            - Staff members for a given number of customers
+            - Less the better
+        - Application Usage:
+            - How busy the application
+        - Application Performance:
+            - Is the application performance improving or degrading  
+    
+    - KPI based on Quality and Security:
+        - Deployment Failure Rates:
+            - How often do deployments fail
+        - Application Failure Rate:
+            - How often do application failures occur, such as configuration
+            failures, performance failures and so on
+        - Mean time to recover:
+            - How quickly can you recover from a failure
+        - Bug Report Rates:
+            - The amount of time the customers are seeing bugs in your code
+            - Lower the better
+        - Test Pass Rates:
+            - How well is your automated testing working
+        - Defect Escape Rate:
+            - What percentage of time is the application truly available for 
+            customers
+        - Availability:
+            - What percentage of time is the application truly available for
+            customers
+        - Service Level Agreement Achievement:
+            - Are you meeting your service level agreement (SLAs)
+        - Mean time to Detection:
+            - If there is a failure, how long does it take for it to be detected
+    
+    - KPIs based on Culture:
+        - Employee Morale:
+            - Are employees happy with the transformation and where the organization
+            is heading
+            - Measured by anonymous employee surveys
+        - Retention Rates:
+            - Is the organization loosing staff
