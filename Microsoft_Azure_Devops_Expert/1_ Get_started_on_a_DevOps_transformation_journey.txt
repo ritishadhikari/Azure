@@ -129,3 +129,139 @@ Choose the right Project:
             - Measured by anonymous employee surveys
         - Retention Rates:
             - Is the organization loosing staff
+
+Describe Team Structures:
+    - The Waterfall model follows a sequential manner
+    - Agile Methodology constantly emphasizes adaptive planning and early 
+    delivery with continual improvement
+    - Agile Software methods are based on releases and iterations, where one 
+    release might consist of several iterations
+    - At the end of each iteration, there should be tested working code
+    - Waterfall focuses on completing the project while Agile focuses on meeting
+    customers' demand
+    - Horizontal teams divide teams according to software architecture
+    - Vertical team structures span the architecture and are alligned with 
+    skillsets or disciplines. It has shown to provide more good outcomes in 
+    Agile Projects 
+    - In Vertical team structure, scaling can occur by adding teams
+    
+    - Agile coaches:
+        - Help teams or individuals to adopt agile methods or to improve the
+        current techniques and practices
+        - They work with more than one team and remove any roadblocks from inside
+        or outside the organization
+    
+    - Asynchronous communications should be encouraged and there should not be
+    an expectation that all communications will be responded to urgently
+    - Staff should focus on their primary tasks without feeling like they are
+    being left out of important decisions
+
+    - Bringing cross-functional teams together helps to spread knowledge 
+    across an organization
+
+    - Collaboration Tools:
+        - Microsoft teams
+        - Slack
+        - Jira
+        - Asana
+        - Glip
+    
+    - As a complete CI/CD system in Azure Devops and Github, it includes:
+        - Flexibility in Kanban Boards
+        - Traceability through Backlogs
+        - Customizability in dashboards
+        - Built-in scrum Boards
+        - Integrability directly with code repositories
+        - Code changes can be linked directly to tasks or bugs
+    
+Choose the Devops Tools:
+    - Azure Devops is a Software as a Service (SaaS) platform from Microsoft
+    that provides an end-to-end Devops toolchain for developing and Deploying
+    software
+    - It is:
+        - Flexible:
+            - Possible to adopt each of the services independently
+        - Cross-Platform:
+            - Supports multiple OS and Multiple Programming language
+        - Cloud Agnostic:
+            - Supported in AWS, GCP and Azure
+    - Azure Devops Provide:
+        - Azure Boards:
+            - Agile Planning
+            - Work Item Tracking
+            - Visual item Tracking
+            - Visualization
+            - Reporting Tools
+        - Azure Pipelines:
+            - A language, platform and cloud agnostic CI/CD platform-supporting
+            containers or Kubernetes
+        - Azure Repos:
+            - Provides Cloud-hosted private git repos
+        - Azure Artifacts:
+            - Provides integrated package management with support for Maven, npm,
+            Python and NuGet package feeds from public or private sources
+        - Azure Test Plans:
+            - Provides and integrated planned and exploratory testing solution
+
+    - Github Provides:
+        - Codespace:
+            - Cloud Hosted development environment environment
+            - Can be operated within a browser or external tools
+            - Eases cross platform development
+        - Repos:
+            - Public and Private repositories based upon industry-standard
+            Git Command
+        - Actions:
+            - Allows for the creation of automation workflows
+            - Includes environment variables and customized scripts
+        - Packages:
+            - Integrate with Code and other third-party offerings
+        - Security:
+            - Provides detailed code scanning and review features
+            - Includes Automated code review assignment
+    
+    - Personal Access Token:
+        - Are very helpful when establishing access to command-line tools,
+        external tools and tasks in build Pipelines
+        - These tokens can be set up using Git Credential Managers, or you can 
+        create them manually
+        - Use PAT for tools that don't directly support Microsoft Accounts or 
+        Azure AD for authentication
+    
+    - Security Access:
+        - Azure Devops is pre-configured with default security groups where default 
+        permissions are assigned 
+        - You can also configure access at the organization, collection and project
+        or object levels
+        - Configure app access policies in the organizational settings in Azure
+        Devops
+        - Based on the security policies, you may allow alternate authentication 
+        methods, enable third-party applications to access via OAuth, or even 
+        allow anonymous access to some projects
+        - For tighter control, you can also use Conditional Access Policies
+    - Multifactor Authentication:
+        - It is a form of Conditional Access Policy
+        - It can help to minimize the risk of compromised credentials
+        - You might require:
+            - Security Group Membership
+            - A location or network identity
+            - A specific operating system
+            - A managed device or other criteria
+    
+    - Migrating from other work management tools to Azure Devops takes considerable
+    planning and there might not be a single tool available that will do the 
+    migration without further configuration
+
+    - Azure Test Management Tools:
+        - Azure Test Plans track manual testing for sprints and milestones, allowing
+        you to follow when that testing is complete
+        - Azure Devops also has a Test Feedback extension available in the Visual
+        Studio Marketplace, which helps teams do exploratory testing and provide
+        feedback
+        - For Load Test, use Azure Load testing
+    
+    - Designing a Licence Management Strategy:
+        - You first need to understand your progress in the Devops implementation
+        phase
+        - If you have a draft of the architecture, you are planning for the 
+        Devops implementation, you already know part of the resources to Consume
