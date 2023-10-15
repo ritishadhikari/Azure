@@ -265,3 +265,103 @@ Choose the Devops Tools:
         phase
         - If you have a draft of the architecture, you are planning for the 
         Devops implementation, you already know part of the resources to Consume
+
+Plan Agile with GitHub Projects and Azure Boards:
+    
+    - Project Boards:
+        - Helps to take control of specific feature work, roadmaps, release plans, etc
+        - They are made up of issues, pull requests and notes categorized as cards, 
+        which you can drag and drop into your chosen columns
+    
+    - Three different types of project boards:
+        - User-Owned Project Boards:
+            - Contain issues and pull requests from any personal repository
+        - Organization-wide project boards:
+            - Contain issues and pull requests from any repository that belongs to an organization
+        - Repository project boards:
+            - Scoped to issues and pull requests within a single repository
+    
+    - To create a project board for your organization, you must be an organization members
+
+    - Templates for new projects:
+        - Basic Kanban:
+            - Track your tasks with:
+                - Todo
+                - In Progress
+                - Done
+        - Automated Kanban:
+            - Cards Automatically move between:
+                - Todo
+                - In Progress
+                - Done
+        - Automated Kanban with Review:
+            - Additional to the features in Automated Kanban, there is an extra trigger for pull 
+            requests review status
+        - Bug Triage:
+            - Triage and Prioritize Bugs with:
+                - To do
+                - High Priority
+                - Low Priority
+                - Closed Columns
+        
+    - Projects:
+        - They are customizable tool version of projects for planning and tracking work on Github
+        - It is a customizable spreadsheet in which you can configure the layout by filtering,
+        sorting, grouping your issues and PRs and adding custom field to track metadata
+
+Azure Boards:
+    - It is a customizable tool to manage software projects supporting Agile, Scrum and Kanban processes
+    - Track work, issues and code defects associated with your projects
+    - Create custom process templates and use them to create a better and more customized experience
+    - The Kanban board is one of the several tools that allows you to add, update and filter user stories,
+    bugs, features and epics
+    - Each work item provides a standard set of system fields and controls, including discussions for 
+    adding and tracking comments, history, Links and Attachments
+    
+    - Delivery Plans:
+        - Create another view with deliverables and track dependencies across several teams in a calendar 
+        view using Delivery Plans
+        - It is fully interactive supporting the following tasks:
+            - View upto 15 team backlogs, including a mix of backlogs and teams from different projects
+            - View Custom portfolio backlogs and epics
+            - View Work that spans several iterations
+            - Add backlog items from a plan 
+            - View rollup progress of features, epics and other portfolio items
+            - View dependencies that exists between work items
+    
+    - Linking Github to Azure Boards
+        - Connect Azure Boards with Github repositories, enabling linking Github commits, pull requests, 
+        and issues to work items in Boards
+        - Integration of Azure Boards and Github is created using Azure Boards App. 
+        - You must be an administrator or owner of the Github repository or the Github Organization. 
+        - Azure Board App Available in the Github Marketplace
+        - You can configure other Azure Boards/ Azure Devops Projects, Githum.com repositories, or 
+        change the current configuration from the Azure Boards app page
+        - After the integration, you can add or remove repositories from the web portal for Azure Boards
+        - From Azure Board, you can allow a github repository to connect to one or more Azure Boards
+        projects within the same Azure Devops Organization or collection
+    
+    - In Github Projects, you can control project deliverables, release dates, and iterations to plan
+    upcoming work
+    
+    - You can create iteration to:
+        - Associate items with specific repeating blocks of time
+        - Set to any lengths of time including breaks
+        - Three iterations are automatically created
+    
+    - Github Project View:
+        - Using Project Views, you can organize information by changing the layout, grouping, sorting 
+        and filtering your work
+        - This allow you to view specific aspects of your project where each view is displayed on a 
+        separate tab in your projects:
+            - A view that shows all items not yet started
+            - A view that shows the workload for each item 
+            - A view shows the items with the earliest target ship date  (sort by a date field)
+
+    - Github Team Meetings:  
+        - Instead of opening an issue in a repository to discuss an idea, you can include the entire
+    team by having a conversation in a team discussion
+        - Pin Important posts to your team's page
+        - Receive email or web notifications
+        - Link to any team discussion and reference it elsewhere
+
