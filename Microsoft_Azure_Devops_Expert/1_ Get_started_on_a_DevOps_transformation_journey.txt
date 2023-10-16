@@ -365,3 +365,28 @@ Azure Boards:
         - Receive email or web notifications
         - Link to any team discussion and reference it elsewhere
 
+Introduction to Source Control:
+    - Source Control is an essential tool for multi-developer projects
+    - It protects source code from catastrope and the casual degradation of human 
+    error and unintended consequences
+    - If changes are made to the source code, you can go back in time and easily roll
+    back to previous-working versions
+    - For the management, the critical value of version is in:
+        - IP Security
+        - Risk Management
+        - Time-to-Market speed through Continous Delivery, where version control is 
+        a fundamental enabler
+    - Automate testing, code analysis, and deployment when new versions are saved
+    to version control
+
+    - Best Practices for Source Control:
+        - Make Small changes
+        - Do not commit personal files
+        - Update often and right before pushing to avoid merge conflicts
+        - Verify your code change before pushing it to a repository
+        - Pay close attention to commit messages, as it will tell you why a change
+        was made
+        - Link code changes to work items
+        - No matter your background or preferences, be a team player and follow 
+        agreed conventions and workflows
+
