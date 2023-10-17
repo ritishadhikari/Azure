@@ -390,3 +390,82 @@ Introduction to Source Control:
         - No matter your background or preferences, be a team player and follow 
         agreed conventions and workflows
 
+Describe types of Source Control systems:
+    
+    - Centralized Source Control:
+        - Based on the idea that there's a single "central" copy of your
+        project somewhere (probably on a server)
+        - Programmers will check in (or commit) their changes to this central
+        copy
+        - Most modern version control systems deal with changesets, which 
+        are a group of changes (possibly too many files) that should be 
+        treated as a cohesive whole
+    
+    - Distributed Source Control:
+        - These systems don't necessarily rely on a central server to store
+        all the versions of a project's files
+        - Instead every developer "clones" a repository copy and has the project's
+        complete history on their local storage. This copy has all the original
+        metadata
+        - You move (pull and push) changesets (change to file groups as coherent
+        wholes), not single-file diffs
+        - Since each programmer has a full copy of the project repository, they
+        can share changes with one, or two other people to get feedback before
+        showing the changes to everyone
+        - Distributed systems don't prevent you from having a single "central"
+        repository and they provide more options
+        - If your project has a long history (50,000 changesets or more),
+        downloading the entire history can take an impractical amount of time
+        and disk space
+
+    - Team Foundational Version Control (TVFC-centralized):
+        - Team members have only one version of each file on their dev machines
+        - Historical data is maintained only on the server
+        - Branches are path based and created on the server
+        - Most operations require developers to be connected to the server,
+        which help lock workflows
+        - You can scale up to huge codebases with millions of files per branch
+        with server workspaces
+        - Through Local workspaces, each team member copies the latest codebase
+        version with them and works offline as needed
+    
+    - In TVFC, each developer gets a working copy that points back to a single
+    central repository, while in Git, instead of a working copy, each developer
+    gets their local repository, complete with an entire history of commits.
+
+    - Unlike centralized version control systems, Git branches are cheap and 
+    easy to merge
+    - Using Trunk based development is more reliable than directly-editing
+    production code, but it also provides organizational benefits as they
+    represent development work at the same granularity as your agile backlog
+    where you might implement a policy where each work item is addressed in 
+    its feature branch
+
+    - Pull Requests:
+        - Azure Repos enhance core Git functionality with pull requests
+        - Since there are comment thread attached to a feature branch, pull
+        requests are incredibly versatile
+        - When a developer gets stuck with a complex problem, they can open a 
+        pull request to ask for help from the rest of the team
+    
+    - Faster Release Cycle:
+        - It is the ultimate result of feature branches, distributed development,
+        pull requests, and a stable community
+        - These capabilities promotes an agile workflow where developers are
+        encouraged to share minor changes more frequently 
+        - Git hooks allow you to run scripts when certain events occur inside a
+        repository, which lets you automate deployment to your heart's content
+        - You can also build or deploy code from specific branches to different 
+        servers
+    
+    - Problems of OverWriting History:
+        - If you are synchronizing to Azure Repos, you can add a security rule
+        that prevents developers from overwriting history by using the explicit
+        "Force Push" permissions
+    
+    - Handling the Large File Problem:
+        - Binary Files are worse, since Git cannot optimize how they are stored
+        - Git LFS lets you separate large files of your repos and still has
+        all the benefits of versioning and comparing
+        - Use Artifacts or some other package management tools to store binaries
+        for which you have source code 
