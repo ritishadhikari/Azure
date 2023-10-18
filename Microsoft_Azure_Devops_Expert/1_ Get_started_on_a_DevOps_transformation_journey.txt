@@ -468,4 +468,79 @@ Describe types of Source Control systems:
         - Git LFS lets you separate large files of your repos and still has
         all the benefits of versioning and comparing
         - Use Artifacts or some other package management tools to store binaries
-        for which you have source code 
+        for which you have source code
+    
+Work with Azure Repos and Github:
+    
+    - Azure Repos:
+        - Set of version control tools that you can use to manage your code
+        - Provides two types of version control:
+            - Git for distributed version control
+            - Team Foundation Version Control (TVFC): Centralized Version Control
+        - Use Git or TVFC repositories on Azure Repos with your IDE and editor
+    
+    - Azure Repos Benefits: 
+        - Use Free Git Repositories, Pull Requests and Code Search
+        - Support for any Git Client, while securely connecting with and pushing code
+        into your Git Repository from any IDE, editor or Git Client
+        - Web Hooks and API integration
+        - Semantic Code Search by quickly finding what you are looking for with a 
+        code-aware search that understands classes and variables
+        - Collab to build better code through Git Code Reviews, threaded discussions,
+        continous integration for each change and forks to promote collaborations
+        - Automation with built-in CI/CD by triggering builds, tests, deployments, by
+        including every comppleted pull requests using Azure Pipeline or other tools
+        - Protection of code quality with branch policies, by requiring code-server 
+        sign-out, successful builds, and passing tests before merging pull requests
+        - Customize your branch policies to maintain your team's high standard
+    
+    - Github:
+        - Each repository includes a wiki and issue tracker, making it easy to have
+        more in-depth documentation and get feedback about your project
+        
+        - Features of Github:
+            - Automate code to cloud by cycling your production code faster and simplify
+            your workflows with Github packages and built-in CI/CD using Github Actions
+            - Secure software by getting alerts about vulnerabilities in your code, 
+            and automatically opening pull requests to update dependencies to the
+            minimum version that resolves known vulnerabilities
+            - All your code and documentation in one place. Host your documentation 
+            directly from your repositories with github pages. Use Jekyll as a static
+            site generator and publish your pages from the docs folder of main branch
+            - Manage your ideas by co-ordinating early, staying alligned and getting
+            more done with Github's project management tools. Track and assign issues,
+            discuss an idea with an @mention or start distributing work
+            - Manage and grow teams, by giving people access as administrative roles,
+            and fine tune permissions with nested teams
+            - Moderation tools like issue and pull request locking, help your team 
+            stay focussed on code. User blocking reduces noise and ensures productive
+            conversations
+        
+        - Migration of TVFC to Git happens:
+            - Single Branch Import:
+                - While in TVFC and in Azure Devops, you have the option of a simple
+                single-branch import
+                - You can add upto 180 days of history
+                - Add in the name of the repo, and the import will be triggered
+            - Import Repository:
+                - Allows you to import a git repository into Azure Repos
+            - Git TFS:
+                - Migrate Multiple Branches and preserve the relationship to merge branches
+                in Git after you migrate
+                - Doing this conversion can take a while - especially for large or 
+                long-history repositories
+                - If you are on sub-version, you can use GIT-SVN to import your subversion
+                repo to GIT-TFS
+        
+        - Github CodeSpace:
+            - Codespace is a cloud-based development environment that Github hosts
+            - It is essentially an online implementation of Visual Studio Code
+            - It allows developers to work entirely in the cloud
+            - The development environment is rich with:
+                - Syntax Highlightning
+                - Auto complete
+                - Integrated Debugging
+                - Direct Git Integration
+            - Developer create codespaces (or multiple codespaces) for a repository
+            - Each codespace is associated with a specific branch of a repository
+            - You can also connect to a codespace from a local copy of VS Code
