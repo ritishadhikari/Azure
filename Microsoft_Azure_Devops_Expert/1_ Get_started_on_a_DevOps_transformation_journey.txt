@@ -112,11 +112,9 @@ Choose the right Project:
         - Test Pass Rates:
             - How well is your automated testing working
         - Defect Escape Rate:
-            - What percentage of time is the application truly available for 
-            customers
+            - What percentage of time is the application truly available for customers
         - Availability:
-            - What percentage of time is the application truly available for
-            customers
+            - What percentage of time is the application truly available for customers
         - Service Level Agreement Achievement:
             - Are you meeting your service level agreement (SLAs)
         - Mean time to Detection:
@@ -176,8 +174,7 @@ Describe Team Structures:
     
 Choose the Devops Tools:
     - Azure Devops is a Software as a Service (SaaS) platform from Microsoft
-    that provides an end-to-end Devops toolchain for developing and Deploying
-    software
+    that provides an end-to-end Devops toolchain for developing and Deploying software
     - It is:
         - Flexible:
             - Possible to adopt each of the services independently
@@ -205,7 +202,7 @@ Choose the Devops Tools:
 
     - Github Provides:
         - Codespace:
-            - Cloud Hosted development environment environment
+            - Cloud Hosted development environment
             - Can be operated within a browser or external tools
             - Eases cross platform development
         - Repos:
@@ -277,11 +274,12 @@ Plan Agile with GitHub Projects and Azure Boards:
         - User-Owned Project Boards:
             - Contain issues and pull requests from any personal repository
         - Organization-wide project boards:
-            - Contain issues and pull requests from any repository that belongs to an organization
+            - Contain issues and pull requests from any repository that belongs to an 
+            organization
         - Repository project boards:
             - Scoped to issues and pull requests within a single repository
     
-    - To create a project board for your organization, you must be an organization members
+    - To create a project board for your organization, you must be an organization member
 
     - Templates for new projects:
         - Basic Kanban:
@@ -295,8 +293,8 @@ Plan Agile with GitHub Projects and Azure Boards:
                 - In Progress
                 - Done
         - Automated Kanban with Review:
-            - Additional to the features in Automated Kanban, there is an extra trigger for pull 
-            requests review status
+            - Additional to the features in Automated Kanban, there is an extra 
+            trigger for pull requests review status
         - Bug Triage:
             - Triage and Prioritize Bugs with:
                 - To do
@@ -305,24 +303,29 @@ Plan Agile with GitHub Projects and Azure Boards:
                 - Closed Columns
         
     - Projects:
-        - They are customizable tool version of projects for planning and tracking work on Github
-        - It is a customizable spreadsheet in which you can configure the layout by filtering,
-        sorting, grouping your issues and PRs and adding custom field to track metadata
+        - They are customizable tool version of projects for planning and tracking 
+        work on Github
+        - It is a customizable spreadsheet in which you can configure the layout by 
+        filtering, sorting, grouping your issues and PRs and adding custom field to 
+        track metadata
 
 Azure Boards:
-    - It is a customizable tool to manage software projects supporting Agile, Scrum and Kanban processes
+    - It is a customizable tool to manage software projects supporting Agile, Scrum 
+    and Kanban processes
     - Track work, issues and code defects associated with your projects
-    - Create custom process templates and use them to create a better and more customized experience
-    - The Kanban board is one of the several tools that allows you to add, update and filter user stories,
-    bugs, features and epics
-    - Each work item provides a standard set of system fields and controls, including discussions for 
-    adding and tracking comments, history, Links and Attachments
+    - Create custom process templates and use them to create a better and more customized 
+    experience
+    - The Kanban board is one of the several tools that allows you to add, update and 
+    filter user stories, bugs, features and epics
+    - Each work item provides a standard set of system fields and controls, including 
+    discussions for adding and tracking comments, history, Links and Attachments
     
     - Delivery Plans:
-        - Create another view with deliverables and track dependencies across several teams in a calendar 
-        view using Delivery Plans
+        - Create another view with deliverables and track dependencies across several
+        teams in a calendar view using Delivery Plans
         - It is fully interactive supporting the following tasks:
-            - View upto 15 team backlogs, including a mix of backlogs and teams from different projects
+            - View upto 15 team backlogs, including a mix of backlogs and teams from 
+            different projects
             - View Custom portfolio backlogs and epics
             - View Work that spans several iterations
             - Add backlog items from a plan 
@@ -330,19 +333,21 @@ Azure Boards:
             - View dependencies that exists between work items
     
     - Linking Github to Azure Boards
-        - Connect Azure Boards with Github repositories, enabling linking Github commits, pull requests, 
-        and issues to work items in Boards
+        - Connect Azure Boards with Github repositories, enabling linking Github commits, 
+        pull requests, and issues to work items in Boards
         - Integration of Azure Boards and Github is created using Azure Boards App. 
-        - You must be an administrator or owner of the Github repository or the Github Organization. 
+        - You must be an administrator or owner of the Github repository or the Github 
+        Organization. 
         - Azure Board App Available in the Github Marketplace
-        - You can configure other Azure Boards/ Azure Devops Projects, Githum.com repositories, or 
-        change the current configuration from the Azure Boards app page
-        - After the integration, you can add or remove repositories from the web portal for Azure Boards
-        - From Azure Board, you can allow a github repository to connect to one or more Azure Boards
-        projects within the same Azure Devops Organization or collection
+        - You can configure other Azure Boards/ Azure Devops Projects, Github.com 
+        repositories, or change the current configuration from the Azure Boards app page
+        - After the integration, you can add or remove repositories from the web 
+        portal for Azure Boards
+        - From Azure Board, you can allow a github repository to connect to one or more 
+        Azure Boards projects within the same Azure Devops Organization or collection
     
-    - In Github Projects, you can control project deliverables, release dates, and iterations to plan
-    upcoming work
+    - In Github Projects, you can control project deliverables, release dates, and 
+    interations to plan upcoming work
     
     - You can create iteration to:
         - Associate items with specific repeating blocks of time
@@ -350,17 +355,18 @@ Azure Boards:
         - Three iterations are automatically created
     
     - Github Project View:
-        - Using Project Views, you can organize information by changing the layout, grouping, sorting 
-        and filtering your work
-        - This allow you to view specific aspects of your project where each view is displayed on a 
-        separate tab in your projects:
+        - Using Project Views, you can organize information by changing the layout, 
+        grouping, sorting and filtering your work
+        - This allow you to view specific aspects of your project where each view is 
+        displayed on a separate tab in your projects:
             - A view that shows all items not yet started
             - A view that shows the workload for each item 
-            - A view shows the items with the earliest target ship date  (sort by a date field)
+            - A view shows the items with the earliest target ship date 
+            (sort by a date field)
 
     - Github Team Meetings:  
-        - Instead of opening an issue in a repository to discuss an idea, you can include the entire
-    team by having a conversation in a team discussion
+        - Instead of opening an issue in a repository to discuss an idea, you can 
+        include the entire team by having a conversation in a team discussion
         - Pin Important posts to your team's page
         - Receive email or web notifications
         - Link to any team discussion and reference it elsewhere
@@ -489,7 +495,7 @@ Work with Azure Repos and Github:
         - Collab to build better code through Git Code Reviews, threaded discussions,
         continous integration for each change and forks to promote collaborations
         - Automation with built-in CI/CD by triggering builds, tests, deployments, by
-        including every comppleted pull requests using Azure Pipeline or other tools
+        including every completed pull requests using Azure Pipeline or other tools
         - Protection of code quality with branch policies, by requiring code-server 
         sign-out, successful builds, and passing tests before merging pull requests
         - Customize your branch policies to maintain your team's high standard
@@ -525,12 +531,12 @@ Work with Azure Repos and Github:
             - Import Repository:
                 - Allows you to import a git repository into Azure Repos
             - Git TFS:
-                - Migrate Multiple Branches and preserve the relationship to merge branches
-                in Git after you migrate
+                - Migrate Multiple Branches and preserve the relationship to merge 
+                branches in Git after you migrate
                 - Doing this conversion can take a while - especially for large or 
                 long-history repositories
-                - If you are on sub-version, you can use GIT-SVN to import your subversion
-                repo to GIT-TFS
+                - If you are on sub-version, you can use GIT-SVN to import your 
+                subversion repo to GIT-TFS
         
         - Github CodeSpace:
             - Codespace is a cloud-based development environment that Github hosts
