@@ -73,4 +73,45 @@ Structure your Git Repo:
         - Each commit is considered a separate unit of change, which lets you 
         roll back changes if a bug is found or you decide to head in a different 
         direction
-        - 
+    
+    - The Main Branch:
+        - Any changes to the main branch flow through pull requests only
+        - Tag all releases in the main branch with Git tags
+    
+    - The Feature Branch:
+        - Changes from feature branches to the main only flow through pull requests
+        - Name your feature to reflect its purpose
+
+    - Azure CLI:
+        - Command Line Interface for Azure
+    - Azure Devops CLI:
+        - Extension of Azure CLI for working with Azure Devops and Azure Devops Server
+        designed to seamlessly integrate with Git, CI Pipelines and Agile tools
+        - Contribute to your projects without leaving the command line
+        - Works on Windows, Linux and Mac
+        - Supports returning the query results in JSON, JSONC, YAML, YAMLC, table, TSV
+        and None
+    - Git Pull Request Merge Conflict:
+        - Open source extension created by Azure Devops
+        - Allows you to review and resolve the pull request merge conflicts on the web
+        - Any conflicts with the target branch must be resolved before a Git Pull 
+        request can complete
+        - Resolve conflicts on the web as part of the pull request merge instead of
+        doing the merge and resolving conflicts in a local clone
+    
+    - Pull request using the Azure Devops CLI:
+        """
+            az repos pr create --title "Review Feature-1 before merging to main"
+            --work-items 38 39 --description "#Merge feature-1 to main"
+            --source-branch feature/MyFeture-1 --target-branch main
+            --repository myWebApp --open
+        """ 
+        - --open means open it in a web browser after it has been created
+        - --deletesource-branch means delete the branch after the pull request is 
+        complete
+        - --auto-complete means complete automatically when all policies have passed
+        and the source branch can be merged into the target branch
+    
+    - A Lean branching Model allows you to create short-lived branches and push quality 
+    changes to production faster
+
