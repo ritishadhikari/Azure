@@ -1,0 +1,28 @@
+Structure your Git Repo:
+    - A repository is where your work history is stored, usually in a git
+    repository
+    - Monorepos:
+        - It'a s source control pattern where all source code is kept in 
+        one repository
+        - Give all employees access to everything at once
+        - The hassle of making changes in other repos or waiting for teams to make 
+        changes for you is avoided in a mono repo where anyone can change anything
+        - Managing complex dependency graphs can increase the difficulty of using a 
+        single repository
+    - Multiple Repositories:
+        - Organizing your project into multiple repositories
+        - It allows each subteam to work in their respective areas using the libraries,
+        tools, and development workflows that optimize their productivity
+        - In Azure Devops, it's common to use a separate repository for each associated
+        solution within a project
+    - The fundamental difference between the monorepo and multiple repos philosophies
+    boils down to a difference about what will allow teams working togather on a system
+    to go faster
+    - Preference is always to avoid dumping log entries into a changelog. 
+        # git log [options] vxx | helper-script>projectchangelogs/x.x.Y
+    - With logging, the typical breakdown is to separate a list of versions and then
+    within each version show:
+        - Added Features
+        - Modified/Improved Features
+        - Deleted Features
+    - One common tool to create a changelog is gitchangelog, which is based on python
