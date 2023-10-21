@@ -60,6 +60,11 @@ Structure your Git Repo:
                 - If you are using a shared repository model, Pull requests help 
                 start code review and conversion about proposed changes before they 
                 are merged into the main branch
+                - Once a pull request is merged with a main and feature, Pull request
+                preserves a record of the historical changes to your code.
+                - Because the historical information is searchable, they let anyone go
+                back in time to understand why and how a decision was made
+            
         
         - Feature branches should have descriptive names which gives a clear,
         highly focussed purpose
