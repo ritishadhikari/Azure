@@ -26,3 +26,46 @@ Structure your Git Repo:
         - Modified/Improved Features
         - Deleted Features
     - One common tool to create a changelog is gitchangelog, which is based on python
+
+    Manage Git branches and workflows:
+        - Trunk Based Development:
+            - It is a logical extension of centralized workflow
+            - The core idea is that all feature development should take place 
+            in a dedicated branch instead of a main branch
+            - This encapsulation makes it easy for multiple developers to work 
+            on a particular feature without disturbing the main codebase
+            - It should also mean that the main branch should never contain 
+            broken code, which then becomes a huge advantage for Continous
+            integration environments.
+        - Forking Workflow:
+            - Instead of using a single server-side repository to act as the 
+            "central" codebase, it gives every developer a server-side repository
+            - Each contributor has two Git Repositories:
+                - A private local one
+                - A public server-side one
+
+        - Pull Requests:  
+            - Pull requests make it incredibly easy for your team to comment on each 
+            other's work 
+            - It allows sharing a feature with other developers without touching
+            any official code
+            - Create a pull request during the development process when:
+                - You have little or no code but want to share screenshots or 
+                general ideas
+                - You are stuck and need some help or advice
+                - You are ready for someone to review your work
+                - If you are using a Fork and Pull Model, pull requests provide a 
+                way to notify project maintainers about the changes you would like
+                them to consider
+                - If you are using a shared repository model, Pull requests help 
+                start code review and conversion about proposed changes before they 
+                are merged into the main branch
+        
+        - Feature branches should have descriptive names which gives a clear,
+        highly focussed purpose
+
+        - Anything on the main branch is always deployable
+        - Each commit is considered a separate unit of change, which lets you 
+        roll back changes if a bug is found or you decide to head in a different 
+        direction
+        - 
