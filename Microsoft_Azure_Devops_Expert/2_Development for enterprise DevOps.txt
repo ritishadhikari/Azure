@@ -132,3 +132,14 @@ Structure your Git Repo:
         - Forked repositories are generally server-side clones managed by a git service
         provider such as Azure Repos
         - There's no unique Git Command to create forked repositories
+
+    - We can set up branch policies to restrict direct commit into a particular branch
+    and it encourages pull requests
+    - Linking a Work Item with a Pull request:
+        - Set up branch policies. and enable link work linking option
+        - Create a Work Item as to do
+        - Once commit happens in a feature branch, create a pull request
+        - In the warning message that comes next, in the link work item section,
+        link the work item that was created
+        - Once the pull request is merges with the main branch, the work item moves
+        to the done state.
