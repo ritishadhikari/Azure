@@ -115,3 +115,20 @@ Structure your Git Repo:
     - A Lean branching Model allows you to create short-lived branches and push quality 
     changes to production faster
 
+    - Github Flow:
+        - It is a branch based workflow suggested for Github
+        - There are other Pull requests configurations, such as automatically requesting
+        a review from specific teams or users when a pull request is created or checks
+        to run on pull requests
+    
+    - Explore Fork Workflow:
+        - Instead of using a single server-side repository to act as the central 
+        codebase, it gives every developer their server-side repository
+        - This kind of workflow is most often seen in public open-source project
+        - Developers push to their server side repositories and only the project
+        maintainer can push to the official repository
+        - It allows the maintainer to accept commits from any developer without
+        giving them written access to the official codebase
+        - Forked repositories are generally server-side clones managed by a git service
+        provider such as Azure Repos
+        - There's no unique Git Command to create forked repositories
