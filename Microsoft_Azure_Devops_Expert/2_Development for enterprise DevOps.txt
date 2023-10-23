@@ -143,3 +143,57 @@ Structure your Git Repo:
         link the work item that was created
         - Once the pull request is merges with the main branch, the work item moves
         to the done state.
+
+Collaborate with pull requests in Azure Repos:
+    - Start code review and general discussion about a set of changes before being merged
+    into the main branch
+    - Pull requests combine the review and merge of your code into a single collaborative
+    process
+    - Use Pull requests to review works in progress and get early feedback on Changes
+    - There's no commitment to merge the changes as the owner can abandon the pull
+    request at any time
+    - Cross-Polinate expertise and spread problem-solving strategies by using a wide
+    range of reviewers in your code reviews
+    - When assigning reviewers to your pull request, make sure you select the right 
+    set of reviewers
+    - Reviewers should try to provide feedback on changes they disagree with; Identify
+    issues and give a specific suggestion on what you would do differently
+    - Add more conditions to your pull requests to enforce a higher level of code quality
+    in your key branches
+    - Branch policies give you a set of out-of-the-box policies that can be applied 
+    to the branches on the server.
+    - Chose to create a new branch from a work item, that work item automatically gets 
+    linked to the branch
+    - You can optionally include more than one work item with a branch as part of the
+    create workflow
+    - The new pull request form supports markdown, so you can add the description 
+    using the markdown syntax
+    
+    - Under the pull requests tab:
+        - Overview page summarizes the changes and the status of the policies. The 
+        comments supports both @ for mentions and # to link work items, and the text
+        supports markdown syntax
+        - Files tab shows a list of changes and the difference between the previous
+        and the current versions
+        - Any updates pushed to the code files will show up in the updates tab
+        - List of all commits is shown under the Commits tab
+    - You can also mark the pull request to autocomplete after your review. It 
+    autocompletes the pull requests once all the policies have been successfully 
+    completed
+    
+    - Recreating Deleted Branches:
+        - Deleted branches are only shown if you search for them by their exact name
+        to cut out the noise from the search results
+        - If a match is found, you'll see who deleted it and when. You can also restore
+        the branch
+        - Restoring the branch will recreate it at the commit to which is last pointed, 
+        however it won't restore policies and permissions
+
+    - Github Mobile for pull request approvals:
+        - Using a mobile app in combination with git is a convenient option, particularly
+        when urgent pull request approvals are required
+        - The app can render markdowns, images, and PDF files directly on the mobile
+        device
+        - Pull requests can be managed within the app, along with marking files as 
+        viewed, collapsing files
+        - comments can be added and emoji short codes are rendered
