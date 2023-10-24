@@ -197,3 +197,57 @@ Collaborate with pull requests in Azure Repos:
         - Pull requests can be managed within the app, along with marking files as 
         viewed, collapsing files
         - comments can be added and emoji short codes are rendered
+
+Identify Technical Debt:
+    - The five key traits to measure for higher quality are:
+        - Reliability:
+            - Measures the probability that a system will run without failure over a 
+            specific period of operation
+            - Low defect counts are crucial for developing a reliable codebase
+        - Maintainability:
+            - Measures how easily software can be maintained 
+            - Relates to the codebase's size, consistency, structure and complexity
+            - Both automation and human reviewers are essential for developing 
+            maintainable codebases
+        - Testability:
+            - Measures how well the software supports testing efforts
+            - Relies on how well you can control, observe, isolate and automate
+            testing among other factors
+            - Can be measured based on how many test cases you need to find potential
+            faults in the system
+            - Applying methods at the code level - such as cyclomatic complexity, 
+            can help improve the testability of the component
+        - Portability:
+            - Measures how usable the same software is in different environments
+            - Relates to platform independence
+            - Regularize test code on different platforms rather than waiting 
+            until the end of development
+            - Use atleast two compilers and enforce coding standards
+        - Reusability:
+            - Measures whether existing assets - such as code - can be used again
+            - Assets are easily reused if they have modularity or loose coupling 
+            characteristics
+    
+    - Common quality related metrics:
+        - Failed Build Percentage:  
+            - Overall, what percentage of builds are failing
+        - Failed Deployment Percentage:
+            - Overall, what percentage of deployments are failing
+        - Ticket Volume:
+            - What is the overall volume of customers or bug tickets
+        - Bug Bounce Percentage:
+            - What percentage of customer or bug tickets are opened
+        - Unplanned work percentage:
+            - What percentage of the overall work is unplanned
+    
+    - Technical Debt:
+        - Describes the future cost that will be incurred by choosing an easy solution
+        today instead of better practice because they would take longer to complete
+        - The most common excuse is tight deadlines
+        - Minimize the constant acquisition of technical debt using automated testing
+        and assessment
+        - One of the tool to access the debt is sonarCloud
+        - Azure Devops can be integrated with a wide range of existing tooling used to
+        check quality during builds
+        - To find other code quality tools that are easy to integrate with Azure 
+        Devops, search for the word Quality when adding a task into your pipeline  
