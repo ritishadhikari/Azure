@@ -251,3 +251,30 @@ Identify Technical Debt:
         check quality during builds
         - To find other code quality tools that are easy to integrate with Azure 
         Devops, search for the word Quality when adding a task into your pipeline  
+
+Explore Githooks:
+    - We cannot be continously delivering, if we do not have a quality
+    codebase
+    - Git lets you automate most of the checks in your codebase
+    - Githooks are a mechanism that allows code to be run before or after
+    certain Git lifecycle events
+    - The hooks can be any executable code, including shell, Powershell,
+    Python or other scripts, or any binary executibles
+    - Hooks must be stored in .git/hooks folder in the repo root
+    - Examples where Hooks are useful:
+        - In enforcing preconditions for merging
+        - Verifying work item ID association in your commit message
+        - Preventing you and your team from committing faulty code
+        - Sending notifications to your team's chatroom
+    - To use a specific file:
+        - Remove the .sample from any of the file's name residing
+        under the .git/hooks folder
+        - If you are using windows, then replace the first line - 
+        #!/bin/sh with !#C:/Program\Files/Git/usr/bin/sh.exe
+    - If you need to overwrite the git hooks you have set up on the 
+    client-side, you can do so by using the no-verify switch
+        """
+            git commit --no-verify
+        """
+    - Azure Repos also exposes server-side hooks and Azure Devops uses
+    the exact mechanism itself to create Pull requests
