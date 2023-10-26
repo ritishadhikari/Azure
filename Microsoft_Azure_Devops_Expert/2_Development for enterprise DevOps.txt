@@ -313,3 +313,80 @@ Plan Foster Inner Source:
     
     - After a fork has been created, the newly created files, folders and branches
     aren't shared between the repositories unless you start a pull request
+
+Manage Git repositories:
+    - There are two primary causes for large repositories:
+        - Long History
+        - Large Binary Files
+    
+    - Shallow Clone:
+        - If developers don't need all the available history in their local repositories,
+        a good option is to implement a shallow clone
+        - It saves both space on local development systems and the time it takes to 
+        sync
+        - You can specify the depth of the clone that you want to execute
+            """
+                git clone --depth [depth] [clone-url]
+            """
+        
+    - VFS for Git:
+        - VFS for Git helps with large repositories
+        - It requires a Git LFS client
+        - Git LFS works with the standard filesystem to download necessary files
+        in the background when you need files from the server
+        - The protocol is a straightforward one with four endpoints similar to REST
+        endpoints
+        - If Azure Repos hosts your repository, you can clone a repository using the 
+        GVFS protocol
+    
+    - Scalar 
+        - It is a .NET Core Application available for Windows and MacOS, which microsoft
+    uses it for Windows and Office Repositories
+        - Achieves very large repository handling with:
+            - Partial Clone
+            - Background Prefetch
+            - Sparse-Checkout
+            - File System Monitor
+            - Commit Graph: Speeds up commit walks for Git log
+            - Multi Pack Index: Fast object lookups across many files
+            - Incremental Repack
+    
+    - Purge Repository Data:
+        - Purging is required as:
+            - It significantly reduce the size of a repository by removing history
+            - Remove a large file that was accidentally uploaded
+            - Remove a sensitive file that should not have been uploaded
+    
+    - git filter repo tool:
+        - It is a tool for rewriting history
+        - Its core filter repo contains a library for creating history rewriting tool
+        - Users with specialized needs can quickly create entirely new history rewriting
+        tools
+    
+    - BFG Repo Cleaner:
+        - It is commonly used open-source tool for deleting or fixing content in 
+        repositories
+        """
+         bfg --delete-files extra.txt
+         bfg --replace-text passwords.txt
+        """
+    
+    - Managing Releases with Github Repos:
+        - Releases in Github are based on Git tags
+        - To create a release, use the gh release create command
+        """
+            gh release create tag
+        """
+        - Create a prerelease with the specified title and notes
+        """
+            gh release create v1.2.1 --title
+        """
+        - If you @mention any github users in the notes, the published release on 
+        github.com will include a Contributors section with an avatar list of all the
+        mentioned users
+        - Delete a release  by replacing the tag with the release tag to delete and use
+        the -y flag to skip confirmation
+            """
+                gh release delete tag -y
+            """
+        - 
