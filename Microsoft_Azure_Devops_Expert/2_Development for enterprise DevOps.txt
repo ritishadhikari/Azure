@@ -278,3 +278,38 @@ Explore Githooks:
         """
     - Azure Repos also exposes server-side hooks and Azure Devops uses
     the exact mechanism itself to create Pull requests
+
+Plan Foster Inner Source:
+    - Fork workflow is just not for open source, as it also help support
+    inner source workflows within your company
+    - Inner Source, also called Internal Open Source, brings all the 
+    benefits of open-source software development inside your firewall
+    - By moving to offer inner sources throughout the company, powered by Azure
+    Repos, it's easy to fork a repository to contribute back
+    - When you create a Fork, none of the permissions, policies, or build
+    pipelines are applied
+    
+    - Sharing Code between Forks:
+        - You can create PRs in either direction: from fork to upstream
+        or upstream to fork
+        - The most common approach will be from fork to upstream
+        - The destination repository's permissions, policies, builds, and work
+        items will apply to the PR
+    
+    - Everyone should work in a topic branch and the main should be protected
+    with branch policies
+    - Forking workflow is recommended if your repository has many casual or 
+    infrequent committees (like an open source project)
+    
+    - Sync your Fork to the latest:
+        - When you have gotten your PR accepted into upstream, you will want
+        to make sure your fork reflects the latest state of the repo
+        - Rebase on the Upstream's main branch 
+        """
+                git fetch upstream main
+                git rebase upstream/main
+                git push origin
+        """
+    
+    - After a fork has been created, the newly created files, folders and branches
+    aren't shared between the repositories unless you start a pull request
