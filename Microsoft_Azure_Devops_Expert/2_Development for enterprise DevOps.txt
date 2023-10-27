@@ -65,7 +65,6 @@ Structure your Git Repo:
                 - Because the historical information is searchable, they let anyone go
                 back in time to understand why and how a decision was made
             
-        
         - Feature branches should have descriptive names which gives a clear,
         highly focussed purpose
 
@@ -89,7 +88,7 @@ Structure your Git Repo:
         designed to seamlessly integrate with Git, CI Pipelines and Agile tools
         - Contribute to your projects without leaving the command line
         - Works on Windows, Linux and Mac
-        - Supports returning the query results in JSON, JSONC, YAML, YAMLC, table, TSV
+        - Supports returning the query results in JSON, JSONC, YAML, YAMLC, Table, TSV
         and None
     - Git Pull Request Merge Conflict:
         - Open source extension created by Azure Devops
@@ -103,7 +102,7 @@ Structure your Git Repo:
         """
             az repos pr create --title "Review Feature-1 before merging to main"
             --work-items 38 39 --description "#Merge feature-1 to main"
-            --source-branch feature/MyFeture-1 --target-branch main
+            --source-branch feature/MyFeature-1 --target-branch main
             --repository myWebApp --open
         """ 
         - --open means open it in a web browser after it has been created
@@ -136,12 +135,12 @@ Structure your Git Repo:
     - We can set up branch policies to restrict direct commit into a particular branch
     and it encourages pull requests
     - Linking a Work Item with a Pull request:
-        - Set up branch policies. and enable link work linking option
+        - Set up branch policies, and enable link work linking option
         - Create a Work Item as to do
         - Once commit happens in a feature branch, create a pull request
         - In the warning message that comes next, in the link work item section,
         link the work item that was created
-        - Once the pull request is merges with the main branch, the work item moves
+        - Once the pull request is merged with the main branch, the work item moves
         to the done state.
 
 Collaborate with pull requests in Azure Repos:
@@ -196,7 +195,7 @@ Collaborate with pull requests in Azure Repos:
         device
         - Pull requests can be managed within the app, along with marking files as 
         viewed, collapsing files
-        - comments can be added and emoji short codes are rendered
+        - Comments can be added and emoji short codes are rendered
 
 Identify Technical Debt:
     - The five key traits to measure for higher quality are:
@@ -244,7 +243,7 @@ Identify Technical Debt:
         - Describes the future cost that will be incurred by choosing an easy solution
         today instead of better practice because they would take longer to complete
         - The most common excuse is tight deadlines
-        - Minimize the constant acquisition of technical debt using automated testing
+        - Minimize cd the constant acquisition of technical debt using automated testing
         and assessment
         - One of the tool to access the debt is sonarCloud
         - Azure Devops can be integrated with a wide range of existing tooling used to
@@ -305,7 +304,8 @@ Plan Foster Inner Source:
         - When you have gotten your PR accepted into upstream, you will want
         to make sure your fork reflects the latest state of the repo
         - Rebase on the Upstream's main branch 
-        """
+        """     
+                git remote add upstream <upstream link>
                 git fetch upstream main
                 git rebase upstream/main
                 git push origin
@@ -389,4 +389,3 @@ Manage Git repositories:
             """
                 gh release delete tag -y
             """
-        - 
