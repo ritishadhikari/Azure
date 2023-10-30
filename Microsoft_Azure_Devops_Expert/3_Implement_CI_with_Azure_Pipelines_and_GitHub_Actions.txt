@@ -332,3 +332,110 @@ Manage Azure Pipelines Agents and Pools:
                 - Build Administrator
                 - Release Administrator
                 - Project Administrator
+
+Describe pipelines and concurrency:
+    - When an organization has only one Microsoft hosted parallel job, it
+    allows users in that organization to collectively run only one
+    build or release job at a time
+    - When more jobs are triggered, they are queued and will wait for the
+    previous job to finish
+    - A release consumes a parallel job only when it is being actively 
+    deployed to a stage
+    - While the release is waiting for approval or manual intervention,
+    it does not consume a parallel job
+    - When a build or release runs, you can run multiple jobs as part of
+    that build or release
+    - Each job consumes a parallel job that runs on an agent. When there
+    aren't enough parallel jobs available for your organization, then the
+    jobs are queued up and run one after the other
+    - You don't consume any parallel jobs when you run a server job or
+    deploy to a deployment group
+    
+    - Determine how many parallel jobs you need:
+        - You can begin by seeing if the free tier offered in your 
+        organization is enough for your teams
+        - When you have reached 1800 minutes per month limit for the free tier of
+        Microsoft-hosted parallel jobs, you can start by buying one parallel job
+        to remove this monthly time limit before deciding to purchase more
+        - As the number of queued builds and releases exceeds the number of parallel
+        jobs you have, your build and release queues will grow longer
+        - When you find the queue delays are taking too long, you can purchase extra
+        parallel jobs as needed
+        - A simple rule of thumb is you will need one parallel job for every four 
+        to five users in your organization
+
+    - Detailed Estimate of the need for multiple parallel jobs:
+        - If there are multiple teams, and if each of them requires a CI build,
+        you will likely need a parallel job for each team
+        - If your CI build trigger multiple branches, then each active branch would 
+        need a parallel job
+        - If you develop multiple applications by using one organization or server, 
+        you will need one parallel jobs to deploy each application simultaneously
+    
+    - Sharing of Parallel Jobs across projects in a collection:
+        - Parallel jobs are purchased at the organization level and they are shared
+        by all projects in an organization
+        - Currently there ain't a way to partition or dedicate parallel job capacity
+        to a specific project or agent pool
+    
+    - Azure Pipelines with Open Source Projects:
+        - With Public Projects, users can mark an Azure Devops Team project as Public
+        - This will enable anonymous users to view the contents of that project
+        in a read-only state enabling collaboration with anonymous (unauthenticated)
+        users that was not possible before
+    
+    - Public Vs Private Projects:
+        - Users that aren't signed into the service have read-only access to public 
+        projects on Azure Devops
+        - Private projects requires users to be granted access to the project and
+        signed in to access the services
+        - Microsoft will automatically apply the free tier limits for public projects
+        if you meet both conditions:
+            - Your pipeline is part of an Azure Pipelines public project
+            - Your pipeline builds a public repository from Github or the same public
+            project in your Azure Devops organization
+    
+    - Limits of Usage of Azure Pipelines:
+        - You can have as many users you want when you are using Azure Pipelines and 
+        there is no per-user charge for using Azure Pipelines
+        - Users with both basic and stakeholder access can author as many builds and
+        releases as they want
+        - There are also no limit on the number of builds and release pipelines that
+        you can create (definitions) for no charge and you can register any number of
+        self-hosted agents for no cost
+        - Visual Studio Enterprise subscribers get one self-hosted parallel job in each
+        Azure Devops Services Organization where they are member
+        - When you are running you builds for more than 14 paid hours in a month, then 
+        than per-minute plan might be less cost-effective than the parallel jobs model
+    
+    - Configure your build and release pipelines in the Azure Devops web portal 
+    with the visual designer (Classic Pipelines):
+        - It is great for new users in CI and CD
+        - The visual representation of the pipeline makes it easier to get started
+        - The visual designer is in the same hub as the build results which makes it
+        easier to switch back and forth and make changes
+    
+    - Describing Azure Pipelines and YAML
+        - You can either use YAML to define your pipelines or use the visual
+        designer to do the same 
+        - When using a Visual Designer, you define a build pipeline to build and test
+        your code and publish artifacts; you can also specify a release pipeline
+        to consume and deploy those artifacts to deployment targets
+    
+    - Azure Pipelines using YAML:
+        - Configure Azure Pipelines to use your Git repo
+        - Edit your azure-pipelines.yml file to define your build
+        - Push your code to your version control repository. This action kicks off
+        the default trigger to build and deploy and then monitor the results
+        - Once code is updated,built, tested and packaged, it can be deployed to Target
+    
+    - Benefits of Using YAML:
+        - The pipeline is versioned with your code and follows the same branching 
+        structure. You get validation of your changes through code reviews in pull
+        requests and branch build policies
+        - Every branch you use can modify the build policy by adjusting the 
+        azure-pipelines.yml file
+        - A change to the build process might cause a break or result in an unexpected
+        outcome. Because the change is in version control with the rest of your 
+        codebase, you can more easily identify the issue
+
