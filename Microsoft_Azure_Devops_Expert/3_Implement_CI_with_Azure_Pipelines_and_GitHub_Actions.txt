@@ -127,3 +127,208 @@ Explore Azure Pipelines:
             - You can configure a pipeline to run upon a push to a repository at 
             scheduled times or upon completing another build
             - These actions are called Triggers
+
+Manage Azure Pipelines Agents and Pools:
+    - An agent is an installable software that runs one build or deployment job at a time
+    - With a Microsoft hosted agent, maintenance and upgrades are automatically done
+    - Each time a pipeline is run, a new virtual machine (instance) is provided, which
+    is discarded after one use
+    - A microsoft hosted agent has job time limits
+    - Self Hosted Agent:
+        - You set up and manage on your own to run build and deployment jobs
+        - You can use in Azure Pipelines and it gives more control to install dependent
+        software needed for your builds and deployments
+        - Install the agent on:
+            - Linux
+            - macOS
+            - Windows
+            - Linux Docker containers
+        - After installing the agent on a machine, you can install any other software 
+        on that machine as required by your build or deployment jobs
+        - A self-hosted agent does not have job limits
+    
+    - Job Types:
+        - Agent Pool Jobs
+            - The jobs run on an agent that is part of an agent pool
+            - Instead of managing each agent individually, you organize agents into 
+            agent pools
+            - Agent pool defines the sharing boundary for all agents in that pool
+            - In Azure Pipelines, pools are scoped to the entire organization so that 
+            you can share the agent machines across projects
+            - If you create an agent pool for a specific project, only that project can
+            use the pool until you add the project pool into another project
+            - When creating a build or release pipeline, you can specify which pool it
+            uses, organization or project scope
+            - To share an agent pool with multiple projects, use an organization scope
+            agent pool 
+        - Container Jobs
+            - The jobs run in a container on an agent part of an agent pool
+        - Deployment Group Jobs
+            - Jobs that run on systems in a deployment group
+        - Agentless Jobs 
+            - Jobs that run directly on the Azure Devops
+            - They don't require an agent for execution
+            - It is also called as Server jobs 
+    
+    - Predefined Agent Pool:
+        - Provides a pre-defined agent pool-named Azure Pipelines with Microsoft
+        hosted agents
+        - It lets you run jobs without configuring build infrastructure
+        - VMs which are provided by default:
+            - Windows Server 22 with VS Code 2022
+            - Windows Server 19 with VS Code 2019
+            - Ubuntu 20.04
+            - Ubuntu 18.04
+            - macOS 11
+            - macOS X
+        - By default, all contributors in a project are members of the User role on '
+        each hosted pool
+        - This way, all contributors are allowed to build and release the pipelines
+        using Microsoft hosted pool
+    
+    - Creating Agent Pools:
+        - You are a project member, and you want to use a set of machines your team
+        owns for running build and deployment jobs:
+            - Make sure you are a member of a group in All Pools with the admin role
+            - Create a new Project agent pool in your project settings and select the
+            option to Create a new organization agent pool
+            - As a result, both an organization and project-level agent pool will be
+            created
+            - Install and configure agents to be part of that agent pool
+        - You are a member of the infrastructure team and would like to set up a 
+        pool of agents for use in all projects:
+            - Make sure you are a member of a group in All Pools with the admin role
+            - Create a new organization agent pool in your admin settings and select
+            AutoProvision corresponding project agent pools in all projects while
+            creating the pool
+            - This ensures all projects (existing or future) have a pool pointing to
+            the organization agent pool
+            - Install and configure agents to be part of that agent pool
+        - You want to share a set of agent machines with multiple projects, but not all
+        of them
+            - Create a new Project agent pool in your project settings and select the
+            option to Create a new organization agent pool
+            - Go to each of the other projects, and create pool in each of them while
+            selecting the option to Use an existing organization agent pool
+            - Install and configure agents to be part of that agent pool
+    
+    - Commuication of Agent with Azure Pipelines:
+        - The agent communicates with Azure Pipelines to determine which job to run
+        and reports the logs and job status
+        - All the messages from the agent to Azure Pipelines over HTTPS depend
+        on how you configure the agent
+        - The user registers an agent with Azure Pipelines by adding it to an agent pool
+        - You must be an agent pool admin to register an agent
+        - The identity of the agent pool admin is needed only at the time of registration
+        - It is not persisted or used to communicate further between the agent and 
+        Azure Pipelines
+        - Post the registration, the agent downloads a listener OAuth token and uses
+        it to listen to the job Queue
+        - Periodically the agent checks to see if a new job request has been posted
+        in the job queue in Azure Pipelines
+        - The agent downloads the job and a job-specific OAuth Token when a job is
+        available. This job-specific OAuth Token is generated by Azure Pipelines for
+        the scoped identity specified in the pipeline
+        - The above token is short lived and is used by the agent to access resources
+        (ex. source code) or modify resources (ex. upload test results) on Azure 
+        Pipelines within that job
+        - Once the job is completed, the agent discards the job-specific OAuth token
+        and checks if there's a new job request using the listener OAuth token
+        - The payload of the messages exchanged between the agent and Azure Pipelines
+        are secured using Asymmetric encryption, where each agent has a public-private
+        key pair and the public key is exchanged with the server during registration
+        - The server uses the public key to encrypt the job's payload before sending
+        it to the agent and the agent decrypts the job content using its private key
+        - Secrets stored in build pipelines, release pipelines or variable groups 
+        are secured when exchanged with the agent 
+    
+    - Communicate to deploy to target servers:
+        - When you use the agents to deploy artifacts to a set of servers, it must-have
+        "line of sight" connectivity to those servers
+        - The microsoft hosted agent pools, by default, have connectivity to Azure
+        websites and servers running in Azure
+        - Incase your on-premise environments don't have connectivity to a microsoft
+        hosted agent pool (because of intermediate firewall), you will need to manually
+        configure self-hosted agents on the on-premise computer
+        - The on-prem agents must have connectivity to the target on-premise environments
+        and access to the internet to connect to Azure Pipelines or Azure Devops Server
+        (see pic 8/13)
+    
+    - Agent can authenticate to Azure Devops using the following methods:
+        - Personal Access Tokens (PAT):
+            - Generate and use a PAT to connect an agent with Azure Pipelines
+            - PAT is the only scheme that works with Azure Pipelines and is used only
+            when registering an agent and not for succeeding communication
+    
+    - Once the Agent has been authenticated, you can run the agent either as a 
+    service or an interactive process and you can chose which account you use to 
+    run the agent
+    - The choice of an agent account depends solely on the needs of the tasks running
+    in your build and deployment jobs
+    - For ex., to run tasks that use Windows authentication to access an external
+    service, you must run the agent using an account with access to that service
+    - After configuring the agent, it is recommended to try it in interactive
+    mode to ensure it works
+    - You can use the service manager of the OS to manage the lifecycle of the agent
+    since the experience for auto-upgrading the agent is better when it's run as a 
+    service
+    - In some cases, you might need to run the agent interactively for production 
+    use, such as UI tests where the autologon is enabled and screen-saver is disabled
+    - Incase domain policies prevents you from enabling autologon or disabling
+    screen saver, you may need to seek an exemption from the domain policy or run the 
+    agent on a work-group computer where the domain policies don't apply
+
+    - Agent Versions or Upgrades:
+        - Microsoft updates the agent software every few weeks in Azure Pipelines
+        - The agent version is indicated in the format {major}.{minor}
+        - When a newer version of the agent is only different in minor versions, it 
+        is automatically upgraded by Azure Pipelines when one of the tasks requires
+        a newer version of the agent
+        - If you run the agent interactively or a newer major version of the agent is
+        available, you must manually upgrade the agents
+        - The version can also be upgraded from the agent pools tab under your 
+        project collection or organization
+    
+    - Security of Organization Agent Pool:
+        - Reader:
+            - View the Organization's agent pool and agents
+            - Use it to add operators that are responsible for monitoring the 
+            agents and their health
+        - Service Account:
+            - Use the Organization agent pool to create a project agent pool in a 
+            project
+        - Administrator:
+            - Register or Unregister agents from the organization's agent pool
+            - Refer to the organization agent pool when creating a project agent pool
+            in a project
+            - Manage membership for all roles of the organization agent pool
+            - User that made the organization agent pool is automatically added to the
+            administrator role for that pool
+        - Others:
+            - The All agent pools node in the Agent Pools tab is used to control the
+            security of all organization agent pools
+            - Role memberships for individual organization agent pools are automatically
+            inherited from the "All agent pools" node
+
+    - Security of Project Agent Pool:
+        - Reader:
+            - Members can view the project agent pool
+            - Use it to add operators responsible for monitoring the build and 
+            deployment jobs in that project agent pool
+        - User:
+            - Members can use the project agent pool when authoring build or release
+            pipelines
+        - Administrator:
+            - Manage membership for all roles of the project agent pool
+            - User that created the pool is automatically added to the administrator
+            role for that pool
+        - Others:
+            - The All agent pools node in the Agent Pools tab is used to control the
+            security of all project agent pools in a project
+            - Role memberships for individual project agent pools are automatically
+            inherited from the "All agent pools" node
+            - By default the following groups are added to the admin role of All 
+            agent pools:
+                - Build Administrator
+                - Release Administrator
+                - Project Administrator
