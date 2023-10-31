@@ -439,3 +439,81 @@ Describe pipelines and concurrency:
         outcome. Because the change is in version control with the rest of your 
         codebase, you can more easily identify the issue
 
+Explore Continous Integration:
+    - Once you have your code in a version control system, you need an automated
+    way of integrating the code on an ongoing basis
+    - Azure Pipelines can be used to create a fully featured cross-platform CI and
+    CD service
+    - Continous Integration:
+        - The Process of automating the build and testing of code every time a 
+        team member commits changes to version control
+        - CI encourages developers to share their code and unit tests by merging 
+        their changes into a shared version control repository after every small
+        task completion
+        - Committing code triggers an automated build system to grab the latest code
+        from the shared repository and build, test and validate entire main branch
+        - In practice, continous integration relies on robust test suites and an 
+        automated system to run those tests to address the friction of quality
+        assurance mismatch within the integration process
+        - When a developer merges code into the main repository, automated processes
+        kick off a build of the new code
+        - Afterward, test suites are run against the new build to check whether any
+        integration problems were introduced
+        - If either the build or the test phase fails, the team is alerted to work 
+        to fix the build
+        
+        - Four Pillars of continous integration:
+            - Version Control System
+                - Manages changes to your source code over time
+                - Ex. 
+                    - Git
+                    - Apache Subversion
+                    - Team Foundation Version Control
+            - Package Management System
+                - Installs, Uninstalls and manages software packages
+                - Ex. 
+                    - Nuget
+                    - Node Package Manager (npm)
+                    - Chocolatey
+                    - HomeBrew
+                    - RPM
+            - Continous Integration System  
+                - Merges all developer working copies into a shared mainline several
+                times daily
+                - Ex.   
+                    - Azure Devops
+                    - TeamCity
+                    - Jenkins
+            - Automated Build Process
+                - Creates software build, including compiling, packaging and running
+                automated tests
+                - Ex. 
+                    - Apache Ant
+                    - NAnt2
+                    - Gradle
+        - It removes long, complex and drawn-out bug-inducing
+    merges, allowing organizations to deliver swiftly
+        - It also enables tracking metrics to assess code quality over time. Ex.
+        Unit Test Passing rates, code that breaks frequently, code coverage trends 
+        and code analysis
+        - It can provide information on what has been changed between builds for
+        traceability benefits
+    
+    - Build Number Formatting:
+        - Build Number can be formatted by going to a build and then Options tab
+    
+    - Build Status:
+        - Builds can be automatically triggered which is a key capability required
+        for continous integration
+        - But there are times that we might not want the build to run, even if it's 
+        triggered; this can also be controlled by enabling/ pausing/ disabling builds
+        to queue
+    
+    - Authorization and Timeout:
+        - Authorization scope determines whether the build job is limited to accessing 
+        resources in the current project, or accessing resources in the project 
+        collection
+        - The build job timeout determines how long the job can execute before being
+        automatically cancelled where a value of zero specifies there's no limit
+        - The build job cancel timeout determines how long the server will wait for
+        a build job to respond to a cancellation request
