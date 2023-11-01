@@ -517,3 +517,34 @@ Explore Continous Integration:
         automatically cancelled where a value of zero specifies there's no limit
         - The build job cancel timeout determines how long the server will wait for
         a build job to respond to a cancellation request
+
+Implement a Pipeline Strategy:
+    - Configure Agent Demands:
+        - There's a tab for capabilities on the Agent Pools page (at the organization
+        level), when you select an agent
+        - You can use it to see the available capabilities for an agent and to 
+        configure user capabilities
+        - When you configure a build pipeline and the agent pool to use, you can 
+        specify specific demands that the agent must meet on the options tab
+    
+    - Implement Multi Agent Builds:
+        - Use multiple build agents to support multiple build machines by either 
+        distributing loads, run builds in parallel or use different agent capabilities
+        - Adding Multiple Jobs to a pipeline lets you:
+            - Break your pipeline into sections that need different pools or self-
+            hosted agents
+            - Publish artifacts in one job and consume them in one or more subsequent
+            jobs
+            - Build faster by running multiple jobs in parallel
+            - Enable conditional execution of tasks
+        - At the organizational level, you can configure the number of parallel jobs
+        that are made available
+        - The free tier allows for one parallel job of upto 1800 minutes per month;
+        The self hosted agents have higher levels
+        - You can define a build as a collection of jobs rather than as a single job
+        - Each job consumes one of these parallel jobs that run on an agent
+        - If there aren't enough parallel jobs available for your organization, the
+        jobs will be queued and run sequentially
+    
+    - Azure Repos TFVC, Subversion and other generic git are not supported by Azure 
+    Pipelines (YAML), while they are supported by Azure Pipelines (classic editor)
