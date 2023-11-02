@@ -721,3 +721,52 @@ Integrate with Azure Pipelines:
         - Tasks:
             - Tasks are the building blocks of a pipeline
             - There's a catalogue of tasks available to choose from
+    
+    - Azure Pipelines support Four types of Templates:
+        - Stage
+        - Job
+        - Step
+        - Variable
+        - You can also use templates to control what is allowed in a pipeline
+        and define how parameters can be used with parameter
+
+    - You can define a set of steps in one file and use it multiple
+    times in another
+
+    - You can define a set of variables in one file and use it multiple
+    times in other files
+
+    - For more reference on templates explore:
+        - https://learn.microsoft.com/en-us/training/
+        modules/integrate-azure-pipelines/4-detail-templates
+
+    - Use Multiple Repositories in your pipeline:
+        - Repositories are first-class citizens within Azure Pipeline
+        - Repositories can be specified as a repository resource or in 
+        line with the checkout step
+        - Supported repositories are Azure Repos Git
+        - Github
+        - Bitbucket Cloud
+        - Checkout steps:
+            - checkout: self
+                - Current Repository is checkout out
+            - checkout: none
+                - No Repositories are synced or checked out
+            - checkout: feature1
+                - feature1 repository is checked out
+            - no checkout steps:
+                - checkout: self is the first step 
+            - checkout: git://MyProject/MyRepo@features/tools
+                -  feature/tools branch of git://MyProject/MyRepo
+                is checked out as default
+        - If your repository type requires a service connection or 
+        other extended resources field, you must use a repository 
+        resource
+
+        - Azure Pipelines must be granted access to your repositories
+        to trigger their builds and fetch their code during builds
+        - The three authentication types for granting Azure Pipelines
+        access to your Github Repositories while creating a pipelines:
+            - GitHub App
+            - OAuth
+            - Personal Access Token (PAT)
