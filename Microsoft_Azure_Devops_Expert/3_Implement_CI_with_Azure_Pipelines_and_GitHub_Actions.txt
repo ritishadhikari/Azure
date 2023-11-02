@@ -548,3 +548,176 @@ Implement a Pipeline Strategy:
     
     - Azure Repos TFVC, Subversion and other generic git are not supported by Azure 
     Pipelines (YAML), while they are supported by Azure Pipelines (classic editor)
+
+Integrate with Azure Pipelines:
+    - Azure Pipelines can automatically build and validate every pull request
+    and commit to your Azure Repos Git repository
+    - Azure Pipelines can be used with Azure Devops public projects and Azure 
+    Devops private projects
+
+    - From the 3_helloWorldpipeline.yml file:
+        - name:
+            - It is in a build number format
+            - You will get an monotonically increasing integer number if you don't 
+            explicitly set a name format
+            - This number is stored in Azure Devops
+            - You can make use of this number by referencing $(Rev)
+            - To make a date based number, use $(Date:yyyyMMdd) to get a build
+            number like 20231102
+            - To get a semantic number like 1.0.x, use 1.0.$(REV:.r)
+        
+        - trigger:
+            - Most of triggers have been discussed in YAML
+            - Trigger for any branch with a name that starts with topic:
+                """
+                    include:
+                    - feature/*
+                """
+            - Pull requests can also filter branches and paths
+            - Schedules allow you to specify cron expressions for scheduling pipeline
+            runs
+            - Pipelines will enable you to trigger pipelines when other pipelines
+            are complete, allowing pipeline chaining
+        
+        - jobs:
+            - It is a set of steps an agent executes in a queue (or pool)
+            - They are atomic - performed wholly on a single agent
+            - You may configure the same job to run on multiple agents simultaneously
+            - You will need two jobs if you need some steps to run on one agent
+            and some on another
+            - Attributes of a Job:
+                - displayName:
+                    - A friendly name
+                - dependsOn:
+                    - A way to specify dependencies and ordering of multiple jobs
+                    - By default they jobs run sequentially in the order in which
+                    you define them in the yaml file
+                    - The exception to this is when you add dependencies
+                    - Pipelines must contain at least one stage with no dependencies
+                    - To have multiple jobs run in parallel, we add dependsOn: []
+                    to the jobs
+                - condition:
+                    - A binary expression
+                    - If it evaluates to true, then the job runs, else job is skipped
+                - strategy:
+                    - Used to control how jobs are parralelized
+                - continueOnError:
+                    - Specify if the rest of the pipeline should continue if this
+                    job fails
+                - pool:
+                    - The pool name (queue) to run this job on
+                - workspace:
+                    - Managing the source workspace
+                - container:
+                    - For specifying the container image to execute the job later
+                - variables:
+                    - Variables scoped to this job
+                - steps:
+                    - The set of steps to execute
+                - timeoutInMinutes/ cancelTimeoutInMinutes:
+                    - For controlling timeouts
+                - services:
+                    - sidecar services that you can spin up
+        
+        - checkout:
+            - Unlike Classic Builds, pipelines require you to be more explicit using
+            the checkout keyword
+            - Jobs check out the repo they are contained in automatically unless
+            you specify checkout: none
+            - Deployment jobs don't automatically checkout the repo, so you will
+            need to specify the checkout: self for deployment jobs if you want 
+            access to the YAML file's repo
+        
+        - download:
+            - For downloading Artifacts
+            - Downloads work the opposite way for jobs and deployment jobs
+            - Jobs don't download anything unless you explicitly define a download
+            - Deployment jobs implicitly do a download: current, which downloads
+            any pipeline artifacts created in the existing pipeline. To prevent it
+            you must specify download: none
+        
+        - resources:
+            - Resources lets you reference source code in 
+                - Other repositories
+                - pipelines
+                - builds (classic builds)
+                - containers (for container jobs)
+                - packages
+            - To reference code in another repo, specify that repo in the resources
+            section and then reference it via its alias in the checkout step
+        
+        - steps:
+            - The actual things that execute in the order specified in the job
+        
+        - variables:
+            - Every variable is a key:value pair
+            - The key is the variable's name and it has a value
+            - To dereference a variable, wrap the key in $()
+
+    - Pipeline Structure:
+        - A pipeline is one or more stages that describes a CI/CD Process
+        - Stages are primary divisions in a pipeline - "Build this app", "Run this
+        test", "Deploy to preprod"
+        - A stage is one or more jobs, units of work assignable to the same machine
+        - You can arrange both stages and jobs into a dependency graphs. Ex. "Run
+        this stage before that one", "This job depends on the output of that job"
+        - If you have a single-stage, you can omit the stages keyword and directly
+        specify the jobs keyword
+
+        - Stage:
+            - A stage is a collection of related jobs
+            - By default, stages run sequentially, where each stage starts after
+            the preceeding stage is complete
+            - Use approval checks to control when a stage should run manually
+            - The checks are commonly used to control deployments to production
+            environments
+            - Checks are a mechanism available to the resource owner and they control
+            when a stage in a pipeline consumes a resource
+        
+        - Deployment Strategies:
+            - Runonce:
+                - It is the most straightforward deployment strategy in all the
+                presented lifecycle hooks
+            - Rolling: 
+                - A rolling deployment replaces instances of the previous version
+                of an application with instances of the new version
+                - It can be configured by specifying the keyword rolling under the
+                strategy: node
+            - Canary:
+                - You can roll out the changes to a small subset of servers
+                - It is an advanced deployment strategy that helps mitigate the risk
+                of rolling out new versions of applications
+                - As you gain more confidence in the new version, you can release it
+                to more servers in your infrastructure and route more traffic to it
+        
+        - Lifecycle Hooks:
+            - Achieve deployment strategies technique by using lifecycle hooks
+            - They inherit pool specified by the deployment job, where deployment
+            jobs use the $(Pipeline.Workspace) system variable
+            - Available Lifecycle Hooks:
+                - preDeploy:
+                    - Used to run steps that initialize resources before application
+                    deployment starts
+                - deploy:
+                    - Used to run steps that deploy your application
+                    - Download Artifact task will be auto-injected only in the deploy
+                    hook for deployment jobs
+                - routeTraffic:
+                    - Used to run steps that serve the traffic to the updated version
+                - postRouteTraffic:
+                    - Run the steps after the traffic is routed
+                    - These tasks monitor the health of the updated version for a 
+                    defined interval
+                - on: failure or on: success: Run steps for rollback actions 
+                or clean-up
+        
+        - Steps:
+            - It is a linear sequence of operations that make up a job
+            - Each steps runs its process on an agent and access the pipeline 
+            workspace on a local hard drive
+            - Environment variables aren't preserved between steps, but file 
+            system changes are
+
+        - Tasks:
+            - Tasks are the building blocks of a pipeline
+            - There's a catalogue of tasks available to choose from

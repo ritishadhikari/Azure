@@ -1,0 +1,41 @@
+stages:
+  - stage: Build
+    jobs: 
+      - job: BuildJob
+        steps: 
+          - script: echo Building!
+  - stage: Test
+    dependsOn: Build
+    jobs:
+      - job: TestOnWindows
+        steps:
+          - script: echo Testing on Windows!
+      - job: TestOnLinux
+        steps:
+          - script: echo Testing on Linux!
+      - job: MyJob
+        displayName: MyFirstJob
+        continueOnError: true
+        workspace:
+          clean: outputs
+        steps:
+          - script: echo My First job
+          - bash: |
+              echo This multiline script runs in Bash
+              echo Even on Windows machines!
+          - pwsh: |
+              Write-Host "This multiline script runs in Powershell"
+              Write-Host "Even on Non-Windows Machines"
+          - task: VSBuild@1
+            displayName: Build
+            timeOutInMinutes: 120
+            inputs:
+              solutions: '**\*.sln'
+            
+  - stage: Deploy
+    dependsOn: Test
+    jobs:
+      - job: Deploy
+        steps:
+          - script: echo Deploying the code!
+

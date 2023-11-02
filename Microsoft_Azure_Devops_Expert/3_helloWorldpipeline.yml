@@ -1,0 +1,50 @@
+# though often skipped, if it's skipped, a date-based name is generated automatically
+name: 1.0$(Rev:.r)
+
+# trigger on every commit to any path from any branch in this repo
+# trigger:
+
+# - main
+
+
+trigger:
+  # queue the pipeline only when a commit to the main branch exists
+  # For triggering any branch except the main: use exclude inplace of include
+  branches:
+    include:
+    - main
+  paths:
+    # Trigger only if the change is in the webapp folder
+    include:
+    - webapp/*
+
+
+# Inline Variables
+variables:
+  name: John
+
+# configure on which pool, the job must run on
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+  # every pipeline must have atleast one job
+- job: helloWorld
+  # the actual tasks that need to be executed: in this case a "script" task (the
+  # script is an alias) that can run inline scripts   
+  steps: 
+    # tells the job which repository (or repositories if there are multiple
+    # checkouts) to check out for this job
+  - checkout: self
+  - script: echo "Hello, $(name)"
+
+- job: diffRepo
+  dependsOn: helloWorld
+  steps:
+      - checkout: appcode
+      - script: echo "Hello other repo, $(name)"
+  resources:
+    - repository: appcode
+      type: git
+      name: otherRepo
+  
