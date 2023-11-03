@@ -770,3 +770,20 @@ Integrate with Azure Pipelines:
             - GitHub App
             - OAuth
             - Personal Access Token (PAT)
+
+Introduction to GitHub Actions:
+    - Github actions are the primary mechanism for automation within GitHub
+    - One of the most common is to implement Continous Integration
+
+    - Actions:
+        - They are the mechanism used to provide workflow automation within the 
+        Github environment
+        - They are defined in YAML and stay within Github repositories
+        - Actions are executed on "runners", either hosted by Github or self-hosted
+        - Contributed actions can be found in Github Marketplace
+        - Actions can be used for wide variety of tasks such as:
+            - Automated testing
+            - Automatically responding to new issues
+            - Triggering code reviews
+            - Handling Pull requests
+            - Branch Management
