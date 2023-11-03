@@ -1,0 +1,10 @@
+jobs:
+  startup:
+    runs-on: ubuntu-latest
+    steps:
+      - run: ./setup_server_configuration.sh
+  build:
+    # If the startup job in the above example fails, the build job won't execute
+    needs: startup 
+    steps:
+      - run: ./build_new_server.sh

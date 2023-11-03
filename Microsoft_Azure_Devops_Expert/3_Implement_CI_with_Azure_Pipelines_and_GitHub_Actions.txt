@@ -786,4 +786,136 @@ Introduction to GitHub Actions:
             - Automatically responding to new issues
             - Triggering code reviews
             - Handling Pull requests
-            - Branch Management
+            - Branch Management 
+        
+    - Exploring Actions Flow:
+        - Github tracks events that occur
+        - Events can trigger the start of workflows
+        - Workflows can also start on cron-based schedules and can be triggered by
+        events outside of Github, or can be manually triggered
+        - Workflows are the unit of automation and they contain jobs
+        - Jobs use actions to get work done
+        
+    - Workflows:
+        - It defines the automation required and details the events that should
+        trigger the workflow
+        - The job within a workflow defines the location in which the actions
+        will run, like which runner to use
+        - Workflows are written in YAML and live within a Github repository
+        at the place .github/workflows
+
+    - Syntax elements of a standard workflow:
+        - name:
+            - It is the name of the workflow
+            - Optional but highly recommended
+        - on:
+            - Event or list of events that would trigger the workflow
+        - jobs:
+            - List of jobs to be executed
+            - Contains one or more jobs
+        - runs-on:
+            - Tells actions which runner to use
+        - steps:
+            - List of steps for the job
+            - Steps within a job execute on the same runner
+        - uses:
+            - Tells actions which predefined action needs to be retrieved 
+            - Ex. you might have an action that installs node.js
+        - run:
+            - Tells the job to execute a command on the runner
+            - Ex. you might execute an npm command
+
+    - Events:
+        - There are several types of events that can trigger workflow
+        - Scheduled Events:
+            - With this trigger a cron schedule needs to be provided
+            """
+                on: 
+                    schedule:
+                        - cron: '0 8-17 * * 1-5' # min hr dom m dow
+            """
+        - Code Events:
+            - It occurs when an event of interest occurs in the repository
+            """
+                on:
+                    pull_request
+            """
+        - Manual Events:
+            - Unique event that is used to trigger workflow runs manually
+            - Use the workflow_dispatch event
+        - Webhook Events:
+            - Executed when a Github webhook is called
+            """
+                # This event would fire, when someone updates a Wiki Page
+                on:
+                    gollum
+            """
+        - External Events:
+            - Allows events to fire from external systems using repository_dispatch
+    - Jobs:
+        - Workflow contains one or more job
+        - It is a set of steps that will be run in order on a runner
+        - Steps within a job execute on the same runner and share the same file system
+        - Logs produced by jobs are searchable and artifacts produced can be saved
+        - By default, if a workflow contains multiple jobs, they run in parallel
+        - You can define dependencies between jobs such that one job may need to 
+        wait for another job to complete
+    
+    - Runners:
+        - When you execute jobs, the steps execute on a Runner
+        - The steps can be the execution of a shell script or the execution 
+        of a predefined action
+        - Github provides several hosted runners to avoid needing to spin up your 
+        infrastructure to run actions
+        - Maximum duration of a job is 6 hours and for a workflow is 72 hours
+        - Apart from Javascript, if you need to use other languages, a Docker Container
+        can be used
+        - As of now, the docker container support is only linux based
+        - Javascript actions will be faster (no container needs to be used) and more
+        versatile runtime. Also Github UI is better for working with JavaScript actions
+        - You can create self hosted runners, if you need different configurations to the
+        ones provided
+        - Self Hosted Runners allows you to customize the runner completely and you 
+        then need to maintain (patch, upgrade) the runner system
+        - Self hosted runners can be added at different levels within an enterprise:
+            - Repository-level (single repository)
+            - Organizational-level (multiple repositories in an organization)
+            - Enterprise-level (multiple organizations across an enterprise)
+        - Github strongly recommends that you do not use self hosted runners in public
+        repos as it would be a significant security risk and would allow someone
+        to run code on your runner within your network
+    
+    - Examine Release and Test an Action:
+        - Actions will often produce console output and you don't need to connect
+        directly to the runners to retrieve that output
+        - The console output from actions is available directly from within the 
+        Github UI's Actions tab
+        - While you might want to retrieve the latest version of the action, there 
+        are many situations where you might want a specific version of the action
+        - You can request a specific release of action in several ways:
+            - Tags:
+                - Allow you to specify the precise versions that you want to work
+                """
+                    steps:
+                        -uses: actions/install-timer@v2.0.1
+                """ 
+            - SHA-based hashes:
+                - You can specify a requested SHA-based hash for an action
+                - It ensures that the action has not changed
+                - Downside is you won't receive updates to the action automatically
+                either
+                """
+                    steps:
+                        -uses: actions/install-timer@327239021f7cc39fe7327
+                ""'
+            - Branches:
+                - Request actions by refering to the branch you would want to work with
+                - Get the latest version from the branch
+                - You will benefit from updates, but it also increases the chance of 
+                code-breaking
+                """ 
+                    steps:  
+                        -uses: actions/install-timer@develop
+                """
+
+
