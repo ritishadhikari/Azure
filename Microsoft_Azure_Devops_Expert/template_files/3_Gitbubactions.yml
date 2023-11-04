@@ -1,0 +1,25 @@
+name: dotnet Build
+
+# what will occur when code is pushed
+on: [push]
+
+jobs:
+    # single job called build
+    build:
+        runs-on: ubuntu-latest
+        strategy:
+            # specifies the node.js version
+            matrix:
+                node-version: [10.x]
+        # doing a checkout of the code and setting up dotnet
+        steps:
+            - uses: actions/checkout@main
+            - uses: actions/setup-dotnet@v1
+                with:
+                    dotnet-version: '3.1.x'
+            # building the code
+            - run: dotnet build awesomeproject
+        env:
+            PROJECT_SERVER: PH2023V
+            PROJECT_DATABASE: HAMaster
+            

@@ -918,4 +918,146 @@ Introduction to GitHub Actions:
                         -uses: actions/install-timer@develop
                 """
 
+Learn continuous integration with GitHub Actions:
+
+    - Examine Environment Variables:
+        - When using actions to create CI/CD workflows, you will typically need to pass
+        variable values to the actions
+        - It is done by using Environment variables
+        - GitHub provides a series of built-in environment variables with (GITHUB_prefix)
+        - Ex.
+            - GITHUB_WORKFLOW: 
+                - Name of the workflow
+            - GITHUB_ACTION:
+                - Unique identifier for the action
+            - GITHUB_REPOSITORY:
+                - Name of the repository 
+                - Includes Name of the owner in owner/repo format
+
+        - GITHUB_WORKFLOW:
+            - name of the workflow
+    
+    - Sharing Artifacts between Jobs:
+        - You will often need to pass artifacts created by one job to another
+        - The most common ways to do it are upload-artifact and download-artifact
+        actions
+        - Upload Artifact 
+            - This action uploads one or more files from your workflow to be shared 
+            between jobs
+            - You can upload a specific file
+            """
+              - uses: actions/upload-artifact
+              with:
+                name: harness-build-log
+                path: bin/output/logs/harness.log
+            """
+            - You can upload an entire folder
+            """
+                - uses: actions/upload-artifact
+                with:
+                    name: harness-build-log
+                    path: bin/output/logs/
+            """
+            - You can use wildcards:
+            """
+                - uses: actions/upload-artifact
+                with:
+                    name: harness-build-log
+                    path: bin/output/logs/harness[ab]?/*
+            """
+            - You can specify multiple paths:
+            """
+                - uses: actions/upload-artifact
+                with:
+                    name: harness-build-log
+                    path: |
+                        bin/output/logs/harness.log
+                        bin/output/logs/harnessbuild.txt
+            """
+        - Download Artifacts:
+            - Action for downloading artifacts
+            """
+                - uses: actions/download-artifact
+                with:
+                    name: harness-build-log
+                    path: bin/output/logs/
+            """
+            - If no path is specified, it is downloaded to the current directory
+        - Artifact Retention:
+            - A default retention period can be set for the repository, organization
+            or enterprise
+            - You can set a custom retention period when uploading, but it can't 
+            exceed the defaults for the repository, organization or enterprise
+            """
+                - uses: actions/upload-artifact
+                with:
+                    name: harness-build-log
+                    path: bin/output/logs/harness.log
+                    retention-days: 12
+            """
+        - Deleting Artifacts:
+            - Delete Artifacts directly in Github UI
+    
+    - Examine Workflow Badge:
+        - Badges can be used to show the status of a workflow within a repository
+        - They show if a repository is currently failing or passing
+        - They typically get added to the README.md file for the repository
+        - Badges are added by using URLs which is as follows:
+            https://github.com/<OWNER>/<REPOSITORY>/actions/workflows/
+            <WORKFLOW_FILE>/badge.svg
+        - Badges usually indicate the status of the default branch, but can be 
+        branch-specific which is done by adding a URL query parameter ?branch=<NAME>
+    
+    - Best Practices for creating actions:
+        - Create chainable actions. Don't create large monolithic actions
+        - Version your actions like other code since others might take dependencies
+        on your versions of your actions
+        - Provide the "latest" label
+        - Add appropriate documentations
+        - In the action.yml file, ensure it has been populated with author, icon,
+        expected inputs and outputs
+        - Consider contributing to the marketplace
+    
+    - Releases with Git Tags:
+        - Release are software iterations that can be packed for release
+        - In Git, releases are based on Git Tags which marks a point in the 
+        history of the repository 
+        - Often tags contains version numbers, but they can have other values
+        - Tags can be viewed in the history of a repository
+    
+    - Encrypted Secrets:
+        - Actions often use secrets within pipelines
+        - Common usecases of secrets are passwords or keys
+        - Secrets are similar to environment variables but encrypted
+        - Secrets can be created at two levels:
+            - Repository
+            - Organization
+        - If secrets are created at the organization level, access policies can limit
+        the repositories that can use them
+        - To create secrets for a repository, you must be the repository's owner
+        - From the repository settings, chose Secrets, then New Secret
+    
+    - Using Secrets in a workflow:
+        - Secrets aren't passed automatically to the runners when workflows are 
+        executed
+        - Instead when you include an action that requires access to a secret, you
+        use the secrets context to provide it
+        """
+            steps:
+                - name: Test Database Connectivity
+                  with:
+                    db_username: ${{ secrets.DBUserName }}
+                    db_password: ${{ secrets.DBPassword }}
+        """
+        - Secrets shouldn't be passed directly as command-line arguments as they may
+        be visible to others; Instead treat them like environment variables
+        """
+            steps:
+                - shell: pwsh
+                  env: 
+                    DB_PASSWORD: ${{ secrets.DBPassword }}
+                  run:  |
+                    db_test "$env:DB_PASSWORD"
+        """
+        - A workflow can use upto 100 secrets and they are limited to 64 KB in size
 
