@@ -1061,3 +1061,96 @@ Learn continuous integration with GitHub Actions:
         """
         - A workflow can use upto 100 secrets and they are limited to 64 KB in size
 
+Design a container build strategy:
+    - Containers make highly use of the underlying infrastructure
+    - You need to manage and connect containers to the outside world for scheduling,
+    load balancing, and distribution
+    - Container Orchestration tool like Azure Kubernetes Services (AKS) comes to 
+    solve the above issue
+
+    - AKS:
+        - It is an open source system for deploying, scaling and managing
+        containerized application
+        - It handles the work of scheduling containers onto a compute cluster
+        and manages the workloads to ensure they run as the user intended
+    
+    - Container:
+        - It consists of an entire runtime environment
+            - An application, plus all its dependencies
+            - Libraries and other binaries
+            - Configuration files needed to run it, bundled into one package
+        - Unlike a VM, which provides hardware virtualization, a container provides
+        operating-system-level virtualization by abstracting the "user-space"
+        - Each container gets its isolated user space to allow multiple containers
+        to run on a single host machine
+        - OS level architecture is shared across containers
+        - The only parts that are created from scratch are the bins and libs, and 
+        this is what makes containers lightweight
+    
+    - Container Lifecycle:
+        - Docker Build:
+            - Create an Image by executing a Dockerfile
+        - Docker Pull:
+            - Retrieve the image, likely from a container registry
+        - Docker Run:
+            - Execute the container. An instance is created of the image
+    
+    - Multistage Dockerfiles:
+        - Multistage builds give the benefits of the builder pattern without the
+        hassle of maintaining n number of separate files
+    
+    - Considerations for multiple stage builds:
+        - Try to avoid creating overly complex container images that couple togather
+        several applications
+        - Instead use multiple containers and try to keep each container to a single
+        purpose
+        - Breaking up application components into separate containers increases
+        the chances of reusing containers
+        - Also scaling up the application is possible
+        - For Ex. In the web application, you might want to add replicas of the 
+        website container but not for the database container
+        - Start with an image that only contains packages that are required
+        - It would be best to consider using docker volume support to maintain the
+        isolation of your application and its data 
+        - Volumes are persistent storage mechanisms that exist outside the lifespan
+        of a container
+    
+    - Azure Container Instances (ACI):
+        - ACI allows you to create your applications rather than provisioning and 
+        managing the infrastructure that will run the applications
+        - ACIs are simple and fast to deploy, and you gain the security of 
+        hypervisor isolation for each container group
+        - It ensures that your containers aren't sharing an OS kernel with other
+        containers
+    
+    - Azure Kubernetes Services (AKS):
+        - The de-facto standard for container orchestration
+        - Lets you quickly deploy and manage Kubernetes to scale and run applications
+        while maintaining overall solid security
+    
+    - Azure Container Registry (ACR):
+        - Lets you store and manage container images in a central registry
+        - It provides you with a Docker Private Registry as a first-class Azure 
+        resource
+        - All container deployments including DC/OS, Docker Swarm and Kubernetes are
+        supported
+        - The registry is integrated with other Azure Services like App Service,
+        Batch, Service Fabric and others
+        - It allows your devops team to manage the configuration of apps without being
+        tied to the configuration of the target-hosting environment
+    
+    - Azure Container Apps:
+        - Allows you to build and deploy modern apps and microservices using 
+        serverless containers 
+        - It deploys containerized apps without managing complex infrastructure
+        - Scale dynamically based on HTTP traffic or events powered by Kubernetes
+        Event Driven Autoscaling
+        - Write code using your preferred programming language or framework and
+        build microservices with full support for Distributed Application runtime
+    
+    - Azure App Service:
+        - Provides managed service for both Windows and Linux-based web applications
+        and provides the ability to deploy and run containerized applications
+        for both platforms
+        - Provides autoscaling and load balancing options and is easy to integrate
+        with Azure Devops
