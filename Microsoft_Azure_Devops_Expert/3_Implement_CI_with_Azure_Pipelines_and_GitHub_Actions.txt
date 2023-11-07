@@ -21,9 +21,10 @@ Explore Azure Pipelines:
             - Test Automation:
                 - The new version of an application is rigourously tested throughout 
                 this stage to ensure that it meets all wished system qualities
-                - All relevant aspects - functionality, security, performance or compliance
-                are verified by the pipeline
-                - This stage may involve different types of automated or manual activities
+                - All relevant aspects - functionality, security, performance or 
+                compliance are verified by the pipeline
+                - This stage may involve different types of automated or manual 
+                activities
             - Deployment Automation:
                 - It is a low risk step since the preceding stages have verified the 
                 overall quality of the system
@@ -33,7 +34,7 @@ Explore Azure Pipelines:
                 - The deployment is automated, allowing for the reliable delivery of 
                 new functionality to users within minutes if needed
         - By carrying out value stream mappings on your releases, you can highlight any
-        remaining inefficiencies and hotspots and pippoint opportunities to improve
+        remaining inefficiencies and hotspots and pinpoint opportunities to improve
         your pipeline
         - These automated pipelines need infrastructure to run on and the efficiency of
         this infrastructure will have a direct impact on the effectiveness of the 
@@ -181,7 +182,7 @@ Manage Azure Pipelines Agents and Pools:
             - Ubuntu 18.04
             - macOS 11
             - macOS X
-        - By default, all contributors in a project are members of the User role on '
+        - By default, all contributors in a project are members of the User role on
         each hosted pool
         - This way, all contributors are allowed to build and release the pipelines
         using Microsoft hosted pool
@@ -212,7 +213,7 @@ Manage Azure Pipelines Agents and Pools:
             selecting the option to Use an existing organization agent pool
             - Install and configure agents to be part of that agent pool
     
-    - Commuication of Agent with Azure Pipelines:
+    - Communication of Agent with Azure Pipelines:
         - The agent communicates with Azure Pipelines to determine which job to run
         and reports the logs and job status
         - All the messages from the agent to Azure Pipelines over HTTPS depend
