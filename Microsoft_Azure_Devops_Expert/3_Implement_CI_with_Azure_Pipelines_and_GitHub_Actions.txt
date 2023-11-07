@@ -407,7 +407,7 @@ Describe pipelines and concurrency:
         - Visual Studio Enterprise subscribers get one self-hosted parallel job in each
         Azure Devops Services Organization where they are member
         - When you are running you builds for more than 14 paid hours in a month, then 
-        than per-minute plan might be less cost-effective than the parallel jobs model
+        per-minute plan might be less cost-effective than the parallel jobs model
     
     - Configure your build and release pipelines in the Azure Devops web portal 
     with the visual designer (Classic Pipelines):
@@ -428,7 +428,7 @@ Describe pipelines and concurrency:
         - Edit your azure-pipelines.yml file to define your build
         - Push your code to your version control repository. This action kicks off
         the default trigger to build and deploy and then monitor the results
-        - Once code is updated,built, tested and packaged, it can be deployed to Target
+        - Once code is updated, built, tested and packaged, it can be deployed to Target
     
     - Benefits of Using YAML:
         - The pipeline is versioned with your code and follows the same branching 
@@ -492,8 +492,8 @@ Explore Continous Integration:
                     - Apache Ant
                     - NAnt2
                     - Gradle
-        - It removes long, complex and drawn-out bug-inducing
-    merges, allowing organizations to deliver swiftly
+        - It removes long, complex and drawn-out bug-inducing merges, allowing 
+        organizations to deliver swiftly
         - It also enables tracking metrics to assess code quality over time. Ex.
         Unit Test Passing rates, code that breaks frequently, code coverage trends 
         and code analysis
