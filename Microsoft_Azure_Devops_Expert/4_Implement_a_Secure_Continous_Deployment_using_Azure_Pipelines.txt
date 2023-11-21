@@ -1,0 +1,9 @@
+Introduction to Deployment Patterns:
+    - Azure Pipelines can be used to create a fully featured cross-platform CI and 
+    CD service
+    - Microservices Architecture:
+        - Interaction between the microservices is done asynchronously
+        - They don't call each other directly, but use asynchronous mechanisms like
+        queues or events
+    - In classical deployment patterns, despite the different stages to test and
+    validate, this approach still involves a lot of risks
