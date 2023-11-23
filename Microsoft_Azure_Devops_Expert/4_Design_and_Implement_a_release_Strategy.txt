@@ -47,3 +47,62 @@ Introduction to Continous Delivery:
         your artifact from one of the artifact sources through the stages or 
         environments
         - The release is an instance of the release pipeline
+        - Release Pipeline is the blueprint through which releases are done
+
+Create a Release pipeline:
+    - Capabilities for Service Containers and Container Jobs can be run in YAML 
+    pipelines only and not in classic build and classic release
+    - The components that make up the release pipeline or process are used to create
+    a release
+    - Components in a release pipeline:
+        - Artifacts:
+            - Comes from various sources like build pipeline or source control
+            - It is a deployable component of your application which can then be 
+            deployed to one or more environments
+            - Artifacts will be deployed to multiple environments
+            - Most common way to get an artifact within the release pipeline is 
+            to use a build artifact which uses a versioned artifact
+            - The artifact is linked to the build and gives us automatic traceability
+            and it gives us automatic traceability
+            - The build pipeline compiles, tests and eventually produces an 
+            immutable package stored in a secured place (storage, database, etc)
+            - The release pipeline then uses a secure connection to this secured
+            place to get the build artifact and do extra actions to deploy it to
+            an environment
+            - Another common artifact source is version control  (VC) where the 
+            releases is related to a specific commit in our version control system
+            - VC makes more sense if you want to deploy one specific file and you 
+            don't need to run more actions before using this file in your release
+            pipeline
+            - With the VC, we can also see which version of a file or script is
+            eventually installed, where in the version does not come from the 
+            build but version control
+            - Another possibility of an artifact source is a network share containing
+            a set of files but it is risk prone as other people may have access to 
+            the network share where the package was put
+            - Container Registries are upcoming regarding artifact sources which
+            stores container artifacts
+            - A proper mechanism to make sure you can provide the correct 
+            traceability and auditability is using immutable packages by versioning
+            those packages
+            - Using a build pipeline that produces a package stored in a location
+            that humans can't access, you ansure the sources are unchanged throughout
+            the whole release-process and this is an essential concept of release
+            pipelines
+
+        - Trigger:
+            - Manual Trigger 
+            - Schedueled Trigger (Cron)
+            - Continous Deployment Trigger, where another event triggers a release,
+            ex. a completed build
+        - Stages:
+            - This is where the artifacts will be eventually installed
+            - You may have many stages and part of the release strategy is finding the
+            appropriate combination of stages
+        - Approval:
+            - People often sign a release before installing it in the environment
+            - The manual process can be replaced by an automatic process that checks
+            the quality before the components move on to the next stage
+        - Tasks:
+            - Steps that need to be executed to install, configure and validate the 
+            installed artifact
