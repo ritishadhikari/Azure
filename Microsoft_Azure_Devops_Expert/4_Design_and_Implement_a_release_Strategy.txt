@@ -99,6 +99,15 @@ Create a Release pipeline:
             - This is where the artifacts will be eventually installed
             - You may have many stages and part of the release strategy is finding the
             appropriate combination of stages
+            - Trigger of a particular stage can happen in three ways:
+                - After Release:
+                    - Stage which immediately follows a release
+                - After Stage:
+                    - Completion of another stage
+                - Manual Only:
+                    - Requires Manual Triggering
+                - The name stages is a better fit than environment even though
+                the stages can be used for environments
         - Approval:
             - People often sign a release before installing it in the environment
             - The manual process can be replaced by an automatic process that checks
@@ -106,3 +115,15 @@ Create a Release pipeline:
         - Tasks:
             - Steps that need to be executed to install, configure and validate the 
             installed artifact
+        - Jobs:
+            - A release job is executed by a build/release agent. This agent can
+            only run one job at the same time 
+            - You specify a series of tasks you want to run on the same agent during
+            your job design
+            - The release pipelines brings the artifacts togather and wants to deploy
+            the backend, frontend, and mobile app all together as part of one release
+            - The deployment takes place on different agents
+            - By default, jobs run on the host machine where the agent is installed
+
+    - When designing your release strategy, chose your triggers carefully and 
+    consider the required release cadence
