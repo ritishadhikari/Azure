@@ -127,3 +127,30 @@ Create a Release pipeline:
 
     - When designing your release strategy, chose your triggers carefully and 
     consider the required release cadence
+
+Explore Release Recommendations:
+    - There are three types of triggers:
+        - Continous Deployment Trigger:
+            - Set up this trigger on your release pipeline
+            - Post the setup, your release pipeline will trigger every time a build
+            completes and creates a new release
+        - Scheduled Triggers:
+            - Allows you to set-up a time based manner to start a new release
+            - You can have one or multiple daily schedules, but it will always run 
+            at this specific time
+        - Manual Trigger:
+            - A person or system triggers the release band on a specific event
+            - When it's a person, it probably uses some UI to start a new release
+            - When it's an automated process, some events will likely occur
+    
+    - When we refer to deployment, we refer to each stage, where each stage can have its
+    triggers that determine when the deployment occurs
+    - With the imposition of pre-deployment conditions, deployment to any stage doesn't
+    happen automatically unless you have chosen to allow that
+    - Manual Approvals Approvals:
+        - It suits a significant need
+        - Organizations that starts with continous delivery, often lacks a certain
+        amount of trust and they don't dare to release without manual approval
+        - After sometime, they find out that the approval does not add value and the
+        release always succeeds
+        - The manual approval is then replaced by an automatic check
