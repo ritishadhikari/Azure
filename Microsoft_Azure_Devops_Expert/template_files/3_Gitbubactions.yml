@@ -13,10 +13,11 @@ jobs:
                 node-version: [10.x]
         # doing a checkout of the code and setting up dotnet
         steps:
-            - uses: actions/checkout@main
-            - uses: actions/setup-dotnet@v1
-                with:
-                    dotnet-version: '3.1.x'
+            - uses: 
+                - actions/checkout@main
+                - actions/setup-dotnet@v1
+              with:
+                dotnet-version: '3.1.x'
             # building the code
             - run: dotnet build awesomeproject
         env:
