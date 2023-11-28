@@ -154,3 +154,44 @@ Explore Release Recommendations:
         - After sometime, they find out that the approval does not add value and the
         release always succeeds
         - The manual approval is then replaced by an automatic check
+    
+    - Release Gates:
+        - They gives you more control over the start and completion of the deployment
+        pipeline
+        - They are often set up as pre-deployment and post-deployment conditions
+        - It's a planning session where the release schedule of dependent components
+        is discussed
+        - By using scripts and APIs, you can create your release gates instead of manual
+        aproval, or atleast extend your manual approval
+        - When the release starts, it checks the state of the gate by calling an API
+        - If the "gate" is open, we can continue; otherwise we'll stop the release
+        - Scenarios where release gates may be required:
+            - Incident and issue management
+            - Notify users such as legal approval departments, auditors or IT managers
+            about a deployment by integrating with approval collaboration systems like
+            Teams or slack, waiting for the approval to completed
+            - Quality Validation
+            - Security scan on artifacts
+            - User experience relative to baseline
+            - Change Management
+            - Infrastructure Health
+        - Quality Gate:
+            - It is the best way to enforce a quality policy in your 
+            organization, which is there to answer one question: Can I deliver my 
+            application to production or not?
+            - It is located before a stage that is dependent on the outcome of a previous
+            stage.
+            - It is something that a QA department monitored in the past who used 
+            guidelines, policies and checks to verify if a software was of a good 
+            quality to move on to the next stage
+            - Quality gates automate these checks as part of our release pipeline
+            - Ex. of quality gates:
+                - No Blocker Issues
+                - Code coverage on new code greater than 80%
+                - No licence violations
+                - No vulnerabilities in dependencies
+                - No further technical debt was introduced
+                - Compliance checks:
+                    - Are there work items linked to the release
+                    - Is the release started by someone else as the one who commits the 
+                    code 
