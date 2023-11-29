@@ -165,6 +165,17 @@ Explore Release Recommendations:
         aproval, or atleast extend your manual approval
         - When the release starts, it checks the state of the gate by calling an API
         - If the "gate" is open, we can continue; otherwise we'll stop the release
+        - Approvals and gates enables you to control and start and completion of the
+        deployments in a release
+        - Using Release Gates, you can specify application health criteria to be met 
+         before the release is promoted to the following environment
+         - Multiple gates can be added to the environment conditions to ensure all the
+         inputs are successful for the release
+         - Pre-deployment gates ensure no active issues in the work item or problem 
+         management system before deploying a build to an environment
+         - Post-deployment gates ensure no incident from the app's monitoring or incident
+         management system after being deployed before promoting the release to the 
+         following environment 
         - Scenarios where release gates may be required:
             - Incident and issue management
             - Notify users such as legal approval departments, auditors or IT managers
@@ -175,6 +186,17 @@ Explore Release Recommendations:
             - User experience relative to baseline
             - Change Management
             - Infrastructure Health
+        - There are four different release gates:
+            - Invoke Azure Function:
+                - Trigger to ensure a successful completion
+            - Query Azure Monitor Alerts:
+                - Observe the configured Azure Monitor alert rules for active Alerts
+            - Invoke REST API:
+                - Make a call to a REST API and continue if it returns a successful
+                response
+            - Query Work Items:
+                - Ensure the number of matching work items returned from a query is 
+                within a threshold
         - Quality Gate:
             - It is the best way to enforce a quality policy in your 
             organization, which is there to answer one question: Can I deliver my 
@@ -195,3 +217,4 @@ Explore Release Recommendations:
                     - Are there work items linked to the release
                     - Is the release started by someone else as the one who commits the 
                     code 
+        
