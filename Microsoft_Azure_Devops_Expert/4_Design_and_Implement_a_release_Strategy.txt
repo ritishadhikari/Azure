@@ -217,4 +217,114 @@ Explore Release Recommendations:
                     - Are there work items linked to the release
                     - Is the release started by someone else as the one who commits the 
                     code 
-        
+    
+Provision and Test Environments:
+    - When a release pipeline deploys software to a target environment, it 
+    is only not the software that will be deployed with the release pipeline
+    - Infrastructure as Code and Spinning up Infrastructure as part of your 
+    release pipeline is essential as well
+    - When we focus on the deplloyment of the Infrastructure, we should first
+    consider the differences between the target environments that we can deploy to:
+        - On Premise Servers:
+            - When you deploy to an on-premise server, the hardware and OS are 
+            already in place; the server is already there and ready
+            - Hence the release pipeline can only focus on deploying the app
+            - You might want to start or stop your server with a Hyper-V or VMware
+            - Using a task in the release pipeline, you can run the script that
+            starts or stops the servers
+            - To take one step further and configure the servers, you should look
+            at technologies like Powershell desired State Configuration (DSC)
+            - The product maintains your server and keep in in a particular state
+            and when the server changes its state, you can recover the changed
+            configurations to the original configuration
+        - Cloud Servers or IAAS (Ex. VMs):
+            - Creating a script or template can make a server or other 
+            infrastructural components like a SQL server, a network, or an IP address
+            - By defining a template or using a command line and saving it in a
+            script file, you can use that file in your release pipeline to execute
+            it on your target cloud 
+            - The server will be created as part of your pipeline, post which you
+            can run the steps to deploy the software
+            - Technologies like ARM are great for creating Infrastructure on Demand
+        - PaaS and Functions as a Service:
+            - In PaaS, you will get the infrastructure from the cloud you are
+            running on
+            - The cloud arranges the server, the hardware, the network, the public 
+            IP address, the storage account and even the web browser
+            - The user only needs to take care of the application on this platform
+            - You only instruct the platform to create a placeholder where your
+            application can be hosted
+            - You can define this template in ARM by using Azure CLI or Command line 
+            tools
+            - The infrastructure is defined in a script file and lives alongside
+            the application code in source control
+        - Clusters:
+            - It is a group of software that will be deployed with the release 
+            pipeline
+            - While focussing on Continous delivery, IaaC and spinning up infra
+            as part of your release pipeline is essential
+            - While runnning IaaS cluster, you must create and maintain the cluster
+            - It means that you need to provide the templates to create a cluster
+            - Also you must ensure that you roll out updates, bug fixes, and patches
+            to your cluster
+            - While running a hosted clusted (PaaS), you instruct the cloud to create 
+            the cluster and you deploy your software to the cluster
+            - When running container clusters, you can use cluster technologies like 
+            AKS
+        - Service Connections
+            - They are created when a pipeline needs resource access (ex. Github)
+            - Revisit the "Exercise - set up service connections"
+    - Few Principles of testing includes:
+        - Tests should be written at the lowest level possible
+        - Write once, and run anywhere, including the production system
+        - The product is designed for testability
+        - Test Code is product code; only reliable tests survive
+        - Test ownership follows product ownership
+    - The build and release agent can handle executing Unit Tests or other low-level
+    tests that don't need a deployed application or infrastructure
+    - When you need to do tests with a UI or other specialized functionality, you 
+    need a Test agent to run the test and report the results
+    - Installation of the agent then needs to be done upfront or as part of the 
+    execution of your pipeline
+    - The goal for "shifting left" is to move quality upstream by performing tests
+    early in the pipeline
+    - It represents the phrase "fail fast, fail often" combining test and process
+    improvements reducing the time it takes for tests to be run and the impact of 
+    failures later on
+    - The idea is to ensure that most of the testing is complete before merging a 
+    change into the main branch
+    - Unit tests needs to be fast and reliable while functional tests must be
+    independent
+    - Availabilty Tests:
+        - After you have deployed your web app or website to any server, you can 
+        set up tests to monitor its availability and responsiveness
+        - Some applications have specific health endpoints that an automated process
+        can check
+        - The health endpoint can be an HTTPS status or a complex computation that
+        uses and consumes crucial parts of your application
+        - You can use availability tests (ping tests) in your pipeline and as release
+        gates
+        - In Azure you can set up availability tests for any HTTP or HTTPS endpoint
+        accessible from the public internet
+        - Two types of Availability Tests:
+            - URL ping test:
+                - Simple test that can be created in the Azure Portal
+                - Check the URL and check the response and status code of the response
+            - Multi-step web test:
+                - Several HTTP calls that are executed in sequence
+    - Azure Load Testing:
+        - It is a fully managed load-testing service that enables you to generate
+        a high scale load
+        - The service simulates your applications' traffic, helping you optimize
+        application performance, scalability or capacity
+        - Create a load test using existing test scripts based on Apache JMeter
+        - It abstracts the infrastructure to run your JMeter script and load test
+        your application
+        - It collects detailed resource metrics for Azure-based applications to help
+        you identify performance bottlenecks across your Azure application components
+        - Use Azure Load testing as part of CI/CD workflow
+        - Azure Load Testing uses Azure Monitor to capture metrics for app components
+        - Automatically run a load test at the end of each sprint or in a staging 
+        environment to validate a release candidate build
+        - Trigger Azure Load Testing from Azure Pipelines or Github Actions Workflow
+    
