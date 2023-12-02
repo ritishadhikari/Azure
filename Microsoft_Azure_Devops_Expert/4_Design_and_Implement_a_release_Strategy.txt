@@ -327,4 +327,54 @@ Provision and Test Environments:
         - Automatically run a load test at the end of each sprint or in a staging 
         environment to validate a release candidate build
         - Trigger Azure Load Testing from Azure Pipelines or Github Actions Workflow
+
+Manage and Modularize tasks and templates:
+    - Examine Task groups:
+        - They are a way to standardize and centrally manage deployment steps for all
+        your applications
+        - It allows you to encapsulate a sequence of tasks, already defined in a 
+        build or a release pipeline, into a single reusable task that can be added
+        to a build or release pipeline, just like any other task
+        - You can chose to extract the parameters from the encapsulated tasks as 
+        configuration variables and abstract the rest of the task information
+        - When you include a task group in your definitions and then make a change 
+        centrally to the task group, the change is automatically reflected in all the
+        definitions that use the task group and there is no need to change each one
+        individually
+        - Revisit the "Exercise - create and manage task groups" section
+    
+    - Variables in Release Pipelines:
+        - Variables gives you a convenient way to get critical bits of data into 
+        various parts of the pipeline
+        - Variable Scope is the most important thing you need to think about when 
+        using variables in the release pipeline
+        - Within the release pipeline, you can use variables in different scopes and 
+        different ways
+        - Predefined Variables:
+            - Variables that come from the agent or context of the release pipeline
+            - Ex. Agent directory where the sources are downloaded, the build number,
+            build ID, agents name, etc
+        - Release Pipeline Variables:
+            - Variables whose values can be used across all the stages and tasks
+            in the release pipeline and you want to change the value in a single place
+        - Stage Variables:  
+            - Share values across all the tasks within one specific Stage
+        - Normal and Secret Variable:
+            - Since Pipeline tasks are executed on an agent, variable values are passed
+            to the various tasks using environment variables
+            - When the Pipeline is finished, the values will be cleared
+            - Normal Variables contains clear text and can be exposed to the target
+            system
+            - Mark a variable in the release pipeline as secret, this way the secret
+            is hidden from the log output. It is beneficial when writing a password
+            or other sensitive information
+        - Variable Group:
+            - Stores values that you want to make available across multiple builds 
+            and release pipelines
+            - Ex.:
+                - Store the username and password for a shared server
+                - Store a share connection string
+                - Store the geolocation of an application
+                - Store all settings for a specific application
+            - Revisit the section: "Exercise - create and manage variable groups"
     
