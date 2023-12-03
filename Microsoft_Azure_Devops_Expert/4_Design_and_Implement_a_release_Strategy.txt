@@ -445,3 +445,87 @@ Design and implement a release strategy:
             discussions
         - By default you automatically watch all repositories you create and own by
         your personal account and subscribe to conversations
+    
+    - Measure quality of your release process:
+        - Keep track of your release process quality by creating quality of all the 
+        releases following the same release process or release pipeline
+        - When we want to measure the quality of a release itself, we can do all 
+        kinds of checks within the pipeline
+        - Execute all different types of tests like Integration Tests, load tests, or 
+        even UI tests while running your pipeline and checking the release's quality
+        - Using a quality gate is also a perfect way to check the quality of your 
+        release
+    
+    - Examine Release Notes and Documentation:
+        - When you deploy a new release to a customer or install new software on your
+        server, and you want to communicate what has been released to your customer,
+        the usual way is to use release notes
+        - Different ways to store release notes:
+            - Document Store:
+                - Create text files or documents in some document store
+                - This way the release notes are stored togather with other documents
+                - There's no direct connection between the release in the release 
+                management tool and the release notes that belong to this release
+            - Wiki:
+                - It is the most used way where release notes are created as a page
+                in the wiki and by using hyperlinks
+                - Relations can be associated with the build, the release and the
+                artifacts
+                - Creating a wiki is a better and more modern way to to store 
+                your documentation
+                - They do not contain documents, presentations or spreadsheets but text 
+                files called markdown files
+            - Codebase:
+                - The best option might be to store release notes as part of your code
+                repository
+                - Once the team completes a feature, they or the product owner also
+                writes the release notes and save them alongside the code
+                - It becomes a living documentation because the notes changes with the
+                rest of the code
+                - The release pipeline can then deploy the documentation to a site or 
+                include it in the boxed product
+            - In Work Item:
+                - Work Items can be bugs, tasks, product backlog items or User Stories
+                - Create or use a different field within the work item to save release
+                notes in work items. In this field, you type the publicly available 
+                release notes that will be communicated to the customer
+    
+    - Examinine Considerations for choosing release management tools:
+        - Tools in the marketplace can be divided into two categories:
+            - Tools that can do Build and Continous Integration and Deployment:
+                - Technical aspect of the release is executing a script or running a
+                program
+            - Tools that can do Release Management
+                - Requires approvals, quality gates and different stages
+                - It is a different kind of tool, that tightly integrates with the 
+                build and it is not same as the CI tools
+        - Artifacts and artifact source:
+            - Artifacts comes from different sources
+            - Treating your artifact as a versioned package needs to be stored 
+            somewhere before your release pipeline consumes it
+            - Considerations for chosing your tool can be:
+                - Which Source control systems are supported
+                - Can you combine artifacts from different sources into one release
+                - Does it integrate with your build servers
+                - Does it support other build servers
+                - Does it support container Registries
+                - How do you secure the connection to the artifact source?
+        - When it comes to compliance, three principles are fundamental:
+            - Four-eyes principle:
+            - Traceability
+            - Auditability
+        - Security is vital and it is not okay when people can do everything, including
+        deleting evidence
+        - Setting up the right roles, permissions, and authorization is essential 
+        to protect your system and pipeline
+        - When looking at an appropriate release management tool, we can consider:
+            - Does it integrate with you company's Active directory
+            - Can you set up roles and permissions
+            - Is there a change history of the release pipeline itself
+            - Can you ensure the artifact didn't change during the release 
+            - Can you link the requirements to the release
+            - Can you link source code changes to the release pipeline
+            - Can you enforce approval or the four-eyes principle
+            - Can you see the release history and the people who triggered the release
+
+    
