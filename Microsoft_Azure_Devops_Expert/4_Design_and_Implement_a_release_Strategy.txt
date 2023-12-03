@@ -377,4 +377,71 @@ Manage and Modularize tasks and templates:
                 - Store the geolocation of an application
                 - Store all settings for a specific application
             - Revisit the section: "Exercise - create and manage variable groups"
+
+Design and implement a release strategy:
+    - When you run multiple deployments a day, you want to:
+        - Stay informed whether a release passed or failed
+        - Know quality of the release and details of the release on how it was done
+        - Stop releases when you detect something suspicious 
+        - Visualize some of these things on a dashboard
+    - Release Gates:
+        - Allows the automatic collection of health signals from external services
+        - Promote the release when all the signs are booming simultaneously or stop
+        the deployment on timeout
+        - Gates are connected with incident management, problem management, change
+        management, monitoring and external approval systems
+    - Events subscriptions and notifications:
+        - Events are raised when specific action occurs, like when a release is
+        started or build is completed
+        - A notification subscription is associated with a supported event type
+        - The subscription ensures you get notified when a specific event occurs
+        - Notifications are usually emails that you receive when an event occurs 
+        to which you are subscribed
+        - Specially helpful for asynchronous actions
+        - Also you want to get notified by the system in real time, so by implementing
+        a successful alert mechanism, you can use alerts to react to situations 
+        proactively
+        - Within Azure Devops, there are multiple ways to define your alerts
+        - By using query and filter mechanisms, you can filter out specific alerts
+        - Ex. Only get notified for failed releases and not for successful ones
+    - Service Hooks:
+        - Enables you to do tasks on other services when events happen in your
+        Azure Devops Services projects
+        - It's a more efficient way to drive activities when events happen in your
+        projects
+        - Ex. Send a push notification to your team's slack when a build fails
+        - It can be used in custom apps and services as a more efficient way to 
+        drive activities when event happen in your projects
+
+    - Reporting:
+        - Create a dashboard that shows the status of your build and releases combined
+        with team-specific information
+
+    - Configuring Azure Notifications:
+        - You can get a notification when the following items change:
+            - Work items
+            - Code Reviews
+            - Pull Requests
+            - Source Control files (TFVC or Git)
+            - Builds
+            - Release
+        - There are four notification types that you can manage in Azure Devops
+            - Personal Notifications
+            - Team Notifications
+            - Project Notifications
+            - Global Notifications
+        - Only project collection admins can enable/disable any default subscription
+        in this view
+        - Project collection valid Users group can only view the details of the default
+        subscription
     
+    - Configure Github notifications:
+        - You can choose to subscribe to notifications for:
+            - A conversation in a specific issue, pull request, or gist
+            - All activity in a repository or team discussion
+            - CI activity, such as the status of workflows in repositories set up
+            with Github Actions
+            - Repository issues, pull requests, releases, security alerts, or 
+            discussions
+        - By default you automatically watch all repositories you create and own by
+        your personal account and subscribe to conversations
