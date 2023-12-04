@@ -1,7 +1,6 @@
 Introduction to Continous Delivery:
     - Eight Principles of Continous delivery:
-        - The process for releasing/deploying software must be
-        repeatable and reliable
+        - The process for releasing/deploying software must be repeatable and reliable
         - Automate Everything
         - If something is difficult or painful, do it more Often
         - Keep everything in source control
@@ -69,7 +68,7 @@ Create a Release pipeline:
             - The release pipeline then uses a secure connection to this secured
             place to get the build artifact and do extra actions to deploy it to
             an environment
-            - Another common artifact source is version control  (VC) where the 
+            - Another common artifact source is version control (VC) where the 
             releases is related to a specific commit in our version control system
             - VC makes more sense if you want to deploy one specific file and you 
             don't need to run more actions before using this file in your release
@@ -92,7 +91,7 @@ Create a Release pipeline:
 
         - Trigger:
             - Manual Trigger 
-            - Schedueled Trigger (Cron)
+            - Scheduled Trigger (Cron)
             - Continous Deployment Trigger, where another event triggers a release,
             ex. a completed build
         - Stages:
@@ -223,7 +222,7 @@ Provision and Test Environments:
     is only not the software that will be deployed with the release pipeline
     - Infrastructure as Code and Spinning up Infrastructure as part of your 
     release pipeline is essential as well
-    - When we focus on the deplloyment of the Infrastructure, we should first
+    - When we focus on the deployment of the Infrastructure, we should first
     consider the differences between the target environments that we can deploy to:
         - On Premise Servers:
             - When you deploy to an on-premise server, the hardware and OS are 
@@ -234,7 +233,7 @@ Provision and Test Environments:
             starts or stops the servers
             - To take one step further and configure the servers, you should look
             at technologies like Powershell desired State Configuration (DSC)
-            - The product maintains your server and keep in in a particular state
+            - The product maintains your server and keep in a particular state
             and when the server changes its state, you can recover the changed
             configurations to the original configuration
         - Cloud Servers or IAAS (Ex. VMs):
@@ -267,7 +266,7 @@ Provision and Test Environments:
             - It means that you need to provide the templates to create a cluster
             - Also you must ensure that you roll out updates, bug fixes, and patches
             to your cluster
-            - While running a hosted clusted (PaaS), you instruct the cloud to create 
+            - While running a hosted cluster (PaaS), you instruct the cloud to create 
             the cluster and you deploy your software to the cluster
             - When running container clusters, you can use cluster technologies like 
             AKS
