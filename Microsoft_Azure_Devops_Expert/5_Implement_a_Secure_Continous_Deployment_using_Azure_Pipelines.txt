@@ -7,3 +7,37 @@ Introduction to Deployment Patterns:
         queues or events
     - In classical deployment patterns, despite the different stages to test and
     validate, this approach still involves a lot of risks
+
+Implement blue-green deployment and feature toggles:
+    - Blue Green Deployment:
+        - It is a technique that reduces risk and downtime by running two identical 
+        environments which are called blue and green
+        - Only one of the environments is live, with the live environment serving 
+        all production traffic
+        - Initially blue is live and green is idle
+        - As you prepare a new version of your software, the deployment and final 
+        testing stage occur in an environment that isn't live
+        - Once you have deployed and thoroughly tested the software in green, 
+        switch the router or load balancer so all incoming requests go to green
+        instead of blue
+        - Green is now live and blue is idle
+        - This technique can eliminate downtime because of app deployment
+        - It reduces risk since if something unexpected happens with your new version
+        on the green, you can immediately roll back to the last version by switching
+        back to blue
+        - When it involves database schema changes, your application and architecture
+        should be built to handle both the old and the new database schema
+    - Explore Deployment Slots:
+        - When using Azure, doing blue-green deployments is relatively easy
+        - You don't have to write your code or set up infrastructure
+        - Use an out-of-the box feature called deployment slots when using web apps
+        - They are a feature of Azure App Service and are live apps with hostnames
+        - You can create different slots for your application (ex. dev, stage, test)
+        - Production slot is the slot where your live app stays
+        - Validate app changes in staging with deployment slots before swapping them
+        with your production slot
+        - You can use a deployment slot to set up a new version of your application 
+        and when ready, swap the production environment with the new staging environment
+        - The above is done by an internal swapping of the IP addresses of both slots
+        - The swap eliminates downtime when you deploy your app with seamless traffic 
+        redirection, and no requests are dropped because of swap operations
