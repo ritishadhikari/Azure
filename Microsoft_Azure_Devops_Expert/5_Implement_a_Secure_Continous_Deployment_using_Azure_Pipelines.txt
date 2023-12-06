@@ -41,3 +41,25 @@ Implement blue-green deployment and feature toggles:
         - The above is done by an internal swapping of the IP addresses of both slots
         - The swap eliminates downtime when you deploy your app with seamless traffic 
         redirection, and no requests are dropped because of swap operations
+    
+    - Introduction to Feature Toggles / Feature Flags:
+        - It allows you to change how our system works without making significant 
+        changes to the code
+        - Only a small configuration change is required and in many cases, it will
+        also only be for a few users
+        - The other type of feature flag is called the release flag, wherein you change 
+        the configuration so that canary users also have the feature flag set, and 
+        they will start to test the new code as well. If any problem occurs, you can
+        quickly disable the flag for them again
+        - Another release flag might be used for AB testing where you would want to 
+        find out if a new feature makes it faster for users to complete a task
+        - You can then directly compare the outcome and decide if the feature is worth
+        keeping 
+        - Feature Toggles are great alternative to branching as well where you build
+        new features behind a toggle
+        - You feature is off when a release occurs and should not be exposed to or
+        impact the production software
+        - Feature Flag should not be repurposed as reusing old flag leads to failures
+        and increases technical debt
+        - A plan for managing the lifecycle of feature flags is critical and as soon
+        as you add a flag, you need to plan for when it will be removed
