@@ -130,3 +130,34 @@ Implement Canary Releases and Dark Launching:
         such as the term "Dark Launching"
         - Another ex. of dark launching is launching a new feature and using it on the
         backend to get metrics which SpaceX does 
+
+Implement A/B Testing and Progressive exposure deployment:
+    - A/B Testing:
+        - A/B testing (also known as split testing or bucket testing) compares two 
+        versions of an app against each other to determine which one does better
+        - It is mainly an experiment where two or more page variants are shown
+        to users at random
+        - Statistical analysis is used to determine which variation works better
+        for a given conversion goal
+    - Progressive Exposure Deployment:
+        - Progressive exposure deployment, also called ring-based deployment supports 
+        the production-first devops mindset and limit the impact on end users while
+        gradually deploying and validating changes in production
+        - Impact (also called Blast Radius) is evaluated through observation, testing,
+        analysis of telemetry and user feedback
+        - In devops, rings are typically modelled as stages
+        - With a ring based deployment, you first deploy your changes to risk-tolerant
+        customers and progressively roll out to a more extensive set of customers
+        - Some organizations that use canary releasing have muliple deployment slots
+        set up as rings
+        - The first release of the feature to ring 0 targets a well-known set of users,
+        mostly their internal organization
+        - After things have been proven stable in ring 0, they propagate the release to
+        the next ring. It's with a limited set of users outside their organization
+        - Finally the feature is released to everyone, and is often done by flipping the
+        switch on the feature toggles in the software
+        - Monitoring and health checks are essential, and by using post deployment
+        release gates that check a ring for health, you can define an automatic
+        propagation to the next ring after everything is stable
+        - When a ring is not healthy, you can halt the deployment to the following rings
+        to reduce the impact
