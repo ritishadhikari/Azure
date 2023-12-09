@@ -161,3 +161,38 @@ Implement A/B Testing and Progressive exposure deployment:
         propagation to the next ring after everything is stable
         - When a ring is not healthy, you can halt the deployment to the following rings
         to reduce the impact
+
+Integrate with Identity Management Systems:
+    - Integrate GitHub with single sign-on:
+        - For Integration of Github with Single sign-on (SSO), you need to connect your
+        identity provider at the organization level
+        - Github offers both SAML and SCIM support
+    - Explore Service Principals:
+        - To access resources, an entity must be represented by a security principal
+        - To connect, the entity must know:
+            - TenantID
+            - ApplicationID
+            - ClientSecret
+        - Applications are registered with a Microsoft Entra tenant within Microsoft
+        Entra ID
+        - Registering an application creates an identity configuration and determine
+        who can use it:
+            - Accounts in the same organizational directory
+            - Accounts in any organizational directory
+            - Accounts in any organizational directory and Personal Microsoft Accounts
+            - Personal Microsoft Accounts
+        - Once the application is created, you then should create at least one client
+        secret for the application
+        - The application identity can then be granted permssions within services 
+        and resources that trust Microsoft Entra ID
+    - Explore Managed Identity:
+        - Many Azure Services expose their own identity 
+        - It isn't an identity that you need to manage
+        - Ex. you don't need to worry about password policies and so on
+        - You can assign permissions to that identity as with any other Microsoft 
+        Entra Identity
+        - There are two types of Managed Identities:
+            - System-assigned
+            - User-assigned: 
+                - You create a managed identity as an Azure Resource
+                - It can then be assigned to one or more instances of a service
