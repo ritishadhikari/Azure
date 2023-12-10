@@ -196,3 +196,85 @@ Integrate with Identity Management Systems:
             - User-assigned: 
                 - You create a managed identity as an Azure Resource
                 - It can then be assigned to one or more instances of a service
+
+Manage Application Configuration Data:
+    - Local configuration files limit the configuration to a single application, but
+    sometimes it would be helpful to share configuration settings across multiple
+    applications
+    - It is challenging to manage changes to local configurations across multiple running
+    instances of the application, especially in a cloud-hosted scenario
+    - Explore of Separation of Concerns:
+        - Configuration Custodian:
+            - Responsible for generating and maintaining the life cycle of configuration
+            values
+            - Includes CRUD on keys, ensuring the security of secrets, regeneration 
+            of keys and tokens, defining config settings of keys and tokens and
+            defining log levels for each environment
+            - Roles can be owned by operations engineer and security engineering while
+            injecting configuration files through devops process and CI/CD implementation
+            - They do not define the actual configuration but are the custodians of their
+            management
+        - Configuration Consumer:
+            - Responsible for defining the schema for the configuration that needs to be
+            in place and then consuming the configuration values in the application or
+            library code
+            - The dev and the test teams should not be concerned about the value of keys
+            but rather what the key's capability is
+        - Configuration Store:
+            - The underlying store used to store the configuration
+            - While it can be a simple file, in a distributed application, it needs
+            to be a reliable store that can work across environments
+            - This store is responsible for persisting values that modify the 
+            application's behvior per environment but aren't sensitive and don't require 
+            any encryption or HSM modules
+        - Secret Store:
+            - Storing Configurations and Secrets togather violates the separation of 
+            concern principle
+            - Recommendation is to use a different store for persisting secrets
+            - It allows a secure channel for sensitive configuration data such as 
+            ConnectionStrings, also enables the operations team to have Credentials,
+            Certificate, Token in one repository, and minimizes the security risk
+            if the configuration store gets compromized
+    
+    - Understand External Configuration Store Patterns:
+        - These patterns store the configuration information in an external location
+        and provide an interface that can be used to quickly and efficiently update
+        configuration settings
+        - This type of external store depends on the hosting and runtime environment
+        of the application
+        - The backing store you chose for configuration information should have an 
+        interface that provides consistent and easy-to-use access
+        - It should expose the information in a correctly type and structured format
+        - The implementation might also need to authorize users' access to protect 
+        configuration data and be flexible enough to allow storage of multiple configu-
+        ration versions (such as development, staging, or production, including many
+        release versions of each one)
+        - Many built-in configuration systems read the data when the application starts
+        up and cache the data in memory to provide fast access and minimize the impact
+        on application performance
+        - Configuration settings are shared between multiple applications and application
+        instances, or where a standard configuration must be enforced across various 
+        applications and application instances
+        - A standard config system does not support all the required configuration 
+        settings, such as storing images or complex data types
+    
+    - Azure App Configuration (AAC):
+        - It is a service for central management of application settings and feature 
+        flags
+        - While modern programs includes distributed components, each that needs its
+        settings, distributed configuration settings can lead to hard-to-troubleshoot
+        deployment errors
+        - AAC service stores all the settings for your application and secures their
+        access in one place
+        - AAC configuration complements Azure Key Vault, which is used to store 
+        application secrets 
+        - AAC provides Centralize Management and distribution of heirarchical configuration
+        data for different environments and geographies
+        - Dynamically change application settings without the need to redeploy or restart
+        an application
+        - AAC is a fully managed service that can be set up in minutes 
+        - Provides flexible key representations and mappings and tagging with labels
+        - AAC also provided complete data encryptions, at rest or in transit with
+        enhanced security through Azure Managed Identities
+        - The easiest way to add an App configuration store to your application is through
+        one of Microsoft's client libraries
