@@ -278,3 +278,64 @@ Manage Application Configuration Data:
         enhanced security through Azure Managed Identities
         - The easiest way to add an App configuration store to your application is through
         one of Microsoft's client libraries
+
+    - Examine Key Value Pairs:
+        - Azure App Configuration stores configuration data as key-value Pairs
+        - Keys are used to store and retrieve corresponding values
+        - It's common to organize keys into a hierarchical namespace by using a character
+        delimeter, such as / or : ; You can also use a flat convention
+        - Use a convention that's best suited for your application
+        - App configuration treats keys as a whole and does not parse keys to figure out
+        how their names are structured or enforce any rule on them
+        - Key stored in App configuration are case sensitive, Unicode based strings
+        - Keep in mind some frameworks handle configuration keys case-insensitively
+        - '*',',','\' are reserved and you can use any Unicode character in key names
+        except for those reserved characters (use \ for using reserved character)
+        - There's a combined size limit of 10,000 characters on a key-value pair and 
+        this limit includes all characters in the key, its value, and all associated
+        optional attributes
+        - Key values in App configuration can optionally have a label attribute, where
+        labels are used to differentiate key values with the same key
+        - A key app1 with labels A and B forms two separate keys in an App Configuration
+        store; Use labels for the same key to specify multiple environments
+        - By default label for a key value is empty or null 
+        - Values assigned to keys are also Unicode strings and you can use all Unicode
+        characters for values
+        - Configuration data stored in an App Configuration store, which includes all
+        keys and values is encrypted at rest and in transit
+        - App configuration isn't a replacement solution for Azure Key Vault and do 
+        not store application secrets in it
+    
+    - Examine App Configuration Feature Management:
+        - It is a modern software development practice that decouples feature release
+        from code deployment and enables quick changes to feature availability on demand
+        - APC service can be used to store and manage feature flags 
+        - Terms related to feature management:
+            - Feature Flag:
+                - Variable with a binary state on or off
+                - It also has an associated code block
+                - State of the feature flag triggers whether the code block runs or not
+            - Feature Manager:
+                - Application package that handles the lifecycle of all the feature flags
+                in an application
+                - Typically provides more functionality, such as caching feature flags 
+                and updating their states
+            - Filter:
+                - Rule for evaluating the state of a feature flag
+                - Ex: User group, device, browser type, geographic location, time window
+        - Effective implementation of feature management consists of atleast two 
+        components working in concert:
+            - An application that makes use of feature flags
+            - A separate repository that stores the feature flags and their current states
+        - Each Feature flag has two parts: a name and a list of one or more filters 
+        used to evaluate if a feature's state is on (value is true)
+        - When a feature flag has multiple filters, the filter list is traversed until
+        one of the filters determines the feature should be enabled and at that moment,
+        the feature flag is ON, and any other remaining filter results are skipped
+        - If no filter indicates the feature should be enabled, the feature flag is 
+        off
+        - Azure App Configuration is designed to be a centralized repository for feature
+        flags and you can use it to define different kinds of feature flags and manipulate
+        their states quickly and confidently
+        - Use App Configuration Libraries for programming languages to easily access these
+        feaure flags from your application
