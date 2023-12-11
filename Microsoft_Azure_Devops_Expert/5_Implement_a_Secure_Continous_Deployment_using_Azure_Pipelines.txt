@@ -339,3 +339,47 @@ Manage Application Configuration Data:
         their states quickly and confidently
         - Use App Configuration Libraries for programming languages to easily access these
         feaure flags from your application
+    - Integrate Azure Key Vault with Azure Pipelines:
+        - Azure Key vault allows you to manage your organization's secrets and 
+        certificates in a centralized repository
+        - Secrets can include:
+            - Connection Strings
+            - Password
+            - Certificates
+            - Tokens (which if leaked to unauthorized users can lead to security breach)
+        - The secrets and keys are further protected by Hardware Security Modules (HSMs)
+        - It also provides versioning of secrets, full traceability and efficient 
+        permission management with access policies
+        - It solves the following problems:
+            - Secrets Management:
+            - Key Management
+            - Certificate Management:
+                - Provision, manage and deploy public and private Secure Sockets Layer/
+                Transport Layer Security  (SSL/TLS) certificates for use with Azure
+        - Your applications can securely access the information they need by using URIs
+        that allow them to retrieve specific versions of a secret after the application's
+        key or secret is stored in Azure Key Vault
+        - You do not have to write custom code to protect any of the secret information
+        - Access to a key vault requires proper authentication and authorization before
+        a caller (user or application) can get access
+        - Azure Key Vault is designed so that Microsoft does not see or extract your data 
+        - After creating a couple of Key Vaults, you will want to monitor how and when 
+        your keys and secrets are accessed, and you can do it by enabling logging for
+        key vault
+        - Archive those logs to storage account or Stream to Event Hubs or Send the logs
+        to Log Analytics
+        - You may secure your logs by restricting access, and you may also delete logs
+        that you no longer need
+        - Security Information in Azure Key vault must be highly available; replicating
+        the contents of your Key Vault within a region and to a secondary region
+        - It can also scale up on short notice to meet organization's usage spikes
+        - Azure Key Vaults allows you to segregate application secrets and applications
+        may access only the vault they can access and they can do only specific
+        operations
+        - Create an Azure Key Vault per application and restrict the secrets stored in
+        a key vault to a particular application and team of developers
+        - Docker, Kubernetes and Key Vaults forms the outer loop in Devops where the 
+        inner loop is focussed on the developer teams iterating over their solution
+        development and they consume the configuration published by the outer loop
+        - The ops engineer governs the configuration management and push changes into
+        Azure KeyVault and Kubernetes that are further isolated per environment
