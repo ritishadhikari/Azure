@@ -17,9 +17,9 @@ Implement blue-green deployment and feature toggles:
         - Initially blue is live and green is idle
         - As you prepare a new version of your software, the deployment and final 
         testing stage occur in an environment that isn't live
-        - Once you have deployed and thoroughly tested the software in green, 
-        switch the router or load balancer so all incoming requests go to green
-        instead of blue
+        - Once you have deployed and thoroughly tested the software in green, switch
+        the router or load balancer so all incoming requests go to green instead
+        of blue
         - Green is now live and blue is idle
         - This technique can eliminate downtime because of app deployment
         - It reduces risk since if something unexpected happens with your new version
@@ -57,7 +57,7 @@ Implement blue-green deployment and feature toggles:
         keeping 
         - Feature Toggles are great alternative to branching as well where you build
         new features behind a toggle
-        - You feature is off when a release occurs and should not be exposed to or
+        - Your feature is off when a release occurs and should not be exposed to or
         impact the production software
         - Feature Flag should not be repurposed as reusing old flag leads to failures
         and increases technical debt
@@ -225,7 +225,7 @@ Manage Application Configuration Data:
             - While it can be a simple file, in a distributed application, it needs
             to be a reliable store that can work across environments
             - This store is responsible for persisting values that modify the 
-            application's behvior per environment but aren't sensitive and don't require 
+            application's behavior per environment but aren't sensitive and don't require 
             any encryption or HSM modules
         - Secret Store:
             - Storing Configurations and Secrets togather violates the separation of 
@@ -268,8 +268,8 @@ Manage Application Configuration Data:
         access in one place
         - AAC configuration complements Azure Key Vault, which is used to store 
         application secrets 
-        - AAC provides Centralize Management and distribution of heirarchical configuration
-        data for different environments and geographies
+        - AAC provides Centralized Management and distribution of heirarchical 
+        configuration data for different environments and geographies
         - Dynamically change application settings without the need to redeploy or restart
         an application
         - AAC is a fully managed service that can be set up in minutes 
