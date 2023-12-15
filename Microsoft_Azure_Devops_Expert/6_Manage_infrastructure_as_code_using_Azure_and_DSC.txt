@@ -1,0 +1,54 @@
+Explore Infrastructure as Code and Configuration Management:
+    - Infrastructure as code is the concept of managing your operations environment like
+    we do for applications or other code for general release
+    - IaaC provides consistent environments from release to release and across
+    development, test and production environments
+    - It allows configurations to be version controlled and automates scale-up and 
+    scale-out process
+    - Allows blue/green deployments
+    - The operations insfrastructure is managed using the same rules and structures 
+    that governs the creation and management of your infrastructure
+    - Infrastructure is treated the same way that any other code would be
+    - An easier way to remove the possibility of human error when initializing machines
+    is to use Infrastructure as Code
+    - In Infrastructure terms, there might be severe implications with a manual 
+    deployment approach if a single machine crashes and you need to replace it
+    - But if you adopt IaaC approach, you can more easily provision another machine 
+    without adversely impacting your entire infrastructure, if a single machine goes down
+    - Implementing Infrastructure as a Code:
+        - With IaaC, you capture your environments in a text file (script/definition)
+        - Your file might include any networks, servers and other computing resources
+        - You can check the script or definition file into version control and then use
+        it as the source for updating existing environments or creating new ones
+        - For ex., you can add a new server by editing the text file and running the 
+        release pipeline rather than remoting it into the environment and manually 
+        provisioning a new server
+    - IaaC treats infrastructure as a flexible resource that can be provisioned, 
+    de-provisioned and reprovisioned as and when needed
+    - Declarative Configuration:
+        - Declarative or Functional configuration approach states what the final state
+        state should be 
+        - When run, the script or definition will initialize or configure the machine
+        to have the finished state declared without defining how that final state
+        should be achieved
+        - Azure Resource Manager Template files are an example of a declarative 
+        automation approach
+    - Imperative Configuration:
+        - Imperative or Procedural script states the how for the final state of the 
+        machine by executing the steps to get to the finished state
+        - It defines what the final state needs to be but also includes how to achieve 
+        that final state
+        - It also can consist of coding concepts such as for, *if-then, loops and 
+        matrices
+    - Idempotent Configuration:
+        - It is a mathematical term that can be used in IaaC and Configuration as
+        Code
+        - It refers to application of one or more operations against a resource, 
+        resulting in the same outcome
+        - Ex. if you apply a deployment to a set of resources 1000 times, you should 
+        end up with the same result after each application of the script or template
+        - It is a best practice to build the scripts and templates in such a way as to
+        embrace idempotency
+        - Achieve idempotency by:
+            - Automatically configuring and reconfiguring an existing set of resources
+            - Discarding the existing resources and recreating a new environment
