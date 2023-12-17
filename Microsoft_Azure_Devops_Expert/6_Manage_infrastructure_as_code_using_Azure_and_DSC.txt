@@ -52,3 +52,157 @@ Explore Infrastructure as Code and Configuration Management:
         - Achieve idempotency by:
             - Automatically configuring and reconfiguring an existing set of resources
             - Discarding the existing resources and recreating a new environment
+
+ Create Azure Resources using Azure Resource Manager Templates:
+    - Azure Resource Manager Templates:
+        - The Azure Resource Manager takes care of the entire deployment for you
+        - Templates help express complex deployments and ARM maps out each resource and
+        its dependent resources and creates dependent resources first, which helps 
+        ensure that the deployment is carried out in the correct order
+        - ARM ensures that deployment happens the same way every time
+        - Templates are IaaC which can be shared, tested, and versioned like any
+        other piece of software and most users maintain their templates under revision
+        control, ex. git which records how the templates have evolved
+        - Templates promotes reuse and also enables you to create multiple versions 
+        of your infrastructure, such as staging and production while using the 
+        same template
+        - Templates are linkable and you can write small modular templates that defines
+        a solution and then combine them to create a complete system
+    - Template Components:
+        - Resource Manager templates are written in JSON, which allows you to express 
+        data stored as an object (ex. VM) in text 
+        - Parameters:
+            - In this section you specify which values are configurable when the 
+            template runs
+            - Ex. You might allow template users to set a username, password, or
+            domain name
+        - Variables:
+            - Define values that are used throughout the template
+            - It can make your templates easier to maintain
+            - Ex. Define a storage account name one time as a variable and then use 
+            that variable throughout the template
+            - If the storage account name changes, you need only update the variable 
+            once  
+        - Functions:
+            - You define procedures that you don't want to repeat throughout the 
+            template
+        - Resources:
+            - Define Azure Resources that make up your deployment
+        - Outputs:
+            - Define any information you would like to receive when the template runs
+    - Manage Dependencies:
+        - For a given resource, other resources might need to exist before you can
+        deploy the resource
+        - Ex. a Microsoft Server must exist before attempting to deploy a SQL Database
+        - Define a dependency with the dependsOn element or by using the reference
+        function
+        - Resource Manager evaluates the dependencies between resources and deploys
+        them in their dependent order
+        - When resources aren't dependent on each other, the Resource Manager deploys
+        them in parallel
+        - You only need to define dependencies for resources that are deployed in the
+        same template
+        - A circular dependency is a problem with dependency sequencing, resulting in
+        the deployment going around in a loop and unable to continue and as a result
+        the Resource Manager can't deploy the resources
+        - Resource Manager identifies circular dependencies during template validation
+        - If removing dependencies doesn't resolve the issue, you can move some 
+        deployment operations into child resources that are deployed after the resources
+        with the circular dependency
+    - Modularize Template:
+        - When using ARM templates, it's best to modularize them into individual
+        components
+        - The primary methodology to use is by using linked templates which allows
+        you to break the solution into targeted components and reuse those various
+        elements across different deployments
+        - You can also nest a template within the main template, use the template 
+        property and specify the template syntax
+        - Nesting templates may result in a sizeable main file as all the elements 
+        are within a single file
+        - You can't use paramaters or variables defined within the nested templates
+        and you can only use parameters and variables from the main template
+        - The properties you provide for the deployment resource will vary based on
+        linking to an external template or nesting an inline template within the main
+        template
+        - There are three options for deployment modes using templates:
+            - validate:
+                - Compiles the templates, validates the deployment
+                - Ensures the template is functional (no circular dependencies) and
+                correct syntax
+            - incremental:
+                - It is the default mode
+                - It only deploys whatever is defined in the template 
+                - It does not remove or modify any resources that are not defined in
+                the template
+                - You can only use incremental deployment mode for both linked and
+                nested templates
+            - complete:
+                - Resoure Manager deletes resources that exist in the resource group
+                but isn't specified in the template
+                - Ex. Only resources defined in the template will be present in the
+                resource group after the template deploys
+                - Use this mode for production deployments to achieve idempotency
+                in your deployment templates
+        - As a best practice, use one resource group per deployment
+        - External Template:
+            - To link to an external template and paramater file, use templateLink
+            and parametersLink
+            - When linking to a template, ensure that the resource manager service
+            can access it
+            - You can't specify a local file or a file only available on your local
+            network
+            - You can only provide URI value includes HTTP or HTTPS
+            - One option is to place your linked template in a storage account and
+            use the URI for that item
+            - Although linked template must be available externally, it does not
+            need to be made available to the public
+            - Instead you can add your template to a private account accessible to
+            only the storage account owner, creating shared access signature (SAS)
+            tokens to enable access during deployments
+            - You add that SAS token to the URI for the linked template
+            - To limit the exposure, you can set an expiration date for the token
+    - Manage Secrets in Templates:
+        - When passing a secure Value (such as a password) as a parameter during
+        deployment, you can retrieve the value from an Azure Key Vault
+        - Reference the Key Vault and secret in your parameter file
+        - The value is never exposed because you only reference its Key Vault ID
+        - The key-vault can exist in a different subscription than the resource
+        group you're deploying it to
+        - To access the secrets inside the key vault, from a resource manager 
+        deployment, the key vault property enabledForDeployment must be True
+        - Other than setting the key vault property enabledForDeployment to True, 
+        the user deploying the template must have permission for the Key Vault Scope
+        - If you create the key vault, you are the owner, so you inherently have the
+        permission, however if the Key Vault is under a different subscription, 
+        the owner of the Key Vault must grant access
+        - The Key Vault is referenced in the parameter file and not the template
+        - You would need to deploy the template and pass the parameter file to the 
+        template
+        """
+            keyVaultName="name of key vault"
+            resourceGroupName="resource group name"
+            location="central us",
+            userPrincipalName="email address associated with subscription"
+
+            # Create a Resource group
+            az group create --name $resourceGroupName --location $location
+
+            # Create a Key Vault
+            az keyvault create \
+                --name $keyVaultName \
+                --resouurce-group $resourceGroupName \
+                --location $location \
+                --enabled-for-template-deployment true
+            
+            az keyvault set-policy -upn $userPrincipalName --name $keyVaultName \
+            --secret-permissions set delete get list
+
+            # Create a secret with the name, vmAdminPassword
+            password=$(openssl rand -base64 32)
+            echo $password
+            az keyvault secret \
+            set --vault-name $keyVaultName \
+            --name 'vmAdminPassword' \
+            --value $password
+
+        """

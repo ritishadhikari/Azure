@@ -1,0 +1,110 @@
+{
+    "parameters": {
+        "adminUsername":{
+            "type": "string",
+            "metadata": {
+                "description": "Username for the Virtual Machine"
+            }
+        },
+        "adminPassword":{
+            "type":"securestring",
+            "metadata":{
+                "description":"Password for the Virtual Machine"
+            }
+        }
+    },
+    "variables":
+    {
+        "nicName": "myVMNic",
+        "addressPrefix":"10.0.0.0/16",
+        "subNetName":"Subnet",
+        "subNetPrefix":"10.0.0.0/24",
+        "publicIPAddressName":"myPublicIP",
+        "virtualNetworkName":"MyVNET"
+    },
+    "functions":[
+        {   
+            "_comment": "Unique Name to use when creating resources that have globally unique requirement",
+            "namespace":"contoso", 
+            "members": {
+                "uniqueName":{
+                    "parameters":[
+                        {
+                            "name":"namePrefix",
+                            "type":"string"
+                        }
+                    ],
+                "output":{
+                    "type":"string",
+                    "value": "[concat(toLower(parameters('namePrefix')), uniqueString(resourceGroup().id) )]"
+                }
+                }
+            }
+        }
+    ],
+    "resources":[
+        {
+            "type":"Microsoft.Network/publicIPAddresses",
+            "name":"[variables('publicIPAddressName')]",
+            "location":"[parameters('location')]",
+            "apiVersion":"2018-08-01",
+            "properties":{
+                "publicIPAllocationMethod": "Dynamic",
+                "dnsSettings":{
+                    "domainNameLabel":"[parameters('dnsLabelPrefix')]"
+                }
+            }
+        },
+        {   
+            "_comment":"Linked Template",
+            "apiVersion" :"2017-05-10",
+            "name":"linkedTemplate",
+            "type":"Microsoft.Resources/deployments",
+            "properties":{
+                "mode": "Incremental",
+                "templateLink":{
+                    "uri":"https://linkedTemplateek1store.blob.core.windows.net/linkedtemplates/linkedStorageAccount.json"
+                },
+                "parameters":{
+                    "storageAccountName":{"value":"[variables('storageAccountName')]"},
+                    "location":{"value":"[parameters('location)]"}
+                }
+            }
+        },
+        {
+            "_comment":"Nested Template",
+            "apiVersion":"2017-05-10",
+            "type":"Microsoft.Resources/deployments",
+            "properties":{
+                "mode": "Incremental",
+                "template":{
+                    "$schema":"https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                    "contentVersion":"1.0.0.0",
+                    "resources":[
+                        {
+                            "type": "Microsoft.Storage/storageAccounts",
+                            "name":"[variables('storageName')]",
+                            "apiVersion":"2015-06-15",
+                            "location":"West US",
+                            "properties":{
+                                "accountType":"Standard_LRS"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    ]
+        ,
+    "outputs":{
+        "hostname":{
+            "type": "string",
+            "value": "[reference(variables('publicIPAddressName')).dnsSettings.fqdn]"
+        }
+    },
+
+
+
+}
+    
+
