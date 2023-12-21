@@ -252,3 +252,106 @@ Create Azure Resources by using Azure CLI:
        az group list --query="[?name == 'storage_account_learn']" --output=table
        az group list --query="[?location == 'centralindia']" --output=table
     """
+
+Explore Azure Automation with Devops:
+    - Azure Automation 
+        - It is an Azure Service that provides a way for users to automate 
+    the manual, long running, error-prone, and frequently repeated tasks commonly 
+    done in a cloud and enterprise environment
+        - You can save time and increase the reliability of regular administrative 
+        tasks
+        - You can even schedule the tasks to be executed automatically at regular 
+        intervals
+        - You can automate processes using runbooks or automate configuration management
+        by using Desired State
+        - To start using the Microsoft Azure Automation service, you must create an 
+        Automation Account from within the Azure portal
+        - Automation accounts are like Azure Storage Accounts, serving as a container
+        to store automation artifacts which could be a container for all your runbooks,
+        runbook executions (jobs), and the assets on which your runbooks depend
+        - An Automation account allows you to manage all Azure resources via an API
+        and to safeguard it, the Automation account creation requires subscription-owner
+        access
+        - You will need atleast one Azure Automation account to use Azure Automation
+        - You can have upto 30 Automation Accounts (development, production, on-prem
+        environment, etc) so that you may create multiple automation accounts to 
+        seggrage and limit the scope of access and minimize any risk to your organization
+    - RunBooks:
+        - They serve as repositories for your custom scripts and workflows
+        - They also typically reference Automation shared resources such as credentials,
+        variables, connections and certificates
+        - Runbooks can also contain other runbooks, allowing you to build more complex
+        workflows
+        - You can invoke and run runbooks on-demand or according to a schedule using
+        Automation Schedule assets
+        - When creating runbooks, you have two options:
+            - Create your runbook and import it
+            - Modify runbooks from the runbook gallery
+        - If you prefer to work directly with Windows Powershell code, you can use a 
+        powershell runbook or a powershell workflow runbook, the later use parallel
+        processing to allow for the simultaneous completion of multiple tasks
+        - If you prefer to edit a runbook without the exposure to the underlying code, 
+        you can create a graphical runbook using the Azure portal's graphic editor
+        - You can also use a Python runbook in Azure Automation and use python libraries
+    - Automation Shared Resources:
+        - Shared resources are globally available to be associated with or used in a 
+        runbook
+        - As a best practice, always try to create global assets to be used across your
+        notebooks as it will save time and reduce the number of manual edits within 
+        individual runbooks
+        - There are eight shared resources categories:
+            - Schedules:
+                - Allows you to define a one-off or recurring schedule
+            - Modules:
+                - Contains Azure Powershell Modules
+            - Modules Gallery:
+                - Allows you to identify and import Powershell modules into your 
+                Azure automation account
+            - Python Packages:
+                - Allows you to import a Python Package by uploading .whl or tar.gz
+                packages
+            - Credentials:
+                - It allows you to create username and password credentials
+            - Connections:
+                - Allows you to specify Azure, Azure classic certificate, or Azure 
+                Service Principal connections
+            - Certificates:
+                - It allows you to upload certificates in .cer or pfx format
+            - Variables:
+                - Allows you to define encrypted or unencrypted variables of types -
+                string, boolean, datetime, integer or no specific type
+    - Webhook:
+        - You can automate starting a runbook either by scheduling it or by using a 
+        Webhook
+        - Webhook allows you to start a particular runbook in Azure Automation through 
+        a single HTTPS request
+        - It allows external services such as Azure DevOps, Github or custom applications
+        to start runbooks without implementing more complex solutions using the Azure
+        Automation API
+        - Each Webhook has an expiration date, at which time it can no longer be used and
+        you can continue to modify the date after creating the webhook providing the 
+        webhook isn't expired
+        - The webhook URL is the unique address that a client calls with an HTTP POST
+        to start the runbook linked to the webhook and you can't specify a custom url
+        - If the runbook has mandatory parameters, you'll need to provide these required
+        parameters during creation and you will not be able to create the webhook unless
+        values are provided
+        - The webhook must include values for any mandatory paramaters of the runbook
+        and include values for optional parameters
+        - To receive data from the client, the runbook can accept a single parameter
+        called $WebhookData of type [object] that contains data that the client includes
+        in the POST request
+        - To use a webhook after it has been created, your client application must issue
+        an HTTP POST with the URL for the webhook whose syntax is
+        # http://< Webhook Server >/token?=< Token Value > 
+        - The client recieved one of the following return codes from the POST request:
+            - 202
+            - 400
+            - 404
+            - 500
+        - If successful, the webhook contains the job ID in JSON format as follows:
+        # {"JobIds":["< JobId >"]}
+        - You cannot determine when the runbook job completes or determine its completion
+        status from the webhook 
+        - You can only choose this information using the job ID with another method such
+        as Powershell or the Azure Automation API
