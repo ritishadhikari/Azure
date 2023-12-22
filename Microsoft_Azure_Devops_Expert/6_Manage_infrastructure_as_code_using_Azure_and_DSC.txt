@@ -355,3 +355,116 @@ Explore Azure Automation with Devops:
         status from the webhook 
         - You can only choose this information using the job ID with another method such
         as Powershell or the Azure Automation API
+
+    - Explore Source Control Ingestion:
+        - It allows you to collaborate with your team more efficiently, track changes,
+        and roll back to earlier versions of your runbooks
+        - It makes it easier to promote code you have tested in your development 
+        environment to your production automation account
+        - Azure Automation supports three types of source control:
+            - Github
+            - Azure Devops (Git)
+            - Azure Devops (TFVC)
+        - Source Control allows you to push code from Azure Automation to source control
+        or pull your runbooks from source control to Azure Automation
+    
+    - Explore Powershell Workflows:
+        - Helps automate distribution, orchestration, and completion of multi-device 
+        tasks, freeing users and administrators to focus on higher-level tasks
+        - An activity is a specific task that you want a workflow to do
+        - Just as a script is composed of one or more commands, a workflow is composed
+        of activities carried out in sequence
+        - Workflows survive both planned and unplanned interruptions, such as computer
+        restarts
+        - You can author checkpoints as part of your workflow so that you can resume
+        the workflow from the last persisted task (or checkpoint) instead of restarting 
+        the workflow from the beginning
+        - You can schedule a task to start when specific conditions are met, as with 
+        any other Windows Powershell cmdlet or script
+        - Use a script editor such as the Windows Powershell Integrated Scripting 
+        Environment (ISE) to write the workflow which enforces workflow syntax and
+        highlights syntax errors
+        - Benefits of ISE is that it automatically compiles your code and allows you
+        to save the artifact
+        - It is a tool that knows both workflows and script since syntactic differences
+        between workflows and scripts are significantly different
+        - A workflow is a windows command type, so select a name with a verb-noun format
+        """
+            workflow Test-Workflow
+            {
+                ...
+            }
+        """  
+        - To add parameters to a workflow, use the param keyword and then add your 
+        standard powershell command
+        """
+            workflow MyFirstRunbook-Workflow
+            {
+                Param(
+                    [string]$VMName
+                    [string]$ResourceGroupName
+                )
+                Start-AzureRmVM -Name $VMName -ResourceGroupName $ResourceGroupName
+            }
+        """
+    -  Explore Hybrid Management:
+        - The Hybrid Runbook Worker feature of Azure Automation allows you to run 
+        Runbooks that manage local resources in your private data center on machines
+        located in your data center
+        - Azure Automation stores and manages the runbooks and then delivers them to
+        one or more on-prem machines
+        - You can select one or more computers in your data center to act as a Hybrid 
+        Runbook and then run runbooks from Azure Automation
+        - Each Hybrid runbook worker is a member of a Hybrid Runbook worker group, which
+        you specify when you install the agent
+        - A group can include a single agent, but you can install multiple agents in 
+        a group for high availability
+        - The agent on the local computer starts all communication with Azure automation
+        in the cloud
+    
+    - Examine Checkpoint and parallel processing:
+        - Two features available with workflows are checkpoints and parallel processing
+        - Checkpoint is a snapshot of the current state of the workflow and it includes
+        the current value for variables and any output generated up to that point
+        - You can set a checkpoint in a workflow with the Checkpoint-Workflow activity
+        """
+            <Activity1>
+                Checkpoint-Workflow
+                <Activity2>
+                    <Exception>
+                <Activity3>
+        """
+        - Parallel Processing:
+            - A script block has multiple commands that run concurrently (or in parallel)
+            instead of sequentially, as for a typical script
+            - In the following example: two vm0 and vm1 VMs will be started concurrently
+            and VM2 will only start after vm0 and vm1 have started
+            """
+                Parallel
+                {
+                    Start-AzureRmVM -Name $vm0 -ResourceGroupName $rg
+                    Start-AzureRmVM -Name $vm1 -ResourceGroupName $rg
+                }
+                Start-AzureRmVM -Name $vm2 -ResourceGroupName $rg
+            """
+            - You can use the ForEach - Parallel construct to concurrently process 
+            commands for each item in a collection. The items in the collection are
+            processed in parallel while the commands in the script block run sequentially
+            - ThrottleLimit parameter to limit parallelism where too high of a 
+            throttleLimit can cause problems
+            """
+                Workflow Copy-Files
+                {
+                    $files = @("C:\LocalPath\File1.txt","C:\LocalPath\File2.txt")
+                    ForEach -Parallel -ThrottleLimit 10 ($File in $Files)
+                    {
+                        Copy-Item -Path $File -Destination \\NetworkPath
+                        Write-Output "$File Copied"
+                    }
+                    Write-Output "All files Copies"
+                }
+
+            """
+
+
+
