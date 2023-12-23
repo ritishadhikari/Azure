@@ -466,5 +466,78 @@ Explore Azure Automation with Devops:
 
             """
 
+Implement Desired State Configuration:
+    - Configuration Drift:
+        - Process of a set of resources changing over time from their original
+        deployment state
+        - It can be because of changes made manually by people or automatically
+        by processes or programs
+        - A snowflake is a unique configuration that cannot be reproduced 
+        automatically and is typically a result of configuration Drift
+        - The greater the degree of configuration drift, the longer it takes
+        to troubleshoot and rectify issues
+        - Compliance drift also introduces security vulnerabilities:
+            - Ports might be opened that should be kept closed
+            - Updates and security patches might not be applied across 
+            environments consistently
+            - Software might be installed that doesn't meet compliance requirements
+        - Manage Configuration Drift through:
+            - Windows Powershell Desired State Configuration
+                - Management Platform in powershell that provides desired state
+                - Lets you manage, deploy, and enforce configurations for 
+                physical or virtual machines including windows and linux
+            - Azure Policy
+    
+    - Desired State Configuration:
+        - It is a configuration management approach that you can use for configuration,
+        deployment and management systems to ensure that an environment is maintained 
+        in a state that you specify (defined state) and does not deviate from the state
+        - DSC Components:
+            - Configuration:
+                - Declarative powershell scripts that define and configure instances
+                of resources
+                - DSC configurations are idempotent
+            - Resources:
+                - Contains the code that puts and keeps the target of a configuration
+                in a specified state
+                - The exists in powershell modules
+            - Local Configuration Manager:
+                - It runs on the nodes or machines you wish to configure
+                - Ensures that machines are configured in whatever state the 
+                configuration declares
+        - Methods of implementing DSC:
+            - Push Mode:
+                - A user actively applies a configuration to a target node and pushes
+                out the configuration
+            - Pull Mode:
+                - Clients are automatically configured to get their desired state
+                configurations from a remote pull service
+                - The pull service is provided by a pull server that acts as a central
+                control and manager for the configurations
+                - It ensures that the nodes confirm to the desired state and reports on
+                their compliance status 
+    - Azure Automation State Configuration (DSC):
+        - It is an Azure cloud-based implementation of Powershell DSC, available as
+        part of Azure Automation
+        - It allows you to write, manage, and compile Powershell DSC configurations,
+        import DSC resources and assign configurations to target nodes, all in the cloud
+        - Benefits of Azure DSC:
+            - Built in Pull Server
+            - Management of all your DSC artifacts:
+                - Manage all your DSC configurations, resources, and target nodes from
+                the Azure Portal or powershell
+            - Import Reporting Data into Log Analytics
+
+    - DSC Configuration File:
+        - They are windows powershell scripts that define a special type of function
+        - Configuration Elements:
+            - Configuration Block:
+                - Outer most script block
+            - Node Block:
+                - There can be one or more Node blocks
+                - It defines the nodes that you are configuring
+            - Resource Block:
+                - There can be one or more resource Block
+                - This is where the configuration sets the properties for the resources
 
 
