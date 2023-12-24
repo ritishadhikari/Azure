@@ -539,5 +539,54 @@ Implement Desired State Configuration:
             - Resource Block:
                 - There can be one or more resource Block
                 - This is where the configuration sets the properties for the resources
+    
+    - Hybrid Management:
+        - The Hybrid Runbook worker feature of Azure Automation allows you to run
+        runbooks that manage local resources in your private data center on machines
+        in your data center
+        - Azure Automation stores and manages the runbooks and then delivers them to 
+        one or more on-premise machines
+        - You can select one or more computers in your data center to act as a Hybrid 
+        Runbook Worker and then run runbooks from Azure Automation
+        - The agent on the local computer starts all communications with Azure 
+        Automation in the cloud
+        - To configure your on-premise servers that support the Hybrid Runbook role 
+        with DSC, you must add them as DSC nodes
 
-
+Implement Bicep:
+    - It is a revision of ARM templates designed to solve some of the developers
+    were facing when deploying their resources to Azure
+    - It is an Open Source tool and Domain Specific Language that provides a means 
+    to declaratively codify infrastructure
+    - Bicep comes with its own Comman Line Interface 
+    - Bicep CLI allows you to transpile the Bicep files into ARM templates and deploy
+    them and can also be used to convert an existing ARM template to Bicep
+    - Azure Bicep supports types that are used to validate templates at development 
+    time rather than runtime which also supports linting which can be used to unify the
+    development experience between team members or across different teams
+    - Bicep File Structure and Syntax:
+        - Parameters:
+            - Allows you to Customize your template deployment at run time by providing
+            potential values for names, prefixes, etc
+            - They can have the validation rules to make the deployment more reliable
+            by preventing any invalid value right from the authoring
+        - Variables:
+            - Plays a role in making a more robust and readable template
+            - Any complex expression can be stored in a variable and used throughout
+            the template
+        - Resource: 
+            - Used when you need to declare a resource in your templates
+            - Resource declaration has a symbolic name for the resource that can be 
+            used to reference that resource later either for defining a subresource or
+            for using its properties for an implicit dependency like a parent child
+            relationship
+            - You can define subresources within a resource or outside by referncng 
+            the parent 
+        - Module:
+            - Used for reusable templates
+            - It enables to reuse a Bicep file in other Bicep files
+        - Output:
+            - Use outputs to pass values from your deployment to the outside world,
+            whether it is within a CI/CD pipeline or in a local terminal or Cloud Shell
+            - It enables you to access a value such as storage endpoint or application
+            URL after the deployment is finished
