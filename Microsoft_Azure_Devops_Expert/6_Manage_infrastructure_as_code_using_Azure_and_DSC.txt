@@ -275,7 +275,8 @@ Explore Azure Automation with Devops:
         - You will need atleast one Azure Automation account to use Azure Automation
         - You can have upto 30 Automation Accounts (development, production, on-prem
         environment, etc) so that you may create multiple automation accounts to 
-        seggrage and limit the scope of access and minimize any risk to your organization
+        seggregate and limit the scope of access and minimize any risk to your 
+        organization
     - RunBooks:
         - They serve as repositories for your custom scripts and workflows
         - They also typically reference Automation shared resources such as credentials,
