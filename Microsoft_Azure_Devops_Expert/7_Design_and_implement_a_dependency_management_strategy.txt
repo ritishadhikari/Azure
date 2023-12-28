@@ -43,3 +43,70 @@ Explore Package Dependencies:
         way of wrapping and handling the components
         - A shift to packages adds characteristics needed for proper dependency 
         management, like tracking and versioning packages in your solution
+
+Understand Package Management:
+    - Standard Formats of Packages:
+        - NuGet:
+            - For .net code artifacts
+        - npm:
+            - For Javascript artifacts
+        - Maven:
+            - For Java based products
+        - Pypi:
+            - For Python
+        - Docker:
+            - Contains Docker Images
+    - Packages should be stored in a centralized place for distribution and consumption
+    to take dependencies on the component it contains
+    - The centralized storage for packages is commonly called a package feed or 
+    repository or registry
+    - A particular package can exist in multiple versions in the feed, catering for 
+    consumption of a specific version
+    - Typically open source projects for applications, libraries and frameworks arrange
+    shared with everyone and publically available
+    - The feeds can be exposed in public or private to distinguish in visibility
+    - Anyone can consume public feeds while private feed can only be consumed by those
+    who are allowed access
+    - Components developed for internal use might be available only to the project,
+    team or company that developed it
+    - Each Software project that consumes packages to include the required dependencies
+    will use the package manager and more package sources
+    - The package manager will download the individual packages from the sources and
+    install them locally on the development machine or build server
+    - It is possible to refer to multiple sources from a single software solution 
+    - When combining private and public sources, the order of resoulution of the 
+    sources becomes essential
+    - One way to specify multiple package source is by choosing a primary source and
+    an upstream source
+    - The package manager will evaluate the primary source first and switch to the
+    upstream source when the package is not found there
+    - A typical scenario is to use a private source referring to a public upstream
+    source for one of the official feeds
+    - Only priviledged roles can add upstream sources to a private feed
+    
+    - Azure Artifacts:
+        - The artifact management is called Azure Artifacts and was previously known 
+        as Package Management
+        - It offers public and private feeds for software packages of various types
+        - Azure Artifacts currently supports feeds that can store five different 
+        package types
+            - NuGet packages
+            - npm packages
+            - Maven
+            - Universal packages
+                - These are Azure artifact-specific package type
+                - It is a versioned package containing muliple files and folders
+            - Python
+        - When creating your solution, you will decide which packages you want to 
+        consume to offer the dependent components
+        - The next step is to determine the source of these packages where the main
+        choice is selecting public and private feeds or a combination of it
+        - Once you have authenticated to Azure Devops, you can pull and push packages 
+        to the package feed, provided you have the permission to do so
+        - Pushing packages is done with the tooling for the package manager and each
+        of the package managers and tooling has a different syntax for pushing
+        - Packages might need to be updated during their lifetime, and updating a 
+        package is made by pushing a new version of the package to be feed
+        - The package feed manager manages to properly store the updated package with 
+        the existing packages in the feed
+            
