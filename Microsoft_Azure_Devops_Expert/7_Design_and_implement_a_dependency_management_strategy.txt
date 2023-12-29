@@ -109,4 +109,54 @@ Understand Package Management:
         package is made by pushing a new version of the package to be feed
         - The package feed manager manages to properly store the updated package with 
         the existing packages in the feed
-            
+
+Migrate Consolidating and Secure Artifacts:
+    - An artifact is a deployable component of your application
+    - When you are creating a release pipeline, you need to link the required
+    artifact sources, which often will be the output of a build pipeline from a 
+    CI systems like Azure Pipelines, Jenkins, etc
+    - The artifacts that you produce might be stored in source control like Git or 
+    TFVC; you might also be using package management tools when you get repositories
+    - You might need to choose a specific branch, a specific build version or perhaps
+    you need to specify tags
+    - Store Package Binaries in Universal packages and not git
+    - Using Azure Artifacts can eliminate the need to manage file shares or host 
+    private package services and lets you share code easily by allowing you to store
+    Maven,npm or NuGet packages togather 
+    - Package feeds must be secured for access by authorized accounts, so only 
+    verified and trusted packages are stored there and none should push packages to 
+    a feed without the proper role and permissions
+    - The package access should involve allowing:
+        - Restricted access for consumption:
+            - Whenever a particular audience should only consume a package feed and
+            its packages, it's required to restrict its access 
+            - Only those allowed access will consume the packages from the feed
+        - Restricted access for publishing:
+            - Secure access is required to restrict who can publish so feeds and 
+            unauthorized or untrusted persons and accounts can't modify their packages
+    - Azure Artifacts has four different roles for package feeds:
+        - Reader:
+            - Can list and restore (or install) packages from the feed
+        - Collaborator:
+            - Can save packages from upstream sources
+        - Contributor:
+            - Can push and unlist packages in the feed
+        - Owner:
+            - Has all available permissions for a package feed
+    - While creating an Azure Artifacts feed, the Project Collection Build Service
+    is given contributor rights by default
+    - Any contributors to the team project are also contributors to the feed
+    - Project Collection Admins and administrators of the team project, plus the 
+    feed's creator are automatically made owners of the feed
+    - The roles of these users and groups can be changed or removed
+    - When creating a feed, you can choose whether the feed is visible to people in 
+    your Azure Devops organization or only specific people
+    
+    - Examine Authentication:
+        - The authentication from Azure Pipelines to Azure Artifacts feeds is taken 
+        care of transparently and will be based upon the roles and their permissions
+        for the build identity
+        - Each package type has its way of handling the credentials and providing 
+        access upon authentication 
+        - For the build tasks in Azure Pipelines, you'll provide the credentials via
+        a service connection
