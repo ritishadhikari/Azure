@@ -194,3 +194,21 @@ Implement a versioning Strategy:
                 - Indicates a flaw, bug or malfunctioning part of the component has
                 been fixed
                 - It is backward compatible version compared to the previous version
+        - Semantic versioning uses a three-part version number and an extra label
+        - A label can be any text describing the nature of the prerelease, ex:
+            1.0.0-rc1
+    - Examine Release Views:
+        - Azure Artifacts recognizes the quality level of packages in its feeds and
+        the difference between prerelease and release versions
+        - It offers different views on the list of packages and their versions, 
+        separating these based on their quality level
+        - Feeds in Azure Artifacts have three different views by default:
+            - Local:
+                - @Local view contains all release and prerelease packages and the 
+                packages downloaded from upstream sources
+            - Prerelease:
+                - @Prerelease view contains all packages that have a label in their
+                version number
+            - Release:
+                - @Release view contains all packages that are considered official
+                releases
