@@ -160,3 +160,37 @@ Migrate Consolidating and Secure Artifacts:
         access upon authentication 
         - For the build tasks in Azure Pipelines, you'll provide the credentials via
         a service connection
+
+Implement a versioning Strategy:
+    - Correct versioning becomes essential to maintaining a codebase to keep track
+    of which piece of software is currently being used
+    - Versioning is also relevant for dependency management, as it relates to the 
+    versions of the packages and the components within
+    - A published package is immutable
+    - Replacing or updating an existing version of a package is not allowed and 
+    most package feeds don't allow operations that would change a current version
+    - Regardless of the size of the change, a package can only be updated by 
+    introducing a new version
+    - Versioning of Artifacts:
+        - It is a proper Software Development practice to indicate changes to code
+        with an increased version number
+        - A package type might have its conventions for versioning and a particular
+        versioning scheme
+        - Most commonly, versioning involves three types of changes:
+            - Major Changes:
+                - Indicates that the pacckage and its contents have changed
+                significantly
+                - It occurs during the introduction of a package
+                - Major changes are not guaranteed to be compatible and usually 
+                have breaking changes from older versions
+                - Major changes might require a large amount of work to adopt the
+                consuming codebase to the new version
+            - Minor Change:
+                - Indicates that the package and its contents have extensive
+                modifications but are smaller than a major change
+                - These changes can be backward compatible with the previous version,
+                although they aren't guaranteed to be
+            - Patch:
+                - Indicates a flaw, bug or malfunctioning part of the component has
+                been fixed
+                - It is backward compatible version compared to the previous version
