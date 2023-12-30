@@ -212,3 +212,8 @@ Implement a versioning Strategy:
             - Release:
                 - @Release view contains all packages that are considered official
                 releases
+    - Promote Packages:
+        - Azure Artifacts has the notion of promoting packages to views to indicate
+        that a version is of a certain quality level
+        - Packages will always show in the Local view, but only in a particular view
+        after being promoted
