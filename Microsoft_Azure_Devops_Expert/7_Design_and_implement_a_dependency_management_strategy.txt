@@ -217,3 +217,51 @@ Implement a versioning Strategy:
         that a version is of a certain quality level
         - Packages will always show in the Local view, but only in a particular view
         after being promoted
+
+Introduction to Github Packages:
+    - Github Packages is a software package hosting service that allows your packages,
+    containersa and other dependencies
+    - It is a central place to provide integrated permissions management and billing
+    for software development on GitHub
+    - Github's container registry is optimized for containers and supports Docker
+    and OCI images
+    - It gives you the flexibility to control permissions and visibility for your 
+    packages
+    - You can publish packages in a public or private repository
+    - You can integrate Github Packages with Github APIs, Github Actions and 
+    Webhooks
+    - Publishing a Package:
+        - Create or use an existing Personal Access Token with the appropriate
+        scopes for the task you want to accomplish
+        - When you create a PAT, you can assign the tokens to different scopes 
+        depending on your needs
+        - Authenticate to Github Packages using your access token and the instructions
+        for your package client
+        - Publish the package using the instructions for your package client
+    - Install a Package:
+        - You can install any package you have permission to view from Github Packages
+        and use the package as a dependency in your Project
+        - You can search for packages globally across all of Github or within a 
+        particular organization
+        - After you find a package, read the package's installation and description
+        instructions on the package page
+    
+    - Delete a Package:
+        - Delete on Github if you have the required access:
+            - An entire private package or a specific version of a private package
+            - If there are not more than 5000 downloads of any version of the 
+            package, an entire public package
+    
+    - Restoring a Deleted Package:
+        - You restore the package within 30 days of its deletion
+        - The same package namespace is still available and not used for a new package
+
+    - Package Access Control and Visibility:
+        - You can use granular permissions with the container registry (scoped to
+        personal user or organization account)
+        - GitHub.com does not support granular permissions in other package registries
+        like the npm registry
+        - You can change the package access control and visibility separately from the
+        repository
+        - You need to an admin to be able to delete a package. Other roles are read
+        and writes
