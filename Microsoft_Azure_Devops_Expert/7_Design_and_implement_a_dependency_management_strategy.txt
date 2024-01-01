@@ -74,7 +74,7 @@ Understand Package Management:
     - The package manager will download the individual packages from the sources and
     install them locally on the development machine or build server
     - It is possible to refer to multiple sources from a single software solution 
-    - When combining private and public sources, the order of resoulution of the 
+    - When combining private and public sources, the order of resolution of the 
     sources becomes essential
     - One way to specify multiple package source is by choosing a primary source and
     an upstream source
@@ -220,7 +220,7 @@ Implement a versioning Strategy:
 
 Introduction to Github Packages:
     - Github Packages is a software package hosting service that allows your packages,
-    containersa and other dependencies
+    containers and other dependencies
     - It is a central place to provide integrated permissions management and billing
     for software development on GitHub
     - Github's container registry is optimized for containers and supports Docker
