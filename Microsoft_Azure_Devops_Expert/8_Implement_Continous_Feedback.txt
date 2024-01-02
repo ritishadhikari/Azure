@@ -1,0 +1,61 @@
+Implement tools to track usage and flow:
+    - If someone is working on a library, their inner loop includes coding, building, 
+    testing and debugging with regular commits to the local git repository
+    - The four steps that takes place inside the inner loop is:
+        - Coding (Experimentation)
+        - Building (Feedback Collection)
+        - Testing/ Debugging (Feedback Collection)
+        - Committing (Tax)
+    - Of all the steps in the inner loop, coding is the only one that adds customer
+    value
+
+    - Continous Monitoring:
+        - Continous Monitoring helps to continously ensure your application's health,
+        performance, reliability and infrastructure as it moves from development to 
+        production
+        - Azure Monitor is the unified monitoring solution in Azure that provides 
+        full-stack observability across applications and infrastructure in the cloud
+        and on-premise
+        - Continous monitoring in Devops release pipeline allows you to gate or roll
+        back your deployment based on monitoring data
+        - Automatically get platform metrics, activity logs and diagnostics logs
+        from most of your Azure Resources with no configuration
+        - Enable deeper monitoring for AKS cluters with Azure Monitor for containers
+        and for VMs with Azure Monitor
+        - For Infrastructure as a Code:
+            - Use Resource Manager templates to enable monitoring and configure alerts
+            over a large set of Resources
+            - Use Azure Policy to enforce different rules over your resources, which 
+            ensures that those resources comply with your corporate standards and SLAs
+        - Azure Monitor for Resource Groups provides a simple way to keep track of 
+        health and performance of your entire full-stack application and enables drilling
+        down into respective components for any investigations or debugging
+        - Create alerts in Azure Monitor based on logs and metrics to identify 
+        predictable failure states  
+        - It is best to make all alerts actionable with the help of actions for 
+        notification, ex. SMS, e-mails, push notifications or voice calls
+        - Prepare custom dashboards based on standard metrics and logs for the different
+        roles in your organization
+        - Dashboards can combine data from all Azure resources
+        - Prepare Workbooks to ensure knowledge sharing between development and operations
+        which can help customer support or handle fundamental problems
+        - Azure Monitor helps you collect metrics and logs relevant to your business and 
+        add new data points and use in the following deployment:
+            - Use tools in Application Insights to track end-user behavior and 
+            engagement
+            - Use Impact Analysis to help you prioritize which areas to focus on to
+            drive to important KPIs
+    - Azure Monitor:
+        - Azure Monitor provides Management tools, such as those in Azure Security
+        Center and Azure Automation, enabling ingestion of custom log data to Azure 
+        - The service aggregates and stores this telemetry in a log data store
+        optimized for cost and performance
+    
+    - Log Analytics:
+        - Log Analytics works by running the Microsoft Monitoring Agent service on the
+        machine
+        - The service locally captures and buffers the events and pushes them securely
+        out to the Log Analytics workspace in Azure
+        - You can add multiple log analytics workspaces to publish the log data into 
+        various workspaces
+        - 
