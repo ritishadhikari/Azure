@@ -58,4 +58,23 @@ Implement tools to track usage and flow:
         out to the Log Analytics workspace in Azure
         - You can add multiple log analytics workspaces to publish the log data into 
         various workspaces
-        - 
+    
+    - Kusto Query Language:
+        - This is the primary way to query Log Analytics
+        - It can be used directly within the Azure Data Explorer
+    
+    - Application Insights:
+        - You install a small instrumentation package in your application and set up
+        an Application Insighs resource in the Microsoft Azure Portal
+        - The instrumentation monitors your app and sends telemetry data to the portal
+        - The application can run anywhere and it does not have to be hosted in Azure
+        - You can also set up web tests periodically, sending synthetic requests to 
+        your web service
+        - Apply powerful analytic and search tools to the raw data in Azure Portal
+        - Application Insights configures your application's unique key (AppInsights
+        key) and the Application Insights SDK uses this key to identify the Azure App
+        Insights workspace the telemetry data needs to be uploaded
+        - The SDK and the key are merely used to pump the data points out of your
+        application 
+        - The heavy lifting of data correlation, analysis and insights is done within
+        Azure
