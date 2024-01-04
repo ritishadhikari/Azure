@@ -78,3 +78,53 @@ Implement tools to track usage and flow:
         application 
         - The heavy lifting of data correlation, analysis and insights is done within
         Azure
+    
+Develop monitor and status dashboards:
+    - Azure Dashboards
+        - Azure Dashboards are the primary dashboarding technology for Azure
+        - They supports both logs and metrics and they can combine data from multiple
+        sources, including output from Metrics Explorer, Log Analytics Queries, and
+        maps and availability in Application Insights
+        - It is integrated with Azure role-based authentication (RBAC)
+        - Supports Flexible layout options with full-screen mode
+        - Log Charts are limited to the last 30 days only
+    
+    - View Designer in Azure Monitor:
+        - It allows you to create custom visualizations with log data and they
+        are used by monitoring solutions to present the data they collect
+        - Supports rich visualizations for log data and multi-level drill-in
+        (a view that drills into another view)
+        - Supports logs but not metrics and does not provide automatic refresh
+        - Queries are limited in response size to 8 MB, and query execution time
+        of 110 seconds
+
+    - Azure Monitor Workbooks:
+        - Workbooks are interactive documents that provide deep insights into your
+        data, investigation and collaboration inside the team
+        - Useful while troubleshooting guides and incident postportem
+        - Supports both logs and metrics with document like flow
+        - Templates support the public Github based template gallery
+        - Does not provide automatic refresh and no dense layout like dashboards
+        which make workbooks less useful as a single pane of glass
+    
+    - Power BI:
+        - It is beneficial for creating business-centric dashboards and reports 
+        analyzing long-term KPI trends
+        - Import the results of a log query into PowerBI dataset to take advantage 
+        of its features, such as combining data from different sources and sharing 
+        reports on the web and mobile device
+        - Provides rich visualizations and better performance with results cached
+        in a cube
+        - Extensive interactivity and easy to share throughout your organization
+        - It only support logs but not metrics
+        - Does not provide Azure Resource Manager Integration, hence can't manage 
+        dashboards through ARM
+        - Need to import query results into the Power BI model to configure
+        - Limitations on result size and refresh
+
+    - Build your own custom Application:
+        - Access data in log and metric data in Azure Monitor through their API
+        using any REST client
+        - It allows you to build your complete websites and applications where you 
+        can combine metrics and log data with other data sources
+        - It provides significant engineering effort
