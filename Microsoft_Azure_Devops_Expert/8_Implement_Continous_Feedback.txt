@@ -128,3 +128,77 @@ Develop monitor and status dashboards:
         - It allows you to build your complete websites and applications where you 
         can combine metrics and log data with other data sources
         - It provides significant engineering effort
+
+Design Process to Automate Application Analytics:
+    - Assisted Devops with Augmented Search:
+        - They are Explicitly designed to deal with application logs' chaotic and
+        unpredictable nature
+        - Augmented search considers that users don't necessarily know what to seach 
+        for, especially in chaotic application layer environment
+        - The analysis algorithm automatically identifies errors, risk factors, 
+        and problem indicators while analyzing their severity by combining semantic
+        processing, statistical models and machine learning to analyze and understand
+        the events in the logs
+        - These insights are displayed as intelligence layers on top of the search
+        results, helping the user quickly discover the most relevant and essential
+        information
+        - It helps devops team to guide through blind spots as devops engineers can
+        identify a problem and the root cause in a matter of seconds instead of 
+        examining thousands of log events of running multiple checks on the various
+        servers
+        - Augmented Search will display a layer that highlights critical events during
+        the specified period instead of going over thousands of search results
+        - These highlights provide information about the sources of the events, 
+        assisting in the triage process
+
+    - Integrate Telemetry Data:
+        - The primary benefit of telemetry is the ability of an end user to monitor
+        the state of an object or environment while physically far removed from it
+        - By inserting telemetric data into your production application and 
+        environment, the Devops team can automate feedback mechanisms while monitoring
+        applications in real time
+        - Feedback mechanisms shares continous intelligence with all stakeholders 
+        which is critical for product managers, marketing teams and customer support
+        - Telemetry data comes with application logs, infrastructure logs, metrics and
+        events
+        - The measurements are things like memory consumption, CPU performance and
+        database response time
+        - Telemetry is what makes it possible to collect all that raw data that 
+        becomes valuable, actionable analytics
+        - Telemetry enables you to make continous improvements and introduce new
+        features that to your end users may seem as though you have been reading 
+        their minds
+        - Issue with telemetry for tech savvy end users is that they tend to disallow
+        this type of technologies
+    
+    - Monitoring Tools and Technology:
+        - Continous monitoring of applications in production environments is typically
+        implemented with application performance management (APM) solutions that
+        intelligently monitor, analyze and manage cloud, on-premises and hybrid
+        applications and IT infrastructure
+        - These APM solution enable you to monitor your users' experience and improve
+        the stability of your application infrastructure
+        - It helps identify the root cause of issues quickly to prevent outages
+        and keep users satisfied proactively
+        - By running APM solutions earlier in the lifecycle, development teams get 
+        feedback about how applications will eventually do in production and take 
+        corrective action much earlier
+        - When shortlisting a monitoring tool, you should seek the following advanced
+        features:
+            - Synthetic Monitoring:
+                - All stakeholders must ensure that internet and intranet mobile and 
+                web applications are tested and operate successfully from different 
+                points of presence worldwide
+            - Alert Management:
+                - All stakeholders need to send notifications via email, voice mail,
+                text, mobile push notifications and Slack Messages when specific 
+                situations or events occur in development, testing, or production
+                environments, to get the right people's attention and to manage
+                their response
+            - Deployment Automation
+            - Analytics:
+                - Developers need to look for patterns in log messages to identify if
+                there's a problem in the code
+                - Operations need to do root cause analysis across multiple log files
+                to identify the source of the problem in complex applications and
+                systems
