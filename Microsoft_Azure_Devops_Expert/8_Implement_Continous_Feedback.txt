@@ -202,3 +202,29 @@ Design Process to Automate Application Analytics:
                 - Operations need to do root cause analysis across multiple log files
                 to identify the source of the problem in complex applications and
                 systems
+
+Share Knowledge within Teams:
+    - As staff turnover occur in teams, it's easy for organizational knowledge to
+    be lost and it is important to record this knowledge to avoid this loss
+    - Azure Devops Project Wiki:
+        - Azure Devops project includes an option to create a project wiki which is 
+        used to share information with your team to understand and contribute to your
+        project
+        - Wikis are stored in a repository and no wiki is automatically provisioned
+        - Prerequisites:
+            - You must have permission to Create a Repository to publish codes as a 
+            Wiki
+            - While the project administrators group has this permission by default, 
+            it can be assigned to others
+            - To add or edit wiki pages, you should be a member of the contributors
+            group
+            - All team members can view the wiki
+        - Azure Devops Wikis are written in Markdown and can also include file 
+        attachments and videos
+        - GitHub flavoured Markdown (GFM) is a formal specification released by Github
+        that added extensions to a base format called CommonMark. It is rendered in
+        Azure Devops Wikis
+        - Mermaid is an essential extension to Markdown because it allows diagrams 
+        to be included in the documentation
+        - Mermaid overcomes the difficulties of merging documentation represented as 
+        binary files 
