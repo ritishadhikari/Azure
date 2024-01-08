@@ -228,3 +228,77 @@ Share Knowledge within Teams:
         to be included in the documentation
         - Mermaid overcomes the difficulties of merging documentation represented as 
         binary files 
+
+Manage Alerts, Blameless Retrospective and a Just Culture:
+    - Examine about Notification:
+        - Application Insights automatically analyzes the performance of your 
+        web application and can warn you about potential problems
+        - This feature requires no particular setup other than configuring your app
+        for Application Insights
+        - Smart Detection Notification:
+            - Response time Degradation:
+                - Your app has started responding to requests more slowly that it used
+                to
+            - Dependency Duration Degradation:
+                - Your app makes calls to a REST API, database or other dependencies
+                - The dependency may be responding more slowly than it used to
+            - Slow Performance Pattern:
+                - Your app appears to have a performance issue that is affecting only 
+                some requests
+                - Ex. Pages are loading more slowly on one type of browser than others,
+                or requests are being served more slowly from one server
+        - Smart Detection requires at least eight days of telemetry at a workable volume
+        to establish a normal performance baseline
+        - After your application has been running for that period, any significant 
+        issue will result in a notification
+    - Smart Detection Notifications:
+        - SD notifications are enabled by default and sent to owners, contributors
+        and readers access to the Application Insights Resource
+        - To change, configure in the email notification or open Smart Detection 
+        settings in Application Insights    
+    
+    - Improving Slow Pages:
+        - Slow Loading because of Large Files:
+            - Load the scripts and other parts asynchronously
+            - Break the main page into widgets that load their data separately
+        - Slow Server Dependencies:
+            - Ensure the web server and the database are in the same region
+        - Capacity Issues:
+            - Look at the server metrics of response times and request counts
+            - If response times peak disproportionately with peaks in request counts,
+            your servers are likely stretched
+    
+    - Server Response Time Degradation:
+        - The response time degradation tell you:
+            - The response time compared to normal response time for this opearation
+            - How many users are affected 
+            - Count of this operation requests on the day of the detection and seven 
+            days before
+    
+    - Monitoring and Alerts:
+        - It enables a system to tell us when it's broken or perhaps tells us what is 
+        about to break
+        - When the system can't automatically fix itself, we want a human to investigate
+        the alert
+        - Determine if there's a real problem at hand, mitigate the problem and determine
+        the root cause
+        - Unless you are doing security auditing on narrowly scoped components of a 
+        system, you should never trigger an alert simply because "something seems a 
+        bit weird"
+    
+    - Blameless Retrospective:
+        - Blameless Retrospective Process means that engineers whose actions have 
+        contributed to an accident can give a detailed account of:
+            - What actions do they take at what time
+            - What effects do they observe
+            - Expectations they have 
+            - Assumptions they made
+            - Their understanding of the timeline of the events as they occured
+        - If am engineer fears being blamed, they might not provide the necessary details 
+        to understand the failure's mechanism, pathology and operation
+        - It's paramount to understand the pathology of the failure since the action
+        made sense to the person when they took it because if it had not made sense,
+        they wouldn't have taken action in the first place
+        - When Engineers make mistakes and feel safe when giving details about it,
+        they are not only willing to be held accountable, but they are also enthusiastic
+        about helping the rest of the company avoid the same error in the future
