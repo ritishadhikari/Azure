@@ -82,7 +82,7 @@ Implement tools to track usage and flow:
 Develop monitor and status dashboards:
     - Azure Dashboards
         - Azure Dashboards are the primary dashboarding technology for Azure
-        - They supports both logs and metrics and they can combine data from multiple
+        - They support both logs and metrics and they can combine data from multiple
         sources, including output from Metrics Explorer, Log Analytics Queries, and
         maps and availability in Application Insights
         - It is integrated with Azure role-based authentication (RBAC)
@@ -187,7 +187,7 @@ Design Process to Automate Application Analytics:
         features:
             - Synthetic Monitoring:
                 - All stakeholders must ensure that internet and intranet mobile and 
-                web applications are tested and operate successfully from different 
+                web applications are tested and operated successfully from different 
                 points of presence worldwide
             - Alert Management:
                 - All stakeholders need to send notifications via email, voice mail,
