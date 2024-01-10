@@ -1,0 +1,49 @@
+Introduction to Secure Devops:
+    - DevSecops incorporates the security team and their capabilities into your Devops
+    practices making security the responsibility of everyone on the team
+    - Security needs to shift from an afterthought to being evaluated at every process
+    step
+    - Securing Applications is a continous process encompassing secure infrastructure,
+    designing architecture with layered security, continous security validation and
+    monitoring attacks
+    - SQL Injection Attack:
+        - It makes it poossible to execute malicious SQL statements
+        - Attackers can go around authentication and authorization of a web page or web 
+        application and retrieve the content of the entire SQL database
+        - The attackers can also use SQL injection to add, modify and delete records
+        in the database
+    - A Secure Devops pipeline allows development teams to work fast without breaking 
+    their project by introducing unwanted security vulnerabilities
+    - With SecureDevops or DevSecops, security is about securing the pipeline
+    - It involves determining where to add protection to the elements that plug 
+    into your build and release pipelines 
+    - Security practices for detecting potential security anomalies must be as robust 
+    and fast as your DevOps pipeline's other parts and it also includes infrastructure
+    automation and code development
+    - Secure Devops Pipelines that are not found in standard Devops Pipelines are:
+        - Package Management and the approval process behind it
+        - Source Scanner:
+            - It is an extra step for scanning the source code which can identify
+            security vulnerabilities earlier in the cycle
+            - This step allows for security scanning and checking for vulnerabilities
+            that are not present in the application code
+            - The scanning occurs after the app is built before release and pre-release
+            testing 
+    - With faster delivert and better productivity, open-source (OSS) components are
+    encouraged across many organizations
+    - However as the dependency on these third-party OSS components increases, the risk
+    of security vulnerabilities or hidden licence requirement also increases compliance
+    issues
+    - Several tools are available which helps CI builds to run static code analysis
+    tests to ensure that the code follows all rules for both maintenance and
+    security
+        - SonarCube
+        - CheckMarx - A static application security testing tool
+        - BinSkim - A binary static analysis tool that provides security and correctness
+        results for Windows Portable executibles and many more
+        - Mend Software's Tool: Makes Identification process of any threat in third
+        party packages instantenous
+    - The Microsoft Threat Modeling Tool enables any developer or software architect to:
+        - Communicate about the security design of their systems
+        - Analyze those designs for potential security issues using a proven methodology
+        - Suggest and manage mitigation for security issues
