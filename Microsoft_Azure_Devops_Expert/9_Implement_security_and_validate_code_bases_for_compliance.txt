@@ -47,3 +47,42 @@ Introduction to Secure Devops:
         - Communicate about the security design of their systems
         - Analyze those designs for potential security issues using a proven methodology
         - Suggest and manage mitigation for security issues
+
+Implement Open Source Software:
+    - The Inclusion of software components that are not built by the companies
+    themselves means no complete control over the sources
+    - The concerns the source component in open source packages provides are:
+        - Low Quality (reliability and performance)
+        - Have no maintenance
+        - Contains Malicious Code
+        - Have security Vulnerabilities
+        - Have unfavourable licensing restrictions
+    - The company's challenges are finding a way to keep the developers empowered
+    and free to chose technology to use while making sure the risks for the
+    company are managed as well as possible
+    - Open Source Licenses:
+        - A license agreement accompanies open-source software and the related
+        code
+        - The license describes how the source code and the components built 
+        from it can be used and how any software created with it should deal
+        with it
+        - Even though multiple contributors generally develop open-source software
+        from the community, it does not guarantee that it's secure and without 
+        vulnerabilities
+        - The license's impact on the downstream use of the code, components and
+        and packages can be rated as High, Medium and Low, depending on the 
+        copy-left, downstream or attribution nature of the license type
+        - For compliance reasons, a high license rating can be considered a 
+        risk for compliance, intellectual property and exclusive rights
+    
+    - Types of License:
+        - Attribution 
+            - Permissive
+            - Allow practically every type of use by the software that consumes it
+        - Downstream
+        - Copyleft
+            - Restrictive
+            - It's considered viral in nature 
+            - The use of the source code and its components and distribution
+            of the complete software implies that all source code using it 
+            should follow the same license form
