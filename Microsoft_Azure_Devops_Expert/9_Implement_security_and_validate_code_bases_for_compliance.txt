@@ -86,3 +86,96 @@ Implement Open Source Software:
             - The use of the source code and its components and distribution
             of the complete software implies that all source code using it 
             should follow the same license form
+
+Software Composition Analysis:
+    - Validate Code Bases for Compliance:   
+        - We need to protect information from being disclosed to people who shouldn't 
+        have access
+        - Also we need to ensure that the data isn't altered or destroyed when it is
+        not supposed to be
+        - We need to make sure we properly authenticate who is accessing the data and
+        that they have the correct permissions to do so
+        - We need to find evidence when something has gone wrong through historical
+        or archival data or logs
+        - We need to ensure that the application follows the rules and regulations 
+        required to meet and we need to test it while building the code and retest it
+        periodically, even after deployment
+        - Rather than being a task done by security specialists, security testing
+        should be part of the day-to-day delivery processes
+    - Software Component Analysis:
+        - Package Management:
+            - Secure Devops relies on a package manager as the unique source of binary
+            components
+            - Using binary package management, a development team can create a local
+            cache of approved components and a trusted feed for the continous 
+            integration pipeline 
+            - Azure Artifact:
+                - Keeps your packages organized
+                - Share code easily by storing Nuget, Maven, etc packages togather
+                - Protects your packages 
+                - Easily access all your artifacts in builds and releases as it 
+                integrates natively with the Azure Pipeline CI/CD
+            - Role of Open Source Components:
+                - OSS components reuse comes with the risk that reused dependencies 
+                can have security vulnerabilities
+                - Start with the latest, correct version to avoid old vulnerabilities
+                or licence misuse
+                - In the release pipelines validate binaries to ensure accuracy
+                - Get notifications of components vulnerabilities immediately
+    - Integrate Mend with Azure Pipelines:
+        - You can integrate specialist security products into your Azure Devops pipeline
+        through Visual Studio Code Marketplace
+        - Using Mend, you can integrate extensions with your CI/CD pipeline to address 
+        Secure Devops related Issues
+        - The Mend extension specifically addresses open-source security, quality and
+        licence compliance for a team consuming external packages
+        - It automatically detect all open-source components - including their transitive
+        dependencies every time you run a build
+        - You can generate a comprehensive inventory report within minutes based on 
+        the last build you ran
+        - Mend automatically generates an alert and provides targeted remediation 
+        guidance when a new security vulnerability is discovered which include links
+        to patches, fixes, relevant source files, and recommendations to change system
+        configuration to prevent exploitation
+        - According to a company's policies, Mend automatically approves, rejects or 
+        triggers a manual approval process every time a new open-source component 
+        is added to a build
+        - When a developer adds a problematic open-source component, the service will 
+        alert and fail the build
+    - GitHub Dependabot alerts and Security Updates:
+        - Detects vulnerable dependencies and sends Dependabot alerts about them 
+        in several situations
+            - A new vulnerability is added to the Github Advisory database
+            - New Vulnerability data from Mend is processed
+            - Dependency graph for a repository changes
+        - Alerts are detected in public repositories by default but can be enabled for
+        other repositories
+        - Notifications can be sent via standard Github notification
+        - A key advantage of Dependabot security updates is that they can automatically
+        create pull requests
+        - A developer can then review the suggested update and triage what is required
+        to incorporate it
+    - Integrating Software Composition Analysis checks into Pipelines:
+        - Pull Request code Scan analysis integration:
+            - Devops team can submit proposed changes to an application's (main) codebase
+            using pull requests (PRs) where changes are continously merged with the main
+            codebase to keep the main codebase up to date
+            - To avoid introducing new issues, developers need to verify the effects
+            of the code changes before creating a PR
+            - Ideally a developer should cheak for security issues before creating a PR
+            - Azure Marketplace extensions that help integrate scans during PRs 
+            which allow developers to experiment with changes before submitting
+            them as PR and it includes:
+                - Mend
+                - CheckMarx
+                - Veracode
+                - Black Duck by Synopsis :
+                    - It is an auditing tool for open open-source code to help identify,
+                    fix and manage compliance
+    - Tools for assess package security and licence rate:
+        - One approach is provide the package in a centralized repository and inspect
+        the packages part of the repository at any time (sonarcube)
+        - Another approach uses tooling that scans the packages used in a build 
+        pipleine and give instantanous feebback on the packages in use (mend)
+        - The configuration of the scanning for license types and security vulnerability
+        in the pipeline is done using appropriate build tasks in Azure Devops
