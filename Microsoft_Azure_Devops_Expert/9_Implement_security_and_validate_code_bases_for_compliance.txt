@@ -179,3 +179,46 @@ Software Composition Analysis:
         pipleine and give instantanous feebback on the packages in use (mend)
         - The configuration of the scanning for license types and security vulnerability
         in the pipeline is done using appropriate build tasks in Azure Devops
+
+Static Analyzers:
+    - SonarQube:
+        - SonarQube is an open source platform that is the de facto solution for 
+        understanding and managing technical debt
+        - It is easier to integrate with pipelines and manage technical debt
+    - CodeQL:
+        - Developers use CodeQL to automate security checks
+        - It treats code like data that can be queried
+        - CodeQL analysis consists of three phases
+            - Creating a CodeQL database (based upon the code)
+            - Run CodeQL queries against the database
+            - Interpret the results
+        - It is available as a command-line interpretor and an extension for Visual
+        Studio Code
+
+OWASP and Dynamic Analyzers:
+    - The starting point for secure development is to use secure-coding practices
+    - Open Web Development Security Project (OWASP) is a global charitable organization
+    focussed on improving software security
+    - Its stated mission is to make software security visible so that individuals and 
+    individuals can make informed decisions
+    - OWASP ZAP penetration test:
+        - ZAP is a free penetration testing tool for beginners to professionals 
+        - It includes an API and a weekly docker container image to integrate into your
+        deployment process
+        - The baseline CI/CD pipeline should run within a couple of minutes, making it a 
+        good option for the application CI/CD pipeline, and the application CI/CD 
+        pipeline should run within a couple of minutes, so you don't want to include
+        any long running process
+        - The nightly OWASP ZAP can spider the website and run the full-Active Scan
+        to evaluate the most combinations of possible vulnerabilities
+        - The OWASP ZAP/weekly docker container within Azure Container Services allows the
+        latest updates to the image and enables the spin-up of multiple image instances
+        so several applications within an enterprise can be scanned simultaneously
+        - The benefit of using this is that the vulnerabilities are created as bugs that
+        provide actionable work that can be tracked and measured
+        - Once the scans have completed, the Azure Pipelines release is updates with a
+        report that includes the results and bugs are created in the team's backlog
+        - Resolved Bugs will close if the vulnerability has been fixed and move back 
+        into in-progress if the vulnerability still exists
+        - False positives can be suppressed using OWASP ZAP's context file, so only 
+        valid vulnerabilities are surfaced
