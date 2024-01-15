@@ -222,3 +222,90 @@ OWASP and Dynamic Analyzers:
         into in-progress if the vulnerability still exists
         - False positives can be suppressed using OWASP ZAP's context file, so only 
         valid vulnerabilities are surfaced
+
+Implement Security and Validate Code Bases for compliance:
+    - Microsoft Defender for Cloud:
+        - Supports both windows and Linux OS and provides security to features in IaaS
+        and PaaS scenarios
+        - It is a monitoring service that provides threat protection across
+        all your services both in Azure and on-premise
+        - It provides security recommendations across on-premises and cloud workloads
+        and automatically apply required security to new services as they come online
+        - You can define a list of allowed applications to ensure that only the
+        validated apps can execute
+        - Uses Azure Machine Learning to detect and block malicious software from 
+        being installed on your VMs and services
+        - While Defender for cloud is free, to access full suite of Microsoft Services,
+        you will need to ugrade to a Standard Version Subscription
+        - Many organizations only respond to security incidents after an attack has
+        occurred, but to reduce costs and damage, it's necessary to have an incident
+        response plan before an attack occurs
+        - A Security policy defines the controls recommended for resources within a 
+        specified subscription or resource group
+        - Defender for cloud analyzes the security state of your Azure Resources 
+        and if it identifies a potential security vulnerabilities, it creates 
+        recommendations based on the controls set in the security policy
+    - Azure Policy:
+        - It is an Azure Service that you can create, assign and manage policies
+        - Policies enforce different rules and effects over your Azure resources,
+        ensuring that your resources stay compliant with your standards and SLAs
+        - The policy evaluates your resources by scanning for resources that don't 
+        follow the policies you create
+        - It has built-in policy and initiaves definitions for you to use. The 
+        definitions are arranged into categories: Storage, Networking, Compute,
+        Security Center and Monitoring
+        - Azure Policy Integrates with Azure Devops by applying any CI/CD pipeline
+        policies that apply to the pre-deployment and post-deployment of your 
+        applications
+        - Ex. Using Azure Policies, Check Gates provides security and compliance
+        assessment on the resources with an Azure Resource Groups or subscription
+        that you can specify
+        - A policy definition specifies the resources to be evaluated and the actions
+        to take on them
+        - Policies are defined in JSON
+        - Policy assignment is a policy definition that has been assigned to a specific
+        scope where scope can range from a management group to a resource group
+        - Child Resources will inherit any policy assignments applied to their parents
+        - If a policy is applied to a resource group, it's used to all the resources
+        within that resource group
+        - Remediation instructs Azure Policy to run the deployIfNotExists or the tag 
+        operation of the policy on existing resources
+    
+    - Resource Locks:
+        - Locks help you prevent accidental deletion or modification of your Azure
+        resources
+        - You can Manage locks from the Azure Portal to lock a subscription, resource
+        group or resources to prevent users from accidentally deleting or modifying
+        critical resources
+        - Set Lock levels to:
+            - CanNotDelete:
+                - Authorized users can read and modify a resource, but they can't
+                delete it
+            - ReadOnly:
+                - Authorized users can read a resource, but they can't modify or 
+                delete it
+    
+    - Azure BluePrints:
+        - It enables cloud architects to define a repeatable set of Azure resources
+        that implement and adhere to an organization's standards, patterns and 
+        requirements
+        - It helps development teams build and deploy new environments rapidly
+        with a set of built-in components that speed up development and delivery
+        - It provides a declarative way to orchestrate deployment for various resource
+        templates and artifacts, including:
+            - Role assignments
+            - Policy assignments
+            - Azure Resource Manager templates
+            - Resource groups
+        - Unlike in Azure Resource Manager Templates, which have no active relationship
+        with the deployed resources, with Azure BluePrints, each deployment is tied to
+        an Azure BluePrints package which means that the relationship with resources
+        will be maintained even after deployment whch is helpful for deployment tracking
+        and auding capabilities
+
+    - Microsoft Defender for Containers:
+        - It can be enabled at the subscription level
+        - It scan images that are pushed to the registry or any images pulled within
+        the last 30 days or on import (when an image is imported from other locations
+        like Docker Hub)
+      
