@@ -7,7 +7,7 @@ Introduction to Secure Devops:
     designing architecture with layered security, continous security validation and
     monitoring attacks
     - SQL Injection Attack:
-        - It makes it poossible to execute malicious SQL statements
+        - It makes it possible to execute malicious SQL statements
         - Attackers can go around authentication and authorization of a web page or web 
         application and retrieve the content of the entire SQL database
         - The attackers can also use SQL injection to add, modify and delete records
@@ -29,7 +29,7 @@ Introduction to Secure Devops:
             that are not present in the application code
             - The scanning occurs after the app is built before release and pre-release
             testing 
-    - With faster delivert and better productivity, open-source (OSS) components are
+    - With faster delivery and better productivity, open-source (OSS) components are
     encouraged across many organizations
     - However as the dependency on these third-party OSS components increases, the risk
     of security vulnerabilities or hidden licence requirement also increases compliance
@@ -170,13 +170,13 @@ Software Composition Analysis:
                 - CheckMarx
                 - Veracode
                 - Black Duck by Synopsis :
-                    - It is an auditing tool for open open-source code to help identify,
+                    - It is an auditing tool for open-source code to help identify,
                     fix and manage compliance
     - Tools for assess package security and licence rate:
         - One approach is provide the package in a centralized repository and inspect
         the packages part of the repository at any time (sonarcube)
         - Another approach uses tooling that scans the packages used in a build 
-        pipleine and give instantanous feebback on the packages in use (mend)
+        pipeline and give instantanous feebback on the packages in use (mend)
         - The configuration of the scanning for license types and security vulnerability
         in the pipeline is done using appropriate build tasks in Azure Devops
 
@@ -200,7 +200,7 @@ OWASP and Dynamic Analyzers:
     - Open Web Development Security Project (OWASP) is a global charitable organization
     focussed on improving software security
     - Its stated mission is to make software security visible so that individuals and 
-    individuals can make informed decisions
+    corporations can make informed decisions
     - OWASP ZAP penetration test:
         - ZAP is a free penetration testing tool for beginners to professionals 
         - It includes an API and a weekly docker container image to integrate into your
@@ -216,7 +216,7 @@ OWASP and Dynamic Analyzers:
         so several applications within an enterprise can be scanned simultaneously
         - The benefit of using this is that the vulnerabilities are created as bugs that
         provide actionable work that can be tracked and measured
-        - Once the scans have completed, the Azure Pipelines release is updates with a
+        - Once the scans have completed, the Azure Pipelines release is updated with a
         report that includes the results and bugs are created in the team's backlog
         - Resolved Bugs will close if the vulnerability has been fixed and move back 
         into in-progress if the vulnerability still exists
@@ -301,7 +301,7 @@ Implement Security and Validate Code Bases for compliance:
         with the deployed resources, with Azure BluePrints, each deployment is tied to
         an Azure BluePrints package which means that the relationship with resources
         will be maintained even after deployment whch is helpful for deployment tracking
-        and auding capabilities
+        and auditing capabilities
 
     - Microsoft Defender for Containers:
         - It can be enabled at the subscription level
