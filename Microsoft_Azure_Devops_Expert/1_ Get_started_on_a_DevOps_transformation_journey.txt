@@ -32,7 +32,7 @@ Intoduction to Devops
         - It is easier to change plans or priorities when necessary
         - The reduced delay between doing work and getting feedback helps ensure
         that the learnings and feedback are incorporated quickly
-        - It is easier to keep organizational support when positive outcomes
+        - It is easier to get organizational support when positive outcomes
         are clear
 
 Choose the right Project:
@@ -94,7 +94,7 @@ Choose the right Project:
             - Staff members for a given number of customers
             - Less the better
         - Application Usage:
-            - How busy the application
+            - How busy is the application
         - Application Performance:
             - Is the application performance improving or degrading  
     
@@ -110,7 +110,7 @@ Choose the right Project:
             - The amount of time the customers are seeing bugs in your code
             - Lower the better
         - Test Pass Rates:
-            - How well is your automated testing working
+            - How well is your automated tests working
         - Defect Escape Rate:
             - What percentage of time is the application truly available for customers
         - Availability:
@@ -461,8 +461,7 @@ Describe types of Source Control systems:
         encouraged to share minor changes more frequently 
         - Git hooks allow you to run scripts when certain events occur inside a
         repository, which lets you automate deployment to your heart's content
-        - You can also build or deploy code from specific branches to different 
-        servers
+        - You can also build or deploy code from specific branches to different servers
     
     - Problems of OverWriting History:
         - If you are synchronizing to Azure Repos, you can add a security rule
