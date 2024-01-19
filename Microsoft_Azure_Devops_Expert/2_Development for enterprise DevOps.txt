@@ -384,7 +384,7 @@ Manage Git repositories:
         - If you @mention any github users in the notes, the published release on 
         github.com will include a Contributors section with an avatar list of all the
         mentioned users
-        - Delete a release  by replacing the tag with the release tag to delete and use
+        - Delete a release by replacing the tag with the release tag to delete and use
         the -y flag to skip confirmation
             """
                 gh release delete tag -y
