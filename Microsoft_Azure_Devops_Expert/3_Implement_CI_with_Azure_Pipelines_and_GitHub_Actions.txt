@@ -592,7 +592,7 @@ Integrate with Azure Pipelines:
                     - A friendly name
                 - dependsOn:
                     - A way to specify dependencies and ordering of multiple jobs
-                    - By default they jobs run sequentially in the order in which
+                    - By default the jobs run sequentially in the order in which
                     you define them in the yaml file
                     - The exception to this is when you add dependencies
                     - Pipelines must contain at least one stage with no dependencies
@@ -746,7 +746,8 @@ Integrate with Azure Pipelines:
         - Repositories are first-class citizens within Azure Pipeline
         - Repositories can be specified as a repository resource or in 
         line with the checkout step
-        - Supported repositories are Azure Repos Git
+        - Supported repositories are 
+        - Azure Repos Git
         - Github
         - Bitbucket Cloud
         - Checkout steps:
@@ -761,9 +762,8 @@ Integrate with Azure Pipelines:
             - checkout: git://MyProject/MyRepo@features/tools
                 -  feature/tools branch of git://MyProject/MyRepo
                 is checked out as default
-        - If your repository type requires a service connection or 
-        other extended resources field, you must use a repository 
-        resource
+        - If your repository type requires a service connection or other extended
+        resources field, you must use a repository resource
 
         - Azure Pipelines must be granted access to your repositories
         to trigger their builds and fetch their code during builds
