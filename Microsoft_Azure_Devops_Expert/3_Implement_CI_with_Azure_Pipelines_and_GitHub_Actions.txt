@@ -69,7 +69,8 @@ Explore Azure Pipelines:
         - Virtual Machines
         - Cloud (AWS, GCP, Azure) or On-Premise
     
-    - Items known as Artifacts are produced from CI systems. The continous delivery
+    - Items known as Artifacts are produced from CI
+    The continous delivery
     release pipelines use them to drive automatic deployments
 
     - Azure Pipelines Key Terms:
@@ -406,7 +407,7 @@ Describe pipelines and concurrency:
         self-hosted agents for no cost
         - Visual Studio Enterprise subscribers get one self-hosted parallel job in each
         Azure Devops Services Organization where they are member
-        - When you are running you builds for more than 14 paid hours in a month, then 
+        - When you are running your builds for more than 14 paid hours in a month, then 
         per-minute plan might be less cost-effective than the parallel jobs model
     
     - Configure your build and release pipelines in the Azure Devops web portal 
