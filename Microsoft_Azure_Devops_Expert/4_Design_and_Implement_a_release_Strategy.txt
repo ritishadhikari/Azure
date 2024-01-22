@@ -12,10 +12,8 @@ Introduction to Continous Delivery:
         - Software Architecture as monoliths are hard to deploy
         - Testing Strategy (manual tests don't scale well) 
         - Organization as separated business and IT departments don't work smoothly
-    - Continous Delivery is a practice and is being able to deliver 
-    software on-demand
-    - Deploying every code change to production is what is called Continous 
-    deployment
+    - Continous Delivery is a practice and is being able to deliver software on-demand
+    - Deploying every code change to production is what is called Continous deployment
 
     - Feedback loops or quality gates are required for :
         - A unit test to validate the code
@@ -37,7 +35,7 @@ Introduction to Continous Delivery:
             - The stages or environments
             - The tasks for each one
             - The values of task parameters and variables
-            - The release policies such as trigger, approvers and release queuing
+            - The release policies such as trigger, approvers and release queuing 
             options
         - There can be multiple deployments of each release, even for one stage
         - When a release deployment fails for a stage, you can redeploy the same
@@ -85,7 +83,7 @@ Create a Release pipeline:
             traceability and auditability is using immutable packages by versioning
             those packages
             - Using a build pipeline that produces a package stored in a location
-            that humans can't access, you ansure the sources are unchanged throughout
+            that humans can't access, you ensure the sources are unchanged throughout
             the whole release-process and this is an essential concept of release
             pipelines
 
@@ -146,7 +144,7 @@ Explore Release Recommendations:
     triggers that determine when the deployment occurs
     - With the imposition of pre-deployment conditions, deployment to any stage doesn't
     happen automatically unless you have chosen to allow that
-    - Manual Approvals Approvals:
+    - Manual Approvals:
         - It suits a significant need
         - Organizations that starts with continous delivery, often lacks a certain
         amount of trust and they don't dare to release without manual approval
@@ -155,7 +153,7 @@ Explore Release Recommendations:
         - The manual approval is then replaced by an automatic check
     
     - Release Gates:
-        - They gives you more control over the start and completion of the deployment
+        - They give you more control over the start and completion of the deployment
         pipeline
         - They are often set up as pre-deployment and post-deployment conditions
         - It's a planning session where the release schedule of dependent components
