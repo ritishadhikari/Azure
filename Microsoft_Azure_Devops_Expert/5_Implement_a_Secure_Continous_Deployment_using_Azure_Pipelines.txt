@@ -148,7 +148,7 @@ Implement A/B Testing and Progressive exposure deployment:
         - In devops, rings are typically modelled as stages
         - With a ring based deployment, you first deploy your changes to risk-tolerant
         customers and progressively roll out to a more extensive set of customers
-        - Some organizations that use canary releasing have muliple deployment slots
+        - Some organizations that use canary releasing have multiple deployment slots
         set up as rings
         - The first release of the feature to ring 0 targets a well-known set of users,
         mostly their internal organization
@@ -210,10 +210,10 @@ Manage Application Configuration Data:
             - Includes CRUD on keys, ensuring the security of secrets, regeneration 
             of keys and tokens, defining config settings of keys and tokens and
             defining log levels for each environment
-            - Roles can be owned by operations engineer and security engineering while
-            injecting configuration files through devops process and CI/CD implementation
-            - They do not define the actual configuration but are the custodians of their
-            management
+            - Roles can be owned by operations engineer and security engineers while
+            injecting config files through devops process and CI/CD implementation
+            - They do not define the actual configuration but are the custodians of 
+            their management
         - Configuration Consumer:
             - Responsible for defining the schema for the configuration that needs to be
             in place and then consuming the configuration values in the application or
