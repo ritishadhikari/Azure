@@ -29,8 +29,8 @@ resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-02-01
 module webModule './6_Main.bicep' ={
   name: 'webDeploy'
   params:{
-    skuName: 'S1'
     location: location
+    storageName: storageSKU
   }
 }
 
