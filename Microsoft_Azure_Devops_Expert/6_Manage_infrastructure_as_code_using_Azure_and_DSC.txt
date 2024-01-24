@@ -26,7 +26,7 @@ Explore Infrastructure as Code and Configuration Management:
     - IaaC treats infrastructure as a flexible resource that can be provisioned, 
     de-provisioned and reprovisioned as and when needed
     - Declarative Configuration:
-        - Declarative or Functional configuration approach states what the final state
+        - Declarative or Functional configuration approach states what the final
         state should be 
         - When run, the script or definition will initialize or configure the machine
         to have the finished state declared without defining how that final state
@@ -559,7 +559,7 @@ Implement Bicep:
     were facing when deploying their resources to Azure
     - It is an Open Source tool and Domain Specific Language that provides a means 
     to declaratively codify infrastructure
-    - Bicep comes with its own Comman Line Interface 
+    - Bicep comes with its own Command Line Interface 
     - Bicep CLI allows you to transpile the Bicep files into ARM templates and deploy
     them and can also be used to convert an existing ARM template to Bicep
     - Azure Bicep supports types that are used to validate templates at development 
