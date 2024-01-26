@@ -106,7 +106,7 @@ Understand Package Management:
         - Pushing packages is done with the tooling for the package manager and each
         of the package managers and tooling has a different syntax for pushing
         - Packages might need to be updated during their lifetime, and updating a 
-        package is made by pushing a new version of the package to be feed
+        package is made by pushing a new version of the package to the feed
         - The package feed manager manages to properly store the updated package with 
         the existing packages in the feed
 
@@ -178,8 +178,7 @@ Implement a versioning Strategy:
         versioning scheme
         - Most commonly, versioning involves three types of changes:
             - Major Changes:
-                - Indicates that the pacckage and its contents have changed
-                significantly
+                - Indicates that the package and its contents have changed significantly
                 - It occurs during the introduction of a package
                 - Major changes are not guaranteed to be compatible and usually 
                 have breaking changes from older versions
