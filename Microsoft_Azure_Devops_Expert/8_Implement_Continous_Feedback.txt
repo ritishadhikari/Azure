@@ -37,8 +37,8 @@ Implement tools to track usage and flow:
         - Prepare custom dashboards based on standard metrics and logs for the different
         roles in your organization
         - Dashboards can combine data from all Azure resources
-        - Prepare Workbooks to ensure knowledge sharing between development and operations
-        which can help customer support or handle fundamental problems
+        - Prepare Workbooks to ensure knowledge sharing between development and 
+        operations which can help customer support or handle fundamental problems
         - Azure Monitor helps you collect metrics and logs relevant to your business and 
         add new data points and use in the following deployment:
             - Use tools in Application Insights to track end-user behavior and 
@@ -65,7 +65,7 @@ Implement tools to track usage and flow:
     
     - Application Insights:
         - You install a small instrumentation package in your application and set up
-        an Application Insighs resource in the Microsoft Azure Portal
+        an Application Insights resource in the Microsoft Azure Portal
         - The instrumentation monitors your app and sends telemetry data to the portal
         - The application can run anywhere and it does not have to be hosted in Azure
         - You can also set up web tests periodically, sending synthetic requests to 
@@ -133,7 +133,7 @@ Design Process to Automate Application Analytics:
     - Assisted Devops with Augmented Search:
         - They are Explicitly designed to deal with application logs' chaotic and
         unpredictable nature
-        - Augmented search considers that users don't necessarily know what to seach 
+        - Augmented search considers that users don't necessarily know what to search 
         for, especially in chaotic application layer environment
         - The analysis algorithm automatically identifies errors, risk factors, 
         and problem indicators while analyzing their severity by combining semantic
@@ -294,7 +294,7 @@ Manage Alerts, Blameless Retrospective and a Just Culture:
             - Expectations they have 
             - Assumptions they made
             - Their understanding of the timeline of the events as they occured
-        - If am engineer fears being blamed, they might not provide the necessary details 
+        - If an engineer fears being blamed, they might not provide the necessary details 
         to understand the failure's mechanism, pathology and operation
         - It's paramount to understand the pathology of the failure since the action
         made sense to the person when they took it because if it had not made sense,
