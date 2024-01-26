@@ -35,8 +35,7 @@ Introduction to Secure Devops:
     of security vulnerabilities or hidden licence requirement also increases compliance
     issues
     - Several tools are available which helps CI builds to run static code analysis
-    tests to ensure that the code follows all rules for both maintenance and
-    security
+    tests to ensure that the code follows all rules for both maintenance and security
         - SonarCube
         - CheckMarx - A static application security testing tool
         - BinSkim - A binary static analysis tool that provides security and correctness
@@ -308,4 +307,3 @@ Implement Security and Validate Code Bases for compliance:
         - It scan images that are pushed to the registry or any images pulled within
         the last 30 days or on import (when an image is imported from other locations
         like Docker Hub)
-      
