@@ -1,10 +1,11 @@
 Run a training script as a command job in Azure Machine Learning:
-    - When you write code to process data and train models, you want the code to be scalable, repeatable
-    and ready for automation
+    - When you write code to process data and train models, you want the code to be 
+    scalable, repeatable and ready for automation
     - Scripts are a better fit for production workloads
     - In Azure ML, you can run a script as a command job using Python SDK V2
 
-    - To configure a command job to run a script, you will need to specify values for the following parameters:
+    - To configure a command job to run a script, you will need to specify values for the 
+    following parameters:
         - code:
             - The Folder that includes the script to run
         - command:
@@ -37,7 +38,8 @@ Run a training script as a command job in Azure Machine Learning:
     - Define Parameters in the Script:
         - To use parameters in the script, use a library such as argparse to read arguments
         passed to the script and assign them to variables
-        - To pass parameter values to a script, you need to provide the argument value in the command 
+        - To pass parameter values to a script, you need to provide the argument value in 
+        the command 
     
     - Scripts are ideal for testing and automation in your production environment
         - Remove nonessential code
@@ -71,25 +73,26 @@ Run a training script as a command job in Azure Machine Learning:
         - All jobs with the same experiment name will be grouped under the same experiment
         - You can find an individual job using the specified display name
         - All inputs and outputs of a command job are tracked
-        - You can review which command you specified, which compute was used and which environment
-        was used to run the script on the specified compute
+        - You can review which command you specified, which compute was used and which 
+        environment was used to run the script on the specified compute
         
 
 Track Model Training with MLFlow in Jobs:
     
-    - Next to tracking models that are trained in notebooks, you can also use MLFlow to track 
-    models in scripts
-    - MLFlow is an open source platform that helps you to track model metrics and artifacts across
-    platforms and is integrated with Azure Machine Learning
+    - Next to tracking models that are trained in notebooks, you can also use MLFlow to 
+    track models in scripts
+    - MLFlow is an open source platform that helps you to track model metrics and 
+    artifacts across platforms and is integrated with Azure Machine Learning
     - Use MLFlow togather with AzureML to run training scripts locally or in the cloud.
     
     - Two options to track ML jobs with MLFlow:
         - Enable AutoLogging with mlflow.autolog()
         - Use logging functions to track custom metrics using mlflow.log_*
 
-    - We need to include the ml-flow and azureml-mlflow in the environment to ensure the pip packages 
-    are installed on the compute before running the script
-    - Create an environment by referring to a YAML file that describes the Conda Environment
+    - We need to include the ml-flow and azureml-mlflow in the environment to ensure the 
+    pip packages are installed on the compute before running the script
+    - Create an environment by referring to a YAML file that describes the Conda 
+    Environment
         """
             name: mlflow-env
             channels:   
@@ -105,9 +108,11 @@ Track Model Training with MLFlow in Jobs:
                     - mlflow
                     - azure-mlflow
         """
-    - Once the environment is defined and registered, make sure to refer to it when submitting a job
+    - Once the environment is defined and registered, make sure to refer to it when 
+    submitting a job
 
-    - Enable Autologging in MLFlow to log (without anyone needing to specify what needs to be logged):
+    - Enable Autologging in MLFlow to log (without anyone needing to specify what needs to 
+    be logged):
         - Parameters
         - Metrics
         - Model Artifacts
@@ -139,8 +144,8 @@ Track Model Training with MLFlow in Jobs:
     
     - Submit the Job:
         - Finally submit the training script as a job in Azure ML
-        - You need to make sure that the environment you refer to in the job includes the necesary packages,
-        and the script describes which you want to log 
+        - You need to make sure that the environment you refer to in the job includes 
+        the necesary packages, and the script describes which you want to log 
 
     - View the metrics in the Azure Machine Learning Studio:
         - Logged Metrics will show in the Overview and Metrics tabs
@@ -148,7 +153,8 @@ Track Model Training with MLFlow in Jobs:
         - Find other artifacts like model files under Outputs + logs
     
     - Retrieve metrics with MLFlow in a Notebook:
-        - MLflow in a notebook allows more control over which runs you want to retrieve to compare
+        - MLflow in a notebook allows more control over which runs you want to retrieve 
+        to compare
         - List Active Experiments:
             """
                 experiments=mlflow.search_experiments(max_results=2)
@@ -173,10 +179,11 @@ Track Model Training with MLFlow in Jobs:
             """
                 mlflow.search_runs(exp.experiment_id, search_all_experiments=True)
             """
-        - By default, experiments are ordered descending by start_time, which is the time the 
-        experiment was queued in Azure Machine Learning. Change this using order_by
+        - By default, experiments are ordered descending by start_time, which is the time 
+        the experiment was queued in Azure Machine Learning. Change this using order_by
             """
-                mlflow.search_runs(exp.experiment_id, order_by=["start_time DESC"], max_results=2)
+                mlflow.search_runs(exp.experiment_id, 
+                order_by=["start_time DESC"], max_results=2)
             """
         - You can also look for a run with a specific combination in the hyperparameters:
             """
@@ -186,15 +193,15 @@ Track Model Training with MLFlow in Jobs:
             """
     - Metrics:   
         - Any plots that are logged as artifacts can be found under Images
-        - The model assets that can be used to register and deploy the model are stored in the models
-        folder under Outputs+logs
+        - The model assets that can be used to register and deploy the model are stored 
+        in the models folder under Outputs+logs
 
 Perform hyperparameter tuning with Azure Machine Learning:
     - Sweep Job:
         - In Azure ML, tune hyperparameters by submitting a script as a sweep job
         - A sweep job will run a trial for each hyperparameter combination to be tested
-        - Each trial uses a training script with parameterized hyperparameter values to train
-        a model, and logs the performance metric achieved by the trained model
+        - Each trial uses a training script with parameterized hyperparameter values 
+        to train a model, and logs the performance metric achieved by the trained model
 
     - Search Space:
         - It is the set of hyperparameter values tried during hyperparameter tuning 
@@ -208,7 +215,8 @@ Perform hyperparameter tuning with Azure Machine Learning:
                     # Choice(values=range(1,10))
                 - Define in a Tuple:
                     # Choice(values=range(30,50,100))
-                - Also select discrete values from any of the following discrete distributions:
+                - Also select discrete values from any of the following discrete 
+                distributions:
                     - QUniform(min_value, max_value, q)
                     - QLogUniform(min_value, max_value, q)
                     - QNormal(mu, sigma, q)
@@ -220,7 +228,8 @@ Perform hyperparameter tuning with Azure Machine Learning:
                     - Uniform(min_value, max_value):
                         - Returns a Value distributed between min_value and max_value
                     - LogUniform(min_value, max_value):
-                        - Returns a value drawn according to exp(Uniform(min_value, max_value))
+                        - Returns a value drawn according to 
+                        exp(Uniform(min_value, max_value))
                         - Logarithm of the returned value is uniformly distributed
                     - Normal(mu, sigma):
                         - Returns a real value thats normally distributed with mean mu and stdev sigma
@@ -239,8 +248,8 @@ Perform hyperparameter tuning with Azure Machine Learning:
         """     
 
     - Sampling Methods: 
-        - The specific values used in a hyperparameter tuning run or sweep job depends on the 
-        type of sampling used
+        - The specific values used in a hyperparameter tuning run or sweep job depends on 
+        the type of sampling used
         - Grid Sampling:
             - Tries every possible combination
             """
@@ -302,22 +311,22 @@ Perform hyperparameter tuning with Azure Machine Learning:
     
     - Configuring Early Termination:
         - Default way in a sweep job is to set a maximum number of trials
-        - A more sophisticated approach is to stop a sweep job when newer models don't produce
-        significant results 
+        - A more sophisticated approach is to stop a sweep job when newer models don't 
+        produce significant results 
         - To stop a sweep job based on the performance of the models, you can use an early
         termination policy
-        - This policy can be especially beneficial when working with continous hyperparameters
-        in your search space
+        - This policy can be especially beneficial when working with continous 
+        hyperparameters in your search space
         - Two Main Parameters to chose when you use an early termination policy:
             - evaluation_interval:
                 - Specifies at which interval you want the policy to be evaluated
             - delay_evaluation:
                 - Specifies when to start evaluating the policy
-        - To determine the extent to which a model should perform better than the previous trials,
-        there are three options for early termination:
+        - To determine the extent to which a model should perform better than the previous 
+        trials, there are three options for early termination:
             - Bandit Policy:
-                - Use this policy to stop a trial if the target performance metric underperforms
-                the best trial so far by a specified margin
+                - Use this policy to stop a trial if the target performance metric 
+                underperforms the best trial so far by a specified margin
                 """
                     from azure.ai.ml.sweep import BanditPolicy
                     
@@ -327,11 +336,11 @@ Perform hyperparameter tuning with Azure Machine Learning:
                         evaluation_interval=1
                     )
                 """
-                - You can also use a slack factor which compares the performance metric as a ratio
-                rather than an absolute value
+                - You can also use a slack factor which compares the performance metric 
+                as a ratio rather than an absolute value
             - Median Stopping Policy:
-                - Abandons the trials where the target performance metric is worse than the Median
-                of the running averages for all trials
+                - Abandons the trials where the target performance metric is worse than 
+                the Median of the running averages for all trials
                 """
                     from azure.ai.ml.sweep import MedianStoppingPolicy
 
@@ -341,8 +350,9 @@ Perform hyperparameter tuning with Azure Machine Learning:
                     )
                 """
             - Truncation Selection Policy:
-                - It cancels the lowest performing X% of the trials at each evaluation interval
-                based on the truncation_percentage value you specify for X
+                - It cancels the lowest performing X% of the trials at each 
+                evaluation interval based on the truncation_percentage value you specify 
+                for X
                 """
                     from azure.ai.ml.sweep import TruncationSweepPolicy
 
