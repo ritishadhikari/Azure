@@ -97,7 +97,6 @@ Deploy a model to a managed online endpoint:
                 ml_client.online_endpoints.begin_delete(name="endpoint-example")
             """
 
-
     - Deploy a model to a managed online (non mlflow) endpoint:
         - Create the Scoring Script with two functions:
             - init() : 
@@ -242,7 +241,7 @@ Deploy a model to a batch endpoint:
     
     - Batch Predictions:
         - An endpoint is an HTTPS endpoint that you can call to trigger a batch scoring job
-        - The advantage of an endpoint is that you can the trigger the  batch scoring job from 
+        - The advantage of an endpoint is that you the trigger the batch scoring job from 
         another service, such as Azure Synapse Analytics or Azure Databricks
         - Whenever the endpoint is invoked, a batch scoring job is submitted to the Azure Machine 
         Learning workspace
