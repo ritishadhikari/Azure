@@ -1,0 +1,31 @@
+Introduction:
+    - Azure Databricks is a fully managed, cloud-based data analytics platform which 
+    empowers developers to accelarate AI and innovation by simplifying the process of
+    building enterprise-grade data applications
+    - It is an end-to-end, managed Apache Spark Platform optimized for the cloud
+    - It is a joint venture by microsoft and the team that started Apache Spark
+    - By combining the power of Databricks, with the enterprise scale and security 
+    Microsoft's Azure platform, Azure Databricks enables organizations to run 
+    large-scale data analytics workloads that power comprehensive business 
+    intelligence and AI solutions
+
+Get Started with Azure Databricks:
+    - Azure Databricks is hosted on the Microsoft Azure Cloud Platform and integrated
+    with Azure Services such as Microsoft Entra ID, Azure Synapse Analytics and 
+    Azure Machine Learning
+    - To use Azure DataBricks, you must create an Azure Databricks workspace 
+    subscription through either of:
+        - Azure Portal User Interface
+        - Azure Resource Manager (ARM) or Bicep template
+        - Using New-AzDatabrickWorkspace Azure Powershell cmdlet
+        - Using the az databricks workspace create CLI command
+    - Tiers:
+        - Standard: 
+            - Core Apache Spark Capabilities with Microsoft Entra Integration
+        - Premium:
+            - Role based access controls and other enterprise-level features
+        - Trial:
+            - A 14-day free trial of a premium-level workspace
+    - The Azure Databricks portal is a web-based user interface through which you
+    can create and manage workspace resource (such as Spark clusters) and use
+    notebooks and queries to work with data in files and tables 
