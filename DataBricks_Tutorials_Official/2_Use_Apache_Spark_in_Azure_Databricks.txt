@@ -1,0 +1,77 @@
+Get to Know Spark:
+    - The Azure Databricks service launches and manages Apache Spark clusters within
+    your Azure Subscription
+    - Apache Spark clusters are groups of computers that are treated as a single
+    computer and handle the execution of commands issued from notebooks
+    - Clusters enable processing of data to be parallelized across many computers
+    to improve scale and performance
+    - They consists of a Spark driver and worker nodes where the driver node sends 
+    work to the worker nodes and instructs them to pull data from a specified
+    source
+    - The notebook interface is typically the driver program which contains the 
+    main loop for the program and creates distributed datasets on the cluster, 
+    then applies operations to those datasets
+    - Driver Programs access Apache Spark through a Sparksession object regardless
+    of deployment location
+    - Work submitted to the cluster is split into as many independent jobs as 
+    needed and this is how work is distributed across the cluster's noded
+    - Jobs are further divided into tasks 
+    - The input to a job is partitioned into one or more partitions and these 
+    partitions are the unit of work for each slot
+    - The secret to Spark's high performance is parallelism where clusters 
+    scale horizontally, adding new nodes to the clusters as needed
+    - Spark parallelizes jobs at two levels:
+        - The First level of parallelization is the executor - a Java Virtual 
+        Machine (JVM) running on a worker node, typically one instance per node
+        - The second level of parallelization is the slot - the number of which
+        is determined by the number of cores and CPUs of each node
+    - Each executor has multiple slots to which parallelized tasks can be assigned
+    - The JVM is multithreaded but a single JVM has a finite upper limit. But by
+    splitting the work into tasks, the driver can assign units of work to slots
+    in the executors on worker nodes for parallel execution
+    - The driver assigns a partition of data to each task so that each task knows
+    which piece of data it is to process
+    - Once started, each task will fetch the partition of data assigned to it
+    - Spark breaks each job into stages to ensure everything is done in the right 
+    order
+
+Create a Spark Cluster:
+    - A cluster mode can be:
+        - Standard:
+            - Suitable for single-user workloads that require multiple worker nodes
+        - High Concurrency:
+            - Suitable for workloads where multiple users will be using the cluster
+            concurrently
+        - Single Node:
+            - Suitable for small workloads or testing, where a single worker node
+            is required
+    - When you create an Azure Databricks workspace, a Databricks appliance is 
+    deployed in your subscription
+    - When you create a cluster in the workspace, you specify the types and sizes
+    of the virtual machines (VMs) to use for both the driver and the worker node,
+    and some other configurations, but Azure Databricks manages all other aspects of
+    the cluster
+    - The Databricks appliance is deployed into Azure as a managed resource group
+    (RG) within your subscription. This RG contains the driver and worker VMs for
+    your clusters, along with other required resources including Virtual Networks,
+    a Security Groups and a Storage account. 
+    - All metadata for your cluster, such as scheduled jobs, is stored in an 
+    Azure Database with geo-replication for fault tolerance
+    - Azure Databricks internally uses Azure Kubernetes Service (AKS) to improve 
+    Spark performance
+
+Use Spark in Notebooks:
+    - You can run many different kinds of application on Spark, including code
+    in Python, or Scala Scripts, Java code compiled as a Java Archive (JAR) and 
+    others
+    - Spark is commonly used in two kinds of workloads:
+        - Batch or Stream processing jobs to ingest, clean and transform data -
+        often running as part of an automated pipeline
+        - Interactive analytics sessions to explore, analyze and visualize data
+    - Notebook consist of one or more cells, each containing either code or markdown
+    - Code cells in notebooks have some features that can help you be more productive
+    including:
+        - Syntax Highlightning
+        - Code auto-completion
+        - Interactive data visualizations
+        - The ability to export results
