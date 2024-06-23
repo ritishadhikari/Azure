@@ -29,3 +29,62 @@ Get Started with Azure Databricks:
     - The Azure Databricks portal is a web-based user interface through which you
     can create and manage workspace resource (such as Spark clusters) and use
     notebooks and queries to work with data in files and tables 
+
+Identify Azure Databricks Workloads:
+    - Azure Databricks particularly supports the following types of data workload:
+        - Data Science and Engineering:
+            - Provides Apache Spark based ingestion, processing and analysis
+            of large volumes of data in a data lakehouse.
+            - Use Interactive notebooks to run code in Python, Scala, SparkSQL
+            or other languages to cleanse, transform, aggregate and analyze data
+        - Machine Learning:
+            - Supports Machine Learning Workloads that involve data exploration
+            and preparation, training and evaluating machine learning models 
+            and serving models to generate predictions for applications and 
+            analyses
+            - Data Scientists and ML Engineers can use AutoML to quickly train 
+            predictive models or apply their skills with common machine learning
+            frameworks like SparkML, Scikit-Learn, Pytorch and Tensorflow
+            - Manage the end-to-end machine learning lifecycle with MLFlow
+        - SQL (only available in premium tier workspaces):
+            - Supports SQL-based querying for data stored in tables in a SQL 
+            Warehouse
+            - This capability enables data analysts to query, aggregate, summarize and
+            visualize data using familier SQL Syntax and a wide range of SQL-based
+            data analysis and visualization tools
+
+Understand Key Concepts:
+    - Apache Spark Clusters:
+        - Spark is a distributed data processing solution that makes use of clusters 
+        to scale processing across multiple compute nodes
+        - Each Spark Cluster has a driver node to coordinate processing jobs, and one 
+        or more worker nodes on which the processing occurs
+        - This distributed model enables each node to operate on a subset of the job
+        in parallel, thereby reducing the overall time for the job to complete
+        - Each cluster node has its own local file system (on which Operating System
+        and other node-specific files are stored)
+    - Data Lake Storage:
+        - Nodes in a cluster also have access to a shared, distributed file system in
+        which they can access and operate on data files 
+        - This shared data storage (data lake), enables you to mount cloud storage, 
+        such as Azure Data Lake Storage or Microsoft OneLake Data store
+        - It enables to work with and persist file-based data in any format
+    - MetaStore:
+        - Azure Databricks uses a metastore to define a relational schema of tables
+        over file-based data
+        - The tables are based on the Delta Lake format and can be queried using SQL
+        syntax to access the data in the underlying files
+        - The table definitions and details of the file system locations on which 
+        they are based are stored in the metastore, abstracting the data objects that
+        you can use for analytics and data processing from the physical storage where
+        the data files are stored
+        - Azure Databricks metastores are managed in the Unity Catalog which provides
+        centralized data storage, access management and governance
+    - Notebooks:
+        - Enables Data Analysts, data scientists, data engineers and developers to work
+        with Spark by writing codes in notebooks
+    - SQL Warehouses:
+        - They are relational compute resources with endpoints that enable client 
+        applications to connect Azure Databricks workspace and use SQL to work with
+        data in tables
+        - Warehouse are only available in premium tier Azure Databricks workspaces
