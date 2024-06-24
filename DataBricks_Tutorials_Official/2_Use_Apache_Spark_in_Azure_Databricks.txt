@@ -75,3 +75,124 @@ Use Spark in Notebooks:
         - Code auto-completion
         - Interactive data visualizations
         - The ability to export results
+
+Use Spark to work with Data Files:
+    - The default language in a new Azure Databricks Spark notebook is Pyspark,
+    which is a spark optimized version of python
+    - Additionally Scala and SQL can also be used
+    - Software Engineers can also create compiled solutions that run on Spark using
+    frameworks such as Java
+    - Dataframes in Spark are similar to those in the ubiquitous Pandas Python library,
+    but optimized to work in Spark's distributed processing environment
+    ```
+        # Display the first 10 rows
+        %pyspark
+        df=spark.read.load(
+            "/data/products.csv",
+            format="csv",
+            header=True
+        )
+        display(df.limit(10))
+    ```
+    ```
+    # Specify an explicit schema for the data, which is useful when the column names
+    aren't included in the data file
+
+    from pyspark.sql.types import *
+    from pyspark.sql.functions import *
+
+    productSchema=StructType([
+        StructField("ProductID",IntegerType()),
+        StructField("ProductName",StringType()),
+        StructField("Category",StringType()),
+        Structfield("ListPrice",FloatType())
+        ])
+    
+    df=spark.read.load(
+        "./data/product-data.csv",
+        format="csv",
+        schema=productSchema,
+        header=False
+    )
+
+    display(df.limit(10))
+    ```
+    ```
+    # Filtering DataFrames
+    pricelistDF=df.select(
+        "ProductID",
+        "ListPrice"
+        )
+
+    # This also works
+    pricelistDF=df[
+        "ProductID",
+        "ListPrice"
+    ]
+    ```
+    ```
+    # Select and where
+    bikesDF=df.select(
+        "ProductName",
+        "ListPrice"
+        ).\
+        where(
+            (
+                df['Category']=="Mountain Bikes" 
+            ) 
+            |
+            (
+               df['Category']=="Road Bikes"
+            )
+        )
+    ```
+    ```
+    # Group and Aggregate
+    countsDF=df.select(
+        "ProductID",
+        "Category"
+        ).groupBy(
+            "Category"
+        ).count()
+    ```
+    - The Dataframe API is part of a Spark library named SparkSQL, which enables data
+    analysts to use SQL expressions to query and manipulate data
+    - The Spark catalog is a metastore for relational data objects such as views and 
+    tables and the spark runtime can use the catalog to seamlessly integrate code 
+    written in any Spark-supported language with SQL expressions
+    ```
+        # Create Temporary View
+        # A view is temporary and is automatically deleted at the end of the current
+        # session
+        df.createOrReplaceTempView("products")
+    ```
+    ```
+        # Using SparkSQL API using a SQL Query to return data from the products 
+        # view as a DataFrame
+        bikesDF=spark.sql("""
+            SELECT 
+                productid,
+                productname,
+                listprice
+            FROM 
+                products
+            WHERE
+                category IN
+                    ('Mountain Bikes",'Road Bikes')
+        """
+        )
+    ```
+    ```
+        # Use %sql magic to run SQL code that queries objects in the catalogue
+        %sql
+        SELECT 
+            Category, COUNT(ProductID) AS ProductCount
+        FROM 
+            products
+        GROUP BY 
+            Category
+        ORDER BY 
+            Category
+    ```
+    - The Matplotlib library requires data to be in Pandas Dataframe rather than a 
+    Spark DataFrame, so the toPandas() method is used to convert it
