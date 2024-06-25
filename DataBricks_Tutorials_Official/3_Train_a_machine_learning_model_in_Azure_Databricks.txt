@@ -1,0 +1,210 @@
+Introduction:
+    - Azure Databricks provides an Apache Spark based data processing platform
+    that supports multiple popular machine learning frameworks:
+        - Scikit-Learn
+        - Spark MLLib
+        - Pytorch
+        - Tensorflow
+
+Understand Principles of Machine Learning:
+
+Machine Learning in Azure Databricks:
+    - Azure Databricks enables data scientists to perform data ingestion,
+    exploration and preparation tasks as well as model training, evaluation and
+    management tasks
+    - Machine Learning Databricks runtimes:
+        - When you create a cluster in an Azure Databricks workspace, you can
+        specify the Databricks runtime to install in the cluster which are
+        optimized for machine learning
+        - They include support for libraries that are commonly used in
+        machine learning workloads, including machine learning frameworks and
+        utilities for managing machine learning operations
+        - If you are going to be implementing machine learning solutions,
+        create a cluster with one of the ML runtimes
+        - Runtimes include CPU based runtime for classical machine learning
+        or GPU based runtime for complex neural networks with deep learning
+        frameworks
+
+Prepare Data for Machine Learning:
+    - Data is ingested into Azure Databricks from its source, often as delta
+    files 
+    - You can also create delta tables based on the data files to simplify 
+    data exploration and analysis
+    - After the data has been ingested, a data scientist prepares it for 
+    machine learning
+    Data Cleansing includes:
+        - Incomplete Data
+        - Errors
+        - Outliers
+        - Incorrect Data Types
+        - Unbalanced Data
+        ```
+            # Data Cleansing example
+            cleanData=df.dropna().select(
+                col("column1").astype("string"),
+                col("column2").astype("float")
+        )
+        ```
+    - Feature Engineering and Preprocessing:
+        - Deriving New Features:
+        - Discretizing numeric Features
+        - Encoding Categorical Features
+        - Scaling (normalizing) numeric values
+        ```
+            from pyspark.ml.feature import StringIndexer
+            encoder=StringIndexer(
+                inputCol="catCol",
+                outputCol="catColCode"
+            )
+            encodedData=encoder.fit(data).transform(data)
+        ```
+    - In Spark MLLib, you can chain a sequence of evaluators and transformers
+    togather in a pipeline that performs all the feature engineering and 
+    preprocessing steps you need to prepare your data
+    - The pipeline can end with a machine learning algorithm that acts as an
+    evaluator to determine the operations required to predict a label from the 
+    prepared features
+    - The output of the pipeline is a machine learning model, which is in fact 
+    a transformer that can be used to apply the model function to features in 
+    a dataframe and predict the corresponding label values
+
+Train a Machine Learning Model:
+    - For Supervised Machine Learning, you fit the algorithm to the features
+    based on the known labels
+    - For unsupervised machine learning, you supply the features and the 
+    algorithm attempts to separate them into discrete clusters
+    ```
+        from pyspark.ml.classification import LogisticRegression
+
+        lr=LogisticRegression(
+            labelCol="label",
+            featuresCol="features",
+            maxIter=10,
+            regParam=0.3
+        )
+        model=lr.fit(training_df)
+    ```
+Evaluating a Machine Learning Model:
+    - Evaluating Regression Models:
+        - Mean Squared Error (MSE):
+            ```
+                from pyspark.ml.evaluation import RegressionEvaluator
+
+                # Inference Predicted labels from validation data
+                predictions_df=model.transform(validation_df)
+
+                # Use an evaluator to get metrics
+                evaluator=RegressionEvaluator()
+                evaluator.setPredictionCol("prediction")
+
+                # Assume predictions_df includes a "prediction" column with the
+                # predicted label column with the actual known label values
+
+                mse=evaluator.evaluate(
+                    predictions_df,
+                    {evaluator.metricName:"mse}
+                )
+
+                rmse=evaluator.evaluate(
+                    predictions_df,
+                    {evaluator.metricName:"rmse}
+                )
+
+                r2=evaluator.evaluate(
+                    predictions_df,
+                    {evaluator.metricName:"r2}
+                )
+
+                print(f"MSE: {mse}")
+                print(f"RMSE: {rmse}")
+                print(f"R2: {r2}")
+
+            ```
+    - Evaluating Classification Models:
+        - Accuracy
+        - Precision
+        - Recall
+        - F1 Score
+        ```
+            from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+
+            predictionsDF=model.transform(validation_df)
+            
+            evaluator=MulticlassClassificationEvaluator()
+            evaluator.setPredictionCol("prediction")
+
+            # Assume predictions_df includes a "prediction" column with the
+            # predicted label column with the actual known label values
+
+            # Use an evaluator to get metrics
+            accuracy=evaluator.evaluate(
+                predictionsDF,
+                {evaluator.metricName:"accuracy"}
+            )
+            print(f"Accuracy: {accuracy}")
+
+            labels=[0,1,2]
+            print(f"\n Individual Class Metrics")
+            for label in sorted(labels):
+                print(f"Class: {label}")
+                precision=evaluator.evaluate(
+                    predictionsDF,
+                    {evaluator.metricName:"precisionByLabel"}
+                )
+                print(f"Precision: {precision}")
+
+                recall=evaluator.evaluate(
+                    predictionsDF,
+                    {evaluator.metricName:"recallByLabel"}
+                )
+                print(f"Recall: {recall}")
+
+                f1=evaluator.evaluate(
+                    predictionsDF,
+                    {evaluator.metricName:"fMeasureByLabel"}
+                )
+                print(f"F1 Score: {f1}")
+
+            overallPrecision=evaluator.evaluate(
+                predictionsDF,
+                {evaluator.metricName:"weightedPrecision"}
+            )
+            print(f"overall Precision: {overallPrecision}")
+
+            overallRecall=evaluator.evaluate(
+                predictionsDF,
+                {evaluator.metricName:"weightedRecall"}
+            )
+            print(f"overall Precision: {overallRecall}")
+
+            overallF1=evaluator.evaluate(
+                predictionsDF,
+                {evaluator.metricName:"weightedFMeasure"}
+            )
+            print(f"overall Precision: {overallF1}")
+        ```
+    - Evaluating Unsupervised Clustering Models:
+        - To evaluate a cluster, you need a metric that indicates the level
+        of separation between clusters
+        - Points in the same cluster should be close to one another and far 
+        away from points in a different cluster
+        - Silhoutte computes squared Euclidean distance and provides an
+        indication of consistency within clusters 
+        - Silhoutte value can be between -1 and +1, with a value close to 
+        1 indicating that the points in a cluster are close to the other points
+        in the same cluster and far from the points of the other clusters
+        ```
+            from pyspark.ml.evaluation import ClusteringEvaluator
+            from pyspark.ml.linalg import Vectors
+
+            # Inference predicted labels from Validation Data
+            predictionsDF=model.transform(validationDF)
+
+            # Assume predictionsDF includes a "prediction" column with the 
+            # predicted  cluster
+
+            # Use an evaluator to get metrics
+            evaluator=ClusteringEvaluator(predictionCol="prediction")
+            silhouetteVal=evaluator.evaluate(predictionsDF)
+            print(silhouetteVal)
+        ```
