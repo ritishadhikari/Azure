@@ -1,0 +1,102 @@
+Introduction:
+    - MLflow is an open source platform for end-to-end machine learning operations
+    - Data Scientits can track model training experiments; logging paramaters, metrics
+    and other assets
+    - ML Engineers can use MLflow to deploy and manage models, enabling applications
+    to consume the models and use them to inference predictions for new data
+    - MLFlow is natively supported in Databricks
+
+Capabilities of MLFlow:
+    - There are four components to MLFLow:
+        - MLfLow Tracking:
+            - Allows Data Scientists to work with experiments in which they process and
+            analyze data or train machine learning models
+            - For each run in an experiment, a Data Scientist can log parameter values,
+            versions of libraries used, model evaluation metrics and generated output 
+            files; including images of data visualizations and model files
+            - The ability to log important details about experiment runs makes it possible
+            to audit and compare the results of prior model training execututions
+        - MLflow Projects:
+            - It is a way of packaging up code for consistent deployment and 
+            reproducibilty of results
+            - MLFlow supports several environments for projects, including the use of 
+            Conda and Docker to define consistent Python code execution environments
+        - MLflow Models:
+            - Offers a standardized format for packaging models for distribution
+            - The standardized model format allows MLflow to work with models generated
+            from popular libraties, including scikit-learn, pytorch, mllib and others
+        - MLflow Model Registry:
+            - The model registry allows data scientists to register trained models
+            - MLflow Models and MLflow Projects use the MLflow Model registry to enable
+            machine learning engineers to deploy and serve models for client applications
+            to consume
+
+Run Experiments with MLFlow:
+    - MLflow experiments allow data scientists to track training runs in a collection
+    called an experiment
+    - Experiment runs are useful for comparing changes over time or comparing the 
+    relative performance of models with different hyperparameter values
+    - Running an Experiment:
+        ``` 
+            # The experiment's name is the name of the notebook; it is possible to
+            # export a variable named MLFLOW_EXPERIMENT_NAME to change the 
+            with mlflow.start_run():
+                mlflow.log_param("input1", input1)
+                mlflow.log_param("input2", input2)
+                # Perform operations here like model training.
+                mlflow.log_metric("rmse", rmse)
+        ```
+        - In the Azure Databricks portal, the Experiments page enables you to view details
+        of each experiment run; including logged values for paramaters, metrics and other
+        artifacts
+
+Register and serve models with MLflow:
+    - Registering a model allows you to serve the model for real-time, streaming or
+    batch inferencing
+    - Registration makes the process of using a trained model easy, as now data 
+    scientists don't need to develop application code; the serving process builds 
+    that wrapper and exposes a REST API or method for batch scoring automatically
+    - Registering a model allows you to create new versions of that model over time,
+    giving you the opportunity to track model changes and even perform comparisions
+    between different historical versions of models
+    ```
+        with mlflow.start_run():
+        # code to train model goes here
+        # log the model itself (and the environment it needs to be used)
+        unique_model_name="my_model-" + str(time.time())
+        mlflow.spark.log_model(spark_model=model,
+                            artifact_path=unique_model_name,
+                            conda_env=mlflow.spark.get_default_conda_env())
+    ```
+     - When you review the experiment run, including the logged metrics that indicate
+     how well the model predicts the model is included in the run artifacts
+     - You can then select the option to register the model using the user interface in
+     the experiment viewer
+     - Alternately if you want to register the model without reviewing the metrics
+     in the run, you can include the registered_model_name parameter in the
+     log_model method; in which case the model is automatically registered during 
+     the experiment run
+     ```
+        with mlflow.start_run():
+        # code to train model goes here
+
+        # log the model itself (and the environment it needs to be used)
+        unique_model_name = "my_model-" + str(time.time())
+        mlflow.spark.log_model(spark_model=model,
+                            artifact_path=unique_model_name
+                            conda_env=mlflow.spark.get_default_conda_env(),
+                            registered_model_name="my_model")
+     ```
+    - You can register multiple versions of a model enabling you to compare the 
+    performance of model versions over a period of time before moving all client
+    applications to the best performing version
+    - Using a Model ost the model as a real or Inferencing in the following ways:
+        - Host the model as a real-time service with an HTTP endpoint to which
+        applications can make REST requests
+        - Use the model to perform perpetual streaming inferencing of labels based on
+        a delta table of features, writing the results to an output table
+        - Use the model for batch inferencing based on a delta table, writing the 
+        results of each batch operation to a specific folder
+        - You can deploy a model for inferencing from its page in the Models section
+        of the Azure Databricks portal
+
