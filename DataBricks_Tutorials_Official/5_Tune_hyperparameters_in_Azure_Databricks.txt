@@ -1,0 +1,151 @@
+Introduction:
+    - In Azure Databricks, you can use the Hyperopt library to automate
+    hyperparameter tuning
+    - Hyperopt is an open source Python Library for Hyperparameter tuning which 
+    is automatically installed when you create a cluster with an ML variant of
+    the Databricks runtime.
+
+Optimize hyperparameters with Hyperopt
+    - Following steps needs to be followed:
+        - Define an Objective Function to train and evaluate a model:
+            ```
+                def objective(params):
+                    from pyspark.ml.classification import LogisticRegression
+                    from pyspark.ml.evaluation import MulticlassClassificationEvaluator
+                    from hyperopt import STATUS_OK
+
+                    data_df = get_training_data() # This is just an example!
+                    splits = data_df.randomSplit([0.7, 0.3])
+                    training_df = splits[0]
+                    validation_df = splits[1]
+
+                    # Train a model using the provided hyperparameter values
+                    lr = LogisticRegression(labelCol="label", featuresCol="features",
+                                            maxIter=params['Iterations'],
+                                            regParam=params['Regularization'])
+                    model = lr.fit(training_df)
+
+                    # Evaluate the model
+                    predictions = model.transform(validation_df)
+                    eval = MulticlassClassificationEvaluator(labelCol="label",
+                                                            predictionCol="prediction",
+                                                            metricName="accuracy")
+                    accuracy = eval.evaluate(predictions)
+                    
+                    # Hyperopt *minimizes* the function, so return *negative* accuracy.
+                    return {'loss': -accuracy, 'status': STATUS_OK}
+            ```
+            - The params parameter is a list containing values for two named values:
+            Iterations and Regularization
+            - These values are assigned to the maxIter and regParam hyperparameters of
+            the logistic regression algorithm used to train the model
+            - The function returns a value the Hyperopt should minimize to improve
+            the model. In this case, the target metric is accuracy, for which a 
+            higher value indicates a better model; so the function returns the negative
+            of this value (so the higher the accuracy, the lower the return value) 
+        - Define the hyperparameter search space:
+            - To specify the complete set of value combinations that can be tried, 
+            you need to define a search space from which Hyperopt can select the values
+            to be used in each trial
+            - Hyperopt provides expressions that you can use to define a range of values
+            for each hyperparameter including:
+                - hp.choice (label, options): 
+                    - Returns one of the options you listed
+                - hp.randit(label, upper):
+                    - Returns a random integer in the range [0, upper]
+                - hp.uniform(label, low, high):
+                    - Returns a value uniformly between low and high
+                - hp.normal(label, mu, sigma):
+                    - Returns a real value that's normally distributed with mean mu 
+                    and Standard deviation sigma
+            ```
+                from hyperopt import hp
+                searchSpace={
+                    'Iterations': hp.randint('Iterations',10),
+                    'Regularization': hp.uniform('Regularization',0.0,1.0)
+                }
+            ```
+        - Specify the search algorithm:
+            - Hyperopt uses a search algorithm to select hyperparameter values from
+            the search space and try to optimize the objective funtion. There are two 
+            main choices in how Hyperopt will sample over the search space
+                - hyperopt.tpe.suggest:
+                    - Tree of Parsen Estimators (TPE), a Bayesian approach that 
+                    adaptively selects new hyperparameter settings based on past results
+                - hyperopt.rand.suggest:
+                    - Random search, a nonadaptive approach that samples randomly over
+                    the search space
+            ```
+                from hyperopt import tpe
+                algo=tpe.suggest
+            ```
+                
+        - Run the Hyperopt fmin function to optimize the training function
+            - This fmin function repeatedly calls the objective function using
+            hyperparameter combinations from the search space based on the search
+            algorithm
+            ``` 
+                from hyperopt import fmin
+                
+                argmin=fmin(
+                    fn=objective,
+                    space=searchSpace,
+                    algo=algo,
+                    max_evals=100
+                )
+                print(f"Best param values: {argmin} ")
+            ```
+
+Review Hyperopt Trials: 
+    - When you use Hyperopt to try multiple hyperparameter combinations, you may
+    want to review the details of each trial
+        - View the MLflow run for each trial:
+            - Calls to the Hyperopt fmin function automatically generate MLFlow 
+            experiment runs that you can view in the Azure Databricks portal; providing
+            you with an easy way to view the full set of hyperparameters and metrics
+            for each trial
+        - Use the Trials class to capture run details
+            - Hyperopt includes a Trials class that logs details for each trial that
+            is run during an fmin function call
+            ``` 
+                from hyperopt import Trials
+
+                # Create a Trials object to track each run
+                trialRuns=Trials()
+
+                argmin=fmin(
+                    fn=objective,
+                    space=searchSpace,
+                    algo=algo,
+                    max_evals=100,
+                    trials=trialRuns
+                )
+
+                # Get Details from each trial run:
+                print("trials:")
+                for trial in trial_runs.trials:
+                    print("\n", trial)
+
+            ```
+
+Scale Hyperopt Trials:
+    - When using Hyperopt with a distributed training library like MLLib, the work
+    is automatically scaled across the available worker nodes in the cluster
+    - Using SparkTrials class in place of regular Trials class, enables us to take
+    advantage of scale-out parallelism of Spark to distribute hyperparameter tuning
+    runs across multiple nodes, even when using a library that is designed for 
+    processing on a single computer such as scikit-learn
+    ```
+        from hyperopt import SparkTrials
+
+        sparkTrials=SparkTrials()
+        with mlflow.start_run():
+            argmin=fmin(
+                fn=objective,
+                space=searchSpace,
+                algo=algo,
+                max_evals=100,
+                trials=sparkTrials
+            )
+        print("Best param values:"argmin)
+    ```
