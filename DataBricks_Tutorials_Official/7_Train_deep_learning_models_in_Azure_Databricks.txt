@@ -1,0 +1,227 @@
+Introduction:
+    - Azure Databricks enables you to work with the large volumes of data needed to
+    effectively train deep learning models
+    - It offers support for scalable GPU-based clusters, which provide the best 
+    performance for the kinds of matrix and vector operations that deep learning 
+    model training involves
+    - Pytorch and Tensorflow are preinstalled in Azure Databricks ML Clusters
+
+Train models with Pytorch:
+    - In Pytorch, models are based on a network that you define
+    - The network consists of multiple layers, each with specified inputs and outputs
+    - The work defines a forward function that applies functions to each layer as
+    data is passed through the network
+    ```
+        import torch
+        import torch.nn as nn
+        import torch.nn.functional as F
+
+        class MyNet(nn.module):
+            def __init__(self):
+                super(MyNet,self).__init__()
+                self.layer1=nn.Linear(4,5)
+                self.layer2=nn.Linear(5,5)
+                self.layer3=nn.Linear(5,3)
+            
+            def forward(self, x):
+                layer1Output=torch.relu(self.layer1(x))
+                layer2Output=torch.relu(self.layer2(layer1Output))
+                y=self.layer3(layer2Output)
+                return y
+    ```
+    ```
+        myModel=MyNet()
+    ```
+    ```
+        train_x=torch.Tensor(x_train).float()
+        train_y=torch.Tensor(y_train).long()
+        # Pytorch data loader to read data tensors into a model for training or
+        # inferencing
+        train_ds=td.TensorDataset(train_x,train_y)
+        train_loader=td.DataLoader(train_ds,
+        batch_size=20,shuffle=False,num_workers=1)
+
+
+        test_x=torch.Tensor(x_test).float()
+        test_y=torch.Tensor(y_test).long()
+        test_y=torch.Tensor(y_test).long()
+        test_ds=td.TensorDataset(test_x,test_y)
+        test_loader=td.DataLoader(test_ds,
+        batch_size=20,shuffle=False,num_workers=1)
+    ```
+    ```
+        # Measure Loss
+        lossCriteria=nn.CrossEntropyLoss
+    ```
+    ```
+        # Set Optimizers
+        import torch.optim as opt
+        learningRate=0.001
+        optimizer=opt.Adam(
+            model.parameters(),
+            lr=learningRate
+        )
+    ```
+    ``` 
+        def train(model,data_loader,optimizer):
+            """
+            Train the Model with the Training Data
+            ""'
+            # Use GPU if Possible, otherwise CPU
+            device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            model.to(device)
+
+            # Set the Model to Training Mode, to enable Backpropagation
+            model.train()
+            train_loss=0
+
+            # Feed the Batches of data forward through the network
+            for batch, tensor in enumerate(data_loader):
+                data, target=tensor  # Specify features and labels in a tensor
+                optimizer.zero_grad()  # Reset Optimizer state
+                out=model(data)  # Pass the data through the network
+                loss=lossCriteria(out, target)  # Calculate the Loss
+                train_loss+=loss
+
+                # backpropagate adjustments to weights/bias
+                loss.backward()
+                optimizer.step()
+
+            # Return average loss for all batches
+            avgLoss=train_loss/(batch+1)
+            print(f"Training Set: Average Loss: {average}")
+            return avgLoss
+    ```
+    ```
+        def test(model, data_loader):
+            """
+                Test the Model with the Test Data
+            """
+            device=torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            model.to(device)
+
+            # Switch the Model to evaluation mode (so that we don't backpropagate)
+            model.eval()
+            testLoss=0
+            correct=0
+
+            # Pass the data with no gradient computation
+            with torch.no_grad():
+                batchCount=0
+                for batch, tensor in enumerate(data_loader):
+                    batchCount+=1
+                    data,target=tensor
+                    # Get the predictions
+                    out=model(data)
+
+                    # Calculate the Loss
+                    testLoss+=lossCriteria(out,target).item()
+
+                    # Calculate the Accuracy
+                    _,predicted=torch.max(out.data,1)
+                    correct+=torch.sum(target==predicted).item()
+            
+            # Calculate the average loss and total accuracy for all batches
+            avgLoss=testLoss/batchCount
+            print(f"Validation Set: Average Loss: {avgLoss}, \n
+            Accuracy: {correct/len(data_loader.dataset)}")
+            return avgLoss
+    ```
+    ```
+        # Train over Multiple Epochs
+        epochs=50
+        for epoch in range(1,epoch+1):
+
+        # print the epoch number 
+        print(f"Epoch: {epcoh}")
+
+        # Feed training data into the model to optimize the weights
+        trainLoss=train(model=model,
+        data_loader=train_loader,
+        optimizer=optimizer)
+        print(trainLoss)
+
+        # Feed test data into the model check its performance
+        testLoss=test(model=model,
+        data_loader=test_loader)
+        print(testLoss)
+    ```
+    ```
+        # Save the Model
+        modelFile="dbutil:/dbfs/myModel.pkl"
+        torch.save(model.state_dict(),modelFile)
+
+        # Load the Model
+        model=myNet()
+        model.load_state_dict(torch.load(model_file))
+    ```
+
+Distribute Pytorch Training with Horovod:
+    - When you need to work with extremely complex neural networks or large 
+    volumes of training data, you may benefit from Apache Spark's inherent ability
+    to scale out processing tasks across multiple worker nodes
+    - Azure Databricks uses Spark Clusters that can include multiple worker nodes
+    - Additionally the ML Databricks runtimes in Azure Databricks include Horovod
+    and open source library that enables you to distribute machine learning tasks 
+    across the nodes in a cluster
+    ```
+        import horovod.torch as hvd
+        from sparkdl import HorovodRunner
+        from torch.utils.data.distributed import DistributedSampler
+
+        def train_hvd(model):
+            hvd.init()
+            device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+            if device.type=="cuda":
+                torch.cuda.set_device(hvd.local_rank())
+            
+            # Configure the sampler so that each worker gets a distinct sample of 
+            # the input dataset
+            trainSampler=DistributedSampler(
+                train_ds,
+                num_replicas=hdv.size(), 
+                rank=hvd.rank()
+            )
+            # Use trainSampler to load a different sample of data on each worker
+            trainLoader=torch.utils.data.DataLoader(
+                train_ds,
+                batch_size=20,
+                sampler=trainSampler
+            )
+            lossCriteria=nn.CrossEntropyLoss()
+            # Scale the LR based on the number of nodes
+            learningRate=0.01*hvd.size()
+            optimizer=torch.optim.Adam(model.parameters(), lr=learningRate)
+
+            # Wrap the Local Optimizer with hvd.DistributedOptimizer so that Horovod
+            # handles the distributed optimization
+            distOptimizer=hvd.DistributedOptimizer(
+                optimizer,named_parameters=model.named_parameters()
+            )
+
+            # Broadcast initial parameters so all the workers work with the same 
+            # Parameters
+            hvd.broadcast_parameters(model.state_dict(),root_rank=0)
+            hvd.broadcast_optimizer_state(optimizer, root_rank=0)
+
+            # Train over 50 epochs
+        epochs = 50
+        for epoch in range(1, epochs + 1):
+            print('Epoch: {}'.format(epoch))
+            # Feed training data into the model to optimize the weights
+            train_loss = train(model, train_loader, optimizer)
+        
+        # Save the Model weights
+        if hvd.rank()==0:
+            model_file="dbutils:/dbfs/myModel_hvd.pkl"
+            torch.save(model.state_dict(),model_file)
+            print(f"Model Saved as: {model_file}")
+    ```
+    ```
+        # Run the function on Multiple Nodes:
+        hvdModel=MyNet()
+
+        # Run the Distributed training Function on 2 Nodes
+        hr=HorovodRunner(np=2)
+        hr.run(train_hvd, model=hvd_model)
+    ```
