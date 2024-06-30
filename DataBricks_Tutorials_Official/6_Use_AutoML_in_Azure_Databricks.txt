@@ -1,0 +1,83 @@
+Introduction:
+    - Azure Databricks includes an AutoML capability that automates training and 
+    validation using various algorithms and hyperparamater values; vastly reducing
+    the efffort required to run and track model training experiments
+
+What is AutoML:
+    - AutoML works by generating multiple experiment runs, each one training a model
+    using a different algorithm and hyperparameter combination
+    - In each run, a model is trained and evaluated based on the data and predictive 
+    metric that you specify
+    - Azure Databricks keep trackk of the runs and the models they produce by using 
+    MLflow, enabling you to identify the best performing model and deploy it to 
+    production
+    - You start an AutoML experiment, specifying a table in your Azure DataBricks
+    workspace as the data source for training and the specific performance metric
+    for which you want to optimize
+    - The Automl experiment generates multiple MLflow runs, each producing a notebook
+    with code to preprocess the data before training and validating a model
+    - The trained models are saved as artifacts in the MLflow runs or files in the
+    DBFS store
+    - The experiment runs are listed in order of performancem, with the best performing
+    models shown first. 
+    - You can explore the notebooks that were generated for each
+    run, chose the model you want to use and then register and deploy it
+    - AutoML needs a source of training data that includes features and label values
+    - To provide this data, create a table in the Hive metastore in your Azure 
+    Databricks workspace
+    - A simple way to create a table of training data for AutoML is to upload a data
+    file in the Azure DataBricks portal and AutoML generates code to handle common 
+    data preprocessing tasks such as encoding categorical variables, scaling numeric
+    variables, handling null values and dealing with imbalance datasets
+
+Use AutoML in the Azure Databricks user interface:
+    - To configure the AutoML experiment, you must specify the settings for your 
+    specific model training requirements including:
+        - The cluster on which to run the experiment
+        - The type of machine learning model to be trained (clustering, regression,
+        or forecasting)
+        - The table containing the training data
+        - The target label field to be predicted by the model
+        - A unique name for the AutoML experiment (child runs for each training
+        are uniquely named automatically)
+        - The evaluation metric you want to use to determine the best performing
+        model
+        - The Machine Learning training framworks you want to try
+        - The maximum time for the experiment
+        - The positive label value (for binary classification)
+        - The time column (for forecasting models only)
+        - Where to save the trained models (as MLflow artifacts or in DBFS store)
+    - As the AutoML experiment progresses, its child runs are displayed, with the 
+    experiment that produced the best performing model so far first
+    - You can wait for the experiment to finish, or explore the models produced so
+    far and stop the experiment if you are satisfied that one of them fits your needs
+    - You can explore each run to view the notebook that was generated and the metrics
+    for the model it produced and then you can register the model and deploy it for 
+    inferencing
+
+Use Code to run an AutoML experiment:
+    - You can write Automl experiment through code to code to configure and initiate
+    an AutoML experiment
+    - The autoML API provides a Python library that you can use to run AutoML 
+    experiments for classification, regression and forecasting
+    - To configure the specific details for an AutoML experiment, you must write code
+    that uses the classify, regress or forecast method as appropriate with the 
+    parameters for your specific needs
+    ```
+        from databricks import Automl
+
+        trainDF=spark.sql("""
+            SELECT 
+                *
+            FROM 
+                penguins
+        """)
+
+        summary=automl.classify(trainDF, 
+        target_col="Species",
+        primary_metric="precision",
+        timeout_minutes=5
+        )
+
+        modelURI=summary.best_trial.model_path
+    ```
