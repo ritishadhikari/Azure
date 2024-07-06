@@ -14,7 +14,7 @@ Get to Know Spark:
     - Driver Programs access Apache Spark through a Sparksession object regardless
     of deployment location
     - Work submitted to the cluster is split into as many independent jobs as 
-    needed and this is how work is distributed across the cluster's noded
+    needed and this is how work is distributed across the cluster's nodes
     - Jobs are further divided into tasks 
     - The input to a job is partitioned into one or more partitions and these 
     partitions are the unit of work for each slot
