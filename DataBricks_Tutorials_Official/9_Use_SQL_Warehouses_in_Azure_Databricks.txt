@@ -1,0 +1,59 @@
+Introduction:
+    - Azure Databricks provides support for SQL based data analytics 
+    through SQL Warehouses
+
+Get Started with SQL Warehouses:
+    - SQL Warehouses (formerly SQL endpoints) provide a relational 
+    database interface for data in Azure Databricks
+    - The data is stored in files that are abstracted by Delta Tables
+    - From the perspective of the user, SQL warehouses behaves like 
+    a relational database
+    - Configuration settings for SQL warehouse include:
+        - Name: 
+        - Cluster Size:
+        - Auto Stop:
+            - The amount of time the cluster will remain when idle before
+            being stopped
+            - Idle clusters continue to incur charges when running
+        - Scaling:
+            - The minimum and maximum number of clusters used to 
+            distribute query processing
+        - Type:
+            - Serverless, Pro or Classic SQL
+
+Create Databases and Tables:
+    - All SQL Warehouse contain a default schema named default
+    - You can also create custom database schema
+    ```
+        %sql
+        CREATE SCHEMA salesdata
+    ```
+    ```
+        %sql
+        CREATE DATABASE salesdata
+    ```
+    - You can use the user interface in the Azure Databricks portal to 
+    upload delimited data from a wide range of common data sources
+    - The imported data is stored in files in Databricks File System 
+    (DBFS) storage, and a Delta table is defined for it in the Hive
+    Metastore
+    ```
+        CREATE TABLE 
+            salesdata.salesorders
+            (
+                orderid INT,
+                orderdate DATE,
+                customerid INT,
+                ordertotal DECIMAL
+            )
+        USING 
+            delta
+        LOCATION
+            "/data/sales/"
+    ```
+Create queries and dashboards:
+    - You can use the SQL Editor in the Azure Databricks portal to create
+    a query based on any valid SQL SELECT statement and then save the
+    query with a meaningful name to be retrieved
+    - Dashboards enable you to display the results of queries either
+    as tables of data or as graphical visualizations
