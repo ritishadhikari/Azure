@@ -8,7 +8,7 @@ What is AutoML:
     using a different algorithm and hyperparameter combination
     - In each run, a model is trained and evaluated based on the data and predictive 
     metric that you specify
-    - Azure Databricks keep trackk of the runs and the models they produce by using 
+    - Azure Databricks keep track of the runs and the models they produce by using 
     MLflow, enabling you to identify the best performing model and deploy it to 
     production
     - You start an AutoML experiment, specifying a table in your Azure DataBricks
