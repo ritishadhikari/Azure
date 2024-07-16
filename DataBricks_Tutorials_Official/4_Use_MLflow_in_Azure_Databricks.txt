@@ -14,8 +14,8 @@ Capabilities of MLFlow:
             - For each run in an experiment, a Data Scientist can log parameter values,
             versions of libraries used, model evaluation metrics and generated output 
             files; including images of data visualizations and model files
-            - The ability to log important details about experiment runs makes it possible
-            to audit and compare the results of prior model training execututions
+            - The ability to log important details about experiment runs makes it 
+            possibleto audit and compare the results of prior model training execututions
         - MLflow Projects:
             - It is a way of packaging up code for consistent deployment and 
             reproducibilty of results
@@ -46,9 +46,9 @@ Run Experiments with MLFlow:
                 # Perform operations here like model training.
                 mlflow.log_metric("rmse", rmse)
         ```
-        - In the Azure Databricks portal, the Experiments page enables you to view details
-        of each experiment run; including logged values for paramaters, metrics and other
-        artifacts
+        - In the Azure Databricks portal, the Experiments page enables you to view 
+        details of each experiment run; including logged values for paramaters, 
+        metrics and other artifacts
 
 Register and serve models with MLflow:
     - Registering a model allows you to serve the model for real-time, streaming or
@@ -90,7 +90,7 @@ Register and serve models with MLflow:
     - You can register multiple versions of a model enabling you to compare the 
     performance of model versions over a period of time before moving all client
     applications to the best performing version
-    - Using a Model ost the model as a real or Inferencing in the following ways:
+    - Using a Model, host the model as a real or Inferencing in the following ways:
         - Host the model as a real-time service with an HTTP endpoint to which
         applications can make REST requests
         - Use the model to perform perpetual streaming inferencing of labels based on
