@@ -54,7 +54,7 @@ Make Data Available in Azure Machine Learning:
     
     - When you create a data asset and point to a file or folder stored on your 
     local device:
-        - A copy of the file or folder will be upladed to the default datastore 
+        - A copy of the file or folder will be uploaded to the default datastore 
         workspaceblobstore
         - You can find the file or folder in the LocalUpload folder
         - By uploading a copy, you will still be able to access the data from Azure ML 
