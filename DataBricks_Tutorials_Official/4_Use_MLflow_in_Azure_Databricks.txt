@@ -15,7 +15,7 @@ Capabilities of MLFlow:
             versions of libraries used, model evaluation metrics and generated output 
             files; including images of data visualizations and model files
             - The ability to log important details about experiment runs makes it 
-            possibleto audit and compare the results of prior model training execututions
+            possible to audit and compare the results of prior model training execututions
         - MLflow Projects:
             - It is a way of packaging up code for consistent deployment and 
             reproducibilty of results
@@ -24,7 +24,7 @@ Capabilities of MLFlow:
         - MLflow Models:
             - Offers a standardized format for packaging models for distribution
             - The standardized model format allows MLflow to work with models generated
-            from popular libraties, including scikit-learn, pytorch, mllib and others
+            from popular libraries, including scikit-learn, pytorch, mllib and others
         - MLflow Model Registry:
             - The model registry allows data scientists to register trained models
             - MLflow Models and MLflow Projects use the MLflow Model registry to enable
