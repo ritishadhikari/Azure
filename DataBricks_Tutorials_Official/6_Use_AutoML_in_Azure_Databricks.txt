@@ -42,7 +42,7 @@ Use AutoML in the Azure Databricks user interface:
         are uniquely named automatically)
         - The evaluation metric you want to use to determine the best performing
         model
-        - The Machine Learning training framworks you want to try
+        - The Machine Learning training frameworks you want to try
         - The maximum time for the experiment
         - The positive label value (for binary classification)
         - The time column (for forecasting models only)

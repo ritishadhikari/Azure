@@ -1,7 +1,7 @@
 Introduction:
     - Linux Foundation Delta Lake is an open-source storage layer for Spark that 
     enables relational capabilities for batch and streaming data
-    - We can implement a data lakehouse  architecture in Spark to support SQL based
+    - We can implement a data lakehouse architecture in Spark to support SQL based
     data manipulation semantics with support for transactions and schema enforcement
     - It results in an analytical data store that offers many of the advantages of 
     a relational database system with the flexibility of data file storage in a 
@@ -119,7 +119,7 @@ Create and Query Catalog Tables:
     location, you define the table schema by specifying the column names, types
     and nullability as part of the CREATE TABLE statement
     ```
-        spart.sql(
+        spark.sql(
             """ 
                 CREATE TABLE 
                     ManagedSalesOrders
