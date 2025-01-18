@@ -1,0 +1,114 @@
+Understand Azure Data Factory:
+    - ADF provides a cloud-based data integration service that orchestrates the
+    movement and transformation of data between various data stores and compute
+    resources
+    - It is a cloud based ETL and data integration service that allows you to
+    create data-driven workflows for orchestrating data movement and transforming
+    data at scale
+    - Using ADF, you can create and schedule data-driven workflows 
+    (called pipelines) that can ingest data from disparate data stores
+    - Much of the functionality of Azure Data Factory appears in Azure Synapse
+    Analytics as Pipelines which enables you to integrate data pipelines between
+    SQL Pools, Spark Pools and SQL Serverless, thereby providing a one stop shop
+    for all your analytical needs
+    - ADF also works as an orchestrator tool, wherein it will instruct another 
+    service to perform the actual work required on its behalf, such as Databricks
+    to execute a transformation query
+    - ADF also provides rich visualizations to display the lineage and dependencies
+    between you data pipelines and monitor all your data pipelines from a single
+    unified view to easily pinpoint issues and setup monitoring alerts
+
+Describe Data Ingestion Patterns:
+    - ADF aids in Extract Transform and Load which involves the collection of data
+    from one or more sources, then cleaning, transforming and augmenting with 
+    additional data and finally storing in a data platform that handles the 
+    type of analytics that you would want to perform 
+    - Extract process consists of Defining the Data Source and Defining the data
+    - Transform Process consists of splitting, combining, deriving, adding or
+    pivoting columns
+    - Load Process consists of Defining the destination, Starting the job and 
+    Monitoring the job
+    - ADF provides nearly 100 enterprise connectors and robust resources for both
+    code-free and code-based users to accomplish their data movement and
+    transformation needs
+    - Unlike in a ETL, in ELT process, data is extracted and loaded in its native
+    format. This change reduces the time required to load the data into a 
+    destination system. The change also limits resource contention on the
+    data sources
+    - In ELTL (Extract Load Transform Load), there is a final load into the 
+    destination system
+    - Modern Data Warehouse is a centralized data store that provides descriptive
+    analytics and decision support services across the enterprise using structured,
+    unstructured and streaming data sources. Data flows into the warehouse
+    from multiple transactional systems, relational databases and other data sources
+    on a periodic basis. The Data warehouse acts as a central repository and is 
+    the single source of truth
+    - Advanced Analytics Workload by ADF allows you to perform predictive or
+    preemptive analytics using a range of Azure Data Platform Services. ADF can
+    initiate compute resources such as Azure Data Bricks or HDInsight to use the 
+    data to perform the advanced analytics work
+
+Data Factory Process:
+    - Connect and Collect: Define and connect all the required sources of data
+    togather, such as database, file share and FTP Web Service
+    
+    - Transform and Enrich: Prepare or Produce transformed data on a maintainable 
+    and controlled schedule to feed production environments with cleansed and 
+    transformed data through compute services such as Databricks and AZ ML
+
+    - Publish: Load the data into Azure DataWarehouse, Azure SQL DB, etc after 
+    refining into business-ready consumable form
+
+    - Monitor: Via Azure Monitor, API, Powershell, Azure Monitor logs to monitor
+    the scheduled activities and pipelines for success and failure rates
+
+Azure Data Factory Components: 
+    - Linked Services (LS):
+        - It enables to ingest the data from a data source in readiness to prepare
+        the data for transformation and/or analysis
+        - LS can fire up compute services on demand
+        - LS enables you to define data sources and compute resources that is
+        required to ingest and prepare data
+        - With the LS defined, ADF is made aware of the datasets that it should use
+        through the creation of a Datasets Objects. Datasets represents data
+        structures within the data store that is being referenced by the LS objects
+    - Activities:
+        - It contains the transformation logic or the analysis commands of the 
+        ADF 
+        - It is not uncommon for multiple activities to take place that may include
+        transforming data using a SQL Stored Procedure and then perform analytics 
+        using Databricks. In this case, multiple activities can be logically 
+        grouped togather with an object referred to as the Pipeline
+    - Control Flow:
+        - It is the orchestration of pipeline activities that includes chaining
+        activities in a sequence, branching, defining parameters at the pipeline
+        level and passing arguments while invoking the pipeline on-demand or 
+        from a trigger
+    - Parameters:
+        - Key value pairs of read-only configurations that are defined in the
+        pipeline
+        - Activities within the pipeline consume the parameter values
+    - Integration Runtime:
+        - Bridge between the activities and ls objects
+        - It is referenced by the LS and provides the Compute environment where
+        the activity either runs on or gets dispatched from, which allows for
+        the activity to be performed in the region closest possible
+
+Azure Data Factory Security:
+    - To create and manage child resources in the Azure Portal, Powershell or SDK,
+    you must belong to the Data Factory Contributor (DFC) Role at the resource group
+    level or above
+    - Through the DFC role, you can:
+        - Create, edit and delete data factories and child resources including
+        datasets, ls, pipelines, triggers and integration runtimes
+        - Deploy Resource Manager deployment which is the deployment method used
+        by Data Factory in the Azure Portal
+        - Manage App insights alerts for a data factory 
+
+Set-Up Azure Data Factory:
+    - The important elements needed to set up Azure Data Factory are:
+        - Name
+        - Subscription
+        - Resource Group
+        - Version - V2 for the latest features
+        - Location - The datacenter location in which the instance is stored
