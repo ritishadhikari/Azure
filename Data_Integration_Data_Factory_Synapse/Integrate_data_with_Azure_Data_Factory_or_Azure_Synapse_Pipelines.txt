@@ -175,3 +175,99 @@ Create Datasets:
         Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName
         -ResourceGroupName $ResGrp.ResourceGroupName -Name "InputDataset"
         -DefinitionFile ".\InputDataset.json"
+    - Defining an Output Dataset using Azure Blob
+        {
+           "name":"OutputDataset",
+           "properties":{
+                "linkedServiceName":{
+                    "referenceName":"AzureStorageLinkedService",
+                    "type":"LinkedServiceReference"
+                    },
+                "annotations":[],
+                "type":"Binary",
+                "typeProperties":{
+                    "location":{
+                        "type":"AzureBlobStorageLocation",
+                        "folderPath":"outputs",
+                        "container":"adftutorial"
+                    }
+                }
+           },
+        }
+        # After creating the above json, run the following in Powershell:
+        Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName
+        -ResourceGroupName $ResGrp.ResourceGroupName -Name "OutputDataset"
+        -DefinitionFile ".\OutputDataset.json"
+
+Create Data Factory Activities and Pipelines:
+    - Execution Activities:
+        - Data Movement Activities:
+            - Simply move data from one data store to another
+            - Use copy activity to perform data movement activities or by using JSON
+        - Data Transformation Activities
+            - Perform natively using the authoring tool of Azure Data Factory using the
+            Mapping Data Flow
+            - Or call a compute resource to change or enhance data transformation or
+            perform analysis on the data like Azure Databricks, Azure Match, Azure ML, etc 
+    - Control Activities
+        - Used when you are graphically authoring ADF solutions, use Control flow
+        within the design to orchestrate pipeline activities that include chaining 
+        activities in a sequence, branching, defining parameters at the pipeline
+        level, and passing arguments while invoking the pipeline on-demand or from
+        a trigger
+        - Few Control Activities includes:
+            - Execute Pipeline Activity
+            - ForEachActivity
+            - WebActivity
+            - Lookup Activity
+            - Get Metadata Activity
+            - Until Activity
+            - If Condition Activity
+            - Wait Activity
+    - Execution Activity Schema:
+        {
+            "name":"Execution Activity Name",  # required
+            "description":"description",
+            "type":"<Activity Type>",  # required
+            "typeProperties"{
+
+            },
+            "policy":{
+
+            },
+            "dependsOn":{
+
+            }
+
+        }
+    - Control Activity Schema:
+        {
+            "name":"Execution Activity Name",  # required
+            "description":"description",  # required
+            "type":"<Activity Type>",  # required
+            "typeProperties"{
+
+            },
+            "dependsOn":{
+
+            }
+        }
+
+Manage Integration Runtimes (IR):
+    - An Integration Runtime provides the infrastructure for the activity and linked
+    services
+    - IR is the compute infrastructure used by Azure Data Factory and provides the
+    following data integration capabilities:
+        - Data Flow: In Managed Azure Compute environment
+        - Data Movement: Copy Data across data stores in public network and data stores
+        in private network
+        - Activity Dispatch: Dispatch and Monitor transformation activity running on a 
+        variety of compute services such as Azure Databricks, Azure HDInsight, etc
+        - SSIS Package Integration: Natively execute SQL Server Integration Services
+        in a managed Azure Compute Environment
+    - IR types includes:
+        - Azure
+        - Self-Hosted
+        - Azure-SSIS
+    - Whenever an ADF instance is created, a default IR environment is created that 
+    supports operations on cloud data stores and compute services in public network
