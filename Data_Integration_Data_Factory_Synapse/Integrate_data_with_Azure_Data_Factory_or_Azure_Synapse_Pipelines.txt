@@ -112,3 +112,66 @@ Set-Up Azure Data Factory:
         - Resource Group
         - Version - V2 for the latest features
         - Location - The datacenter location in which the instance is stored
+
+Create Linked Service:
+    - They are much like the connection strings which define the connection information
+    needed for Data Factory to connect to external resources
+    - There are over 100 connectors that can be used to define a linked service
+    - A linked service in ADF can be defined using the Copy Data Activity in the 
+    ADF designer, or you can create them independently to point to a data store
+    or a compute resources
+    - Linked Service Using Azure SQL database
+    {
+        "name":"AzureSqlLinkedService",  # Name of LS
+        "properties":{
+            "type":"AzureSqlDatabase",  # Type of LS
+            "typeProperties":{
+                "connectionString":"Server=tcp:<server-name>.database.windows.net,
+                1433;Database=ctosqldb;User ID=ctesta-oneill;Password=P@ssw0rd;
+                Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            },
+            "connectVia":""  # Integration Runtime to be used to connect to DataStore
+            # connectVia is not a mandatory propert to define an LS
+        }
+    }
+    - Linked Service Using Azure Blob Storage:
+        {
+            "name":"StorageLinkedService",
+            "properties":{
+                "type":"AzureStorage",
+                "typeProperties":{
+                    "connectionString":"DefaultEndpointsProtocol=https;
+                    AccountName=ctostorageaccount;AccountKey=<account-key>"
+                }
+            }
+        }
+
+Create Datasets:
+    - Dataset is a view of data that simply points or references the data you want
+    to use in your activities as inputs and outputs
+    - It identifies data within different data stores, such as tables, files, folders
+    and documents
+    - Defining an Input Dataset using Azure Blob
+        {
+           "name":"InputDataset",
+           "properties":{
+                "linkedServiceName":{
+                    "referenceName":"AzureStorageLinkedService",
+                    "type":"LinkedServiceReference"
+                    },
+                "annotations":[],
+                "type":"Binary",
+                "typeProperties":{
+                    "location":{
+                        "type":"AzureBlobStorageLocation",
+                        "fileName":"emp.txt",
+                        "folderPath":"input",
+                        "container":"adftutorial"
+                    }
+                }
+           },
+        }
+        # After creating the above json, run the following in Powershell:
+        Set-AzDataFactoryV2Dataset -DataFactoryName $DataFactory.DataFactoryName
+        -ResourceGroupName $ResGrp.ResourceGroupName -Name "InputDataset"
+        -DefinitionFile ".\InputDataset.json"
