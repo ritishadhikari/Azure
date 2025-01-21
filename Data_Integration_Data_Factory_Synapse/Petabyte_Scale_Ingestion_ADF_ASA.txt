@@ -1,0 +1,108 @@
+Introduction:
+    - ADF Provides differing ingestion methods that can connect to nearly a hundred
+    different data connectors
+    - Regardless of which method we choose, we must set up the appropriate infrastructure
+    to support the data ingestion method through integration runtimes
+    - We must also make sure that the data ingestion is secure in each data store and
+    whilst in transit
+
+List the Data Factory Ingestion Methods:
+    - Ingesting Data using the Copy Activity:
+        - The Copy Activity is used to build code-free data ingestion pipelines that
+        don't require any transformation during extraction of the data
+        - It has over 100 native connectors
+        - Suited for greenfield projects that have a simple method of extraction to 
+        an intermediary data store
+        - They are simple to create but they will not be able to deal with sophisticated
+        transformations or business logic
+
+    - Ingesting Data using Compute Resources:
+        - ADF can call on compute resources to process data by a data platform service
+        that may be better suited for the job
+        - Ex. ADF can create a pipeline to an analytical data platform such as Spark
+        pools in an Azure Synapse Analytics Instance to perform a complex calculation,
+        which generates new data
+        - There are wide range of computing resources including:
+            - On-demand HD Insight Cluster or your own HDInsight Cluster
+            - Azure Batch
+            - Azure ML Studio Machine
+            - Azure Machine Learning
+            - Azure Data Lake Analytics
+            - Azure Databricks
+            - Azure Function
+            - Azure SQL, SQL Data Warehouse, SQL Server
+
+    - Ingesting Data using SSIS Package:
+        - ADF Provides the ability to lift and shift existing SSIS workload, by creating
+        an Azure-SSIS Integration runtime to natively execute SSIS packages
+        - This will enable us to deploy and manage the existing SSIS package with little
+        to no change using familier tools such as SQL Server Data Tools and SQL Server
+        Management Studio (SSMS)
+
+Describe Data Factory Connectors:
+    - Connectors are ADF objects that enables Linked Services and Datasets to connect
+    to a wide variety of data sources and sinks
+    - This includes connections to Azure Resources and third-party connectors such as
+    Amazon S3 or GCP
+    - The file format that are supported includes:
+        - Avro
+        - Binary
+        - Delimited Text format
+        - Json
+        - ORC
+        - Parquet
+    - Few Examples of Data Stores includes:
+        - Azure: Data Lake Storage, Synapse Analytics 
+        - Databases: Netezza, Greenplum
+        - NoSQL Stores: Cassandra, MongoDB
+        - File: FTP, Google Cloud Storage
+        - Generic Protocol: REST, ODBC
+        - Services & Apps: Dynamics, SalesForce
+
+Manage the Self Hosted Integration Runtime:
+    - Self-Hosted Integration is capable of running copy activity between a cloud data
+    store and a data store in a private network
+    - The Self-Hosted Integration runtime is logically registered to the Azure Data
+    Factory and the Compute resource used to support its function as provided by the 
+    user
+    - Therefore there is no explicit location property for self-hosted IR
+    - When used to perform data movement, the self-hosted IR extracts data from the 
+    source and writes it into the destination
+    - We can also set up a self-hosted IR on an Azure VM via an Azure Resource Manager
+    template or by using Powershell 
+
+Set up the Azure Integration Runtime:
+    - Azure IR is capable of Running Data Flows in Azure and running copying activities
+    between Cloud Data Stores
+    - You can set a certain location of an Azure IR, in which case the data movement
+    or activity dispatch will happen in that specific region
+    - If we choose to choose to use the auto-resolve Azure IR which is the default, 
+    ADF will make a best effort to automatically detect your sink and source data store
+    to choose the best location either in the same region if available or the closest
+    one in the same geography for the Copy Activity
+    - For anything other than the Copy Activity, IR will be created in the ADF region
+    - IR also has support for Virtual Networks
+
+Understand Data Ingestions Security Considerations:
+    - Network:
+        - Use Virtual Networks to secure Azure Resources along with Network Security 
+        Groups (NSG)
+        - Use Services to detect and prevent intrusions, like DDoS protection standard
+        on the Virtual Networks where the IR is hosted. Also utilize Azure Security 
+        Center Integrated Threat Intelligence, Azure Firewall and Azure Express Route
+        - Simplify the management of Security Rules using Network Service Tags, which
+        enables us to group togather IP address prefixes from a given Azure Service
+        for administrative purpose
+    - Identify and Access Control:
+        - Administrative Accounts should be dedicated and known accounts that are
+        monitored and managed on a regular basis to ensure they are not compromised
+        - Use Active Directory to make a Single Sign on
+    - Data Protection:
+        - Use Role Based Access Control on the data sources to control access to the data
+        to Azure Data Factory Service Principal
+        - Define rules for Sensitive Data and track its flow
+    - Logging and Monitoring:
+        - Use Azure Monitor to centralize the storage of ingestion logs that are generated
+        by ADF and query them using Log Analytics
+        - Enable Audit Logging by using ADF diagnostic settings to configure diagnostic
+        logs to track pipeline-run data which is retained for 45 days
