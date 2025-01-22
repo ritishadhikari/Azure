@@ -1,0 +1,75 @@
+Explain ADF Transformation Methods:
+    - Mapping Data Flow:
+        - It provides an environment for building a wide range of data transformations
+        visually without the need to use code
+        - The resulting data flows that are created are subsequently executed on 
+        scaled-out Apache Spark Clusters that are automatically provisioned when you
+        execute the Mapping Data Flow
+        - It also provides the capability to monitor the execution of the 
+        transformations so that we can view how the transformations are progressing
+        or to understand the errors that may occur
+    - Using Compute Resources:
+        - ADF can also call on compute resources to transform data by a data platform
+        service that may be better suited to the job
+        - Ex. ADF can create a pipeline to an analytical data platform such as Spark 
+        pools in an Azure Synapse Analytics to perform a complex calculation using
+        python
+        - Compute Environment Includes:
+            - On-Demand HDInsight Cluster or own HD Insight Cluster
+            - Azure Batch
+            - AZ ML
+            - Azure Data Lake Analytics
+            - AZ SQL, AZ SQL Data Warehouse, SQL Server
+            - AZ Databricks
+            - Azure Functions
+    - Using SQL Server Integration Services (SSIS) packages:
+        - ADF provides the ability to lift and shift existing SSIS workload, by creating
+        an AZ-SSIS Integration runtime to natively execute SSIS Package and enables you 
+        to deploy and manage your existing SSIS packages with little to no change
+        using familier tools like SQL Server Data Tools and SQL Server Management Studio
+        (SSMS)
+
+Describe Azure Data Factory Transformation Types:
+    - Schema Modifier Transformations:
+        - Transformations will make a modification to a sink destination by creating
+        new columns based on the actions of the transformation. Ex. Derived Column
+    - Row Modifier Transformations:
+        - It impacts how the rows are presented in the destination. Ex. Sort 
+        Transformation
+    - Multiple Inputs/ Outputs Transformations:
+        - Tranformations will generate new pipelines or merge pipelines into one.
+        Ex. Union Transformation that combines multiple data streams
+    - List of Transformations that are available in the Mapping Data Flows:
+        - Aggregate: Schema Modifier
+        - Alter Row: Row Modifier
+        - Conditional Split: Multiple Inputs/ Outputs Transformations
+        - Derived Column: Schema Modifier
+        - Exists: Multiple Inputs/ Outputs Transformations
+        - Filter: Row Modifier
+        - Flatten: Schema Modifier
+        - Join: Multiple Inputs/ Outputs Transformations
+        - Lookup: Multiple Inputs/ Outputs Transformations
+        - New Branch: Multiple Inputs/ Outputs Transformations
+        - Pivot: Schema Modifier
+        - Select: Schema Modifier
+        - Sort: Row Modifier
+        - Surrogate Key: Schema Modifier
+        - Union: Multiple Inputs/ Outputs Transformations
+        - UnPivot: Schema Modifier
+        - Window: Schema Modifier
+    - Dataflow Expression Builder:
+        - This enables you to customize the functionality of a transformation using 
+        columns, fields, variables, parameters, functions from data flow in the boxes
+
+Use Azure Data Factory Wrangling data:
+    - The Power Query Feature enables us to work with and wrangle data
+    - It is an object that can be added to the canvas designer as an activity in an
+    Azure Data Factory Pipeline to perform code free data preparation
+    - It enables individuals who are not conversant with the data preparation 
+    technologies such as Spark or SQL Server
+    - The power query feature uses a grid type interface for basic data preparation
+    that is like the aesthetics of Excel, known as Online Mashup Editor
+    - The editor also enables more advanced users to perform more complex data 
+    preparation using formulas
+    - You need to first create a linked service to a source data first before you are 
+    able to access the data
