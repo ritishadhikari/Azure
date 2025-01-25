@@ -69,3 +69,13 @@ Work with Data Factory Pipelines:
         - Failed
         - Skipped 
         - Completed
+
+Debug Data Factory pipelines:
+    - ADF helps you build and develop iterative Debug Data Factory Pipelines when
+    you develop your data integration solution
+    - By authoring a pipeline using a pipeline canvas, you can test your activities
+    and pipelines by using the Debug Capability
+    - There is no need to publish changes in the pipeline or activities before you
+    want to debug
+    - This is helpful in a scenario when you would want to test the changes and see if
+    it works as expected before you actually save and publish them
