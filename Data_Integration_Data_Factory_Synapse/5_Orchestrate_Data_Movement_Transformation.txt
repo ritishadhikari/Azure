@@ -1,0 +1,71 @@
+Understand Data Factory Control Flow:
+    - It is an orchestration of pipeline activities that includes chaining activities
+    in a sequence, branching, defining parameters at the pipeline level and passing
+    arguments while invoking the pipeline on demand or from a trigger
+    - Control Flow can also including looping containers, that can pass information
+    for each iteration of the looping container
+    - Few Control Flow Activity are mentioned below
+    - Chaining Activities:
+        - Chain Activities in a sequence within a pipeline
+        - It is possible to use the dependsOn property in an activity definition to
+        chain it with an upstream activity
+    - Branching Activities:
+        - It evaluates a set of activities, and when the condition evaluates to True,
+        a set of activities are executed and when it evaluates to False, then an 
+        alternative set of activities is executed
+    - Parameters:
+        - Define Parameters at the pipeline level and pass arguments while you are
+        invoking the pipeline on-demand or from a trigger
+        - Activities then consume the arguments held in a parameter as they are 
+        passed to the pipeline
+    - Custom State Passing:
+        - In these the state of the prior activities are consumed by a subsequent 
+        activity
+        - Using Custom State Passing enables you to build workflows where values 
+        are passing through Activities
+    - Looping Containers:
+        - It defines repetion in a pipeline
+        - It enables yo to iterate over a collection and runs specified activities
+        in the defined loop
+    - Trigger Based Flows:
+        - Pipelines can be triggered by on-demand (event-based, for example blob 
+        post) or wall clock time
+    - Invoke a Pipeline from another pipeline:
+        - The execute pipeline activity allows an ADF pipeline to invoke another
+        pipeline
+    - Delta Flows:
+        - Delta Loads will only load data that has changed since a previous iteration
+        of a pipeline
+        - Capabilities such as lookup activity and flexible scheduling helps
+        handling delta load jobs 
+    - Web Activity:
+        - It can call a Custom REST Endpoint from a Data Factory Pipeline
+    - Get Metadata Activity:
+        - It retrieves the metadata of any data in Azure Data Factory
+
+Work with Data Factory Pipelines:
+    - A pipeline within ADF represents a logical grouping of activities where the
+    activities togather perform a certain tasks
+    - Example of a combination of activities in one pipeline can be ingesting and 
+    cleaning log data in combination with a mapping data flow that analyzes the
+    log data that has been cleaned
+    - Pipelines enables you to deploy and schedule the activities efficiently by
+    using a single pipeline versus managing each activity independently
+    - Activities in a pipeline are referred to as actions that you perform on your
+    data. An activity can take zero or more input datasets and produce one or more
+    output datasets
+    - Activities in an ADF Pipeline can be grouped into:
+        - Data Movement Activities:
+            - The Copy Activity copies data from a source data store to a sink
+            data store
+        - Data Transformation Activity:
+            - ADF supports transformation activities such as Data Flow, Azure 
+            Function, Spark, and others that can be added to pipelines either 
+            individually or chained with another activity
+        - Control Activities:
+            - Examples include - Get Metadata, For Each, Execute Pipeline 
+    - Activities can depend on each other and the four dependency conditions are:
+        - Succeeded
+        - Failed
+        - Skipped 
+        - Completed
