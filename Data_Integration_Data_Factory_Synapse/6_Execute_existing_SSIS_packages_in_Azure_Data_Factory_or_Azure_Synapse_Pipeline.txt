@@ -1,0 +1,32 @@
+Describe SQL Server Integration Service:
+    - SSIS is a platform for building complex ETL solutions
+    - SSIS is a component within SQL Server and consists of a Windows Service that
+    manages the execution of ETL workflows, along with several tools and components
+    for developing those workflows
+    - It is typically used to develop integration pipelines for on-premises data
+    warehousing solutions
+    - It can also be used to create data migration pipelines when migrating data 
+    between different systems
+    - In SSIS, a project is the unit of deployment for SSIS solutions.
+    - A projects contains one or more packages, each defining a workflow of tasks
+    to be executed
+
+Understand the Azure SSIS Integration Runtime:
+    - To lift and shift SSIS workloads, you can create an Azure-SSIS IR to natively
+    execute SSIS packages
+    - Selecting the right location for your Azure-SSIS IR is essential to achieve 
+    high performance in your extract-transform-load (ETL) workflows
+    - In order to make use of the Azure-SSIS Integration Runtime, it is assumed that
+    there is an SSIS catalogue (SSIDB) deployed on a SQL server SSIS Instance. Post
+    that the Azure-SSIS Integration Runtime is capable of lifting and shifting 
+    existing SSIS workloads
+    - During provisioning of Azure-SSIS Integration Runtime, you specify the following
+    options:
+        - The node size (including the number of cores) and the number of nodes in the
+        cluster
+        - The existing instance of Azure SQL Database to host the SSIS Catalogue 
+        Database (SSISDB), and the service tier for the database
+        - The maximum parallel executions per node
+    - After tne Azure-SSIS IR is enabled, you are able to manage, monitor and schedule
+    SSIS packages using tools such as SQL Server Management Studio (SSMS) or SQL
+    Server Data Tools (SSDT)
