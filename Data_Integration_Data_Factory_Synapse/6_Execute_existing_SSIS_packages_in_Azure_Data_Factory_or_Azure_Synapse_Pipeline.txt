@@ -30,3 +30,4 @@ Understand the Azure SSIS Integration Runtime:
     - After tne Azure-SSIS IR is enabled, you are able to manage, monitor and schedule
     SSIS packages using tools such as SQL Server Management Studio (SSMS) or SQL
     Server Data Tools (SSDT)
+    
