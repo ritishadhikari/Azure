@@ -14,4 +14,11 @@ Features of Azure AI Studio:
 
 AI Studio Architecture:
     - Top Level is AI Hub
+        - Contains Data Upload and Artifacts
+        - Connections
+        - Compute
+        - Security
     - Within is AI Project
+        - It is the child environment
+        - Consists of Datasets, Models, Indexes
+        - AI tools
