@@ -1,0 +1,24 @@
+What is Azure AI Studio:
+
+    - AI Studio is a platform to develop production-ready enterprise-grade AI tools ex.
+Copilots, apps, solutions and workflows
+
+    - AI Studio is a collection of AI models and services
+
+Features of Azure AI Studio:
+    - Collection of great AI services and models at your fingertips
+    - Complete AI toolchain (search, data, web functions, etc)
+    - Production Ready and Enterprise Grade
+    - Allows tracing and debugging
+    - Create once, deploy everywhere
+
+AI Studio Architecture:
+    - Top Level is AI Hub
+        - Contains Data Upload and Artifacts
+        - Connections
+        - Compute
+        - Security
+    - Within is AI Project
+        - It is the child environment
+        - Consists of Datasets, Models, Indexes
+        - AI tools
