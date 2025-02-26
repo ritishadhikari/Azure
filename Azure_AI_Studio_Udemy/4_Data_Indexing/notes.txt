@@ -1,0 +1,3 @@
+We need to first data store and then create an index which we must link it
+through an Azure Search Service (select the free tier) to chunk your data (files
+and folders which is saved in the datastore)
