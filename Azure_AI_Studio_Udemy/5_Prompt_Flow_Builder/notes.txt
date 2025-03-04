@@ -1,0 +1,1 @@
+A Chatflow keeps tracks of the users questions and histories and has hard memories.
