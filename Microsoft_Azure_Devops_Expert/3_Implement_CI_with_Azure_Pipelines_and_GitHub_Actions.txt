@@ -70,8 +70,7 @@ Explore Azure Pipelines:
         - Cloud (AWS, GCP, Azure) or On-Premise
     
     - Items known as Artifacts are produced from CI
-    The continous delivery
-    release pipelines use them to drive automatic deployments
+    The continous delivery release pipelines use them to drive automatic deployments
 
     - Azure Pipelines Key Terms:
         - Agent:
