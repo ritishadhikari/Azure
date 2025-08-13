@@ -4,7 +4,6 @@ from dotenv import load_dotenv
 # Add references
 from azure.identity import DefaultAzureCredential
 from azure.ai.projects import AIProjectClient
-from openai import AzureOpenAI
 
 def main(): 
 
